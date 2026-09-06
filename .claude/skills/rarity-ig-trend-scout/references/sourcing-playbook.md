@@ -9,7 +9,8 @@ use `topic: "news"` for time-sensitive queries) and the `rss-reader` MCP server 
 below when it's connected — it's tuned for exactly this "what happened recently" retrieval.
 
 ## Contents
-1. Leg one: marketing and branding industry news
+0. The DTC scoping test (direction from Caio, 2026-09-06)
+1. Leg one: e-commerce and DTC industry news
 2. Leg two: Instagram and Reels trends worldwide
 3. Leg three: correlatable facts (dates, anniversaries, calendar moments)
 4. The quality bar (what survives the cut to 10)
@@ -17,38 +18,66 @@ below when it's connected — it's tuned for exactly this "what happened recentl
 
 ---
 
-## 1. Leg one: marketing and branding industry news
+## 0. The DTC scoping test (direction from Caio, 2026-09-06)
 
-**Start with direct RSS.** Call `fetch_feed_entries` (via the `rss-reader` MCP server) on the industry-news
-feeds in `references/rss-sources.md` — Adweek, Marketing Dive, Digiday, AdExchanger, PR Daily. This is
-faster and more reliable than search for "what's fresh right now," and sidesteps outlets whose search
-results are often bot-blocked. Use `fetch_article_content` on any promising hit to pull the real mechanism
-or number before pitching it.
+Rarity's content is anchored in the **e-commerce DTC industry**. Before a candidate goes any further,
+ask: would a DTC founder or e-commerce operator actually stop scrolling for this? Two ways a candidate
+passes:
 
-Then get the real current month and year (don't assume from memory), and search broadly before
-narrowing to fill in what the feeds didn't cover. Query patterns that work:
-- `"marketing branding industry news [current month] [year]"`
-- `"brand marketing campaign this week [year]"`
-- `"[industry] marketing news this week"` (advertising, martech, retail, fintech, whatever's relevant)
-- `"best marketing campaigns [month] [year]"`
-- `"AI marketing news [current month] [year]"` (AI is currently reshaping ad platforms, measurement,
-  and content production fast enough that it resurfaces in almost every search window)
+- **Direct** — the story's subject IS a DTC or e-commerce brand, platform, or mechanic: a DTC brand's
+  funding round, a Shopify or TikTok Shop feature, a subscription-commerce tactic, a checkout/retention
+  number, a founder's decision, a DTC brand's move into wholesale or physical retail (or the reverse).
+- **By lesson** — the subject is a bigger, non-DTC retailer or platform, but the specific mechanic is one
+  a DTC operator can actually steal: a big retailer's loyalty-program math, a legacy brand's TikTok Shop
+  pilot, a platform algorithm change that affects anyone selling through it. The Amazon ad-auction
+  lawsuit or a Sephora TikTok Shop pilot both pass this way even though neither is a "DTC startup" story.
 
-Outlets whose roundups tend to surface well in search and are reliably current: Marketing Dive, Adweek,
-The Drum, Digiday, Ad Age, Marketing Brew, Famous Campaigns, Social Media Today, and general
-martech/AI-news aggregators. You don't need to search these by name specifically; searching the query
-patterns above naturally surfaces their coverage. (Ad Age and The Drum block direct feed fetches — see
-`references/rss-sources.md`'s Known Gaps — so they only come in through search, not the RSS pass.)
+What does NOT pass: general brand-marketing or ad-agency news with no commerce mechanic underneath it — a
+QSR chain's new ad campaign, an agency account switching hands, a CMO hire at a legacy brand with no
+digital/DTC angle. That's the wrong feed now, even if it was fair game before this direction.
 
-**What to pull out of a news hit:** not just "brand X did a campaign," but the specific mechanism: what
-they actually did, the number behind it (spend, reach, a stat, a timeline), and why it's a genuine
-departure from what everyone else in that category does. A campaign write-up with no real specific in
-it is not a usable pitch yet, keep searching.
+**"Broad" means broad across DTC, not narrow.** E-commerce/DTC spans a lot of ground — fashion and
+apparel, beauty and personal care, food and beverage, wellness and supplements, home and lifestyle, pets,
+fitness, electronics and gadgets, subscription/box commerce, and marketplace-native brands (TikTok Shop
+sellers, Amazon aggregators). A batch of 10 should prove that breadth (see section 5), not read like it
+only knows one vertical exists.
 
-**Time window:** prefer the last 7 to 14 days for "this is happening right now" pitches. A month-old
-story can still work if it's still actively being discussed or if it ties cleanly to a correlatable date
-(leg three), but don't reach past about 30 days unless it's functioning as an evergreen anchor rather
-than a "current news" one.
+---
+
+## 1. Leg one: e-commerce and DTC industry news
+
+**Start with direct RSS.** Call `fetch_feed_entries` (via the `rss-reader` MCP server) on the e-commerce/
+DTC feeds in `references/rss-sources.md` — Retail Dive, Modern Retail, Glossy, Practical Ecommerce, Chain
+Store Age, Digital Commerce 360. This is faster and more reliable than search for "what's fresh right
+now," and Modern Retail and Glossy in particular cover DTC-native brands directly rather than only big
+legacy retail. Use `fetch_article_content` on any promising hit to pull the real mechanism or number
+before pitching it.
+
+Then get the real current month and year (don't assume from memory), and search broadly before narrowing
+to fill in what the feeds didn't cover. Query patterns that work:
+- `"DTC brand news this week [month] [year]"`
+- `"ecommerce industry news [current month] [year]"`
+- `"direct to consumer brand funding OR acquisition [month] [year]"`
+- `"Shopify OR TikTok Shop news this week"`
+- `"[vertical] DTC brand launch OR funding"` (beauty, wellness, food and beverage, pet, home — rotate
+  through verticals deliberately, don't just take whatever the first search returns)
+- `"retail media news this week"` / `"checkout OR retention ecommerce news [month] [year]"`
+
+Outlets whose roundups tend to surface well in search and are reliably current, beyond the RSS list:
+Retail Brew, eMarketer/Insider Intelligence commerce coverage, Digiday's commerce/retail vertical, and
+general martech/AI-in-commerce aggregators. You don't need to search these by name specifically;
+searching the query patterns above naturally surfaces their coverage.
+
+**What to pull out of a news hit:** not just "brand X did a thing," but the specific mechanism: what they
+actually did, the number behind it (funding amount, conversion lift, revenue figure, timeline), and why
+it's a genuine departure from what everyone else selling direct-to-consumer does. A write-up with no real
+specific in it is not a usable pitch yet, keep searching.
+
+**Time window — tighter than a general marketing beat.** Prefer the last 3 to 7 days for "this is
+happening right now" pitches; 14 days is the hard ceiling, and only when the story is still visibly being
+discussed (follow-on coverage, an ongoing lawsuit, a still-unfolding earnings reaction), not just
+technically within range. A number or decision that was news two weeks ago and has already been absorbed
+by the industry is stale — see section 4's freshness rule before pitching anything past a few days old.
 
 ---
 
@@ -71,21 +100,20 @@ Query patterns that work:
 - `"top Instagram Reels trends [month] [year]"`
 
 Sources whose roundups tend to surface: Later, Hootsuite, Sprout Social, SocialBee, SocialPilot,
-NapoleonCat, Lightreel, and similar social-media-marketing publications that specifically track format
-and audio trends weekly.
+NapoleonCat, Lightreel, Newengen, and similar social-media-marketing publications that specifically track
+format and audio trends weekly.
 
 **Optional live spot-check:** if Claude in Chrome is connected, browsing Instagram's own Explore or
 Reels tab can sanity-check or freshen the picture. Treat it as a supplement, not the primary source,
 since what it shows is personalized to whatever account is logged in.
 
-**What actually makes a good pitch out of a trend (this is the part that's easy to get wrong):** Rarity's
-feed is editorial, not meme-format content, so the pitch is almost never "do the exact trend." It's
-either (a) the trend ITSELF as the anchor, decoded for what it reveals about attention, psychology, or
-marketing mechanics ("why is the trend built on borrowing someone else's music taste actually working,
-and what does that teach about earned attention versus paid attention"), or (b) a stat or insight
-published alongside the trend roundup (share rates, engagement shifts, "aesthetic content is losing to
-timely discourse") that itself is the real, citable fact worth decoding. Pull the INSIGHT, not the
-instructions for how to film the trend.
+**Read every trend through the DTC lens.** Rarity's feed is editorial, not meme-format content, and now
+specifically speaks to DTC operators, so the pitch is almost never "do the exact trend." It's either
+(a) the trend ITSELF as the anchor, decoded for what it reveals about attention, conversion, or retention
+("DM shares now count 3-5x more than likes for reach — what does that mean for a DTC brand still
+optimizing content for likes"), or (b) a stat or insight published alongside the trend roundup (share
+rates, engagement shifts, format performance data) that itself is the real, citable fact worth decoding.
+Pull the INSIGHT and its commerce implication, not the instructions for how to film the trend.
 
 ---
 
@@ -94,14 +122,19 @@ instructions for how to film the trend.
 This extends the same anchor logic `rarity-ig-idea-engine`'s own trigger step already uses, applied
 here to generate menu candidates rather than a single chosen anchor.
 
+**Weight toward retail/commerce history first**, general history second, when both are available for a
+given date: a DTC brand's founding or funding anniversary, a marketplace or platform's launch date
+(Amazon, Shopify, Instagram Shopping), a shopping holiday, a retail-format milestone (the kind of thing
+Piggly Wiggly's 1916 self-service opening represents). General history and pop-culture anniversaries
+still work as a Date anchor, but only when the angle clearly ties back to a commerce mechanic — see
+section 0's scoping test.
+
 Query patterns that work:
-- `"on this day [Month Day] marketing OR advertising OR brand history"`
-- `"[Month Day] anniversary brand campaign"`
-- `"[Month Day] brand history"` (some brands, like 7-Eleven's July 11 "Free Slurpee Day," have a
-  built-in date pun baked into the calendar itself, which is an unusually strong, evergreen-but-timely
-  correlatable fact)
-- A look at what's on the calendar in the next 1 to 2 weeks (a major sporting event, a well-known
-  product launch anniversary, a widely observed cultural date) that a brand could plausibly piggyback
+- `"on this day [Month Day] retail OR ecommerce OR DTC history"`
+- `"[Month Day] anniversary brand OR retailer launch"`
+- `"[Month Day] shopping holiday OR retail history"`
+- A look at what's on the retail/shopping calendar in the next 1 to 2 weeks (Prime Day, BFCM lead-up,
+  a major shopping holiday, a platform's anniversary) that a DTC brand could plausibly piggyback
 
 **Verify the specific detail**, not just the general topic, same discipline as `rarity-ig-idea-engine`'s
 own trigger engine: the exact date, the exact figure, the exact quote. Many "on this day" business
@@ -113,10 +146,18 @@ soften it or drop it for a cleaner one.
 ## 4. The quality bar (what survives the cut to 10)
 
 A raw candidate earns a spot in the final 10 only if it clears all of these:
-- **Specific, not vague.** A real number, a named brand, a documented decision, an actual quote. "Brands
-  are using AI more" is not a pitch. "2,000+ brands are already running ads inside ChatGPT" is.
-- **Resonant for Rarity's audience.** Founders, marketers, and brand builders should recognize the
-  stakes immediately, even if they didn't know the specific story yet.
+- **Passes the DTC scoping test** (section 0) — directly about e-commerce/DTC, or teaches a mechanic a
+  DTC operator can use.
+- **Specific, not vague.** A real number, a named brand, a documented decision, an actual quote. "DTC
+  brands are struggling with retention" is not a pitch. "A DTC brand lost millions in a single quarter
+  because its own loyalty program was too generous" is.
+- **Current, not stale (hard rule).** Ask directly: would this still stop someone scrolling today, or has
+  the news cycle already moved past it? A story that's three weeks old and nobody's still discussing,
+  or an IG trend that already peaked, fails this test even if everything else about it is strong.
+  Freshness beats importance — a smaller story from this week usually beats a bigger story from three
+  weeks ago that's already been fully digested by the industry.
+- **Resonant for a DTC founder or e-commerce operator.** They should recognize the stakes immediately,
+  even if they didn't know the specific story yet.
 - **Decodable, not just newsworthy.** There has to be a plausible lesson or mechanism underneath it, not
   just "this happened." If you can't sketch even a rough one-line angle, it's not ready to pitch yet.
 - **Sourced.** Keep the URL you found it through. Full primary-source verification happens after Caio
@@ -132,9 +173,10 @@ A raw candidate earns a spot in the final 10 only if it clears all of these:
   built on top of it, is cheaper than fixing it after. See `rarity-ig-idea-engine`'s `editorial-qa.md`
   clarity gate for the fuller version of this test — same bar, one step earlier in the pipeline.
 
-Reject on sight: generic "X launches new campaign" write-ups with no real mechanism, anything that reads
-like a listicle tip in a trend's clothing, anything you can't trace to an actual source from this search
-session, and any angle that only works if the reader already has specialist knowledge.
+Reject on sight: anything that fails the DTC scoping test, generic "X launches new campaign" write-ups
+with no real mechanism, anything that reads like a listicle tip in a trend's clothing, anything you can't
+trace to an actual source from this search session, anything visibly stale, and any angle that only works
+if the reader already has specialist knowledge.
 
 ---
 
@@ -147,11 +189,14 @@ Applied while narrowing raw candidates down to the final 10, not as an afterthou
   Strategy or Mindset angle rather than filling all 10 slots with the same lens.
 - **Anchor-type spread** — mix news, IG trend, and correlatable-date pitches. Ten news stories with no
   trend or date-based pitch mixed in defeats the point of running all three legs.
-- **Subject-domain spread** — tech, fashion, food and beverage, sport, finance, luxury, and so on. Don't
-  let all 10 come from the same industry just because that's where the news happened to be dense this
-  week.
+- **DTC vertical spread** — fashion and apparel, beauty and personal care, food and beverage, wellness
+  and supplements, home and lifestyle, pets, fitness, electronics and gadgets, subscription/box commerce,
+  and marketplace-native brands (TikTok Shop, Amazon aggregators). Don't let all 10 come from the same
+  vertical just because that's where the news happened to be dense this week — if beauty DTC dominated
+  this run's search results, deliberately search another vertical (pets, home, food and beverage) before
+  finalizing the 10.
 - **Format spread** — note a rough static-versus-carousel guess per pitch so the final batch, once
   built out, won't turn into ten carousels in a row.
 
 This mirrors `rarity-ig-idea-engine`'s own batch rotation discipline (pillar, anchor type, format,
-subject domain), applied one step earlier, to a wider set of options.
+subject domain), applied one step earlier, to a wider set of options, now scoped to e-commerce/DTC.

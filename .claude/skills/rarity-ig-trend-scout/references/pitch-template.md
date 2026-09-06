@@ -31,6 +31,12 @@ set in one pass.
 
 ## 2. Worked example: 10 real pitches from 2026-07-11
 
+**Note (2026-09-06):** this batch predates Rarity's narrowing to e-commerce/DTC as the content focus
+(see `sourcing-playbook.md` section 0). Read it for the pitch-card format, the pillar/anchor-type spread
+discipline, and the level of specificity each fact hits — not for subject matter. Several of these
+subjects (a QSR sponsorship, a general ad-agency story) wouldn't clear the DTC scoping test today. A
+current, DTC-scoped batch lives in `public/Instagram Briefings/Trend Scouts <Month>/`.
+
 **1. Zero-click search is quietly rewriting content strategy** — Growth Marketing & Branding · News · Static
 Fact: roughly 68% of US Google searches now end without a click to any website, changing how brands need
 to think about visibility.
