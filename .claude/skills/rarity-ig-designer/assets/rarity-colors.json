@@ -1,0 +1,26 @@
+{
+  "backgrounds": {
+    "primary_navy": "#001A70",
+    "alt_dark_purple_deep": "#0f0a1a",
+    "alt_dark_purple_mid": "#1a0f2e"
+  },
+  "accent": { "teal_cta": "#0fc1af" },
+  "gradient_energy": ["#0046FF", "#9B00C8", "#D50057"],
+  "gradient_light_variants": ["#B044FF", "#E879F9", "#5DB5FF", "#A855F7"],
+  "text": {
+    "primary_offwhite": "#efeeea",
+    "max_contrast_white": "#FFFFFF",
+    "muted": ["#a7accb", "#D1D5DB"]
+  },
+  "fonts": {
+    "headline": "TESLA",
+    "body": "BentonSans Regular",
+    "body_thin": "BentonSans Thin"
+  },
+  "assets": {
+    "symbol": "assets/rarity-symbol.png",
+    "logo_white_for_dark_bg": "assets/rarity-logo-white.png",
+    "logo_blue_for_light_bg": "assets/rarity-logo-blue.png"
+  },
+  "symbol_rule": "Place the symbol small in a corner of almost every image (just the symbol). Use the full logo on the CTA/closing slide."
+}

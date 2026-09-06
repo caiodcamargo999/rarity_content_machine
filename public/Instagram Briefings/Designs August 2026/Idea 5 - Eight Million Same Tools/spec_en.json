@@ -1,0 +1,96 @@
+{
+  "out_dir": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs August 2026/Idea 5 - Eight Million Same Tools/EN",
+  "handle": "@rarity.agency",
+  "accent": "#D50057",
+  "slides": [
+    {
+      "type": "hook",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs August 2026/Idea 5 - Eight Million Same Tools/hero.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.35,
+      "dark": 0.1,
+      "blur_zone": [
+        360,
+        1220
+      ],
+      "blur_r": 24,
+      "bot_a": 250,
+      "bot_start": 0.22,
+      "eyebrow": "STRAIGHT FROM META'S EARNINGS CALL",
+      "headline": "8 million advertisers are running the *same* playbook.",
+      "subhead": "Here's what still separates the ones who win \u2192",
+      "size": 122
+    },
+    {
+      "type": "stat",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs August 2026/Idea 5 - Eight Million Same Tools/bg/bg2.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.5,
+      "dark": 0.08,
+      "bot_a": 250,
+      "bot_start": 0.25,
+      "stat": "8M",
+      "label": "ADVERTISERS NOW USE META'S AI AD TOOLS",
+      "sub": "That's twice as many as a year ago."
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs August 2026/Idea 5 - Eight Million Same Tools/bg/bg3.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.45,
+      "dark": 0.22,
+      "bot_a": 252,
+      "bot_start": 0.22,
+      "kicker": "THE TRAP",
+      "headline": "When everyone automates the work, every ad starts to look the *same*.",
+      "size": 96
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs August 2026/Idea 5 - Eight Million Same Tools/bg/bg4.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.45,
+      "dark": 0.18,
+      "bot_a": 252,
+      "bot_start": 0.22,
+      "kicker": "THE FLOOR",
+      "headline": "AI raises the floor. Average is now *free* for everyone.",
+      "size": 96
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs August 2026/Idea 5 - Eight Million Same Tools/bg/bg5.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.4,
+      "dark": 0.28,
+      "bot_a": 252,
+      "bot_start": 0.2,
+      "kicker": "THE CEILING",
+      "headline": "Taste sets the ceiling. A machine can't want it more than *you* do.",
+      "size": 96
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs August 2026/Idea 5 - Eight Million Same Tools/bg/bg6.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.35,
+      "dark": 0.28,
+      "bot_a": 252,
+      "bot_start": 0.2,
+      "kicker": "THE MOVE",
+      "headline": "Use AI for speed. Keep judgment *human*. Ship nothing you wouldn't sign.",
+      "size": 90
+    },
+    {
+      "type": "cta",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs August 2026/Idea 5 - Eight Million Same Tools/hero.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.08,
+      "dark": 0.35,
+      "bot_a": 252,
+      "bot_start": 0.16,
+      "headline": "Save this. *Send it* to your creative team.",
+      "size": 98
+    }
+  ]
+}
