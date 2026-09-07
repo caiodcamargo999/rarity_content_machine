@@ -28,38 +28,40 @@
       "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 1 - AI Shoppers Convert Better/bg/bg3.jpg",
       "focus_x": 0.08,
       "focus_y": 0.35,
-      "dark": 0.5,
+      "dark": 0.55,
+      "blur_zone": [780, 1210],
       "stat": "42%",
       "label": "MEJOR CONVERSION QUE CUALQUIER OTRO CANAL",
       "sub": "Un giro total frente a convertir peor, un año antes."
     },
     {
       "type": "body",
-      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 1 - AI Shoppers Convert Better/hero.jpg",
-      "focus_x": 0.5,
-      "focus_y": 0.28,
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 1 - AI Shoppers Convert Better/bg/bg4.jpg",
+      "focus_x": 0.35,
+      "focus_y": 0.42,
+      "dark": 0.35,
       "kicker": "Por que convierte",
       "headline": "Ya *decidio* que eras la respuesta correcta.",
-      "size": 84
+      "size": 80
     },
     {
       "type": "body",
-      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 1 - AI Shoppers Convert Better/bg/bg2.jpg",
-      "focus_x": 0.78,
-      "focus_y": 0.6,
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 1 - AI Shoppers Convert Better/bg/bg5.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.55,
+      "dark": 0.4,
       "kicker": "La brecha",
       "headline": "Hecho para *humanos*. Invisible para el modelo que decide.",
-      "size": 78,
-      "dark": 0.5
+      "size": 76
     },
     {
       "type": "cta",
-      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 1 - AI Shoppers Convert Better/bg/bg3.jpg",
-      "focus_x": 0.1,
-      "focus_y": 0.3,
-      "dark": 0.6,
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 1 - AI Shoppers Convert Better/bg/bg6.jpg",
+      "focus_x": 0.55,
+      "focus_y": 0.15,
+      "dark": 0.35,
       "headline": "Guarda esto. *Enviaselo* a quien maneja tus paginas de producto.",
-      "size": 84
+      "size": 82
     }
   ]
 }
