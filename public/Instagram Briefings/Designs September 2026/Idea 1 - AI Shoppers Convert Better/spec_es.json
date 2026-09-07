@@ -1,0 +1,65 @@
+{
+  "out_dir": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 1 - AI Shoppers Convert Better/ES",
+  "handle": "@rarity.agency",
+  "accent": "#D50057",
+  "slides": [
+    {
+      "type": "hook",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 1 - AI Shoppers Convert Better/hero.jpg",
+      "focus_x": 0.56,
+      "focus_y": 0.4,
+      "eyebrow": "Adobe Analytics, 2026",
+      "headline": "Los compradores de IA ya convierten *mejor* que los humanos.",
+      "size": 96,
+      "subhead": "Hace un año ese mismo trafico se consideraba basura. Que cambio →"
+    },
+    {
+      "type": "stat",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 1 - AI Shoppers Convert Better/bg/bg2.jpg",
+      "focus_x": 0.88,
+      "focus_y": 0.3,
+      "dark": 0.55,
+      "stat": "62%",
+      "label": "CRECIMIENTO DEL TRAFICO REFERIDO POR IA",
+      "sub": "Hace un año, ese mismo trafico se filtraba como ruido."
+    },
+    {
+      "type": "stat",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 1 - AI Shoppers Convert Better/bg/bg3.jpg",
+      "focus_x": 0.08,
+      "focus_y": 0.35,
+      "dark": 0.5,
+      "stat": "42%",
+      "label": "MEJOR CONVERSION QUE CUALQUIER OTRO CANAL",
+      "sub": "Un giro total frente a convertir peor, un año antes."
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 1 - AI Shoppers Convert Better/hero.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.28,
+      "kicker": "Por que convierte",
+      "headline": "Ya *decidio* que eras la respuesta correcta.",
+      "size": 84
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 1 - AI Shoppers Convert Better/bg/bg2.jpg",
+      "focus_x": 0.78,
+      "focus_y": 0.6,
+      "kicker": "La brecha",
+      "headline": "Hecho para *humanos*. Invisible para el modelo que decide.",
+      "size": 78,
+      "dark": 0.5
+    },
+    {
+      "type": "cta",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 1 - AI Shoppers Convert Better/bg/bg3.jpg",
+      "focus_x": 0.1,
+      "focus_y": 0.3,
+      "dark": 0.6,
+      "headline": "Guarda esto. *Enviaselo* a quien maneja tus paginas de producto.",
+      "size": 84
+    }
+  ]
+}
