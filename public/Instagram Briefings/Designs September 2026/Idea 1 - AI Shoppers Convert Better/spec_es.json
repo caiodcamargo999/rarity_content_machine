@@ -37,19 +37,22 @@
     {
       "type": "body",
       "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 1 - AI Shoppers Convert Better/bg/bg4.jpg",
-      "focus_x": 0.35,
-      "focus_y": 0.42,
-      "dark": 0.35,
+      "focus_x": 0.5,
+      "focus_y": 0.15,
+      "dark": 0.5,
+      "blur_zone": [800, 1210],
       "kicker": "Por que convierte",
       "headline": "Ya *decidio* que eras la respuesta correcta.",
-      "size": 80
+      "size": 76
     },
     {
       "type": "body",
       "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 1 - AI Shoppers Convert Better/bg/bg5.jpg",
-      "focus_x": 0.5,
-      "focus_y": 0.55,
-      "dark": 0.4,
+      "focus_x": 0.02,
+      "focus_y": 0.65,
+      "dark": 0.45,
+      "blur_zone": [650, 1250],
+      "blur_r": 45,
       "kicker": "La brecha",
       "headline": "Hecho para *humanos*. Invisible para el modelo que decide.",
       "size": 76
