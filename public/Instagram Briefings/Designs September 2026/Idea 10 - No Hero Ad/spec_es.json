@@ -1,0 +1,106 @@
+{
+  "out_dir": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 10 - No Hero Ad/ES",
+  "handle": "@rarity.agency",
+  "accent": "#D50057",
+  "slides": [
+    {
+      "type": "hook",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 10 - No Hero Ad/hero.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.38,
+      "eyebrow": "TikTok Shop",
+      "headline": "No existe el anuncio *estrella* este Black Friday.",
+      "size": 100,
+      "subhead": "¿Entonces, cómo eligen uno los vendedores más listos de TikTok Shop? →",
+      "dark": 0.08,
+      "top_a": 255,
+      "top_h": 280
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 10 - No Hero Ad/bg/bg2.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.38,
+      "kicker": "La vieja apuesta",
+      "headline": "La mayoría de las marcas todavía gasta el Black Friday persiguiendo *una* sola pieza perfecta, y la elige antes de que una sola vista demuestre que funciona.",
+      "size": 66,
+      "dark": 0.0,
+      "top_a": 255,
+      "top_h": 280
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 10 - No Hero Ad/bg/bg3.png",
+      "focus_x": 0.1,
+      "focus_y": 0.5,
+      "dark": 0.72,
+      "kicker": "El playbook",
+      "headline": "El playbook 2026 de Darkroom para TikTok Shop se salta esa apuesta por completo. Prueba *cuatro* variables creativas una contra otra antes de mover el dinero.",
+      "size": 58
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 10 - No Hero Ad/bg/bg4.jpg",
+      "focus_x": 0.45,
+      "focus_y": 0.32,
+      "kicker": "Variable 1",
+      "headline": "Primero enfrenta el gancho inicial contra el estilo de demo: una persona *hablando a cámara* contra unas manos usando el producto de verdad.",
+      "size": 62,
+      "dark": 0.28,
+      "top_a": 255,
+      "top_h": 280
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 10 - No Hero Ad/bg/bg5.png",
+      "focus_x": 0.5,
+      "focus_y": 0.15,
+      "dark": 0.2,
+      "kicker": "Variable 2",
+      "headline": "Después la oferta misma: un *combo* contra un descuento directo contra una caída limitada, cada una con su propio llamado a la acción en pantalla.",
+      "size": 62,
+      "top_a": 255,
+      "top_h": 280
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 10 - No Hero Ad/bg/bg6.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.5,
+      "kicker": "Debajo",
+      "headline": "Las ofertas de fondo también se mueven. Los descuentos suben por hora o por monto gastado, los combos unen un kit inicial con una mejora, y los creadores sueltan *códigos exclusivos* que solo existen en vivo.",
+      "size": 54,
+      "dark": 0.1,
+      "top_a": 220,
+      "top_h": 260
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 10 - No Hero Ad/bg/bg7.jpg",
+      "focus_x": 0.32,
+      "focus_y": 0.42,
+      "dark": 0.15,
+      "kicker": "El stack de formatos",
+      "headline": "Tres formatos sostienen la prueba. Los anuncios In Feed llegan a audiencias frías y juntan los datos, los Spark Ads empujan la publicación que ya está *ganando*, y los LIVE Shopping Ads llevan a la gente al evento en vivo.",
+      "size": 56
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 10 - No Hero Ad/bg/bg8.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.45,
+      "kicker": "La conclusión",
+      "headline": "La ventaja real está *antes* de que abra el Black Friday, en la prueba de cuatro variables que ya está corriendo mientras la competencia discute cuál anuncio único merece la confianza.",
+      "size": 60
+    },
+    {
+      "type": "cta",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 10 - No Hero Ad/bg/bg9.jpg",
+      "focus_x": 0.45,
+      "focus_y": 0.45,
+      "dark": 0.35,
+      "headline": "Guarda esto. *Envíaselo* a un amigo que todavía está adivinando este Black Friday.",
+      "size": 78
+    }
+  ]
+}

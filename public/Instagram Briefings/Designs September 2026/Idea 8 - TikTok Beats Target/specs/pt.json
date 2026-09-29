@@ -1,0 +1,108 @@
+{
+  "out_dir": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 8 - TikTok Beats Target/PT",
+  "handle": "@rarity.agency",
+  "accent": "#D50057",
+  "slides": [
+    {
+      "type": "hook",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 8 - TikTok Beats Target/hero.jpg",
+      "focus_x": 0.45,
+      "focus_y": 0.36,
+      "dark": 0.44,
+      "bot_a": 250,
+      "bot_start": 0.22,
+      "blur_zone": [
+        0,
+        600,
+        1080,
+        1260
+      ],
+      "blur_r": 45,
+      "eyebrow": "Virada no Varejo",
+      "headline": "TikTok Shop já superou a *Target*.",
+      "size": 106,
+      "subhead": "E aí, o que sobra pras marcas que chegaram primeiro? ->"
+    },
+    {
+      "type": "stat",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 8 - TikTok Beats Target/bg/bg2.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.55,
+      "dark": 0.5,
+      "blur_zone": [
+        0,
+        680,
+        1080,
+        1000
+      ],
+      "blur_r": 35,
+      "stat": "2%",
+      "label": "do gasto varejista online nos EUA",
+      "sub": "Em julho de 2026, consumidores nos EUA gastaram mais no TikTok Shop do que no Target.com, Costco.com ou HomeDepot.com — quase o dobro do 1,2% de um ano antes."
+    },
+    {
+      "type": "stat",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 8 - TikTok Beats Target/bg/bg3.jpg",
+      "focus_x": 1.0,
+      "focus_y": 0.45,
+      "dark": 0.42,
+      "accent": "#FF3B3B",
+      "stat": "$500M",
+      "label": "Black Friday a Cyber Monday, 2025",
+      "sub": "A promoção do ano passado chegou a até 70% off em toda a plataforma, o mesmo terreno de desconto das grandes redes com quem o TikTok Shop agora divide cliente."
+    },
+    {
+      "type": "stat",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 8 - TikTok Beats Target/bg/bg4.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.42,
+      "dark": 0.55,
+      "blur_zone": [
+        0,
+        760,
+        1080,
+        1180
+      ],
+      "blur_r": 40,
+      "stat": "10",
+      "label": "marcas abriram loja para a Black Friday",
+      "sub": "Samsung, Gap, Philips, Zwilling e a linha de óculos inteligentes da Meta abriram loja no TikTok Shop a tempo da promoção do ano passado."
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 8 - TikTok Beats Target/bg/bg5.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.24,
+      "dark": 0.32,
+      "kicker": "A virada",
+      "headline": "O feed que tornou famosas as *marcas desconhecidas* agora as coloca ao lado de orçamentos de Fortune 500.",
+      "size": 80
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 8 - TikTok Beats Target/bg/bg6.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.38,
+      "dark": 0.24,
+      "kicker": "O que sobra",
+      "headline": "Preço não é mais a vantagem. O que nenhum orçamento compra é a *relação com o criador* que parou o scroll.",
+      "size": 78
+    },
+    {
+      "type": "cta",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 8 - TikTok Beats Target/hero.jpg",
+      "focus_x": 0.64,
+      "focus_y": 0.55,
+      "dark": 0.55,
+      "blur_zone": [
+        0,
+        480,
+        1080,
+        1180
+      ],
+      "blur_r": 35,
+      "headline": "Salva isso. *Manda* pra um fundador que ainda acha que TikTok Shop é só pra marca pequena.",
+      "size": 74
+    }
+  ]
+}

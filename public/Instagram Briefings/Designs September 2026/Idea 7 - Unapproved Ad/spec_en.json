@@ -1,0 +1,46 @@
+{
+  "out_dir": "public/Instagram Briefings/Designs September 2026/Idea 7 - Unapproved Ad/EN",
+  "handle": "@rarity.agency",
+  "accent": "#D50057",
+  "slides": [
+    {"type":"hook","bg":"public/Instagram Briefings/Designs September 2026/Idea 7 - Unapproved Ad/hero.jpg",
+     "focus_x":0.78,"focus_y":0.5,"dark":0.12,"blur_zone":[540,870],"blur_r":30,
+     "eyebrow":"Google Ads",
+     "headline":"You're running an ad you never *approved*.","size":118,
+     "subhead":"Google flipped it on September 1. When did you last check your own settings? ->"},
+
+    {"type":"body","bg":"public/Instagram Briefings/Designs September 2026/Idea 7 - Unapproved Ad/bg/bg2.jpg",
+     "focus_x":0.5,"focus_y":0.5,
+     "kicker":"September 1",
+     "headline":"Google began auto migrating Search campaigns onto *AI Max* — without asking.","size":88},
+
+    {"type":"body","bg":"public/Instagram Briefings/Designs September 2026/Idea 7 - Unapproved Ad/bg/bg3.jpg",
+     "focus_x":0.88,"focus_y":0.5,"dark":0.1,"blur_zone":[640,760,1010,1130],"blur_r":20,
+     "kicker":"One email",
+     "headline":"The only notice was an email sent in early August. Google published *no blog post* explaining it.","size":82},
+
+    {"type":"body","bg":"public/Instagram Briefings/Designs September 2026/Idea 7 - Unapproved Ad/bg/bg4.jpg",
+     "focus_x":0.05,"focus_y":0.5,"dark":0.08,
+     "kicker":"Three things",
+     "headline":"AI Max matches search terms beyond your keyword list, rewrites your ad copy, and sends clicks to the page it *picks*.","size":76},
+
+    {"type":"stat","bg":"public/Instagram Briefings/Designs September 2026/Idea 7 - Unapproved Ad/bg/bg5.jpg",
+     "focus_x":0.5,"focus_y":0.5,"accent":"#FFE400","dark":0.15,
+     "stat":"7%",
+     "sub":"Google's average lift in conversions — and it only helps the advertiser who is actually watching what changed."},
+
+    {"type":"body","bg":"public/Instagram Briefings/Designs September 2026/Idea 7 - Unapproved Ad/bg/bg6.jpg",
+     "focus_x":0.3,"focus_y":0.5,"dark":0.1,
+     "kicker":"The insight",
+     "headline":"The account you built did not change overnight. The rules running *underneath* it did — and nothing forces you to notice.","size":80},
+
+    {"type":"body","bg":"public/Instagram Briefings/Designs September 2026/Idea 7 - Unapproved Ad/bg/bg7.jpg",
+     "focus_x":0.5,"focus_y":0.5,"dark":0.1,
+     "kicker":"The takeaway",
+     "headline":"The founders who caught this in week one had one habit: read the *settings*, not just the results.","size":88},
+
+    {"type":"cta","bg":"public/Instagram Briefings/Designs September 2026/Idea 7 - Unapproved Ad/bg/bg8.jpg",
+     "focus_x":0.58,"focus_y":0.5,"dark":0.46,"blur_zone":[750,1300],"blur_r":25,
+     "headline":"Save this. *Send it* to a marketer who hasn't opened Ads Manager.","size":84}
+  ]
+}

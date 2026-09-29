@@ -1,0 +1,105 @@
+{
+  "out_dir": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 15 - The Halo Effect/PT",
+  "handle": "@rarity.agency",
+  "accent": "#D50057",
+  "slides": [
+    {
+      "type": "hook",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 15 - The Halo Effect/hero.jpg",
+      "focus_x": 0.42,
+      "focus_y": 0.4,
+      "top_a": 235,
+      "top_h": 270,
+      "eyebrow": "O Efeito Halo",
+      "headline": "Sua loja *\u00e9* o an\u00fancio.",
+      "size": 116,
+      "subhead": "Um novo relat\u00f3rio acabou de medir quanto sua loja f\u00edsica vale para suas vendas online ->"
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 15 - The Halo Effect/bg/bg5.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.25,
+      "top_a": 255,
+      "top_h": 280,
+      "dark": 0.15,
+      "kicker": "A suposi\u00e7\u00e3o",
+      "headline": "A maioria trata o pop-up como um show, nunca como um *canal*.",
+      "size": 80
+    },
+    {
+      "type": "stat",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 15 - The Halo Effect/bg/bg3.jpg",
+      "focus_x": 0.55,
+      "focus_y": 0.15,
+      "top_a": 235,
+      "top_h": 270,
+      "dark": 0.66,
+      "bot_a": 255,
+      "bot_start": 0.15,
+      "stat": "13.9%",
+      "label": "a mais em vendas online ap\u00f3s abrir uma loja",
+      "sub": "O ICSC acompanhou 2103 lojas ao longo de quatro anos. O salto apareceu em apenas 13 semanas.",
+      "blur_zone": [
+        340,
+        560
+      ],
+      "blur_r": 22
+    },
+    {
+      "type": "stat",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 15 - The Halo Effect/bg/bg4.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.0,
+      "top_a": 235,
+      "top_h": 270,
+      "dark": 0.9,
+      "bot_a": 255,
+      "bot_start": 0.15,
+      "stat": "11.5%",
+      "label": "perdido em vendas online quando essa loja fecha",
+      "sub": "O efeito corre nos dois sentidos, na mesma janela de 13 semanas, ao contr\u00e1rio.",
+      "blur_zone": [
+        300,
+        600
+      ],
+      "blur_r": 28
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 15 - The Halo Effect/bg/bg2.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.75,
+      "top_a": 235,
+      "top_h": 270,
+      "dark": 0.48,
+      "kicker": "O mecanismo",
+      "headline": "A loja *\u00e9* o an\u00fancio, s\u00f3 que um desconhecido pode entrar.",
+      "size": 80
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 15 - The Halo Effect/bg/bg6.jpg",
+      "focus_x": 0.6,
+      "focus_y": 0.4,
+      "top_a": 235,
+      "top_h": 270,
+      "dark": 0.35,
+      "kicker": "A virada",
+      "headline": "O que importou n\u00e3o foi o que vendeu *l\u00e1 dentro*. Aconteceu no site.",
+      "size": 76
+    },
+    {
+      "type": "cta",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 15 - The Halo Effect/hero.jpg",
+      "focus_x": 0.65,
+      "focus_y": 0.42,
+      "top_a": 235,
+      "top_h": 270,
+      "dark": 0.55,
+      "headline": "Salva isso. *Manda* pra um fundador que ainda chama a loja de distra\u00e7\u00e3o.",
+      "size": 60
+    }
+  ],
+  "headline_font": "sans"
+}

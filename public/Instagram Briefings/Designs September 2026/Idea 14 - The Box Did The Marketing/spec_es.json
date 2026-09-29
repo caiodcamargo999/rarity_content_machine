@@ -1,0 +1,105 @@
+{
+  "out_dir": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 14 - The Box Did The Marketing/ES",
+  "handle": "@rarity.agency",
+  "accent": "#D50057",
+  "slides": [
+    {
+      "type": "hook",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 14 - The Box Did The Marketing/hero.jpg",
+      "focus_x": 0.48,
+      "focus_y": 0.42,
+      "dark": 0.4,
+      "eyebrow": "Casper, 2014",
+      "headline": "La *caja* hizo el marketing.",
+      "size": 100,
+      "subhead": "Todo empezo con una escalera por la que no cabia un colchon ->",
+      "top_a": 245,
+      "top_h": 300
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 14 - The Box Did The Marketing/bg/bg2.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.35,
+      "dark": 0.35,
+      "kicker": "El problema",
+      "headline": "Su propia escalera no dejaba pasar un colchon *queen*.",
+      "size": 78,
+      "top_a": 245,
+      "top_h": 300
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 14 - The Box Did The Marketing/bg/bg3.jpg",
+      "focus_x": 0.42,
+      "focus_y": 0.4,
+      "dark": 0.55,
+      "kicker": "La solucion",
+      "headline": "Enrollado, sellado al vacio, y *enviado* como un paquete cualquiera.",
+      "size": 70,
+      "top_a": 245,
+      "top_h": 300
+    },
+    {
+      "type": "stat",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 14 - The Box Did The Marketing/bg/bg4.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.22,
+      "dark": 0.42,
+      "stat": "1/10",
+      "sub": "Del costo de envio. Un colchon queen que antes necesitaba un camion de carga ahora viaja en una camioneta de reparto comun.",
+      "top_a": 245,
+      "top_h": 300,
+      "bot_start": 0.28,
+      "bot_a": 250
+    },
+    {
+      "type": "stat",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 14 - The Box Did The Marketing/bg/bg5.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.22,
+      "dark": 0.42,
+      "stat": "$1M",
+      "sub": "En el primer mes. Habian planeado 1.8 millones para el primer ano y lo lograron en dos meses.",
+      "top_a": 245,
+      "top_h": 300,
+      "bot_start": 0.28,
+      "bot_a": 250
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 14 - The Box Did The Marketing/bg/bg6.jpg",
+      "focus_x": 0.28,
+      "focus_y": 0.78,
+      "dark": 0.55,
+      "kicker": "El anuncio gratis",
+      "headline": "Un solo video de unboxing sumo *118.000* vistas por su cuenta.",
+      "size": 72,
+      "top_a": 245,
+      "top_h": 300
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 14 - The Box Did The Marketing/bg/bg7.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.28,
+      "dark": 0.4,
+      "kicker": "La leccion",
+      "headline": "El empaque no fue el toque final. Fue el *plan*.",
+      "size": 80,
+      "top_a": 245,
+      "top_h": 300
+    },
+    {
+      "type": "cta",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 14 - The Box Did The Marketing/hero.jpg",
+      "focus_x": 0.22,
+      "focus_y": 0.55,
+      "dark": 0.68,
+      "headline": "Guarda esto. *Enviaselo* a quien esta por definir el empaque de su marca.",
+      "size": 76,
+      "top_a": 245,
+      "top_h": 300
+    }
+  ]
+}

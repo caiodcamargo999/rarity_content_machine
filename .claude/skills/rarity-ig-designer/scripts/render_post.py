@@ -13,8 +13,12 @@ blur) or still under-shot 4.5:1 (loose blur) — this replaces both call sites e
 Look: every slide is its OWN full-bleed photo in REAL colors (no brand-navy wash). A bottom
 scrim + subtle vignette + grain still apply for mood, but at a much lighter touch than v5,
 since letter-color adaptation now carries contrast instead of image-darkening.
-Headline = editorial SERIF (Playfair Display, assets/headline.ttf), with *italic* accent words
-in the accent colour. Rarity symbol sits transparent top-right on EVERY slide. No date anywhere.
+Headline = one of TWO brand fonts, matching ecom.rarityagency.io's own type system: editorial
+SERIF (Playfair Display, assets/headline.ttf — the default) or brand SANS (Plus Jakarta Sans
+ExtraBold, assets/headline-sans.ttf). Set spec["headline_font"] to "serif" (default) or "sans".
+VARY this across a content batch/calendar — don't render every post in the same one. Both carry
+*italic* accent words in the accent colour. Rarity symbol sits transparent top-right on EVERY
+slide. No date anywhere.
 
 Usage:  python3 render_post.py <spec.json>   ->  slide-1.png .. slide-N.png in spec["out_dir"]
 Every render prints a "[contrast]" line per text zone: which colour was picked (light/dark) and
@@ -26,6 +30,7 @@ Spec:
 {
  "out_dir": "<.../EN>", "handle": "@rarity.agency",
  "accent": "#D50057",                      # default accent; magenta | #FFE400 yellow | #FF3B3B red
+ "headline_font": "serif",                 # "serif" (Playfair, default) or "sans" (Plus Jakarta Sans) — vary across a batch
  "slides": [
    {"type":"hook","bg":"<.../hero.jpg>","focus_x":0.5,"focus_y":0.4,
     "eyebrow":"Eugene Schwartz, 1966","headline":"You can't *create* desire.","size":126,
@@ -58,9 +63,24 @@ def first(paths):
         if p and os.path.exists(p): return p
     return None
 
-HEAD   = first([os.path.join(A, "headline.ttf"), "/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf"])
-HEADIT = first([os.path.join(A, "headline-italic.ttf"), os.path.join(A, "headline.ttf"),
-                "/usr/share/fonts/truetype/dejavu/DejaVuSerif-Italic.ttf"])
+HEAD_SERIF   = first([os.path.join(A, "headline.ttf"), "/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf"])
+HEADIT_SERIF = first([os.path.join(A, "headline-italic.ttf"), os.path.join(A, "headline.ttf"),
+                       "/usr/share/fonts/truetype/dejavu/DejaVuSerif-Italic.ttf"])
+HEAD_SANS    = first([os.path.join(A, "headline-sans.ttf"), HEAD_SERIF])
+HEADIT_SANS  = first([os.path.join(A, "headline-sans-italic.ttf"), HEAD_SANS])
+# Two brand headline fonts, matching ecom.rarityagency.io's own type system (--font-serif is
+# Playfair Display, --font-sans is Plus Jakarta Sans). Default is serif; a spec (or per-slide
+# override) can request "sans" — see set_headline_font() / spec["headline_font"]. VARY this
+# across a content batch/calendar rather than always using the same one for every post.
+HEAD, HEADIT = HEAD_SERIF, HEADIT_SERIF
+
+def set_headline_font(choice):
+    """choice: 'serif' (Playfair Display, default) or 'sans' (Plus Jakarta Sans)."""
+    global HEAD, HEADIT
+    if choice == "sans":
+        HEAD, HEADIT = HEAD_SANS, HEADIT_SANS
+    else:
+        HEAD, HEADIT = HEAD_SERIF, HEADIT_SERIF
 BEN_R  = first([os.path.join(A, "BentonSans-Regular.otf"), "/usr/share/fonts/truetype/lato/Lato-Regular.ttf"])
 BEN_T  = first([os.path.join(A, "BentonSans-Thin.otf"),    "/usr/share/fonts/truetype/lato/Lato-Light.ttf"])
 ARROW  = first(["/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
@@ -109,7 +129,8 @@ def grain(im, a=0.03):
     n = Image.effect_noise((W, H), 24).convert("L")
     return Image.blend(im, Image.merge("RGB", (n, n, n)), a)
 
-def treat(img, fx=0.5, fy=0.5, bot_a=252, bot_start=0.34, dark=0.0, blur_zone=None, blur_r=25):
+def treat(img, fx=0.5, fy=0.5, bot_a=252, bot_start=0.34, dark=0.0, blur_zone=None, blur_r=25,
+          top_a=150, top_h=230):
     base = cover(img, fx, fy)
     if blur_zone:
         blurred = base.filter(ImageFilter.GaussianBlur(blur_r))
@@ -123,7 +144,7 @@ def treat(img, fx=0.5, fy=0.5, bot_a=252, bot_start=0.34, dark=0.0, blur_zone=No
         base = Image.composite(blurred, base, mask)
     if dark: base = Image.blend(base, Image.new("RGB", (W, H), (6, 8, 14)), dark)
     base = vignette(base)
-    base = Image.alpha_composite(base.convert("RGBA"), scrim(bot_a, bot_start)).convert("RGB")
+    base = Image.alpha_composite(base.convert("RGBA"), scrim(bot_a, bot_start, top_a, top_h)).convert("RGB")
     return grain(base)
 
 # ---------------------------------------------------------------- contrast: measure AND adapt the LETTER
@@ -260,6 +281,7 @@ def kicker(im, text, y, accent, col):
 
 # ---------------------------------------------------------------- slides
 def render(spec):
+    set_headline_font(spec.get("headline_font", "serif"))
     out = spec["out_dir"]; os.makedirs(out, exist_ok=True)
     dflt = hx(spec.get("accent", "#D50057"))
     handle = spec.get("handle", "@rarity.agency")
@@ -279,7 +301,8 @@ def render(spec):
 
         if t == "hook":
             im = treat(img, fx, fy, bot_a=sl.get("bot_a",236), bot_start=sl.get("bot_start",0.32),
-                       dark=sl.get("dark",0.0), blur_zone=sl.get("blur_zone"), blur_r=sl.get("blur_r", 25))
+                       dark=sl.get("dark",0.0), blur_zone=sl.get("blur_zone"), blur_r=sl.get("blur_r", 25),
+                       top_a=sl.get("top_a",150), top_h=sl.get("top_h",230))
             topbar(im)
             d = ImageDraw.Draw(im, "RGBA")
             handle_col = adapt(im, (M,1195,M+260,1228), HANDLE_LIGHT, HANDLE_DARK, "handle zone")
@@ -301,7 +324,8 @@ def render(spec):
 
         if t == "cta":
             im = treat(img, fx, fy, bot_a=sl.get("bot_a",250), bot_start=sl.get("bot_start",0.16),
-                       dark=sl.get("dark",0.42), blur_zone=sl.get("blur_zone"), blur_r=sl.get("blur_r", 25))
+                       dark=sl.get("dark",0.42), blur_zone=sl.get("blur_zone"), blur_r=sl.get("blur_r", 25),
+                       top_a=sl.get("top_a",150), top_h=sl.get("top_h",230))
             topbar(im)
             Llogo, _ = zone_luminance(im, (W*0.5-140, 470, W*0.5+140, 610))
             use_dark_logo = ratio_for(Llogo, NAVY) > ratio_for(Llogo, WHITE)
@@ -319,7 +343,8 @@ def render(spec):
 
         if t == "stat":
             im = treat(img, fx, fy, bot_a=sl.get("bot_a",250), bot_start=sl.get("bot_start",0.30),
-                       dark=sl.get("dark",0.0), blur_zone=sl.get("blur_zone"), blur_r=sl.get("blur_r", 25))
+                       dark=sl.get("dark",0.0), blur_zone=sl.get("blur_zone"), blur_r=sl.get("blur_r", 25),
+                       top_a=sl.get("top_a",150), top_h=sl.get("top_h",230))
             topbar(im, page)
             d = ImageDraw.Draw(im, "RGBA")
             handle_col = adapt(im, (M,1195,M+260,1228), HANDLE_LIGHT, HANDLE_DARK, "handle zone")
@@ -341,7 +366,8 @@ def render(spec):
 
         # body
         im = treat(img, fx, fy, bot_a=sl.get("bot_a",248), bot_start=sl.get("bot_start",0.34),
-                   dark=sl.get("dark",0.0), blur_zone=sl.get("blur_zone"), blur_r=sl.get("blur_r", 25))
+                   dark=sl.get("dark",0.0), blur_zone=sl.get("blur_zone"), blur_r=sl.get("blur_r", 25),
+                   top_a=sl.get("top_a",150), top_h=sl.get("top_h",230))
         topbar(im, page)
         d = ImageDraw.Draw(im, "RGBA")
         handle_col = adapt(im, (M,1195,M+260,1228), HANDLE_LIGHT, HANDLE_DARK, "handle zone")

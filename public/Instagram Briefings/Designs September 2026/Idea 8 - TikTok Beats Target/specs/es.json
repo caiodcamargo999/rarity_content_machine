@@ -1,0 +1,108 @@
+{
+  "out_dir": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 8 - TikTok Beats Target/ES",
+  "handle": "@rarity.agency",
+  "accent": "#D50057",
+  "slides": [
+    {
+      "type": "hook",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 8 - TikTok Beats Target/hero.jpg",
+      "focus_x": 0.45,
+      "focus_y": 0.36,
+      "dark": 0.44,
+      "bot_a": 250,
+      "bot_start": 0.22,
+      "blur_zone": [
+        0,
+        600,
+        1080,
+        1260
+      ],
+      "blur_r": 45,
+      "eyebrow": "Cambio en el Retail",
+      "headline": "TikTok Shop ya superó a *Target*.",
+      "size": 106,
+      "subhead": "Entonces, ¿qué pasa con las marcas que la descubrieron primero? ->"
+    },
+    {
+      "type": "stat",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 8 - TikTok Beats Target/bg/bg2.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.55,
+      "dark": 0.5,
+      "blur_zone": [
+        0,
+        680,
+        1080,
+        1000
+      ],
+      "blur_r": 35,
+      "stat": "2%",
+      "label": "del gasto minorista online en EE. UU.",
+      "sub": "En julio de 2026, los compradores en EE. UU. gastaron más en TikTok Shop que en Target.com, Costco.com o HomeDepot.com — casi el doble del 1.2% que tenía un año antes."
+    },
+    {
+      "type": "stat",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 8 - TikTok Beats Target/bg/bg3.jpg",
+      "focus_x": 1.0,
+      "focus_y": 0.45,
+      "dark": 0.42,
+      "accent": "#FF3B3B",
+      "stat": "$500M",
+      "label": "Black Friday a Cyber Monday, 2025",
+      "sub": "La oferta del año pasado llegó a 70% off en toda la plataforma, el mismo terreno de descuento que las grandes cadenas con las que TikTok Shop ahora comparte comprador."
+    },
+    {
+      "type": "stat",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 8 - TikTok Beats Target/bg/bg4.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.42,
+      "dark": 0.55,
+      "blur_zone": [
+        0,
+        760,
+        1080,
+        1180
+      ],
+      "blur_r": 40,
+      "stat": "10",
+      "label": "marcas abrieron tienda para el Black Friday",
+      "sub": "Samsung, Gap, Philips, Zwilling y la línea de lentes inteligentes de Meta abrieron tienda en TikTok Shop a tiempo para la oferta del año pasado."
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 8 - TikTok Beats Target/bg/bg5.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.24,
+      "dark": 0.32,
+      "kicker": "El cambio",
+      "headline": "El feed que hizo famosas a *marcas desconocidas* ahora las sienta junto a presupuestos de Fortune 500.",
+      "size": 80
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 8 - TikTok Beats Target/bg/bg6.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.38,
+      "dark": 0.24,
+      "kicker": "Lo que queda",
+      "headline": "El precio ya no es la ventaja. Lo que ningún presupuesto compra es la *relación con el creador* que detuvo el scroll.",
+      "size": 74
+    },
+    {
+      "type": "cta",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 8 - TikTok Beats Target/hero.jpg",
+      "focus_x": 0.64,
+      "focus_y": 0.55,
+      "dark": 0.55,
+      "blur_zone": [
+        0,
+        480,
+        1080,
+        1180
+      ],
+      "blur_r": 35,
+      "headline": "Guarda esto. *Envíaselo* a un fundador que todavía cree que TikTok Shop es solo para marcas chicas.",
+      "size": 68
+    }
+  ]
+}

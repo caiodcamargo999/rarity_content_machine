@@ -1,6 +1,6 @@
 ---
 name: rarity-ig-designer
-description: "Turns a Rarity IG Content Idea Brief into the actual Instagram ART, rendered 100% by Claude in Python/Pillow with NO design connectors (never Canva, never Figma). Every slide is its OWN distinct, current, high-res, high-impact photo full-bleed (no flat, solid, or gradient cards), with a high-contrast editorial SERIF headline (Playfair Display) and italic accent words in magenta, the Rarity symbol transparent in the corner (no white box), NO date, a trigger HOOK with an open loop subhead, and a SAVE + SHARE close (no button). English + Spanish + Portuguese. STEP 2, consuming the brief from rarity-ig-idea-engine. ALWAYS use when Caio wants to design or create the post art: make the design, build the carousel, turn this idea into a post, cria a arte, monta o post, design this, haz el diseno. When in doubt, USE this skill."
+description: "Turns a Rarity IG Content Idea Brief into the actual Instagram ART, rendered 100% by Claude in Python/Pillow with NO design connectors (never Canva, never Figma). Every slide is its OWN distinct, current, high-res, high-impact photo full-bleed (no flat, solid, or gradient cards), with a high-contrast editorial headline in one of Rarity's two brand fonts (Playfair Display serif or Plus Jakarta Sans, alternated across a batch — both pulled from ecom.rarityagency.io's own type system) and italic accent words in magenta, the Rarity symbol transparent in the corner (no white box), NO date, a trigger HOOK with an open loop subhead, and a SAVE + SHARE close (no button). English + Spanish + Portuguese. STEP 2, consuming the brief from rarity-ig-idea-engine. ALWAYS use when Caio wants to design or create the post art: make the design, build the carousel, turn this idea into a post, cria a arte, monta o post, design this, haz el diseno. When in doubt, USE this skill."
 ---
 
 # Rarity IG — Designer (Step 2 of 2) · Claude-rendered, no connectors
@@ -13,11 +13,16 @@ the editorial style of the reference feeds (@vinci.society, @brandsdecoded__, @b
 ## Non-negotiables (hard rules from Caio — do not break)
 1. **Render it 100% in Claude. NEVER use a design connector — not Canva, not Figma, not any other.**
    Everything is done with `scripts/render_post.py`.
-2. **The headline font is a high-contrast editorial SERIF (the @vinci.society look), not a condensed
-   sans.** The engine uses `assets/headline.ttf` (bundled Playfair Display) with the italic at
-   `assets/headline-italic.ttf`. Headlines are sentence case, white, with **one or two emphasis words in
-   *italic* + magenta** — wrap them in `*asterisks*` in the spec and the engine renders them. To match a
-   brand/paid serif exactly, drop it at `assets/headline.ttf` (+ `-italic`). Small labels stay BentonSans.
+2. **The headline uses one of Rarity's TWO brand fonts — alternate between them across a batch, never
+   render every post in the same one.** Both come straight from `ecom.rarityagency.io`'s own type
+   system: editorial SERIF (Playfair Display, the @vinci.society look, `assets/headline.ttf` +
+   `-italic`) and brand SANS (Plus Jakarta Sans ExtraBold, the site's own heading font,
+   `assets/headline-sans.ttf` + `-italic`). Set `spec["headline_font"]` to `"serif"` (default) or
+   `"sans"`. Headlines are sentence case, white, with **one or two emphasis words in *italic* +
+   magenta** in either font — wrap them in `*asterisks*` in the spec and the engine renders them. To
+   match a different brand/paid font exactly, drop it at `assets/headline.ttf` (+ `-italic`) to
+   replace the serif slot, or `assets/headline-sans.ttf` (+ `-italic`) to replace the sans slot. Small
+   labels stay BentonSans regardless of which headline font is active.
 3. **EVERY slide carries its OWN distinct, current, high-resolution, high-impact photo — hook, every
    body slide, the CTA. No flat, solid, or gradient cards. Ever.** Each photo creates CONTEXT for that
    slide's line and is different from the others (never the same hero re-tinted on every slide). Every
@@ -38,7 +43,10 @@ the editorial style of the reference feeds (@vinci.society, @brandsdecoded__, @b
    audience. ES and PT both mirror it.
 8. **Top-tier design bar.** Render → open every PNG → critique like a creative director → fix →
    re-render. Judge the set against `references/design-principles.md` and `references/viral-layouts.md`.
-   "It rendered without errors" is not the bar.
+   "It rendered without errors" is not the bar. Specifically check every text zone (headline AND
+   kicker/label) against the photo behind it for competing detail — signage text, a logo, a pattern —
+   not just the printed contrast ratio, which only measures brightness and won't catch "text sitting
+   on top of other text." Fix with the per-slide `blur_zone` spec field (see rarity-brand-system.md).
 9. **Always produce EN, ES, and PT.**
 
 ## Step 1 — intake the brief

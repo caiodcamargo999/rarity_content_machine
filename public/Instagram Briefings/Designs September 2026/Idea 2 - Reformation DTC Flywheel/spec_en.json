@@ -1,0 +1,80 @@
+{
+  "out_dir": "public/Instagram Briefings/Designs September 2026/Idea 2 - Reformation DTC Flywheel/EN",
+  "handle": "@rarity.agency",
+  "accent": "#FF3B3B",
+  "slides": [
+    {
+      "type": "hook",
+      "bg": "public/Instagram Briefings/Designs September 2026/Idea 2 - Reformation DTC Flywheel/hero.jpg",
+      "focus_x": 0.32, "focus_y": 0.36,
+      "dark": 0.08, "bot_a": 248, "bot_start": 0.30,
+      "eyebrow": "Reformation · NYSE: REF",
+      "headline": "Reformation grew *online* by opening stores.",
+      "size": 120,
+      "subhead": "Its own numbers say stores don't compete with its website. They feed it ->"
+    },
+    {
+      "type": "stat",
+      "bg": "public/Instagram Briefings/Designs September 2026/Idea 2 - Reformation DTC Flywheel/bg/bg2.jpg",
+      "focus_x": 0.32, "focus_y": 0.5,
+      "dark": 0.1,
+      "stat": "5 years",
+      "label": "The plan",
+      "sub": "Built online, direct to consumer. Now it's doubling its store count in five years."
+    },
+    {
+      "type": "stat",
+      "bg": "public/Instagram Briefings/Designs September 2026/Idea 2 - Reformation DTC Flywheel/bg/bg3.jpg",
+      "focus_x": 0.42, "focus_y": 0.5,
+      "dark": 0.08,
+      "stat": "50%",
+      "label": "Chicago, 11 weeks in",
+      "sub": "New customer growth there jumped from 28% a year to 50% after one store opened."
+    },
+    {
+      "type": "stat",
+      "bg": "public/Instagram Briefings/Designs September 2026/Idea 2 - Reformation DTC Flywheel/bg/bg4.jpg",
+      "focus_x": 0.5, "focus_y": 0.32,
+      "dark": 0.12,
+      "stat": "50–80%",
+      "label": "Not cannibalization",
+      "sub": "DTC revenue in that market grew 1.5x after the store opened — both in stores and online."
+    },
+    {
+      "type": "stat",
+      "bg": "public/Instagram Briefings/Designs September 2026/Idea 2 - Reformation DTC Flywheel/bg/bg5.jpg",
+      "focus_x": 0.5, "focus_y": 0.62,
+      "dark": 0.1,
+      "stat": "24%",
+      "label": "Company-wide",
+      "sub": "Revenue growth, plus 23% more active customers — the 21st straight quarter of double-digit growth."
+    },
+    {
+      "type": "stat",
+      "bg": "public/Instagram Briefings/Designs September 2026/Idea 2 - Reformation DTC Flywheel/bg/bg6.jpg",
+      "focus_x": 1.0, "focus_y": 0.42,
+      "dark": 0.12,
+      "stat": "70 stores",
+      "label": "And counting",
+      "sub": "\"We remain a DTC-first business.\" — CEO Hali Borenstein"
+    },
+    {
+      "type": "body",
+      "bg": "public/Instagram Briefings/Designs September 2026/Idea 2 - Reformation DTC Flywheel/bg/bg7.jpg",
+      "focus_x": 0.32, "focus_y": 0.5,
+      "dark": 0.05,
+      "kicker": "The takeaway",
+      "headline": "Reformation didn't *guess* that stores would help the website. It tested the mechanism in one city, then scaled what worked.",
+      "size": 82
+    },
+    {
+      "type": "cta",
+      "bg": "public/Instagram Briefings/Designs September 2026/Idea 2 - Reformation DTC Flywheel/bg/bg8.jpg",
+      "focus_x": 0.5, "focus_y": 0.4,
+      "dark": 0.55,
+      "blur_zone": [280, 400, 800, 680], "blur_r": 40,
+      "headline": "Save this. *Send it* to a founder still arguing stores versus DTC.",
+      "size": 84
+    }
+  ]
+}

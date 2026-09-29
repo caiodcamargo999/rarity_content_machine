@@ -1,0 +1,88 @@
+{
+  "out_dir": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 8 - TikTok Beats Target/EN",
+  "handle": "@rarity.agency",
+  "accent": "#D50057",
+  "slides": [
+    {
+      "type": "hook",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 8 - TikTok Beats Target/hero.jpg",
+      "focus_x": 0.45,
+      "focus_y": 0.36,
+      "dark": 0.44,
+      "bot_a": 250,
+      "bot_start": 0.22,
+      "blur_zone": [0, 600, 1080, 1260],
+      "blur_r": 45,
+      "eyebrow": "Retail Shift",
+      "headline": "TikTok Shop just beat *Target* online.",
+      "size": 112,
+      "subhead": "So what happens to the brands that found it first? ->"
+    },
+    {
+      "type": "stat",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 8 - TikTok Beats Target/bg/bg2.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.55,
+      "dark": 0.5,
+      "blur_zone": [0, 680, 1080, 1000],
+      "blur_r": 35,
+      "stat": "2%",
+      "label": "of US online retail spend",
+      "sub": "In July 2026, US shoppers spent more on TikTok Shop than on Target.com, Costco.com, or HomeDepot.com — almost double the 1.2% share it held a year before."
+    },
+    {
+      "type": "stat",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 8 - TikTok Beats Target/bg/bg3.jpg",
+      "focus_x": 1.0,
+      "focus_y": 0.45,
+      "dark": 0.42,
+      "accent": "#FF3B3B",
+      "stat": "$500M",
+      "label": "Black Friday to Cyber Monday, 2025",
+      "sub": "Last year's four-day sale ran discounts up to 70% off platform wide, the same discount depth as the big box retailers TikTok Shop now shares a shopper with."
+    },
+    {
+      "type": "stat",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 8 - TikTok Beats Target/bg/bg4.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.42,
+      "dark": 0.55,
+      "blur_zone": [0, 760, 1080, 1180],
+      "blur_r": 40,
+      "stat": "10",
+      "label": "brands launched Black Friday storefronts",
+      "sub": "Samsung, Gap, Philips, Zwilling and Meta's smart glasses line all opened TikTok Shop stores in time for last year's sale."
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 8 - TikTok Beats Target/bg/bg5.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.24,
+      "dark": 0.32,
+      "kicker": "The shift",
+      "headline": "The feed that made *unknown brands* famous now sits them next to Fortune 500 budgets.",
+      "size": 90
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 8 - TikTok Beats Target/bg/bg6.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.38,
+      "dark": 0.24,
+      "kicker": "What's left",
+      "headline": "Price isn't the edge anymore. What no budget can buy is the *creator relationship* that stopped the scroll.",
+      "size": 82
+    },
+    {
+      "type": "cta",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 8 - TikTok Beats Target/hero.jpg",
+      "focus_x": 0.64,
+      "focus_y": 0.55,
+      "dark": 0.55,
+      "blur_zone": [0, 480, 1080, 1180],
+      "blur_r": 35,
+      "headline": "Save this. *Send it* to a founder who still thinks TikTok Shop is only for small brands.",
+      "size": 76
+    }
+  ]
+}

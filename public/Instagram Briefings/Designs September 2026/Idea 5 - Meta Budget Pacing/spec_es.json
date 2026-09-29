@@ -1,0 +1,76 @@
+{
+  "out_dir": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 5 - Meta Budget Pacing/ES",
+  "handle": "@rarity.agency",
+  "accent": "#D50057",
+  "slides": [
+    {
+      "type": "hook",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 5 - Meta Budget Pacing/hero.jpg",
+      "focus_x": 0.66,
+      "focus_y": 0.3,
+      "dark": 0.4,
+      "eyebrow": "CONTRARIO",
+      "headline": "Tu cuenta de anuncios no necesita tu *ayuda*.",
+      "size": 100,
+      "subhead": "Cada vez que la pausas a las 3pm, deshaces lo único que ya hace bien →"
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 5 - Meta Budget Pacing/bg/bg2.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.35,
+      "dark": 0.45,
+      "kicker": "El hábito",
+      "headline": "Pausar a las 3pm *parece* disciplina.",
+      "size": 78
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 5 - Meta Budget Pacing/bg/bg3.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.3,
+      "kicker": "Lo que Meta ya hace",
+      "headline": "El Standard Pacing ya *reparte* el día por ti.",
+      "size": 72
+    },
+    {
+      "type": "stat",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 5 - Meta Budget Pacing/bg/bg4.jpg",
+      "focus_x": 0.85,
+      "focus_y": 0.6,
+      "dark": 0.62,
+      "stat": "75%",
+      "label": "MÁS PRESUPUESTO, A PROPÓSITO",
+      "sub": "El Centro de Ayuda de Meta: en un buen día, puede gastar eso de más para atrapar la subasta barata."
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 5 - Meta Budget Pacing/bg/bg5.jpg",
+      "focus_x": 0.55,
+      "focus_y": 0.32,
+      "dark": 0.1,
+      "kicker": "La alternativa",
+      "headline": "El pacing acelerado *quema* todo antes del mediodía.",
+      "size": 74
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 5 - Meta Budget Pacing/bg/bg6.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.1,
+      "dark": 0.5,
+      "kicker": "La solución",
+      "headline": "Configura el horario *una vez*. Déjalo correr.",
+      "size": 78
+    },
+    {
+      "type": "cta",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 5 - Meta Budget Pacing/bg/bg7.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.3,
+      "dark": 0.3,
+      "headline": "Guarda esto. *Envíaselo* a un amigo que hace anuncios.",
+      "size": 82
+    }
+  ]
+}

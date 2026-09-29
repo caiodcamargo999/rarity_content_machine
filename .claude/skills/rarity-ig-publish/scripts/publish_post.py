@@ -57,17 +57,26 @@ IMAGE_EXTS = {".png", ".jpg", ".jpeg"}
 VIDEO_EXTS = {".mp4", ".mov"}
 
 
-def load_env():
+def load_env(account="default"):
     env_path = REPO_ROOT / ".env"
-    env = {}
+    raw = {}
     for line in env_path.read_text().splitlines():
         line = line.strip()
         if not line or line.startswith("#") or "=" not in line:
             continue
         key, _, value = line.partition("=")
-        env[key.strip()] = value.strip()
-    required = ["IG_ACCESS_TOKEN", "IG_USER_ID", "GITHUB_TOKEN", "GITHUB_REPO"]
-    missing = [k for k in required if not env.get(k)]
+        raw[key.strip()] = value.strip()
+
+    suffix = "" if account == "default" else f"_{account.upper()}"
+    ig_token_key = f"IG_ACCESS_TOKEN{suffix}"
+    ig_user_key = f"IG_USER_ID{suffix}"
+
+    env = dict(raw)
+    env["IG_ACCESS_TOKEN"] = raw.get(ig_token_key, "")
+    env["IG_USER_ID"] = raw.get(ig_user_key, "")
+
+    required = [ig_token_key, ig_user_key, "GITHUB_TOKEN", "GITHUB_REPO"]
+    missing = [k for k in required if not raw.get(k)]
     if missing:
         sys.exit(f"Missing in .env: {', '.join(missing)}")
     return env
@@ -198,7 +207,8 @@ def graph_get(path, params, env):
 
 
 def cmd_prepare(args):
-    env = load_env()
+    account = (args.account or "default").lower()
+    env = load_env(account)
     idea_dir = Path(args.idea_dir).resolve()
     lang = args.lang.upper()
     slug = args.slug or slugify(idea_dir.name)
@@ -271,12 +281,14 @@ def cmd_prepare(args):
         sys.exit(f"Container never reached FINISHED (last status: {status})")
 
     STATE_DIR.mkdir(exist_ok=True)
-    state_path = STATE_DIR / f"{slug}-{lang.lower()}.json"
+    state_suffix = "" if account == "default" else f"-{account}"
+    state_path = STATE_DIR / f"{slug}-{lang.lower()}{state_suffix}.json"
     state_path.write_text(
         json.dumps(
             {
                 "slug": slug,
                 "lang": lang,
+                "account": account,
                 "idea_dir": str(idea_dir),
                 "ig_user_id": env["IG_USER_ID"],
                 "creation_id": container_id,
@@ -291,16 +303,16 @@ def cmd_prepare(args):
 
 
 def cmd_status(args):
-    env = load_env()
     state = json.loads(Path(args.state).read_text())
+    env = load_env(state.get("account", "default"))
     resp = graph_get(state["creation_id"], {"fields": "status_code"}, env)
     print(resp)
 
 
 def cmd_publish(args):
-    env = load_env()
     state_path = Path(args.state)
     state = json.loads(state_path.read_text())
+    env = load_env(state.get("account", "default"))
     resp = graph_post(
         f"{state['ig_user_id']}/media_publish",
         {"creation_id": state["creation_id"]},
@@ -324,6 +336,7 @@ def main():
     p_prepare.add_argument("--caption-md")
     p_prepare.add_argument("--caption-file")
     p_prepare.add_argument("--slug")
+    p_prepare.add_argument("--account", default="default", help="Which .env credential set to use, e.g. 'ES' for IG_ACCESS_TOKEN_ES/IG_USER_ID_ES. Defaults to the main account.")
     p_prepare.set_defaults(func=cmd_prepare)
 
     p_status = sub.add_parser("status")

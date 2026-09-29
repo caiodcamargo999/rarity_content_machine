@@ -1,0 +1,106 @@
+{
+  "out_dir": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 10 - No Hero Ad/EN",
+  "handle": "@rarity.agency",
+  "accent": "#D50057",
+  "slides": [
+    {
+      "type": "hook",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 10 - No Hero Ad/hero.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.38,
+      "eyebrow": "TikTok Shop",
+      "headline": "There is no *hero* ad this Black Friday.",
+      "size": 112,
+      "subhead": "So how do TikTok Shop's smartest sellers actually pick one? \u2192",
+      "dark": 0.08,
+      "top_a": 255,
+      "top_h": 280
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 10 - No Hero Ad/bg/bg2.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.38,
+      "kicker": "The old bet",
+      "headline": "Most brands still spend Black Friday chasing *one* perfect creative, and lock it in before a single view proves it works.",
+      "size": 76,
+      "dark": 0.0,
+      "top_a": 255,
+      "top_h": 280
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 10 - No Hero Ad/bg/bg3.png",
+      "focus_x": 0.1,
+      "focus_y": 0.5,
+      "dark": 0.72,
+      "kicker": "The playbook",
+      "headline": "Darkroom's 2026 playbook for TikTok Shop skips that bet entirely. It runs *four* creative variables against each other before the money moves.",
+      "size": 62
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 10 - No Hero Ad/bg/bg4.jpg",
+      "focus_x": 0.45,
+      "focus_y": 0.32,
+      "kicker": "Variable 1",
+      "headline": "First, the opening hook against the demo style: a *talking head* versus a pair of hands actually using the product.",
+      "size": 72,
+      "dark": 0.28,
+      "top_a": 255,
+      "top_h": 280
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 10 - No Hero Ad/bg/bg5.png",
+      "focus_x": 0.5,
+      "focus_y": 0.15,
+      "dark": 0.2,
+      "kicker": "Variable 2",
+      "headline": "Then the offer itself: a *bundle* against a straight percent off against a limited drop, each with its own CTA on screen.",
+      "size": 72,
+      "top_a": 255,
+      "top_h": 280
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 10 - No Hero Ad/bg/bg6.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.5,
+      "kicker": "Underneath",
+      "headline": "The offers move too. Discounts step up by the hour, bundles pair a starter kit with an upgrade, and creators drop *LIVE-only* codes nobody else gets.",
+      "size": 64,
+      "dark": 0.1,
+      "top_a": 220,
+      "top_h": 260
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 10 - No Hero Ad/bg/bg7.jpg",
+      "focus_x": 0.32,
+      "focus_y": 0.42,
+      "dark": 0.15,
+      "kicker": "The format stack",
+      "headline": "Three formats carry the test. In Feed reaches cold audiences, Spark Ads push what's *winning*, and LIVE Shopping pulls the crowd in.",
+      "size": 68
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 10 - No Hero Ad/bg/bg8.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.45,
+      "kicker": "The takeaway",
+      "headline": "The real edge sits *before* Black Friday even opens, in the four-way test already running while everyone else argues over one ad.",
+      "size": 72
+    },
+    {
+      "type": "cta",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 10 - No Hero Ad/bg/bg9.jpg",
+      "focus_x": 0.45,
+      "focus_y": 0.45,
+      "dark": 0.35,
+      "headline": "Save this. *Send it* to a friend who is still guessing this Black Friday.",
+      "size": 86
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "out_dir": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 13 - The Synthetic Customer/EN",
+  "handle": "@rarity.agency",
+  "accent": "#D50057",
+  "slides": [
+    {
+      "type": "hook",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 13 - The Synthetic Customer/hero.jpg",
+      "focus_x": 0.56,
+      "focus_y": 0.32,
+      "dark": 0.12,
+      "eyebrow": "The synthetic swap",
+      "headline": "The *customer* in your ad never existed.",
+      "size": 112,
+      "subhead": "Gallup asked 3,270 shoppers what they think of the swap. Gen Z answered loudest ->"
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 13 - The Synthetic Customer/bg/bg2.jpg",
+      "focus_x": 0.4,
+      "focus_y": 0.38,
+      "dark": 0.75,
+      "kicker": "Already everywhere",
+      "headline": "79% of Americans already spotted an ad they *suspected* was made by AI.",
+      "size": 78
+    },
+    {
+      "type": "stat",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 13 - The Synthetic Customer/bg/bg3.jpg",
+      "focus_x": 0.66,
+      "focus_y": 0.42,
+      "dark": 0.87,
+      "stat": "62%",
+      "label": "SAY A FAKE PERSON IN AN AD IS UNACCEPTABLE",
+      "sub": "Among shoppers under 30, that number jumps to 73%. The highest rejection in the whole study."
+    },
+    {
+      "type": "stat",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 13 - The Synthetic Customer/bg/bg4.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.28,
+      "dark": 0.87,
+      "stat": "66%",
+      "label": "OF SHOPPERS 18 TO 29 REJECT AI ADS OUTRIGHT",
+      "sub": "Only 38% of those 45 to 59 feel the same. Bentley University and Gallup, 3,270 adults, May 2026."
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 13 - The Synthetic Customer/bg/bg5.jpg",
+      "focus_x": 0.32,
+      "focus_y": 0.55,
+      "dark": 0.72,
+      "kicker": "Not the technology",
+      "headline": "75% are fine with AI *drafting* the ad, as long as that use is disclosed.",
+      "size": 76
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 13 - The Synthetic Customer/bg/bg6.jpg",
+      "focus_x": 0.58,
+      "focus_y": 0.48,
+      "dark": 0.42,
+      "kicker": "The blind spot",
+      "headline": "The cheapest ad format in DTC right now runs on a *fake* customer.",
+      "size": 82
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 13 - The Synthetic Customer/bg/bg7.jpg",
+      "focus_x": 0.36,
+      "focus_y": 0.4,
+      "dark": 0.22,
+      "kicker": "The real line",
+      "headline": "The 75% who accept AI writing the ad stop the moment AI *performs* as the customer.",
+      "size": 66
+    },
+    {
+      "type": "cta",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 13 - The Synthetic Customer/bg/bg8.jpg",
+      "focus_x": 0.46,
+      "focus_y": 0.5,
+      "dark": 0.55,
+      "headline": "Save this. *Send it* to whoever runs your ad account.",
+      "size": 88
+    }
+  ],
+  "headline_font": "sans"
+}

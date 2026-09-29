@@ -1,0 +1,80 @@
+{
+  "out_dir": "public/Instagram Briefings/Designs September 2026/Idea 2 - Reformation DTC Flywheel/ES",
+  "handle": "@rarity.agency",
+  "accent": "#FF3B3B",
+  "slides": [
+    {
+      "type": "hook",
+      "bg": "public/Instagram Briefings/Designs September 2026/Idea 2 - Reformation DTC Flywheel/hero.jpg",
+      "focus_x": 0.32, "focus_y": 0.36,
+      "dark": 0.08, "bot_a": 248, "bot_start": 0.30,
+      "eyebrow": "Reformation · NYSE: REF",
+      "headline": "Reformation crecio *online* abriendo tiendas.",
+      "size": 112,
+      "subhead": "Sus propios numeros dicen que las tiendas no compiten con su sitio web. Lo alimentan ->"
+    },
+    {
+      "type": "stat",
+      "bg": "public/Instagram Briefings/Designs September 2026/Idea 2 - Reformation DTC Flywheel/bg/bg2.jpg",
+      "focus_x": 0.32, "focus_y": 0.5,
+      "dark": 0.1,
+      "stat": "5 anos",
+      "label": "El plan",
+      "sub": "Crecio online, directo al consumidor. Ahora planea duplicar sus tiendas en cinco anos."
+    },
+    {
+      "type": "stat",
+      "bg": "public/Instagram Briefings/Designs September 2026/Idea 2 - Reformation DTC Flywheel/bg/bg3.jpg",
+      "focus_x": 0.42, "focus_y": 0.5,
+      "dark": 0.08,
+      "stat": "50%",
+      "label": "Chicago, 11 semanas despues",
+      "sub": "El crecimiento de clientes nuevos paso de 28% a 50% tras abrir una tienda."
+    },
+    {
+      "type": "stat",
+      "bg": "public/Instagram Briefings/Designs September 2026/Idea 2 - Reformation DTC Flywheel/bg/bg4.jpg",
+      "focus_x": 0.5, "focus_y": 0.32,
+      "dark": 0.12,
+      "stat": "50–80%",
+      "label": "No hubo canibalizacion",
+      "sub": "Los ingresos DTC en ese mercado crecieron 1.5 veces al abrir la tienda, en tienda y en linea."
+    },
+    {
+      "type": "stat",
+      "bg": "public/Instagram Briefings/Designs September 2026/Idea 2 - Reformation DTC Flywheel/bg/bg5.jpg",
+      "focus_x": 0.5, "focus_y": 0.62,
+      "dark": 0.1,
+      "stat": "24%",
+      "label": "Toda la compania",
+      "sub": "Crecimiento en ingresos, mas 23% de clientes activos: 21 trimestres seguidos de doble digito."
+    },
+    {
+      "type": "stat",
+      "bg": "public/Instagram Briefings/Designs September 2026/Idea 2 - Reformation DTC Flywheel/bg/bg6.jpg",
+      "focus_x": 1.0, "focus_y": 0.42,
+      "dark": 0.12,
+      "stat": "70 tiendas",
+      "label": "Y sigue creciendo",
+      "sub": "\"Seguimos siendo un negocio DTC primero.\" — CEO Hali Borenstein"
+    },
+    {
+      "type": "body",
+      "bg": "public/Instagram Briefings/Designs September 2026/Idea 2 - Reformation DTC Flywheel/bg/bg7.jpg",
+      "focus_x": 0.32, "focus_y": 0.5,
+      "dark": 0.05,
+      "kicker": "La leccion",
+      "headline": "Reformation nunca *supuso* que las tiendas ayudarian al sitio web. Probo el mecanismo en una ciudad, y luego escalo lo que ya funcionaba.",
+      "size": 76
+    },
+    {
+      "type": "cta",
+      "bg": "public/Instagram Briefings/Designs September 2026/Idea 2 - Reformation DTC Flywheel/bg/bg8.jpg",
+      "focus_x": 0.5, "focus_y": 0.4,
+      "dark": 0.55,
+      "blur_zone": [280, 400, 800, 680], "blur_r": 40,
+      "headline": "Guarda esto. *Enviaselo* a un fundador que todavia discute tiendas contra DTC.",
+      "size": 76
+    }
+  ]
+}

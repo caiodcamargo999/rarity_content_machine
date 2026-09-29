@@ -57,32 +57,48 @@ the surrounding adaptive white/navy text does that.
 reference; the live source of truth for the adaptive pairs is `render_post.py`'s own colour
 constants — `WHITE`/`NAVY`, `MUT`/`MUT_DARK`, `TEAL`/`TEAL_DARK`, `HANDLE_LIGHT`/`HANDLE_DARK`.)
 
-## Typography — editorial serif (the @vinci.society direction)
-The headline voice is a **high-contrast editorial SERIF**, not a condensed sans. This is the single
-biggest identity cue of the reference feeds.
+## Typography — two brand headline fonts, alternate between them
+Rarity actually ships **two** headline typefaces in production — both pulled directly from the
+live brand site, `ecom.rarityagency.io` (checked 2026-09-24: its CSS declares `--font-serif` as
+Playfair Display and `--font-sans` as Plus Jakarta Sans ExtraBold). The engine bundles both and a
+top-level spec field picks which one renders:
 
-- **Headline / display: Playfair Display** (bundled at `assets/headline.ttf`, with the italic at
-  `assets/headline-italic.ttf`). High-contrast Didone serif. Set headlines in **sentence case**
-  (not all-caps). Big, bottom-anchored over the photo, colour ADAPTIVE — white on a dark zone,
-  navy on a light zone (see the Text table above), never fixed white.
-- **The italic is the accent.** One or two emphasis words per headline are set in **Playfair Italic +
-  the magenta accent** — the vinci.society signature. In the brief / spec, wrap those words in
-  `*asterisks*` and the engine renders them italic + accent automatically.
+```json
+{ "headline_font": "serif" }   // default — Playfair Display, the @vinci.society editorial look
+{ "headline_font": "sans"  }   // Plus Jakarta Sans ExtraBold — the site's own bold grotesque look
+```
+
+- **Serif: Playfair Display** (`assets/headline.ttf` / `assets/headline-italic.ttf`). High-contrast
+  Didone serif. Set headlines in **sentence case** (not all-caps).
+- **Sans: Plus Jakarta Sans ExtraBold** (`assets/headline-sans.ttf` / `assets/headline-sans-italic.ttf`).
+  Bold, rounded, modern grotesque — the same weight/family used for headings on the actual website.
+  Also sentence case, same *italic accent word* treatment.
+- **VARY the choice across a content batch or calendar — do not render every post in the same
+  font.** Caio's direction (2026-09-24): the feed reading as "always the same letters" is a defect,
+  not a consistency win. A reasonable default when building a batch: alternate serif/sans
+  post-to-post, or let the pillar or mood decide (e.g. serif for an editorial/story decode, sans for
+  a blunt stat-drop) — either is fine, just don't default to serif every single time out of habit.
+- Both fonts render bottom-anchored over the photo, colour ADAPTIVE — white on a dark zone, navy on
+  a light zone (see the Text table above), never fixed white.
+- **The italic is the accent** in both fonts. One or two emphasis words per headline are set in
+  *italic + the magenta accent*. In the brief / spec, wrap those words in `*asterisks*` and the
+  engine renders them italic + accent automatically, in whichever headline font is active.
 - **Body / eyebrow / kicker / handle: BentonSans** — `assets/BentonSans-Regular.otf` and
   `assets/BentonSans-Thin.otf`. Clean grotesque for the small supporting text (eyebrow, subhead,
-  stat sub, handle, page counter).
-- Pairing rule: the serif carries the idea, BentonSans handles the labels. Never set the headline in
-  BentonSans; never set body labels in the serif.
-- **Swap in a licensed serif** by dropping it at `assets/headline.ttf` (+ `assets/headline-italic.ttf`)
-  — e.g. the exact font a reference brand uses. The engine picks it up automatically. Playfair is the
-  free, embeddable default.
+  stat sub, handle, page counter). This does NOT change with `headline_font` — BentonSans always
+  handles the labels, whichever headline face is active.
+- Pairing rule: the headline font (serif or sans) carries the idea, BentonSans handles the labels.
+  Never set the headline in BentonSans; never set body labels in the headline font.
+- To swap in a third licensed font instead of either bundled option, drop it at `assets/headline.ttf`
+  (+ `-italic`) to replace the serif slot, or `assets/headline-sans.ttf` (+ `-italic`) to replace the
+  sans slot — the engine picks either up automatically.
 
 ### Type scale (1080x1350 canvas)
 | Element | Font | Size (px) | Case | Color |
 |---|---|---|---|---|
-| Hook headline | Playfair (serif) | 108–132 | Sentence | adaptive white/navy, italic accent word always magenta |
-| Body headline | Playfair (serif) | 84–104 | Sentence | adaptive white/navy, italic accent word always magenta |
-| Stat number | Playfair (serif) | 180–236 | — | magenta `#D50057` always (not adaptive — it's the accent) |
+| Hook headline | Playfair or Plus Jakarta Sans (per `headline_font`) | 108–132 | Sentence | adaptive white/navy, italic accent word always magenta |
+| Body headline | Playfair or Plus Jakarta Sans (per `headline_font`) | 84–104 | Sentence | adaptive white/navy, italic accent word always magenta |
+| Stat number | Playfair or Plus Jakarta Sans (per `headline_font`) | 180–236 | — | magenta `#D50057` always (not adaptive — it's the accent) |
 | Eyebrow / kicker | BentonSans | 24–28 | UPPER, tracked | adaptive teal `#0fc1af` / navy |
 | Subhead / stat sub | BentonSans | 30–34 | sentence | adaptive muted-light `#c6cee4` / muted-dark |
 | Handle / page no. | BentonSans | 23–27 | lower | adaptive off-white / dark grey-navy |
@@ -121,6 +137,25 @@ soft neutral vignette + a bottom scrim (so the bottom-anchored headline stays le
 grain. The image is the hero of the slide; keep it vivid. Only the CTA slide gets a light NEUTRAL darken
 so the centred logo + line read — still not a colour wash. Push the bottom scrim a touch on a busy photo
 rather than tinting the whole frame.
+
+**Busy background behind text = blur it, not just darken it.** A numeric contrast-ratio check (the
+engine's adaptive letter colour) only measures average local brightness — it does NOT detect visual
+*clutter*: another block of text, signage lettering, a repeating pattern, or fine detail sitting
+directly behind your headline/kicker/label. A zone can pass 4.5:1 on paper and still look like a
+mess in the actual render, because the eye is fighting two overlapping sets of letters, not fighting
+low contrast. Caught 2026-09-24 on a stat slide where a store's marquee lettering sat directly behind
+the small teal kicker line — technically adaptive-colored, but visually noisy.
+- **During the creative-director review pass, check every text zone against the photo underneath it
+  for competing detail, not just contrast.** This applies to the kicker/label zone as much as the
+  headline — small teal kicker text over a sign, a logo, or a patterned surface is exactly the
+  failure mode to catch.
+- **Fix with `blur_zone`** (already a supported per-slide spec field): a 4-value box `[x0,y0,x1,y1]`
+  or a 2-value full-width horizontal band `[y0,y1]`, plus `blur_r` (default 25) for blur radius. Set
+  it to cover the specific busy patch sitting behind that text, then raise `dark` a bit more in that
+  same slide if the zone is still borderline — the two combine (blur removes the competing detail,
+  dark pushes the numeric contrast up).
+- This is a targeted fix, not a global one — blur only the zone actually colliding with text so the
+  rest of the photo (e.g. a brand's storefront sign elsewhere in frame) stays sharp and identifiable.
 
 ## Spacing & composition
 - Outer margin: ~80px on a 1080-wide canvas.

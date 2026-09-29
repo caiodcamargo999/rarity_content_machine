@@ -1,0 +1,100 @@
+{
+  "out_dir": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 4 - Meta Outsells Google/EN",
+  "handle": "@rarity.agency",
+  "accent": "#D50057",
+  "slides": [
+    {
+      "type": "hook",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 4 - Meta Outsells Google/hero.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.4,
+      "eyebrow": "Ad wars",
+      "headline": "Meta is about to *outsell* Google search.",
+      "size": 112,
+      "subhead": "The gap between them is down to $3.9 billion, and closing fast →"
+    },
+    {
+      "type": "stat",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 4 - Meta Outsells Google/bg/bg2.jpg",
+      "focus_x": 0.32,
+      "focus_y": 0.5,
+      "dark": 0.68,
+      "blur_zone": [640, 1350],
+      "blur_r": 30,
+      "top_a": 190,
+      "stat": "$3.9B",
+      "label": "WHAT'S LEFT OF GOOGLE'S LEAD",
+      "sub": "Bernstein says the gap closes by December."
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 4 - Meta Outsells Google/bg/bg3.jpg",
+      "focus_x": 0.98,
+      "focus_y": 0.5,
+      "dark": 0.46,
+      "top_a": 255,
+      "top_h": 260,
+      "kicker": "The growth rates",
+      "headline": "Meta's ad revenue grew *27%* last quarter. Google search grew 17%.",
+      "size": 84
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 4 - Meta Outsells Google/bg/bg4.jpg",
+      "focus_x": 0.32,
+      "focus_y": 0.42,
+      "dark": 0.2,
+      "kicker": "The land grab",
+      "headline": "Meta captured almost *half* of every new ad dollar spent worldwide.",
+      "size": 86
+    },
+    {
+      "type": "stat",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 4 - Meta Outsells Google/bg/bg5.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.5,
+      "dark": 0.89,
+      "bot_start": 0.03,
+      "bot_a": 255,
+      "blur_zone": [260, 1350],
+      "blur_r": 30,
+      "top_a": 255,
+      "top_h": 280,
+      "stat": "$4.52",
+      "label": "RETURNED PER DOLLAR, RUN BY THE AI",
+      "sub": "22% more than a manually built campaign."
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 4 - Meta Outsells Google/bg/bg6.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.5,
+      "dark": 0.48,
+      "bot_start": 0.08,
+      "top_a": 255,
+      "top_h": 260,
+      "kicker": "The mechanism",
+      "headline": "Google wins when someone *searches*. Meta's AI now guesses first.",
+      "size": 82
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 4 - Meta Outsells Google/bg/bg7.jpg",
+      "focus_x": 0.38,
+      "focus_y": 0.4,
+      "dark": 0.3,
+      "kicker": "What changes for advertisers",
+      "headline": "The *creative* now does the job the keyword used to do.",
+      "size": 86
+    },
+    {
+      "type": "cta",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 4 - Meta Outsells Google/hero_cta.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.5,
+      "dark": 0.5,
+      "headline": "Save this. *Send it* to a friend who runs ads and still budgets by gut feel.",
+      "size": 72
+    }
+  ]
+}

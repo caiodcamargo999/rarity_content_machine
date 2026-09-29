@@ -1,0 +1,100 @@
+{
+  "out_dir": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 4 - Meta Outsells Google/ES",
+  "handle": "@rarity.agency",
+  "accent": "#D50057",
+  "slides": [
+    {
+      "type": "hook",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 4 - Meta Outsells Google/hero.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.4,
+      "eyebrow": "Guerra de anuncios",
+      "headline": "Meta esta a punto de *superar* a Google search.",
+      "size": 104,
+      "subhead": "La distancia entre ambos ya bajo a 3.900 millones de dolares, y se cierra rapido →"
+    },
+    {
+      "type": "stat",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 4 - Meta Outsells Google/bg/bg2.jpg",
+      "focus_x": 0.32,
+      "focus_y": 0.5,
+      "dark": 0.68,
+      "blur_zone": [640, 1350],
+      "blur_r": 30,
+      "top_a": 190,
+      "stat": "$3.9B",
+      "label": "LO QUE LE QUEDA A GOOGLE DE VENTAJA",
+      "sub": "Bernstein dice que se cierra antes de diciembre."
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 4 - Meta Outsells Google/bg/bg3.jpg",
+      "focus_x": 0.98,
+      "focus_y": 0.5,
+      "dark": 0.46,
+      "top_a": 255,
+      "top_h": 260,
+      "kicker": "Las tasas de crecimiento",
+      "headline": "Los anuncios de Meta crecieron *27%* el trimestre pasado. Google search, 17%.",
+      "size": 74
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 4 - Meta Outsells Google/bg/bg4.jpg",
+      "focus_x": 0.32,
+      "focus_y": 0.42,
+      "dark": 0.2,
+      "kicker": "La toma de terreno",
+      "headline": "Meta se quedo con casi la *mitad* de cada nuevo dolar de publicidad en el mundo.",
+      "size": 74
+    },
+    {
+      "type": "stat",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 4 - Meta Outsells Google/bg/bg5.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.5,
+      "dark": 0.89,
+      "bot_start": 0.03,
+      "bot_a": 255,
+      "blur_zone": [260, 1350],
+      "blur_r": 30,
+      "top_a": 255,
+      "top_h": 280,
+      "stat": "$4.52",
+      "label": "DE VUELTA POR CADA DOLAR, CON IA",
+      "sub": "Un 22% mas que una campana armada a mano."
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 4 - Meta Outsells Google/bg/bg6.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.5,
+      "dark": 0.48,
+      "bot_start": 0.08,
+      "top_a": 255,
+      "top_h": 260,
+      "kicker": "El mecanismo",
+      "headline": "Google gana cuando alguien *busca*. La IA de Meta ya adivina antes.",
+      "size": 74
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 4 - Meta Outsells Google/bg/bg7.jpg",
+      "focus_x": 0.38,
+      "focus_y": 0.4,
+      "dark": 0.3,
+      "kicker": "Lo que cambia para los anunciantes",
+      "headline": "El *creativo* ahora hace el trabajo que antes hacia la palabra clave.",
+      "size": 74
+    },
+    {
+      "type": "cta",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 4 - Meta Outsells Google/hero_cta.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.5,
+      "dark": 0.5,
+      "headline": "Guarda esto. *Enviaselo* a un amigo que hace anuncios y todavia reparte presupuesto a puro instinto.",
+      "size": 60
+    }
+  ]
+}

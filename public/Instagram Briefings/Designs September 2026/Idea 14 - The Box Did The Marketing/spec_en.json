@@ -1,0 +1,105 @@
+{
+  "out_dir": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 14 - The Box Did The Marketing/EN",
+  "handle": "@rarity.agency",
+  "accent": "#D50057",
+  "slides": [
+    {
+      "type": "hook",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 14 - The Box Did The Marketing/hero.jpg",
+      "focus_x": 0.48,
+      "focus_y": 0.42,
+      "dark": 0.4,
+      "eyebrow": "Casper, 2014",
+      "headline": "The *box* did the marketing.",
+      "size": 112,
+      "subhead": "It started with a staircase nobody could carry a mattress up ->",
+      "top_a": 245,
+      "top_h": 300
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 14 - The Box Did The Marketing/bg/bg2.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.35,
+      "dark": 0.35,
+      "kicker": "The problem",
+      "headline": "Their own staircase couldn't fit a *queen* mattress.",
+      "size": 88,
+      "top_a": 245,
+      "top_h": 300
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 14 - The Box Did The Marketing/bg/bg3.jpg",
+      "focus_x": 0.42,
+      "focus_y": 0.4,
+      "dark": 0.55,
+      "kicker": "The fix",
+      "headline": "Rolled, vacuum sealed, and *shipped* like a parcel.",
+      "size": 84,
+      "top_a": 245,
+      "top_h": 300
+    },
+    {
+      "type": "stat",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 14 - The Box Did The Marketing/bg/bg4.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.22,
+      "dark": 0.42,
+      "stat": "1/10",
+      "sub": "Of the shipping cost. A queen mattress that once needed a freight truck now rides in a regular delivery van.",
+      "top_a": 245,
+      "top_h": 300,
+      "bot_start": 0.28,
+      "bot_a": 250
+    },
+    {
+      "type": "stat",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 14 - The Box Did The Marketing/bg/bg5.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.22,
+      "dark": 0.42,
+      "stat": "$1M",
+      "sub": "In the first month. They had planned for 1.8 million in year one and passed it in two months.",
+      "top_a": 245,
+      "top_h": 300,
+      "bot_start": 0.28,
+      "bot_a": 250
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 14 - The Box Did The Marketing/bg/bg6.jpg",
+      "focus_x": 0.28,
+      "focus_y": 0.78,
+      "dark": 0.55,
+      "kicker": "The free ad",
+      "headline": "One unboxing clip pulled *118,000* views on its own.",
+      "size": 82,
+      "top_a": 245,
+      "top_h": 300
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 14 - The Box Did The Marketing/bg/bg7.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.28,
+      "dark": 0.4,
+      "kicker": "The takeaway",
+      "headline": "Packaging wasn't the finishing touch. It was the *plan*.",
+      "size": 86,
+      "top_a": 245,
+      "top_h": 300
+    },
+    {
+      "type": "cta",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 14 - The Box Did The Marketing/hero.jpg",
+      "focus_x": 0.22,
+      "focus_y": 0.55,
+      "dark": 0.68,
+      "headline": "Save this. *Send it* to whoever is about to brief a box.",
+      "size": 90,
+      "top_a": 245,
+      "top_h": 300
+    }
+  ]
+}

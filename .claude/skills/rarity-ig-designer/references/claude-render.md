@@ -5,13 +5,21 @@ It outputs 1080x1350 PNGs in the reference editorial style (@vinci.society): **e
 full-bleed photo** run through the house treatment (a light navy duotone so the photo stays the focus,
 vignette, bottom scrim, film grain), with a big **editorial serif** headline.
 
-## Fonts (editorial serif, NOT condensed sans)
-- Headline: **Playfair Display**, a high-contrast Didone serif — `assets/headline.ttf` (roman) and
-  `assets/headline-italic.ttf` (italic). Sentence case, white.
+## Fonts — TWO brand headline fonts, alternate between them (NOT condensed sans)
+Set `spec["headline_font"]` to `"serif"` (default) or `"sans"`. Both are pulled straight from
+`ecom.rarityagency.io`'s own CSS (`--font-serif` / `--font-sans`) — this isn't an arbitrary second
+choice, it's the site's real second brand face. **Vary which one a batch uses; don't default to
+serif on every post out of habit** (direction from Caio, 2026-09-24).
+- `"serif"` (default): **Playfair Display**, a high-contrast Didone serif — `assets/headline.ttf`
+  (roman) and `assets/headline-italic.ttf` (italic). Sentence case, white.
+- `"sans"`: **Plus Jakarta Sans ExtraBold**, the site's own bold grotesque — `assets/headline-sans.ttf`
+  (roman) and `assets/headline-sans-italic.ttf` (italic). Same sentence case, same white default.
 - **Italic accent:** wrap emphasis word(s) in `*asterisks*` in any headline / cta line → the engine sets
-  them in Playfair Italic + the accent color (magenta). This is the vinci.society signature.
-- Body / eyebrow / kicker / subhead / handle: **BentonSans** (bundled).
-- Swap in a licensed serif by replacing `assets/headline.ttf` (+ `-italic`); the engine auto-detects it.
+  them in the active headline font's italic + the accent color (magenta), in either font. This is the
+  vinci.society signature, carried into both faces.
+- Body / eyebrow / kicker / subhead / handle: **BentonSans** (bundled) — unaffected by `headline_font`.
+- Swap in a different licensed font by replacing `assets/headline.ttf` (+ `-italic`) for the serif slot
+  or `assets/headline-sans.ttf` (+ `-italic`) for the sans slot; the engine auto-detects either.
 
 ## Step A — a DISTINCT photo for EVERY slide (automatic)
 Every slide REQUIRES its own `"bg"` (a real image path). Save to

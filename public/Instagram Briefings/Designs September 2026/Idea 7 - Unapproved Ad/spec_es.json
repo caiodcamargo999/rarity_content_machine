@@ -1,0 +1,46 @@
+{
+  "out_dir": "public/Instagram Briefings/Designs September 2026/Idea 7 - Unapproved Ad/ES",
+  "handle": "@rarity.agency",
+  "accent": "#D50057",
+  "slides": [
+    {"type":"hook","bg":"public/Instagram Briefings/Designs September 2026/Idea 7 - Unapproved Ad/hero.jpg",
+     "focus_x":0.78,"focus_y":0.5,"dark":0.12,"blur_zone":[540,870],"blur_r":30,
+     "eyebrow":"Google Ads",
+     "headline":"Ya corres un anuncio que no *aprobaste*.","size":112,
+     "subhead":"Google lo activó el 1 de septiembre. ¿Cuándo revisaste tu cuenta por última vez? ->"},
+
+    {"type":"body","bg":"public/Instagram Briefings/Designs September 2026/Idea 7 - Unapproved Ad/bg/bg2.jpg",
+     "focus_x":0.5,"focus_y":0.5,
+     "kicker":"1 de septiembre",
+     "headline":"Google empezó a migrar campañas de Búsqueda a *AI Max* — sin avisar.","size":84},
+
+    {"type":"body","bg":"public/Instagram Briefings/Designs September 2026/Idea 7 - Unapproved Ad/bg/bg3.jpg",
+     "focus_x":0.88,"focus_y":0.5,"dark":0.1,"blur_zone":[640,760,1010,1130],"blur_r":20,
+     "kicker":"Un correo",
+     "headline":"El único aviso fue un correo a principios de agosto. Google no publicó *nada* en su blog.","size":78},
+
+    {"type":"body","bg":"public/Instagram Briefings/Designs September 2026/Idea 7 - Unapproved Ad/bg/bg4.jpg",
+     "focus_x":0.05,"focus_y":0.5,"dark":0.08,
+     "kicker":"Tres cosas",
+     "headline":"AI Max amplía los términos de búsqueda, reescribe tus anuncios y manda el clic a la página que *él elige*.","size":72},
+
+    {"type":"stat","bg":"public/Instagram Briefings/Designs September 2026/Idea 7 - Unapproved Ad/bg/bg5.jpg",
+     "focus_x":0.5,"focus_y":0.5,"accent":"#FFE400","dark":0.15,
+     "stat":"7%",
+     "sub":"El promedio de más conversiones que reporta Google — y solo ayuda al anunciante que de verdad vigila lo que cambió."},
+
+    {"type":"body","bg":"public/Instagram Briefings/Designs September 2026/Idea 7 - Unapproved Ad/bg/bg6.jpg",
+     "focus_x":0.3,"focus_y":0.5,"dark":0.1,
+     "kicker":"La clave",
+     "headline":"La cuenta que construiste no cambió de la noche a la mañana. Las reglas que corren *por debajo* sí cambiaron, y nada te obliga a notarlo.","size":74},
+
+    {"type":"body","bg":"public/Instagram Briefings/Designs September 2026/Idea 7 - Unapproved Ad/bg/bg7.jpg",
+     "focus_x":0.5,"focus_y":0.5,"dark":0.1,
+     "kicker":"La lección",
+     "headline":"Los fundadores que lo detectaron a tiempo tenían un hábito: leer la *configuración*, no solo los resultados.","size":82},
+
+    {"type":"cta","bg":"public/Instagram Briefings/Designs September 2026/Idea 7 - Unapproved Ad/bg/bg8.jpg",
+     "focus_x":0.58,"focus_y":0.5,"dark":0.46,"blur_zone":[750,1300],"blur_r":25,
+     "headline":"Guarda esto. *Envíaselo* a un marketer que no abrió Ads Manager.","size":78}
+  ]
+}

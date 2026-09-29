@@ -1,0 +1,88 @@
+{
+  "out_dir": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 13 - The Synthetic Customer/PT",
+  "handle": "@rarity.agency",
+  "accent": "#D50057",
+  "slides": [
+    {
+      "type": "hook",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 13 - The Synthetic Customer/hero.jpg",
+      "focus_x": 0.56,
+      "focus_y": 0.32,
+      "dark": 0.12,
+      "eyebrow": "A troca sint\u00e9tica",
+      "headline": "O *cliente* do seu an\u00fancio nunca existiu.",
+      "size": 104,
+      "subhead": "A Gallup perguntou a 3.270 pessoas o que acham dessa troca. A Gera\u00e7\u00e3o Z respondeu mais alto que todo mundo ->"
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 13 - The Synthetic Customer/bg/bg2.jpg",
+      "focus_x": 0.4,
+      "focus_y": 0.38,
+      "dark": 0.75,
+      "kicker": "J\u00e1 est\u00e1 em todo lugar",
+      "headline": "79% dos americanos j\u00e1 viram um an\u00fancio que *desconfiaram* ser feito por IA.",
+      "size": 72
+    },
+    {
+      "type": "stat",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 13 - The Synthetic Customer/bg/bg3.jpg",
+      "focus_x": 0.66,
+      "focus_y": 0.42,
+      "dark": 0.87,
+      "stat": "62%",
+      "label": "DIZ QUE UMA PESSOA FALSA NO AN\u00daNCIO \u00c9 INACEIT\u00c1VEL",
+      "sub": "Entre os menores de 30 anos, o n\u00famero sobe para 73%. A rejei\u00e7\u00e3o mais alta de todo o estudo."
+    },
+    {
+      "type": "stat",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 13 - The Synthetic Customer/bg/bg4.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.28,
+      "dark": 0.87,
+      "stat": "66%",
+      "label": "DE 18 A 29 ANOS REJEITA AN\u00daNCIOS COM IA",
+      "sub": "S\u00f3 38% de quem tem entre 45 e 59 anos pensa o mesmo. Bentley University e Gallup, 3.270 adultos, maio de 2026."
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 13 - The Synthetic Customer/bg/bg5.jpg",
+      "focus_x": 0.32,
+      "focus_y": 0.55,
+      "dark": 0.72,
+      "kicker": "N\u00e3o \u00e9 a tecnologia",
+      "headline": "75% n\u00e3o se incomodam com a IA *rascunhando* o an\u00fancio, desde que isso seja avisado.",
+      "size": 68
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 13 - The Synthetic Customer/bg/bg6.jpg",
+      "focus_x": 0.58,
+      "focus_y": 0.48,
+      "dark": 0.42,
+      "kicker": "O ponto cego",
+      "headline": "O formato de an\u00fancio mais barato do DTC hoje roda em cima de um cliente *falso*.",
+      "size": 74
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 13 - The Synthetic Customer/bg/bg7.jpg",
+      "focus_x": 0.36,
+      "focus_y": 0.4,
+      "dark": 0.22,
+      "kicker": "A linha real",
+      "headline": "Os 75% que toleram a IA escrever o an\u00fancio param de tolerar no momento em que a IA *atua* como cliente.",
+      "size": 60
+    },
+    {
+      "type": "cta",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 13 - The Synthetic Customer/bg/bg8.jpg",
+      "focus_x": 0.46,
+      "focus_y": 0.5,
+      "dark": 0.55,
+      "headline": "Salva isso. *Manda* pra quem cuida da sua conta de an\u00fancios.",
+      "size": 82
+    }
+  ],
+  "headline_font": "sans"
+}

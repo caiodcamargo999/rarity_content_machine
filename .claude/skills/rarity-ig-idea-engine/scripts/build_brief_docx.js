@@ -79,9 +79,13 @@ children.push(H2('Audience Takeaway')); children.push(P(b.takeaway));
 // Headline
 children.push(H2('Headline (the only text on the hero image)'));
 if (b.headline) {
+  if (b.headline.hookTrigger) children.push(label('Hook trigger:', b.headline.hookTrigger));
   if (b.headline.en) children.push(label('EN:', b.headline.en));
   if (b.headline.es) children.push(label('ES:', b.headline.es));
   if (b.headline.pt) children.push(label('PT:', b.headline.pt));
+  if (b.headline.openLoop_en) children.push(label('Open loop (EN):', b.headline.openLoop_en));
+  if (b.headline.openLoop_es) children.push(label('Open loop (ES):', b.headline.openLoop_es));
+  if (b.headline.openLoop_pt) children.push(label('Open loop (PT):', b.headline.openLoop_pt));
   if (b.headline.eyebrow_en) children.push(label('Eyebrow:', [b.headline.eyebrow_en, b.headline.eyebrow_es, b.headline.eyebrow_pt].filter(Boolean).join('  |  ')));
   if (b.headline.color) children.push(label('Headline color:', b.headline.color + '  (off-brand allowed; chosen to stop the scroll)'));
 }
@@ -116,6 +120,7 @@ children.push(H2('Images (sourced from the web)'));
     new ExternalHyperlink({ link: img.url, children: [new TextRun({ text: img.url, style: 'Hyperlink' })] })] }));
   const meta = [img.source && ('Source: ' + img.source), img.author && ('Author: ' + img.author), img.license && ('License: ' + img.license)].filter(Boolean).join('    ');
   if (meta) children.push(P(meta, { color: MUT, size: 18 }));
+  if (img.qa) children.push(P('QA: ' + img.qa, { color: MUT, size: 16, italics: true }));
 });
 
 // Visual direction

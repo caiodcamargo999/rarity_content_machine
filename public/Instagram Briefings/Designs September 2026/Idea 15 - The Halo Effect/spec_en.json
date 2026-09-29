@@ -1,0 +1,105 @@
+{
+  "out_dir": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 15 - The Halo Effect/EN",
+  "handle": "@rarity.agency",
+  "accent": "#D50057",
+  "slides": [
+    {
+      "type": "hook",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 15 - The Halo Effect/hero.jpg",
+      "focus_x": 0.42,
+      "focus_y": 0.4,
+      "top_a": 235,
+      "top_h": 270,
+      "eyebrow": "The Halo Effect",
+      "headline": "Your store *is* the ad.",
+      "size": 122,
+      "subhead": "A new report just measured exactly what your storefront is worth to your online sales ->"
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 15 - The Halo Effect/bg/bg5.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.25,
+      "top_a": 255,
+      "top_h": 280,
+      "dark": 0.15,
+      "kicker": "The assumption",
+      "headline": "Most founders file the pop-up as a stunt, never as a *channel*.",
+      "size": 84
+    },
+    {
+      "type": "stat",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 15 - The Halo Effect/bg/bg3.jpg",
+      "focus_x": 0.55,
+      "focus_y": 0.15,
+      "top_a": 235,
+      "top_h": 270,
+      "dark": 0.66,
+      "bot_a": 255,
+      "bot_start": 0.15,
+      "stat": "13.9%",
+      "label": "more in online sales after opening a store",
+      "sub": "ICSC tracked 2,103 stores across four years. The jump showed up within 13 weeks of opening the door.",
+      "blur_zone": [
+        340,
+        560
+      ],
+      "blur_r": 22
+    },
+    {
+      "type": "stat",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 15 - The Halo Effect/bg/bg4.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.0,
+      "top_a": 235,
+      "top_h": 270,
+      "dark": 0.9,
+      "bot_a": 255,
+      "bot_start": 0.15,
+      "stat": "11.5%",
+      "label": "lost in online sales when that store closes",
+      "sub": "The halo runs both directions, in the same 13 week window, just reversed.",
+      "blur_zone": [
+        300,
+        600
+      ],
+      "blur_r": 28
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 15 - The Halo Effect/bg/bg2.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.75,
+      "top_a": 235,
+      "top_h": 270,
+      "dark": 0.48,
+      "kicker": "The mechanism",
+      "headline": "A store is *the ad*, except a stranger can walk right in.",
+      "size": 84
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 15 - The Halo Effect/bg/bg6.jpg",
+      "focus_x": 0.6,
+      "focus_y": 0.4,
+      "top_a": 235,
+      "top_h": 270,
+      "dark": 0.35,
+      "kicker": "The pivot",
+      "headline": "The number that mattered was never what sold *inside*. It happened on the website.",
+      "size": 78
+    },
+    {
+      "type": "cta",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 15 - The Halo Effect/hero.jpg",
+      "focus_x": 0.65,
+      "focus_y": 0.42,
+      "top_a": 235,
+      "top_h": 270,
+      "dark": 0.55,
+      "headline": "Save this. *Send it* to a founder who still calls the store a distraction.",
+      "size": 62
+    }
+  ],
+  "headline_font": "sans"
+}

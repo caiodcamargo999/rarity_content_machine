@@ -1,0 +1,89 @@
+{
+  "out_dir": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 9 - TikTok Shop Crowns Philips/PT",
+  "handle": "@rarity.agency",
+  "accent": "#D50057",
+  "slides": [
+    {
+      "type": "hook",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 9 - TikTok Shop Crowns Philips/philips.jpg",
+      "focus_x": 0.12,
+      "focus_y": 0.42,
+      "dark": 0.2,
+      "eyebrow": "O mito do descobrimento",
+      "headline": "TikTok Shop coroa a *Philips*, não você.",
+      "size": 116,
+      "subhead": "Construiu sua fama descobrindo marcas como a sua. Neste novembro, o protagonismo é da Philips ->"
+    },
+    {
+      "type": "stat",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 9 - TikTok Shop Crowns Philips/tiktok-campaign.png",
+      "focus_x": 0.85,
+      "focus_y": 0.5,
+      "blur_zone": [
+        760,
+        1350
+      ],
+      "blur_r": 70,
+      "dark": 0.58,
+      "stat": "2023",
+      "sub": "A TikTok Shop chega aos Estados Unidos com uma ideia só: uma marca desconhecida podia viralizar e dominar a aba Shop da noite pro dia."
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 9 - TikTok Shop Crowns Philips/benefit.jpg",
+      "focus_x": 0.12,
+      "focus_y": 0.5,
+      "dark": 0.55,
+      "kicker": "Brand Palooza",
+      "headline": "Até *55%* de desconto — Philips, Benefit, Liquid I.V., HeyDude.",
+      "size": 82
+    },
+    {
+      "type": "stat",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 9 - TikTok Shop Crowns Philips/liquidiv.jpg",
+      "focus_x": 0.22,
+      "focus_y": 0.5,
+      "dark": 0.52,
+      "stat": "7",
+      "sub": "As marcas ganham o protagonismo: some Maybelline, Fenty Beauty, The Ordinary. Nenhuma das sete nasceu na TikTok."
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 9 - TikTok Shop Crowns Philips/heydude-noclip.jpg",
+      "focus_x": 0.5,
+      "focus_y": 1.0,
+      "dark": 0.3,
+      "kicker": "A vantagem real",
+      "headline": "Marcas já estabelecidas conseguem *garantir* estoque e comprar o espaço que nenhum vendedor desconhecido consegue pagar.",
+      "size": 76
+    },
+    {
+      "type": "stat",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 9 - TikTok Shop Crowns Philips/philips.jpg",
+      "focus_x": 0.82,
+      "focus_y": 0.42,
+      "dark": 0.58,
+      "stat": "$500M",
+      "sub": "Em vendas nos EUA, um fim de semana de Black Friday. Marcas com mais de $10M de faturamento cresceram as vendas 76% no mesmo período, mais rápido que todo o resto."
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 9 - TikTok Shop Crowns Philips/benefit.jpg",
+      "focus_x": 0.82,
+      "focus_y": 0.5,
+      "dark": 0.42,
+      "kicker": "A lição",
+      "headline": "Descobrir não é *lealdade*. O algoritmo dá o palco mais grande pra quem pode pagar por ele — neste novembro, é a Philips.",
+      "size": 68
+    },
+    {
+      "type": "cta",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 9 - TikTok Shop Crowns Philips/liquidiv-cta.jpg",
+      "focus_x": 0.35,
+      "focus_y": 0.5,
+      "dark": 0.48,
+      "headline": "Salva isso. *Manda* pra um fundador que acha que o algoritmo está do lado dele.",
+      "size": 84
+    }
+  ]
+}

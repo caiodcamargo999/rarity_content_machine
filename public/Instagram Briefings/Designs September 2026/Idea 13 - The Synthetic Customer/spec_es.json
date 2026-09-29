@@ -1,0 +1,88 @@
+{
+  "out_dir": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 13 - The Synthetic Customer/ES",
+  "handle": "@rarity.agency",
+  "accent": "#D50057",
+  "slides": [
+    {
+      "type": "hook",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 13 - The Synthetic Customer/hero.jpg",
+      "focus_x": 0.56,
+      "focus_y": 0.32,
+      "dark": 0.12,
+      "eyebrow": "El cambio sint\u00e9tico",
+      "headline": "El *cliente* de tu anuncio nunca existi\u00f3.",
+      "size": 100,
+      "subhead": "Gallup le pregunt\u00f3 a 3.270 personas qu\u00e9 piensan del cambio. La Gen Z respondi\u00f3 m\u00e1s fuerte que nadie ->"
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 13 - The Synthetic Customer/bg/bg2.jpg",
+      "focus_x": 0.4,
+      "focus_y": 0.38,
+      "dark": 0.75,
+      "kicker": "Ya est\u00e1 en todos lados",
+      "headline": "El 79% de los estadounidenses ya vio un anuncio que *sospech\u00f3* hecho con IA.",
+      "size": 70
+    },
+    {
+      "type": "stat",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 13 - The Synthetic Customer/bg/bg3.jpg",
+      "focus_x": 0.66,
+      "focus_y": 0.42,
+      "dark": 0.87,
+      "stat": "62%",
+      "label": "DICE QUE UNA PERSONA FALSA ES INACEPTABLE",
+      "sub": "Entre los menores de 30 a\u00f1os, la cifra sube al 73%. El rechazo m\u00e1s alto de todo el estudio."
+    },
+    {
+      "type": "stat",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 13 - The Synthetic Customer/bg/bg4.jpg",
+      "focus_x": 0.5,
+      "focus_y": 0.28,
+      "dark": 0.92,
+      "stat": "66%",
+      "label": "DE 18 A 29 A\u00d1OS RECHAZA LOS ANUNCIOS CON IA",
+      "sub": "Solo el 38% de quienes tienen entre 45 y 59 a\u00f1os piensa igual. Bentley University y Gallup, 3.270 adultos, mayo de 2026."
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 13 - The Synthetic Customer/bg/bg5.jpg",
+      "focus_x": 0.32,
+      "focus_y": 0.55,
+      "dark": 0.72,
+      "kicker": "No es la tecnolog\u00eda",
+      "headline": "Al 75% no le molesta que la IA *redacte* el anuncio, siempre que se avise.",
+      "size": 70
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 13 - The Synthetic Customer/bg/bg6.jpg",
+      "focus_x": 0.58,
+      "focus_y": 0.48,
+      "dark": 0.42,
+      "kicker": "El punto ciego",
+      "headline": "El formato de anuncio m\u00e1s barato del DTC hoy corre sobre un cliente *falso*.",
+      "size": 74
+    },
+    {
+      "type": "body",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 13 - The Synthetic Customer/bg/bg7.jpg",
+      "focus_x": 0.36,
+      "focus_y": 0.4,
+      "dark": 0.22,
+      "kicker": "La l\u00ednea real",
+      "headline": "El 75% que tolera que la IA escriba el anuncio deja de tolerarlo cuando la IA *act\u00faa* como el cliente.",
+      "size": 58
+    },
+    {
+      "type": "cta",
+      "bg": "/Users/lenovo/Desktop/DIGITAL MARKETING/02_RARITY GROUP/RARITY AGENCY/RARITY AI/rarity_content_machine/public/Instagram Briefings/Designs September 2026/Idea 13 - The Synthetic Customer/bg/bg8.jpg",
+      "focus_x": 0.46,
+      "focus_y": 0.5,
+      "dark": 0.55,
+      "headline": "Guarda esto. *Env\u00edaselo* a quien maneja tu cuenta de anuncios.",
+      "size": 78
+    }
+  ],
+  "headline_font": "sans"
+}
