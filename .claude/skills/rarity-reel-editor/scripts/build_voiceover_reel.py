@@ -406,7 +406,7 @@ VOICE_CHAIN = (
 
 
 def mix_audio(narration, out_wav, total_dur, tmp, music=None, music_start=0.0, music_lufs=-27.0,
-              sfx_events=(), voice_fx=True):
+              sfx_events=(), voice_fx=True, duck_ratio=9, duck_threshold=0.025):
     """Mix voice + music (ducked) + SFX into one stereo wav of exactly total_dur seconds."""
     cmd = ["ffmpeg", "-y", "-i", str(narration)]
     fc = []
@@ -424,7 +424,7 @@ def mix_audio(narration, out_wav, total_dur, tmp, music=None, music_start=0.0, m
         )
         # duck the music whenever the voice is present (a copy of the voice drives the compressor)
         fc.append("[voice]asplit=2[voice][vsc]")
-        fc.append("[mus][vsc]sidechaincompress=threshold=0.025:ratio=9:attack=12:release=420:makeup=1[musd]")
+        fc.append(f"[mus][vsc]sidechaincompress=threshold={duck_threshold}:ratio={duck_ratio}:attack=12:release=420:makeup=1[musd]")
         mix_inputs.append("[musd]")
         idx += 1
     for k, (t, kind, db) in enumerate(sfx_events):

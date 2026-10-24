@@ -97,6 +97,7 @@ def main():
     ap.add_argument("--music", default=None)
     ap.add_argument("--music-start", type=float, default=0.0)
     ap.add_argument("--music-lufs", type=float, default=-29.0)
+    ap.add_argument("--duck-ratio", type=float, default=9.0, help="voice->music ducking strength (orchestral beds: --music-lufs -17 --duck-ratio 3)")
     ap.add_argument("--caption-y", type=int, default=1480)
     ap.add_argument("--accent", default=edit_reel.DEFAULT_ACCENT)
     ap.add_argument("--no-sfx", action="store_true")
@@ -208,7 +209,7 @@ def main():
         # ---- 3b: mix --------------------------------------------------------------------
         mixed = tmp / "mix.wav"
         bvr.mix_audio(voice, mixed, total, tmp, music=args.music, music_start=args.music_start,
-                      music_lufs=args.music_lufs, sfx_events=[] if args.no_sfx else sfx, voice_fx=True)
+                      music_lufs=args.music_lufs, sfx_events=[] if args.no_sfx else sfx, voice_fx=True, duck_ratio=args.duck_ratio)
 
         # ---- 4: captions ---------------------------------------------------------------
         caps_dir = tmp / "caps"

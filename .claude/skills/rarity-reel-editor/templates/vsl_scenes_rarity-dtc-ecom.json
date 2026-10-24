@@ -1,0 +1,577 @@
+{
+ "scenes": [
+  {
+   "name": "wrong",
+   "kind": "card",
+   "start": "it may be",
+   "end": "i'm not going",
+   "items": [
+    {
+     "type": "strike",
+     "text": "ROAS",
+     "strike": "wrong number",
+     "y": 0.463,
+     "size": 330
+    },
+    {
+     "type": "label",
+     "text": "every agency sells you this",
+     "at": "every agency",
+     "y": 0.722,
+     "size": 30,
+     "color": "white"
+    }
+   ],
+   "title": "the wrong number"
+  },
+  {
+   "name": "maxcac",
+   "kind": "card",
+   "start": "i'm going to show",
+   "end": "once you know",
+   "items": [
+    {
+     "type": "big",
+     "text": "HOW MUCH CAN YOU AFFORD",
+     "y": 0.37,
+     "size": 78
+    },
+    {
+     "type": "big",
+     "text": "TO PAY FOR A NEW CUSTOMER?",
+     "at": "how much",
+     "dt": 0.9,
+     "y": 0.463,
+     "size": 78
+    },
+    {
+     "type": "big",
+     "text": "MAX ALLOWABLE",
+     "at": "maximum allowable",
+     "y": 0.593,
+     "size": 70
+    },
+    {
+     "type": "big",
+     "text": "CAC",
+     "at": "maximum allowable",
+     "dt": 0.25,
+     "y": 0.741,
+     "size": 250,
+     "glow": true,
+     "color": "mag"
+    }
+   ],
+   "title": "the number that matters"
+  },
+  {
+   "name": "econ",
+   "kind": "card",
+   "start": "say your average",
+   "end": "if you want",
+   "items": [
+    {
+     "type": "rows",
+     "y": 0.481,
+     "rows": [
+      {
+       "at": "100",
+       "label": "AVERAGE ORDER",
+       "count_to": 100
+      },
+      {
+       "at": "you keep",
+       "label": "KEPT AFTER ALL COSTS",
+       "count_to": 50
+      },
+      {
+       "at": "another",
+       "label": "+ 90-DAY PROFIT PER CUSTOMER",
+       "count_to": 20,
+       "prefix": "+$"
+      }
+     ]
+    }
+   ],
+   "title": "the math"
+  },
+  {
+   "name": "f15",
+   "kind": "float",
+   "start": "if you want",
+   "end": "allowable cac is",
+   "items": [
+    {
+     "type": "stat",
+     "value": 15,
+     "label": "profit you keep per customer"
+    }
+   ],
+   "start_dt": 0.2
+  },
+  {
+   "name": "f55",
+   "kind": "float",
+   "start": "allowable cac is",
+   "end": "if you are paying",
+   "items": [
+    {
+     "type": "stat",
+     "value": 55,
+     "label": "maximum allowable CAC"
+    }
+   ],
+   "end_dt": -0.05
+  },
+  {
+   "name": "compare",
+   "kind": "card",
+   "start": "if you are paying",
+   "end": "this is why roas",
+   "items": [
+    {
+     "type": "compare",
+     "good": 42,
+     "bad": 62,
+     "line": 55,
+     "at_good": "42",
+     "at_bad": "62",
+     "y": 0.5
+    }
+   ],
+   "title": "$55 is the ceiling"
+  },
+  {
+   "name": "f_roas",
+   "kind": "float",
+   "start": "this is why roas",
+   "end": "roas doesn't know",
+   "items": [
+    {
+     "type": "text",
+     "small": "this is why",
+     "lines": [
+      "ROAS can be",
+      "misleading"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "blind",
+   "kind": "card",
+   "start": "roas doesn't know",
+   "end": "that is where we start",
+   "items": [
+    {
+     "type": "chip",
+     "text": "YOUR MARGINS",
+     "at": "margins",
+     "x": 0.292,
+     "y": 0.37,
+     "icon": "cross"
+    },
+    {
+     "type": "chip",
+     "text": "SHIPPING COSTS",
+     "at": "shipping",
+     "x": 0.292,
+     "y": 0.5,
+     "icon": "cross"
+    },
+    {
+     "type": "chip",
+     "text": "REFUNDS",
+     "at": "refunds",
+     "x": 0.292,
+     "y": 0.63,
+     "icon": "cross"
+    },
+    {
+     "type": "chip",
+     "text": "REPEAT PURCHASES",
+     "at": "repeat purchase",
+     "x": 0.292,
+     "y": 0.759,
+     "icon": "cross"
+    },
+    {
+     "type": "chip",
+     "text": "THE AD ACCOUNT",
+     "at": "only sees",
+     "x": 0.703,
+     "y": 0.435,
+     "size": 50,
+     "icon": "check"
+    },
+    {
+     "type": "chip",
+     "text": "YOUR ENTIRE BUSINESS",
+     "at": "entire business",
+     "x": 0.703,
+     "y": 0.63,
+     "size": 54,
+     "hl": true
+    }
+   ],
+   "title": "what roas can't see"
+  },
+  {
+   "name": "numbers",
+   "kind": "card",
+   "start": "we analyze your",
+   "end": "then we identify",
+   "items": [
+    {
+     "type": "chips",
+     "y": 0.481,
+     "size": 56,
+     "entries": [
+      {
+       "at": "revenue",
+       "text": "REVENUE"
+      },
+      {
+       "at": "ad spend",
+       "text": "AD SPEND"
+      },
+      {
+       "at": "aov",
+       "text": "AOV"
+      },
+      {
+       "at": "margins",
+       "text": "MARGINS"
+      },
+      {
+       "at": "repeat purchases",
+       "text": "REPEAT PURCHASES",
+       "hl": true
+      }
+     ]
+    }
+   ],
+   "title": "your real numbers"
+  },
+  {
+   "name": "f_bn",
+   "kind": "float",
+   "start": "then we identify",
+   "end": "maybe it's",
+   "items": [
+    {
+     "type": "text",
+     "small": "we identify the",
+     "lines": [
+      "primary",
+      "bottleneck"
+     ]
+    }
+   ],
+   "start_dt": 0.1
+  },
+  {
+   "name": "bottlenecks",
+   "kind": "card",
+   "start": "maybe it's",
+   "end": "we find the bottleneck",
+   "items": [
+    {
+     "type": "chips",
+     "y": 0.481,
+     "size": 52,
+     "entries": [
+      {
+       "at": "your ads",
+       "text": "ADS"
+      },
+      {
+       "at": "creative pipeline",
+       "text": "CREATIVE PIPELINE"
+      },
+      {
+       "at": "offers",
+       "text": "OFFERS"
+      },
+      {
+       "at": "site conversions",
+       "text": "SITE CONVERSIONS"
+      },
+      {
+       "at": "retention",
+       "text": "RETENTION"
+      },
+      {
+       "at": "unit margins",
+       "text": "UNIT MARGINS"
+      }
+     ]
+    }
+   ],
+   "title": "where is it stuck?"
+  },
+  {
+   "name": "f_first",
+   "kind": "float",
+   "start": "we find the bottleneck",
+   "end": "then if we work together",
+   "items": [
+    {
+     "type": "text",
+     "small": "we",
+     "lines": [
+      "find the",
+      "bottleneck first"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "solutions",
+   "kind": "card",
+   "start": "then if we work together",
+   "end": "our objective",
+   "items": [
+    {
+     "type": "rows",
+     "y": 0.491,
+     "gap": 16,
+     "w": 1280,
+     "rows": [
+      {
+       "at": "performance media",
+       "label": "PERFORMANCE MEDIA \u2014 META + GOOGLE",
+       "icon": "check"
+      },
+      {
+       "at": "systematic creative",
+       "label": "SYSTEMATIC CREATIVE TESTING",
+       "icon": "check"
+      },
+      {
+       "at": "ai-assisted",
+       "label": "AI-ASSISTED CREATIVE PRODUCTION",
+       "icon": "check"
+      },
+      {
+       "at": "conversion-focused",
+       "label": "CONVERSION-FOCUSED UGC",
+       "icon": "check"
+      },
+      {
+       "at": "retention optimization",
+       "label": "RETENTION OPTIMIZATION",
+       "icon": "check"
+      }
+     ]
+    }
+   ],
+   "title": "the right solution"
+  },
+  {
+   "name": "f_growth",
+   "kind": "float",
+   "start": "our objective",
+   "end": "that's why we don't",
+   "items": [
+    {
+     "type": "text",
+     "small": "not vanity revenue",
+     "lines": [
+      "profitable",
+      "growth"
+     ],
+     "strike_small": true
+    }
+   ]
+  },
+  {
+   "name": "f_econ",
+   "kind": "float",
+   "start": "what matters is",
+   "end": "if you are doing between",
+   "items": [
+    {
+     "type": "text",
+     "small": "what matters",
+     "lines": [
+      "know your",
+      "economics"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "fit",
+   "kind": "card",
+   "start": "if you are doing between",
+   "end": "the application",
+   "items": [
+    {
+     "type": "rows",
+     "y": 0.481,
+     "w": 1240,
+     "rows": [
+      {
+       "at": "100k",
+       "label": "$100K \u2013 $5M A YEAR",
+       "icon": "check"
+      },
+      {
+       "at": "proven products",
+       "label": "PROVEN PRODUCTS",
+       "icon": "check"
+      },
+      {
+       "at": "running paid ads",
+       "label": "ALREADY RUNNING PAID ADS",
+       "icon": "check"
+      },
+      {
+       "at": "scale systematically",
+       "label": "READY TO SCALE SYSTEMATICALLY",
+       "icon": "check"
+      }
+     ]
+    },
+    {
+     "type": "chip",
+     "text": "APPLY BELOW",
+     "at": "apply below",
+     "y": 0.741,
+     "hl": true
+    }
+   ],
+   "title": "is this you?"
+  },
+  {
+   "name": "diag",
+   "kind": "card",
+   "start": "you provide",
+   "end": "we will map",
+   "items": [
+    {
+     "type": "chip",
+     "text": "HIGH-LEVEL NUMBERS",
+     "at": "high-level",
+     "y": 0.269,
+     "size": 50
+    },
+    {
+     "type": "big",
+     "text": "45 MIN",
+     "at": "45-minute",
+     "y": 0.454,
+     "size": 230,
+     "glow": true
+    },
+    {
+     "type": "big",
+     "text": "PROFIT DIAGNOSTIC",
+     "at": "45-minute",
+     "dt": 0.3,
+     "y": 0.62,
+     "size": 80
+    },
+    {
+     "type": "chip",
+     "text": "NO AD ACCOUNT ACCESS REQUIRED",
+     "at": "no ad account",
+     "y": 0.75,
+     "size": 40,
+     "hl": true,
+     "icon": "check"
+    }
+   ],
+   "title": "the application"
+  },
+  {
+   "name": "map",
+   "kind": "card",
+   "start": "we will map",
+   "end": "if you believe",
+   "items": [
+    {
+     "type": "rows",
+     "y": 0.463,
+     "w": 1300,
+     "rows": [
+      {
+       "at": "map your",
+       "label": "MAP YOUR CUSTOMER ECONOMICS",
+       "icon": "check"
+      },
+      {
+       "at": "identify your",
+       "label": "IDENTIFY YOUR MAX ALLOWABLE CAC",
+       "icon": "check"
+      },
+      {
+       "at": "pinpoint",
+       "label": "PINPOINT YOUR PROFIT BOTTLENECKS",
+       "icon": "check"
+      }
+     ]
+    }
+   ],
+   "title": "in 45 minutes"
+  },
+  {
+   "name": "free",
+   "kind": "card",
+   "start": "the diagnostic is",
+   "end": "before you increase",
+   "items": [
+    {
+     "type": "big",
+     "text": "FREE",
+     "dt": 0.1,
+     "y": 0.435,
+     "size": 400,
+     "glow": true
+    },
+    {
+     "type": "chip",
+     "text": "NO OBLIGATION",
+     "at": "no obligation",
+     "y": 0.713,
+     "size": 54,
+     "hl": true
+    }
+   ]
+  },
+  {
+   "name": "cta",
+   "kind": "card",
+   "start": "apply below for",
+   "end": "total",
+   "items": [
+    {
+     "type": "big",
+     "text": "FREE PROFIT",
+     "dt": 0.1,
+     "y": 0.37,
+     "size": 150
+    },
+    {
+     "type": "big",
+     "text": "DIAGNOSTIC",
+     "dt": 0.35,
+     "y": 0.528,
+     "size": 190,
+     "glow": true,
+     "color": "mag"
+    },
+    {
+     "type": "chip",
+     "text": "APPLY BELOW",
+     "at": "bring your numbers",
+     "y": 0.741,
+     "size": 58,
+     "hl": true
+    }
+   ],
+   "outro": false
+  }
+ ]
+}

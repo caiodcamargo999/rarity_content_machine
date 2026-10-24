@@ -1,6 +1,6 @@
 ---
 name: rarity-reel-editor
-description: "Step 3 of Caio's personal video pipeline — takes either (a) a raw recorded video or (b) a narration track + a list of B-roll clips/images per sentence, and produces a finished, cut, color-treated, captioned, branded vertical Reel (1080x1920). Minimal fixed-size captions in Rarity's brand typefaces (BentonSans + a magenta Playfair-italic key word), Rarity symbol overlay, and (for the voiceover format) dense brand-tinted lens-flare transitions by default (plus whip pan, zoom punch, flash, dip) with matching SFX, strong automatic colour matching so every clip shares one palette, a human-sounding local AI voice (Chatterbox), royalty-free music that ducks under the voice, and mastered loudness. Also edits a recorded talking-head clip (e.g. Diego for Rarity BR, in Portuguese): tight cuts, minimal captions, speech-synced motion-graphic cards, music. ALWAYS use when Caio wants raw footage turned into a finished Reel, or wants a voiceover-style video built from B-roll clips synced to narration — 'corta e edita esse vídeo', 'bota legenda nesse Reels', 'monta um vídeo com essas imagens/clipes e essa narração', 'faz o voiceover', 'put music on it'. When in doubt, USE this skill."
+description: "Step 3 of Caio's personal video pipeline — takes either (a) a raw recorded video or (b) a narration track + a list of B-roll clips/images per sentence, and produces a finished, cut, color-treated, captioned, branded vertical Reel (1080x1920). Minimal fixed-size captions in Rarity's brand typefaces (BentonSans + a magenta Playfair-italic key word), Rarity symbol overlay, and (for the voiceover format) dense brand-tinted lens-flare transitions by default (plus whip pan, zoom punch, flash, dip) with matching SFX, strong automatic colour matching so every clip shares one palette, a human-sounding local AI voice (Chatterbox), royalty-free music that ducks under the voice, and mastered loudness. Also edits ANY recorded talking-head clip — Reels AND ads, same house format (Workflow E, Limitless-style: tiny lowercase captions, word-synced glass-card graphics, floating callouts, white-flash transitions, deep-house bed, -14 LUFS) in Portuguese/English/Spanish; landscape VSLs use the sibling skill rarity-vsl-editor. ALWAYS use when Caio wants raw footage turned into a finished Reel, or wants a voiceover-style video built from B-roll clips synced to narration — 'corta e edita esse vídeo', 'bota legenda nesse Reels', 'monta um vídeo com essas imagens/clipes e essa narração', 'faz o voiceover', 'put music on it'. When in doubt, USE this skill."
 ---
 
 # Rarity Reel Editor (Step 3 of the personal video pipeline)
@@ -20,7 +20,7 @@ Two formats, same caption/branding engine underneath:
    transitions + SFX, mastered voice, ducked music bed, captions, logo. **Prefer real video clips
    over photos** — Caio called a photo/Ken-Burns version "not realistic" (2026-10).
 
-3. **`scripts/edit_talking_head.py`** — Workflow C: a recorded talking-head clip (a team member such
+3. **Talking head (Reels + ads) → Workflow E below is the house format since 2026-10** (Caio: "the reels format and the ads in the same format when it's somebody talking to the camera"). `scripts/edit_talking_head.py` (Workflow C / C2, lower-third strips + Playfair key-word captions) is LEGACY — use it only if Caio asks for that older look or to re-render an old edit. Workflow C: a recorded talking-head clip (a team member such
    as Diego, or Caio) → CUTS + minimal captions + **speech-synced motion graphics** + music/SFX.
    Built for Rarity BR in Portuguese; language-agnostic. See "Workflow C" below.
 
@@ -244,7 +244,7 @@ that echoes the first (loop); captions ≤ 2 lines, high contrast, not at the ve
 24. **Counters count from the start of the scene** (not from the word) over `params.dur` so the viewer
     never sees a stalled "$0.0B"; set `dur` so the final value lands as the number is spoken.
 
-## Workflow C — talking head + motion graphics (`edit_talking_head.py`)
+## Workflow C — talking head + motion graphics (`edit_talking_head.py`) — RETIRED for new work (use Workflow E)
 
 First used on "Diego 01 Ecom DTC (rarity.br).mp4" (2026-10, Rarity BR, Portuguese). Recipe:
 
@@ -257,7 +257,7 @@ First used on "Diego 01 Ecom DTC (rarity.br).mp4" (2026-10, Rarity BR, Portugues
 # 3. write beats.json (motion graphics, ORIGINAL-video times, anchored on word times)
 # 4. python3 scripts/edit_talking_head.py video.mp4 words.json beats.json out.mp4 \
 #        --music music/brainiac-167.mp3 --music-start 6
-# 5. QA gate (below), then save to public/Instagram Briefings/Rarity BR Edits/ with an assets folder
+# 5. QA gate (below), then save to public/Creatives and Videos in General/Rarity BR Edits/ with an assets folder
 ```
 
 Rules learned (2026-10):
@@ -308,7 +308,7 @@ Rules learned (2026-10):
     y 1390–1590 (`crop=1080:200:0:1390`) comparing the final render with `base.mp4` (use
     `--keep-temp`), plus full-res crops of the strip + caption zone at ≥5 beat moments.
 
-## Workflow C2 — ad / content edit built from reference videos (`ad_graphics.py`)
+## Workflow C2 — ad / content edit built from reference videos (`ad_graphics.py`) — RETIRED: creative ads now get the VSL edition (Workflow E)
 
 First used on Caio's three English ads (`Rarity EN Edits/Caio Raw Videos (to edit)/caio-01..03.mp4`,
 110 s / 81 s / 177 s, 2026-10) from two references in `Video Edition Ads and Content Refs/`.
@@ -353,7 +353,7 @@ Rules (2026-10):
     BOTH models with a glossary prompt, compare line by line, correct by context and by the other
     videos in the same batch (a phrase clear in video 03 fixes video 01), and **list every doubtful
     correction for Caio** — captions must have zero errors.
-30. **Output location:** edited ads go to `public/Instagram Briefings/Rarity EN Edits/` next to
+30. **Output location:** edited ads go to `public/Creatives and Videos in General/Rarity EN Edits/` next to
     `Caio Raw Videos (to edit)/`, named `caio-0N - EDIT.mp4`, plus an `assets/` folder (words, beats,
     corrected script, `CORRECOES-TRANSCRICAO.md`).
 
@@ -381,7 +381,73 @@ goes **straight from Step 1 to Step 3** (no face to dub): `rarity-reel-scripts` 
 `visual note → sentence` scene list; here you source and *watch* the clip per scene (rule 4), record
 or synthesize the narration (rule 3), then build. Independent of the `rarity-ig-*` brand pipeline.
 
-Delivered reels live in `public/Instagram Briefings/Reel Scripts <Month>/` next to their script
+Delivered reels live in `public/Creatives and Videos in General/Reel Scripts <Month>/` next to their script
 (`Script N - <name>.mp4`) with a `Script N - assets/` folder (narration.wav, narration.txt,
 words.json, scenes.json) so any reel can be re-rendered with a new voice/music/transition in one
 command.
+
+## Workflow D — LEGACY loud-caption VSL (superseded by Workflow E; only if Caio asks for "dynamic/loud" captions again)
+Use when Caio asks for "dynamic / eye-catching subtitles" on a horizontal talking-head VSL. Command:
+`python3 scripts/edit_vsl.py raw.mp4 words.json out.mp4` (captions from `scripts/dynamic_captions.py`).
+34. Dynamic style = 1–3 UPPERCASE words, Plus Jakarta ExtraBold, thick outline + shadow, the spoken word turns magenta and pops (1.18 → 1.0 in 3 frames; power words — numbers, $, ROAS, CAC, profit… — pop 1.28 with glow). Keep layout gap ≥ 0.42·size or popped words collide.
+35. Transcript: large-v3 AND medium.en, compare, then score doubtful phrasings with `prefix=` + avg_logprob on the clip. Retakes/stutters (heard twice) are simply omitted from the script text so the cut drops them. List every doubtful correction for Caio (VSL: "No ad account access…", "you can", "a 45-minute", "profit bottlenecks").
+36. No colour grade, no music unless asked; alternating 1.00/1.09 punch-ins every ≥3.4 s at clause ends; thin magenta progress bar on the bottom edge; -14 LUFS.
+
+### Workflow D, stage 2 — Limitless-style layer (Caio's reference VSL, 2026-10)
+After `edit_vsl.py --keep-temp`, run `scripts/finish_vsl.py WORKDIR out.remapped.json out.mp4`. It replaces the loud
+captions with MINIMAL ones (tiny lowercase white, word-by-word fade, no outline) and adds word-synced glass-card B-roll
+(`vsl_graphics.py`: stat rows, chips, bar compare, checklists), floating stat/text callouts beside the speaker, and
+white-flash transitions with whoosh SFX. Scene specs live in `build_scenes()` and are timed by phrase lookup, so retarget
+them per script. Keep card text clear of the caption line (y > 900). Ref: public/Creatives and Videos in General/Rarity Dtc Ecom VSL/VSL Edition Ref.
+
+
+## Workflow E — THE house format for anyone talking to the camera: Reels, ads AND VSLs (2026-10)
+Caio: "I want the reels format and the ads in the same format when it's somebody talking to the camera." and, for the VSL,
+"make the captions more minimalist… same edition as the Limitless Agency VSL". So **one engine, two sizes**:
+`edit_vsl.py` (cut) → `finish_vsl.py` (captions + graphics + music). It replaces Workflow C/C2 for new work and
+Workflow D's loud captions. The landscape VSL playbook (pipeline commands, scenes.json language, QA) is in the sibling skill
+**`rarity-vsl-editor`** — read it; everything there applies to Reels/ads except the size and the positions below.
+
+37. **Format = auto from the source.** Portrait source (or `--format vertical`) → 1080x1920; landscape → 1920x1080.
+    `edit_vsl.py --cut-only --workdir W` fills the frame (cover+crop; low-res phone exports get `hqdn3d` + light `unsharp`),
+    keeps `--pre 0.035 --post 0.06` tight cuts and `--punch 0.06 --punch-every 4.5` for ads/Reels (VSL defaults 0.05/0.13/0.09/3.4),
+    never colour-grades. `finish_vsl.py` then renders cards on a design canvas of OUT/0.78 (1385x2461 for vertical) and
+    scales down, so one `scenes.json` language serves both formats (`yv`/`xv` override positions for vertical).
+38. **Vertical layout contract.** Captions: lowercase Benton 54 px, baseline y≈1510 (band y0 1300). Cards are full-screen
+    (the speaker is hidden while a card is up — keep cards 2–9 s, speaker between them). Float callouts live in the lower
+    strip at x≥500, y≈1130 (below the chin, right-aligned); Rarity symbol 64 px at x 976–1040, y 40–104. Keep card content
+    above y≈0.72 of the height so captions never touch it.
+39. **Creative ads = the VSL edition, no exceptions (Caio, 2026-10: "for the three ads I want the same style as the VSL, the same kind of edition… the same kind of edition for the VSL has to be for the creative ads as well").** The three Caio EN ads were re-edited this way (templates `ad_scenes_caio-01/02/03.json`); Workflow C/C2 looks (lower-third strips, Playfair key-word captions, name tag, line icons, progress bar) are retired. **Reels and ads are the same edit.** A 30 s Reel and a 180 s ad differ only in length: same captions, same card language
+    (strike a wrong number, chips for lists, counting rows for numbers, compare bars for "$42 vs $62", checklist for what
+    you get, big word for the offer, apply-below chip at the CTA), same flash+whoosh, same music. Aim for a graphic every
+    ~4–8 s on ads; a 30 s Reel needs 2–4. No name tag / icon sets / progress bar from Workflow C2 unless asked.
+40. **Music for talking heads = ELECTRONIC, excited and motivational, audible; ONE track family across every Caio video
+    (Caio, 2026-10: deep house "not nice", then orchestral "bad music… keep the congruency, put electronic music a little more
+    excited and motivational").** Default: `music/kraft-twerk-115.mp3` (Mixkit "Kraft Twerk", electronica, 117 BPM, major key,
+    driving; only 9 % of its energy at 300-3400 Hz so it leaves the voice room). Alternatives to offer when Caio wants a
+    different flavour: `motivating-mornings-033` (123 BPM, builds), `tech-house-vibes-130`. Orchestral (`epical-drums-*`) and
+    deep house were REJECTED — don't use them for Caio. Same track on the VSL, the ads and the Reels so the channel sounds
+    consistent. Build a bed to length with `scripts/music_bed.py <sec> bed.wav --track kraft-twerk-115.mp3`; level
+    `--music-lufs -19 --duck-ratio 3` (≈ 7 dB under the voice while speaking, measured: -17 = 6.1 dB, -15 = 5.0; deep house at
+    -26/ratio 9 was 14+ dB = "barely audible"). Measure (mix with/without music, music ≈ mix − voice, speech vs pause RMS),
+    don't guess; the agent can't listen, so always say so and offer the next track.
+41. **Transcript pipeline is shared** (`transcribe_two_models.py` → corrected `script.txt` → `align_to_script.py`); rules 11, 29
+    apply unchanged (glossary prompt, two models, flag every doubtful correction, `CORRECOES-TRANSCRICAO.md` for PT/ES).
+    Worked vertical example: `templates/ad_scenes_caio-02.json` (Caio EN ad, 6 cards over 79 s); worked landscape example:
+    `templates/vsl_scenes_rarity-dtc-ecom.json`.
+43. **Pacing knobs for short videos (`scenes.json` top level):** `"lead": 1.6` — a card pops in 1.6 s after its sentence starts, so the
+    speaker is seen first; `"hold": 1.4` — a card hands the screen back 1.4 s after its last item. With these, a 100-170 s ad ends up
+    ≈ 50 % cards + ≈ 12 % floating callouts (the ref VSL is ≈ 35-40 %; the landscape VSL was ≈ 59 %). Turn single-line ideas ("we call it the
+    One Number Model", "one team, one number") into `float` text callouts instead of full cards; keep full cards for numbers, lists and
+    comparisons. Items whose phrase precedes the (delayed) card start are clamped to appear right after it.
+44. **Re-music / re-style without re-cutting:** the cut (`edit_vsl.py --cut-only --workdir W`) is reusable — keep `W` and re-run only
+    `finish_vsl.py` (≈ 3-5 min) to change music, scenes or captions. Old versions are NOT kept (Caio: "just keep the most updated
+    version on the project"): overwrite `<name> - EDIT.mp4` / `vsl-EDIT.mp4` and drop `assets/previous`.
+45. **Portuguese / Spanish work the same.** `finish_vsl.py` strips accents when matching phrases ("máximo" = "maximo"), card text
+    keeps its accents (Benton + Plus Jakarta both have them). Worked PT Reel: `templates/reel_scenes_diego-01-pt.json` (Diego, 45 s,
+    cards ≈ 51 % + floats ≈ 27 %: strike ROAS, chips for Meta/Google/Klaviyo, CAC máximo permitido, 45 min, plano de 90 dias).
+    Short Reels (< 60 s) want `lead` 0.3-1.4 per scene and `hold` 1.0 so the speaker stays visible; the PT edit still needs Diego's
+    own corrections list (`CORRECOES-TRANSCRICAO.md`) confirmed against the audio.
+42. **Output locations:** Reels `public/Creatives and Videos in General/Reel Scripts <Month>/`, BR edits `Rarity BR Edits/`, EN ads
+    `Rarity EN Edits/` (`<name> - EDIT.mp4` + `assets/`), VSL `<VSL folder>/Edited-by-Claude/`. Never commit raw footage
+    or renders (> 100 MB GitHub limit, public repo).

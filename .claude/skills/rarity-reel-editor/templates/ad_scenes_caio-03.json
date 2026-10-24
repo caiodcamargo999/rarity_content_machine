@@ -1,0 +1,398 @@
+{
+ "lead": 1.6,
+ "hold": 1.4,
+ "scenes": [
+  {
+   "name": "case",
+   "kind": "card",
+   "start": "rebuilt their account",
+   "end": "if you want the same",
+   "items": [
+    {
+     "type": "rows",
+     "y": 0.44,
+     "rows": [
+      {
+       "at": "2 million",
+       "label": "VERIFIED REVENUE",
+       "value": "$2M"
+      },
+      {
+       "at": "8x",
+       "label": "ROAS",
+       "value": "8x"
+      },
+      {
+       "at": "35",
+       "label": "CAC",
+       "value": "-35%"
+      },
+      {
+       "at": "4x",
+       "label": "ORDER VOLUME",
+       "value": "4x",
+       "hl": true
+      }
+     ]
+    }
+   ],
+   "title": "the result"
+  },
+  {
+   "name": "model",
+   "kind": "float",
+   "start": "we call it the one number model",
+   "end": "most agencies charge",
+   "items": [
+    {
+     "type": "text",
+     "small": "we call it the",
+     "lines": [
+      "One Number",
+      "Model"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "pct",
+   "kind": "card",
+   "start": "most agencies charge",
+   "end": "and then they split",
+   "items": [
+    {
+     "type": "strike",
+     "text": "% OF SPEND",
+     "strike": "so the more",
+     "y": 0.42,
+     "size": 140
+    },
+    {
+     "type": "label",
+     "text": "the more they spend, the more they make",
+     "at": "so the more",
+     "y": 0.56,
+     "size": 30,
+     "color": "white"
+    }
+   ],
+   "title": "how most agencies charge"
+  },
+  {
+   "name": "vendors",
+   "kind": "card",
+   "start": "and then they split",
+   "end": "at rarity it's one team",
+   "items": [
+    {
+     "type": "chip",
+     "text": "A MEDIA BUYER CHASING ROAS",
+     "at": "media buyer",
+     "y": 0.36,
+     "size": 44,
+     "icon": "cross"
+    },
+    {
+     "type": "chip",
+     "text": "A CREATIVE STUDIO CHASING ENGAGEMENT",
+     "at": "creative studio",
+     "y": 0.46,
+     "size": 40,
+     "icon": "cross"
+    },
+    {
+     "type": "chip",
+     "text": "A UGC SHOP SENDING RAW CLIPS",
+     "at": "ugc shop",
+     "y": 0.56,
+     "size": 44,
+     "icon": "cross"
+    }
+   ],
+   "title": "three vendors"
+  },
+  {
+   "name": "one",
+   "kind": "float",
+   "start": "at rarity it's one team",
+   "end": "that includes performance media",
+   "items": [
+    {
+     "type": "text",
+     "small": "at Rarity",
+     "lines": [
+      "one team,",
+      "one number"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "levers",
+   "kind": "card",
+   "start": "that includes performance media",
+   "end": "and direct access",
+   "items": [
+    {
+     "type": "rows",
+     "y": 0.42,
+     "rows": [
+      {
+       "at": "performance media",
+       "label": "PERFORMANCE MEDIA",
+       "icon": "check"
+      },
+      {
+       "at": "ai-native",
+       "label": "AI-NATIVE CREATIVE",
+       "icon": "check"
+      },
+      {
+       "at": "ugc",
+       "label": "UGC THAT CONVERTS",
+       "icon": "check"
+      }
+     ]
+    }
+   ],
+   "title": "three levers"
+  },
+  {
+   "name": "senior",
+   "kind": "card",
+   "start": "and direct access",
+   "end": "so you get one team",
+   "items": [
+    {
+     "type": "chip",
+     "text": "SENIOR OPERATORS",
+     "at": "senior operators",
+     "y": 0.4,
+     "size": 60,
+     "hl": true
+    },
+    {
+     "type": "chip",
+     "text": "NO JUNIOR ACCOUNT MANAGERS",
+     "at": "no junior",
+     "y": 0.5,
+     "size": 44,
+     "icon": "cross"
+    }
+   ]
+  },
+  {
+   "name": "profit",
+   "kind": "float",
+   "start": "so you get one team",
+   "end": "here's what that looks like",
+   "items": [
+    {
+     "type": "text",
+     "small": "one number everyone owns",
+     "lines": [
+      "your profit"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "brand1",
+   "kind": "card",
+   "start": "here's what that looks like",
+   "end": "for another",
+   "items": [
+    {
+     "type": "rows",
+     "y": 0.4,
+     "rows": [
+      {
+       "at": "10 million",
+       "label": "SALES",
+       "value": "$10M"
+      },
+      {
+       "at": "10x",
+       "label": "ROAS",
+       "value": "10x",
+       "hl": true
+      }
+     ]
+    },
+    {
+     "type": "label",
+     "text": "meta + google as one budget",
+     "at": "single budget",
+     "y": 0.6,
+     "size": 32,
+     "color": "white"
+    }
+   ],
+   "title": "brand one"
+  },
+  {
+   "name": "brand2",
+   "kind": "card",
+   "start": "for another",
+   "end": "and a third",
+   "items": [
+    {
+     "type": "rows",
+     "y": 0.4,
+     "rows": [
+      {
+       "at": "35 new hooks",
+       "label": "HOOKS IN 7 DAYS",
+       "value": "35"
+      },
+      {
+       "at": "3 winners",
+       "label": "WINNERS",
+       "value": "3"
+      },
+      {
+       "at": "17x",
+       "label": "ROAS",
+       "value": "17x",
+       "hl": true
+      }
+     ]
+    }
+   ],
+   "title": "brand two"
+  },
+  {
+   "name": "brand3",
+   "kind": "card",
+   "start": "and a third",
+   "end": "so if you are doing",
+   "items": [
+    {
+     "type": "rows",
+     "y": 0.4,
+     "rows": [
+      {
+       "at": "6x",
+       "label": "ROAS ON TIKTOK",
+       "value": "6x",
+       "hl": true
+      },
+      {
+       "at": "under 20",
+       "label": "CAC FROM COLD TRAFFIC",
+       "value": "< $20"
+      }
+     ]
+    }
+   ],
+   "title": "brand three"
+  },
+  {
+   "name": "fit",
+   "kind": "card",
+   "start": "so if you are doing",
+   "end": "in two to four",
+   "items": [
+    {
+     "type": "chip",
+     "text": "$1M \u2013 $10M A YEAR",
+     "at": "1 million",
+     "y": 0.36,
+     "size": 54
+    },
+    {
+     "type": "chip",
+     "text": "PAID TO MAKE YOU MONEY",
+     "at": "paid to make you money",
+     "y": 0.46,
+     "size": 48,
+     "hl": true
+    },
+    {
+     "type": "chip",
+     "text": "NOT TO SPEND IT",
+     "at": "not to spend it",
+     "y": 0.55,
+     "size": 48,
+     "icon": "cross"
+    },
+    {
+     "type": "chip",
+     "text": "FREE GROWTH AUDIT",
+     "at": "apply for your free growth audit",
+     "y": 0.66,
+     "size": 54,
+     "hl": true
+    }
+   ],
+   "title": "is this you?"
+  },
+  {
+   "name": "steps",
+   "kind": "card",
+   "start": "in two to four",
+   "end": "if you have a business partner",
+   "items": [
+    {
+     "type": "rows",
+     "y": 0.42,
+     "rows": [
+      {
+       "at": "audit your media",
+       "label": "MEDIA \u00b7 CREATIVE \u00b7 FUNNEL AUDITED",
+       "icon": "check"
+      },
+      {
+       "at": "real p&l",
+       "label": "AGAINST YOUR REAL P&L",
+       "icon": "check"
+      },
+      {
+       "at": "exactly what we found",
+       "label": "WHAT WE FOUND",
+       "icon": "check"
+      },
+      {
+       "at": "change first",
+       "label": "WHAT WE'D CHANGE FIRST",
+       "icon": "check"
+      }
+     ]
+    }
+   ],
+   "title": "in 2\u20134 business days"
+  },
+  {
+   "name": "cta",
+   "kind": "card",
+   "start": "click the link watch the video",
+   "end": "total",
+   "items": [
+    {
+     "type": "big",
+     "text": "BOOK YOUR",
+     "y": 0.38,
+     "size": 130
+    },
+    {
+     "type": "big",
+     "text": "GROWTH AUDIT",
+     "dt": 0.2,
+     "y": 0.48,
+     "size": 130,
+     "glow": true,
+     "color": "mag"
+    },
+    {
+     "type": "chip",
+     "text": "LINK BELOW",
+     "dt": 1.0,
+     "y": 0.62,
+     "size": 58,
+     "hl": true
+    }
+   ],
+   "outro": false
+  }
+ ]
+}

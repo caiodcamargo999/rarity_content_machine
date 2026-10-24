@@ -1,0 +1,181 @@
+{
+ "lead": 1.6,
+ "hold": 1.4,
+ "scenes": [
+  {
+   "name": "wrong",
+   "kind": "card",
+   "start": "there's a good chance",
+   "end": "your meta dashboard",
+   "title": "the wrong number",
+   "items": [
+    {
+     "type": "strike",
+     "text": "ROAS",
+     "strike": "wrong number",
+     "y": 0.4,
+     "size": 330
+    }
+   ]
+  },
+  {
+   "name": "blind",
+   "kind": "card",
+   "start": "roas doesn't know",
+   "end": "that's why we use",
+   "title": "what roas can't see",
+   "items": [
+    {
+     "type": "chips",
+     "y": 0.46,
+     "size": 50,
+     "icon": "cross",
+     "entries": [
+      {
+       "at": "real margins",
+       "text": "REAL MARGINS"
+      },
+      {
+       "at": "shipping costs",
+       "text": "SHIPPING COSTS"
+      },
+      {
+       "at": "refunds",
+       "text": "REFUNDS"
+      },
+      {
+       "at": "profit you need",
+       "text": "PROFIT YOU NEED TO KEEP",
+       "hl": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "maxcac",
+   "kind": "card",
+   "start": "that's why we use",
+   "end": "for example",
+   "title": "the number that matters",
+   "items": [
+    {
+     "type": "big",
+     "text": "MAX ALLOWABLE",
+     "at": "maximum allowable",
+     "y": 0.4,
+     "size": 86
+    },
+    {
+     "type": "big",
+     "text": "CAC",
+     "at": "maximum allowable",
+     "dt": 0.3,
+     "y": 0.52,
+     "size": 260,
+     "glow": true,
+     "color": "mag"
+    },
+    {
+     "type": "label",
+     "text": "the most you can pay for a new customer",
+     "at": "the most",
+     "y": 0.66,
+     "size": 30,
+     "color": "white"
+    }
+   ]
+  },
+  {
+   "name": "compare",
+   "kind": "card",
+   "start": "for example",
+   "end": "that's exactly what",
+   "title": "$55 is the ceiling",
+   "items": [
+    {
+     "type": "compare",
+     "good": 42,
+     "bad": 62,
+     "line": 55,
+     "at_good": "42",
+     "at_bad": "62",
+     "y": 0.46
+    }
+   ]
+  },
+  {
+   "name": "diag",
+   "kind": "card",
+   "start": "that's exactly what",
+   "end": "if it's not",
+   "title": "free profit diagnostic",
+   "items": [
+    {
+     "type": "big",
+     "text": "45 MIN",
+     "at": "45-minute",
+     "y": 0.4,
+     "size": 230,
+     "glow": true
+    },
+    {
+     "type": "big",
+     "text": "PROFIT DIAGNOSTIC",
+     "at": "45-minute",
+     "dt": 0.3,
+     "y": 0.52,
+     "size": 80
+    },
+    {
+     "type": "chip",
+     "text": "FREE",
+     "at": "free 45-minute",
+     "y": 0.64,
+     "size": 54,
+     "hl": true
+    }
+   ]
+  },
+  {
+   "name": "cta",
+   "kind": "card",
+   "start": "here's what you get",
+   "end": "total",
+   "outro": false,
+   "title": "what you get",
+   "items": [
+    {
+     "type": "rows",
+     "y": 0.44,
+     "w": 1180,
+     "rows": [
+      {
+       "at": "maximum allowable",
+       "label": "YOUR MAX ALLOWABLE CAC",
+       "icon": "check"
+      },
+      {
+       "at": "customer economics",
+       "label": "YOUR CUSTOMER ECONOMICS",
+       "icon": "check"
+      },
+      {
+       "at": "biggest area",
+       "label": "WHAT HOLDS YOUR PROFIT BACK",
+       "icon": "check"
+      }
+     ]
+    },
+    {
+     "type": "chip",
+     "text": "APPLY BELOW",
+     "at": "click below to apply",
+     "y": 0.68,
+     "size": 54,
+     "hl": true
+    }
+   ]
+  }
+ ]
+}

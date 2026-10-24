@@ -1,0 +1,228 @@
+{
+ "hold": 1.0,
+ "lead": 0.3,
+ "scenes": [
+  {
+   "name": "roas",
+   "kind": "card",
+   "start": "tratar o roas",
+   "end": "ai voce escala",
+   "items": [
+    {
+     "type": "strike",
+     "text": "ROAS",
+     "strike": "metrica principal",
+     "y": 0.42,
+     "size": 330
+    },
+    {
+     "type": "label",
+     "text": "métrica principal?",
+     "at": "metrica principal",
+     "y": 0.56,
+     "size": 34,
+     "color": "white"
+    }
+   ],
+   "title": "o erro",
+   "lead": 0.2,
+   "hold": 0.8
+  },
+  {
+   "name": "conta",
+   "kind": "float",
+   "start": "ai voce escala",
+   "end": "sabe por que",
+   "items": [
+    {
+     "type": "text",
+     "small": "escala, bate o ROAS e na conta bancária",
+     "lines": [
+      "nada."
+     ]
+    }
+   ]
+  },
+  {
+   "name": "credito",
+   "kind": "card",
+   "start": "seu meta",
+   "end": "todo canal parece",
+   "items": [
+    {
+     "type": "chip",
+     "text": "META",
+     "at": "seu meta",
+     "y": 0.3,
+     "size": 60
+    },
+    {
+     "type": "chip",
+     "text": "GOOGLE",
+     "at": "seu google",
+     "y": 0.38,
+     "size": 60
+    },
+    {
+     "type": "chip",
+     "text": "KLAVIYO",
+     "at": "seu klaviyo",
+     "y": 0.46,
+     "size": 60
+    },
+    {
+     "type": "big",
+     "text": "MESMA VENDA",
+     "at": "mesma venda",
+     "y": 0.57,
+     "size": 100,
+     "glow": true,
+     "color": "mag"
+    },
+    {
+     "type": "chip",
+     "text": "SOMA DOS 3 > SHOPIFY",
+     "at": "shopify",
+     "y": 0.67,
+     "size": 46,
+     "hl": true
+    }
+   ],
+   "title": "quem leva o crédito",
+   "lead": 0.8
+  },
+  {
+   "name": "dre",
+   "kind": "float",
+   "start": "todo canal parece",
+   "end": "as marcas",
+   "items": [
+    {
+     "type": "text",
+     "small": "todo canal parece vencedor",
+     "lines": [
+      "quando o DRE",
+      "está parado"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cac",
+   "kind": "card",
+   "start": "as marcas",
+   "end": "o maximo que elas",
+   "items": [
+    {
+     "type": "strike",
+     "text": "ROAS",
+     "strike": "somente pro roas",
+     "y": 0.3,
+     "size": 260
+    },
+    {
+     "type": "big",
+     "text": "CAC MÁXIMO",
+     "at": "cac maximo",
+     "y": 0.5,
+     "size": 120,
+     "glow": true
+    },
+    {
+     "type": "big",
+     "text": "PERMITIDO",
+     "at": "permitido",
+     "y": 0.6,
+     "size": 120,
+     "glow": true,
+     "color": "mag"
+    }
+   ],
+   "title": "o que muda",
+   "lead": 1.4
+  },
+  {
+   "name": "maximo",
+   "kind": "float",
+   "start": "o maximo que elas",
+   "end": "traga seus",
+   "items": [
+    {
+     "type": "text",
+     "small": "o máximo que podem pagar",
+     "lines": [
+      "por uma venda",
+      "e ainda lucrar"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "call",
+   "kind": "card",
+   "start": "traga seus",
+   "end": "e te entrega",
+   "items": [
+    {
+     "type": "big",
+     "text": "45 MIN",
+     "at": "45 minutos",
+     "y": 0.36,
+     "size": 240,
+     "glow": true
+    },
+    {
+     "type": "chip",
+     "text": "CALCULA O NÚMERO AO VIVO",
+     "at": "ao vivo",
+     "y": 0.5,
+     "size": 46,
+     "hl": true
+    },
+    {
+     "type": "chip",
+     "text": "ONDE O LUCRO VAZA",
+     "at": "vazando",
+     "y": 0.58,
+     "size": 48
+    }
+   ],
+   "title": "a call",
+   "lead": 1.2
+  },
+  {
+   "name": "plano",
+   "kind": "card",
+   "start": "e te entrega",
+   "end": "total",
+   "items": [
+    {
+     "type": "big",
+     "text": "PLANO DE",
+     "y": 0.36,
+     "size": 120
+    },
+    {
+     "type": "big",
+     "text": "90 DIAS",
+     "at": "90 dias",
+     "y": 0.47,
+     "size": 230,
+     "glow": true,
+     "color": "mag"
+    },
+    {
+     "type": "chip",
+     "text": "FECHANDO OU NÃO",
+     "at": "fechando",
+     "y": 0.62,
+     "size": 52,
+     "hl": true
+    }
+   ],
+   "title": "você leva",
+   "lead": 0.7,
+   "outro": false
+  }
+ ]
+}

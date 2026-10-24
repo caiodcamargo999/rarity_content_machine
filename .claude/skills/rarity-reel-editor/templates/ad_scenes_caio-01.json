@@ -1,0 +1,303 @@
+{
+ "lead": 1.6,
+ "hold": 1.4,
+ "scenes": [
+  {
+   "name": "trust",
+   "kind": "card",
+   "start": "stopped trusting",
+   "end": "that's exactly what we do",
+   "items": [
+    {
+     "type": "strike",
+     "text": "ROAS",
+     "strike": "platform roas",
+     "y": 0.4,
+     "size": 330
+    },
+    {
+     "type": "big",
+     "text": "REAL PROFIT",
+     "at": "real profit",
+     "y": 0.6,
+     "size": 150,
+     "glow": true,
+     "color": "mag"
+    }
+   ],
+   "title": "one number"
+  },
+  {
+   "name": "proof",
+   "kind": "card",
+   "start": "we help brands",
+   "end": "if you want this system",
+   "items": [
+    {
+     "type": "rows",
+     "y": 0.44,
+     "rows": [
+      {
+       "at": "5 million",
+       "label": "VERIFIED REVENUE",
+       "value": "$5M"
+      },
+      {
+       "at": "8x",
+       "label": "ROAS ON META",
+       "value": "8x"
+      },
+      {
+       "at": "10x",
+       "label": "ROAS ON GOOGLE",
+       "value": "10x",
+       "hl": true
+      }
+     ]
+    }
+   ],
+   "title": "results"
+  },
+  {
+   "name": "model",
+   "kind": "float",
+   "start": "we call it the one number model",
+   "end": "level 1",
+   "items": [
+    {
+     "type": "text",
+     "small": "we call it the",
+     "lines": [
+      "One Number",
+      "Model"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "l1",
+   "kind": "card",
+   "start": "level 1",
+   "end": "level 2",
+   "items": [
+    {
+     "type": "big",
+     "text": "PERFORMANCE MEDIA",
+     "y": 0.3,
+     "size": 84
+    },
+    {
+     "type": "chip",
+     "text": "META + GOOGLE",
+     "at": "meta and google",
+     "y": 0.4,
+     "size": 50
+    },
+    {
+     "type": "chip",
+     "text": "ONE BUDGET \u00b7 MER",
+     "at": "one budget",
+     "y": 0.48,
+     "size": 50
+    },
+    {
+     "type": "chip",
+     "text": "FLAT FEE",
+     "at": "flat fee",
+     "y": 0.56,
+     "size": 56,
+     "hl": true
+    },
+    {
+     "type": "strike",
+     "text": "% OF SPEND",
+     "strike": "percentage",
+     "y": 0.67,
+     "size": 130
+    }
+   ],
+   "title": "level 1"
+  },
+  {
+   "name": "l2",
+   "kind": "card",
+   "start": "level 2",
+   "end": "level 3",
+   "items": [
+    {
+     "type": "big",
+     "text": "AI-NATIVE CREATIVE",
+     "y": 0.27,
+     "size": 84
+    },
+    {
+     "type": "rows",
+     "y": 0.5,
+     "rows": [
+      {
+       "at": "35 hooks",
+       "label": "HOOKS LAUNCHED",
+       "value": "35"
+      },
+      {
+       "at": "in 7 days",
+       "label": "IN",
+       "value": "7 DAYS"
+      },
+      {
+       "at": "3 winners",
+       "label": "WINNERS",
+       "value": "3"
+      },
+      {
+       "at": "17x",
+       "label": "ROAS",
+       "value": "17x",
+       "hl": true
+      }
+     ]
+    }
+   ],
+   "title": "level 2"
+  },
+  {
+   "name": "l3",
+   "kind": "card",
+   "start": "level 3",
+   "end": "and now the three levels",
+   "items": [
+    {
+     "type": "big",
+     "text": "UGC",
+     "y": 0.3,
+     "size": 300,
+     "glow": true
+    },
+    {
+     "type": "chip",
+     "text": "REAL CREATORS",
+     "at": "real creators",
+     "y": 0.46,
+     "size": 50
+    },
+    {
+     "type": "chip",
+     "text": "BRIEFED TO CONVERT",
+     "at": "briefed",
+     "y": 0.54,
+     "size": 50,
+     "hl": true
+    },
+    {
+     "type": "chip",
+     "text": "NOT RAW CLIPS",
+     "at": "not raw clips",
+     "y": 0.62,
+     "size": 50,
+     "icon": "cross"
+    }
+   ],
+   "title": "level 3"
+  },
+  {
+   "name": "team",
+   "kind": "float",
+   "start": "and now the three levels",
+   "end": "if you are a dtc brand",
+   "items": [
+    {
+     "type": "text",
+     "small": "three levels, one team",
+     "lines": [
+      "One team,",
+      "one number"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "fit",
+   "kind": "card",
+   "start": "if you are a dtc brand",
+   "end": "we'll go through",
+   "items": [
+    {
+     "type": "rows",
+     "y": 0.42,
+     "rows": [
+      {
+       "at": "dtc brand",
+       "label": "DTC BRAND",
+       "icon": "check"
+      },
+      {
+       "at": "1 to 10 million",
+       "label": "$1M \u2013 $10M A YEAR",
+       "icon": "check"
+      },
+      {
+       "at": "roller coaster",
+       "label": "TIRED OF THE META ROLLER COASTER",
+       "icon": "check"
+      }
+     ]
+    },
+    {
+     "type": "chip",
+     "text": "FREE GROWTH AUDIT",
+     "at": "apply for your free growth audit",
+     "y": 0.7,
+     "size": 54,
+     "hl": true
+    }
+   ],
+   "title": "is this you?"
+  },
+  {
+   "name": "audit",
+   "kind": "card",
+   "start": "we'll go through",
+   "end": "total",
+   "items": [
+    {
+     "type": "rows",
+     "y": 0.4,
+     "rows": [
+      {
+       "at": "your media",
+       "label": "YOUR MEDIA",
+       "icon": "check"
+      },
+      {
+       "at": "your creative",
+       "label": "YOUR CREATIVE",
+       "icon": "check"
+      },
+      {
+       "at": "your funnel",
+       "label": "YOUR FUNNEL",
+       "icon": "check"
+      }
+     ]
+    },
+    {
+     "type": "chip",
+     "text": "VS YOUR REAL P&L",
+     "at": "real p&l",
+     "y": 0.6,
+     "size": 56,
+     "hl": true
+    },
+    {
+     "type": "chip",
+     "text": "NOT A FIT? WE'LL TELL YOU",
+     "at": "if we're not a fit",
+     "y": 0.68,
+     "size": 44
+    }
+   ],
+   "title": "the audit",
+   "outro": false
+  }
+ ]
+}
