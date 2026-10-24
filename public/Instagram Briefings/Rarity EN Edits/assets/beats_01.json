@@ -1,0 +1,266 @@
+[
+ {
+  "type": "title",
+  "start": 0.15,
+  "end": 3.3,
+  "anchors": {},
+  "params": {
+   "kicker": "DTC GROWTH",
+   "title": "Scale without bleeding cash",
+   "size": 70
+  }
+ },
+ {
+  "type": "nametag",
+  "zone": "top",
+  "start": 3.5,
+  "end": 4.9,
+  "params": {}
+ },
+ {
+  "type": "icon",
+  "zone": "top",
+  "start": 4.95,
+  "end": 7.15,
+  "params": {
+   "icon": "chart"
+  }
+ },
+ {
+  "type": "icon",
+  "zone": "top",
+  "start": 9.35,
+  "end": 11.55,
+  "params": {
+   "icon": "dollar",
+   "side": "left"
+  }
+ },
+ {
+  "type": "stat",
+  "start": 13.32,
+  "end": 21.98,
+  "anchors": {
+   "s0": 13.72,
+   "s1": 17.76,
+   "s2": 19.62
+  },
+  "params": {
+   "stats": [
+    [
+     "$5M",
+     "verified revenue"
+    ],
+    [
+     "8x",
+     "ROAS on Meta"
+    ],
+    [
+     "10x",
+     "ROAS on Google",
+     true
+    ]
+   ]
+  }
+ },
+ {
+  "type": "icon",
+  "zone": "top",
+  "start": 25.95,
+  "end": 27.82,
+  "params": {
+   "icon": "calendar"
+  }
+ },
+ {
+  "type": "icon",
+  "zone": "top",
+  "start": 27.87,
+  "end": 30.27,
+  "params": {
+   "icon": "target"
+  }
+ },
+ {
+  "type": "level",
+  "start": 30.42,
+  "end": 36.44,
+  "anchors": {},
+  "params": {
+   "num": "1",
+   "title": "Performance media",
+   "sub": "Meta + Google as one budget \u00b7 MER"
+  }
+ },
+ {
+  "type": "vs",
+  "start": 37.92,
+  "end": 40.94,
+  "anchors": {
+   "right": 0.15,
+   "strike": 0.7599999999999966
+  },
+  "params": {
+   "left": "% of ad spend",
+   "right": "flat fee",
+   "lsub": "paid more when you spend more",
+   "rsub": "never a % of your spend"
+  }
+ },
+ {
+  "type": "icon",
+  "zone": "top",
+  "start": 44.510000000000005,
+  "end": 46.71000000000001,
+  "params": {
+   "icon": "trophy"
+  }
+ },
+ {
+  "type": "level",
+  "start": 47.22,
+  "end": 57.32,
+  "anchors": {},
+  "params": {
+   "num": "2",
+   "title": "AI-native creative",
+   "sub": "dozens of variations a week"
+  }
+ },
+ {
+  "type": "stat",
+  "start": 58.720000000000006,
+  "end": 65.81,
+  "anchors": {
+   "s0": 59.02,
+   "s1": 61.54,
+   "s2": 63.52
+  },
+  "params": {
+   "stats": [
+    [
+     "35",
+     "hooks in 7 days"
+    ],
+    [
+     "3",
+     "winners"
+    ],
+    [
+     "17x",
+     "ROAS",
+     true
+    ]
+   ]
+  }
+ },
+ {
+  "type": "level",
+  "start": 65.86,
+  "end": 74.11999999999999,
+  "anchors": {},
+  "params": {
+   "num": "3",
+   "title": "UGC",
+   "sub": "real creators \u00b7 briefed & edited to convert"
+  }
+ },
+ {
+  "type": "icon",
+  "zone": "top",
+  "start": 76.13000000000001,
+  "end": 78.53000000000002,
+  "params": {
+   "icon": "users"
+  }
+ },
+ {
+  "type": "icon",
+  "zone": "top",
+  "start": 79.99000000000001,
+  "end": 82.59,
+  "params": {
+   "icon": "cross"
+  }
+ },
+ {
+  "type": "stat",
+  "start": 85.76,
+  "end": 90.04,
+  "anchors": {
+   "s0": 87.74
+  },
+  "params": {
+   "stats": [
+    [
+     "$1M\u2013$10M",
+     "a year \u00b7 DTC brands",
+     true
+    ]
+   ]
+  }
+ },
+ {
+  "type": "icon",
+  "zone": "top",
+  "start": 91.95,
+  "end": 93.95,
+  "params": {
+   "icon": "arrow_up",
+   "side": "left"
+  }
+ },
+ {
+  "type": "cta",
+  "start": 93.28,
+  "end": 96.39,
+  "anchors": {},
+  "params": {
+   "line1": "Free growth audit",
+   "line2": "Click the link",
+   "line3": "media \u00b7 creative \u00b7 funnel vs your real P&L"
+  }
+ },
+ {
+  "type": "checklist",
+  "start": 96.44,
+  "end": 105.8,
+  "anchors": {
+   "r0": 97.68,
+   "r1": 98.46,
+   "r2": 99.46
+  },
+  "params": {
+   "rows": [
+    [
+     "Your media",
+     "vs real P&L"
+    ],
+    [
+     "Your creative"
+    ],
+    [
+     "Your funnel"
+    ]
+   ]
+  }
+ },
+ {
+  "type": "icon",
+  "zone": "top",
+  "start": 105.75,
+  "end": 107.95,
+  "params": {
+   "icon": "shield"
+  }
+ },
+ {
+  "type": "icon",
+  "zone": "top",
+  "start": 108.02,
+  "end": 110.22,
+  "params": {
+   "icon": "calendar"
+  }
+ }
+]

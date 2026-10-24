@@ -6,3 +6,12 @@ __pycache__/
 .DS_Store
 .venv/
 .publish_state/
+
+# --- video pipeline: never commit (repo is PUBLIC) ---------------------------------------------
+# raw footage, third-party reference videos, rejected/previous drafts, licensed audio (Mixkit licence
+# forbids redistributing the raw tracks; `fetch_music.py` re-downloads them by id)
+public/Instagram Briefings/**/*Raw Videos*/
+public/Instagram Briefings/Video Edition Ads and Content Refs/
+public/Instagram Briefings/**/assets/previous/
+public/Instagram Briefings/**/assets/rejected/
+.claude/skills/rarity-reel-editor/music/*.mp3

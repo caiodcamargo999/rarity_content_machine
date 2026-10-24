@@ -17,7 +17,7 @@ Options:
   --language eng|por|spa      Force transcription language (default: auto-detect)
   --no-cut                    Skip dead-air removal, keep original timing
   --cut-threshold 0.6         Minimum silence gap (seconds) to cut (default 0.6)
-  --chunk-size 4              Words per caption chunk (default 4)
+  --chunk-size 3              Max words per caption chunk (default 3; also breaks at punctuation)
   --font serif|sans           Caption font: Playfair Display or Plus Jakarta Sans (default sans)
   --accent D50057             Accent hex colour for the highlighted word (default Rarity magenta)
   --model tiny|base|small|medium   Whisper model size (default small; tiny/base are faster, less accurate)
@@ -190,10 +190,15 @@ def cut_video(input_video, output_video, keeps, has_audio):
          output_video])
 
 
-CAPTION_MAX_W = int(OUT_W * 0.86)
-CAPTION_BASE_SIZE = 86
-CAPTION_MIN_SIZE = 46
-CAPTION_BOTTOM_MARGIN = 420  # px from bottom — clears IG's own UI buttons/caption area
+CAPTION_MAX_W = int(OUT_W * 0.88)
+CAPTION_BASE_SIZE = 112          # ONE fixed size for the whole video (never shrinks/grows)
+CAPTION_MIN_SIZE = 60
+CAPTION_BASELINE_Y = 1290        # px from TOP of the 1920 frame: lower-middle, above IG's
+                                 # bottom UI (~y>1560) and clear of the right-hand button rail
+CAPTION_MAX_WORDS = 3            # chunk size; also breaks at punctuation (see chunk_words)
+CAPTION_STROKE = 9               # dark outline px
+CAPTION_ACTIVE_SCALE = 1.0       # active word is NOT resized — only recoloured
+CAPTION_POP_SCALES = (1.26, 1.16)  # 2-frame "pop" overshoot when a word lands
 
 
 def hx(c):
@@ -216,48 +221,295 @@ def fit_caption_font(draw, texts, font_path, max_width):
     return CAPTION_MIN_SIZE, ImageFont.truetype(str(font_path), CAPTION_MIN_SIZE)
 
 
-def render_caption_frame(chunk_words, highlight_idx, font, accent_rgb, out_path):
-    """One transparent 1080x1920 PNG: the whole chunk in white, the currently-spoken
-    word in the brand accent colour — same visual language as the carousel's italic
-    accent word, just without the italic (captions stay upright for legibility at
-    speed)."""
-    img = Image.new("RGBA", (OUT_W, OUT_H), (0, 0, 0, 0))
-    d = ImageDraw.Draw(img)
-    texts = [w["text"].upper() for w in chunk_words]
-    space_w = d.textlength(" ", font=font)
-    widths = [d.textlength(t, font=font) for t in texts]
-    total_w = sum(widths) + space_w * max(0, len(texts) - 1)
+_PUNCT_BREAK = (".", ",", "!", "?", ";", ":", "\u2014", "-")
+
+
+def chunk_words(words, max_words=CAPTION_MAX_WORDS, font=None, max_width=None):
+    """Group words into caption chunks of up to `max_words`. A chunk ALWAYS ends at
+    sentence/clause punctuation (a phrase never straddles two captions) and, when `font` and
+    `max_width` are given, never gets wider than the safe width at the FIXED caption size —
+    which is what lets every caption in the video share one font size."""
+    probe = ImageDraw.Draw(Image.new("RGBA", (8, 8))) if font else None
+
+    def width(ws):
+        txt = " ".join(caption_text(w["text"]) for w in ws)
+        return probe.textlength(txt, font=font) + CAPTION_STROKE * 2 * len(ws)
+
+    chunks, cur = [], []
+    for w in words:
+        if cur and font and width(cur + [w]) > max_width:
+            chunks.append(cur)
+            cur = []
+        cur.append(w)
+        t = w["text"].rstrip()
+        if len(cur) >= max_words or (t and t[-1] in _PUNCT_BREAK and t[-1] != "-"):
+            chunks.append(cur)
+            cur = []
+    if cur:
+        chunks.append(cur)
+    return chunks
+
+
+def caption_text(raw):
+    """Display form: UPPERCASE with sentence punctuation stripped (viral-caption look).
+    Keeps ? and ! and apostrophes/hyphens inside words."""
+    return raw.strip().strip(".,;:\u2014").upper()
+
+
+def render_caption_frame(chunk_words_, highlight_idx, font, accent_rgb, out_path, active_scale=CAPTION_ACTIVE_SCALE):
+    """One transparent 1080x1920 PNG: the chunk in white with a heavy dark outline + soft
+    drop shadow, the word being spoken in the brand accent colour and scaled up so it visibly
+    'pops'. The layout is computed ONCE with the active word at its settled size, so the words
+    never collide and nothing jitters sideways between frames; pop frames just draw the active
+    word bigger around its own centre."""
+    from PIL import ImageFilter
+    texts = [caption_text(w["text"]) for w in chunk_words_]
+    settled = ImageFont.truetype(font.path, int(round(font.size * CAPTION_ACTIVE_SCALE)))
+    probe = ImageDraw.Draw(Image.new("RGBA", (8, 8)))
+    gap = font.size * 0.30 + CAPTION_STROKE
+    # slot width per word = width at its largest drawn state (settled size if active)
+    widths = [probe.textlength(t, font=font) for t in texts]
+    slot = [probe.textlength(t, font=settled) if i == highlight_idx else widths[i] for i, t in enumerate(texts)]
+    total_w = sum(slot) + gap * max(0, len(texts) - 1)
     x = (OUT_W - total_w) / 2
-    baseline_y = OUT_H - CAPTION_BOTTOM_MARGIN
 
-    for i, (t, w) in enumerate(zip(texts, widths)):
-        color = accent_rgb if i == highlight_idx else (255, 255, 255)
-        for dx, dy in ((-3, -3), (-3, 0), (-3, 3), (0, -3), (0, 3), (3, -3), (3, 0), (3, 3)):
-            d.text((x + dx, baseline_y + dy), t, font=font, fill=(0, 0, 0, 235))
-        d.text((x, baseline_y), t, font=font, fill=color + (255,))
-        x += w + space_w
-    img.save(out_path)
+    shadow = Image.new("RGBA", (OUT_W, OUT_H), (0, 0, 0, 0))
+    img = Image.new("RGBA", (OUT_W, OUT_H), (0, 0, 0, 0))
+    sd, d = ImageDraw.Draw(shadow), ImageDraw.Draw(img)
+    for i, t in enumerate(texts):
+        active = i == highlight_idx
+        if active:
+            f = ImageFont.truetype(font.path, int(round(font.size * active_scale)))
+            fw = d.textlength(t, font=f)
+            fx = x + (slot[i] - fw) / 2
+            y = CAPTION_BASELINE_Y - int((f.size - font.size) * 0.5)
+            color = accent_rgb
+        else:
+            f, fw = font, widths[i]
+            fx = x + (slot[i] - fw) / 2
+            y, color = CAPTION_BASELINE_Y, (255, 255, 255)
+        sd.text((fx, y + 10), t, font=f, fill=(0, 0, 0, 200), stroke_width=CAPTION_STROKE + 2, stroke_fill=(0, 0, 0, 200))
+        d.text((fx, y), t, font=f, fill=color + (255,), stroke_width=CAPTION_STROKE, stroke_fill=(8, 8, 8, 255))
+        x += slot[i] + gap
+    shadow = shadow.filter(ImageFilter.GaussianBlur(10))
+    Image.alpha_composite(shadow, img).save(out_path)
 
 
-def build_caption_frames(words_remapped, font_path, accent_hex, chunk_size, out_dir):
-    """Builds one PNG per word (the chunk it belongs to, with that word highlighted) and
-    returns [(png_path, start, end), ...] in the same post-cut timeline as the video."""
+def build_caption_frames(words_remapped, font_path, accent_hex, chunk_size, out_dir, pop=False, style="minimal"):
+    """Builds the caption PNGs and returns [(png_path, start, end, min_frames), ...].
+
+    ONE font size (CAPTION_BASE_SIZE) for the entire video — chunks are re-split by width so
+    they always fit at that size instead of shrinking the font (Caio, 2026-10: "keep the
+    subtitles the same size always"). The active word only changes COLOUR (magenta); it is not
+    scaled, and by default there is no pop animation (pop=True re-enables a size overshoot)."""
+    if style == "minimal":
+        return build_caption_frames_minimal(words_remapped, accent_hex, out_dir)
     accent_rgb = hx(accent_hex)
-    probe_img = Image.new("RGBA", (OUT_W, OUT_H), (0, 0, 0, 0))
-    probe_draw = ImageDraw.Draw(probe_img)
-    chunks = [words_remapped[i:i + chunk_size] for i in range(0, len(words_remapped), chunk_size)]
+    font = ImageFont.truetype(str(font_path), CAPTION_BASE_SIZE)
+    chunks = chunk_words(words_remapped, min(chunk_size, CAPTION_MAX_WORDS) if chunk_size else CAPTION_MAX_WORDS,
+                         font=font, max_width=CAPTION_MAX_W)
     frames = []
     for ci, chunk in enumerate(chunks):
-        if not chunk:
-            continue
-        texts = [w["text"].upper() for w in chunk]
-        _, font = fit_caption_font(probe_draw, texts, font_path, CAPTION_MAX_W)
         for wi, w in enumerate(chunk):
             if w["end"] <= w["start"]:
                 continue
-            png_path = out_dir / f"cap_{ci:04d}_{wi:02d}.png"
-            render_caption_frame(chunk, wi, font, accent_rgb, png_path)
-            frames.append((png_path, w["start"], w["end"]))
+            steady = out_dir / f"cap_{ci:04d}_{wi:02d}.png"
+            render_caption_frame(chunk, wi, font, accent_rgb, steady)
+            if pop:
+                two_f = 2 / 30.0
+                p1 = out_dir / f"cap_{ci:04d}_{wi:02d}_p1.png"
+                p2 = out_dir / f"cap_{ci:04d}_{wi:02d}_p2.png"
+                render_caption_frame(chunk, wi, font, accent_rgb, p1, CAPTION_POP_SCALES[0])
+                render_caption_frame(chunk, wi, font, accent_rgb, p2, CAPTION_POP_SCALES[1])
+                frames.append((p1, w["start"], w["start"] + two_f, 2))
+                frames.append((p2, w["start"] + two_f, w["start"] + 2 * two_f, 2))
+                frames.append((steady, w["start"] + 2 * two_f, max(w["end"], w["start"] + 2 * two_f + 1 / 30.0), 3))
+            else:
+                frames.append((steady, w["start"], w["end"], 4))
+    return frames
+
+
+# ----------------------------------------------------------------------------------------------
+# MINIMAL caption style (default since 2026-10; Caio: captions were "too animated", wanted
+# "a little bit the font of Rarity, but more minimalist"):
+#   * whole PHRASE shown at once (no word-by-word flipping, no size changes, no pop, no stroke)
+#   * BentonSans Regular — Rarity's body typeface — off-white (#efeeea), sentence case, soft shadow
+#   * ONE key word per phrase in Playfair Display Bold Italic + Rarity magenta (the same
+#     "italic accent word" device as the IG posts); static for the whole phrase
+#   * phrases appear/disappear with a ~0.1 s opacity fade, nothing else moves
+#   * fixed size for the whole video
+# ----------------------------------------------------------------------------------------------
+FONT_BENTON = FONTS_DIR / "BentonSans-Regular.otf"
+FONT_ACCENT = FONTS_DIR / "headline-italic.ttf"      # Playfair Display Bold Italic
+MIN_SIZE = 74                  # px, fixed for the entire video
+MIN_ACCENT_SCALE = 1.10        # Playfair's x-height is smaller; optically match Benton
+MIN_MAX_W = int(OUT_W * 0.90)  # single line, generous side margins
+MIN_BASELINE_Y = 1330
+MIN_MAX_WORDS = 7
+MIN_TEXT_RGB = (239, 238, 234)   # brand "primary_offwhite" #efeeea
+_NUM_WORDS = {"um", "dois", "três", "quatro", "cinco", "seis", "sete", "oito", "nove", "dez", "vinte", "trinta",
+              "quarenta", "cinquenta", "noventa", "cem", "mil", "milhão", "milhões", "bilhão", "bilhões",
+              "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven",
+              "twelve", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety",
+              "hundred", "thousand", "million", "billion", "trillion", "percent", "first", "second",
+              "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth"}
+
+
+_STOP = {"the", "a", "an", "and", "or", "but", "of", "to", "in", "on", "at", "for", "with", "from", "by",
+         "as", "is", "are", "was", "were", "be", "will", "that", "this", "these", "those", "their", "theirs",
+         "they", "it", "its", "your", "you", "you're", "we", "our", "if", "so", "up", "not", "because", "than",
+         "then", "same", "now", "right", "run", "runs", "says", "itself", "just", "very", "all", "any",
+         "that's", "it's", "doesn't", "isn't", "you're", "here's", "what", "why", "how", "but", "so", "well", "we'll", "we're",
+         "your", "our", "us", "me", "my", "have", "has", "had", "do", "does", "did", "can", "could", "would", "should",
+         "about", "into", "than", "when", "while", "who", "which", "there", "their", "them", "these", "those",
+         # Portuguese / Spanish filler
+         "o", "a", "os", "as", "um", "uma", "de", "do", "da", "dos", "das", "em", "no", "na", "nos", "nas",
+         "por", "pra", "pro", "para", "com", "que", "e", "é", "ou", "se", "seu", "sua", "seus", "suas", "te",
+         "tua", "teu", "mais", "mesma", "mesmo", "esse", "essa", "isso", "aí", "sabe", "quando", "como",
+         "já", "não", "ao", "à", "pelo", "pela", "você", "vocês", "eles", "elas", "gente", "tá", "está",
+         "são", "ser", "ter", "vai", "foi", "tem", "ele", "ela", "nós", "eu", "me", "lhe", "isto", "aquilo",
+         "toda", "todo", "todos", "todas", "muito", "pouco", "só", "também", "então", "porque", "porém",
+         "el", "la", "los", "las", "un", "una", "del", "al", "con", "por", "para", "su", "sus", "es", "y"}
+
+
+def _clean(raw):
+    """Display text of a token: drop trailing . , ; : (keep ? ! and inner punctuation)."""
+    return raw.strip().rstrip(".,;:\u2014")
+
+
+def pick_key_word(tokens):
+    """Index of the word to accent. Explicit {'key': True} on a word wins; otherwise score:
+    digits/%/$ > number words > capitalised non-initial word (names, days, months) > longest."""
+    for i, t in enumerate(tokens):
+        if isinstance(t, dict) and t.get("key"):
+            return i
+    best, best_s = 0, -1.0
+    for i, t in enumerate(tokens):
+        w = _clean(t["text"] if isinstance(t, dict) else t)
+        core = "".join(ch for ch in w.lower() if ch.isalnum() or ch == "-")
+        score = len(core) / 40.0 - (5 if core in _STOP else 0)
+        if any(ch.isdigit() for ch in w) or "%" in w or "$" in w:
+            score += 6
+        elif any(part in _NUM_WORDS for part in core.split("-")):
+            score += 4
+        elif len(w) >= 2 and w.isalpha() and w.isupper():
+            score += 4            # acronyms: ROAS, CAC, DRE, LTV...
+        elif i > 0 and w[:1].isupper():
+            score += 3
+        if score > best_s:
+            best, best_s = i, score
+    return best if best_s >= 0 else -1      # a phrase made only of filler words gets no accent
+
+
+def minimal_phrases(words):
+    """Group words into single-line phrases: break at sentence/clause punctuation, at
+    MIN_MAX_WORDS, or when the line would exceed MIN_MAX_W at the fixed size."""
+    body = ImageFont.truetype(str(FONT_BENTON), MIN_SIZE)
+    probe = ImageDraw.Draw(Image.new("RGBA", (8, 8)))
+
+    def line_w(ws):
+        return sum(probe.textlength(_clean(w["text"]), font=body) for w in ws) + \
+            probe.textlength(" ", font=body) * (len(ws) - 1)
+
+    # 1) clauses: always end at sentence / clause punctuation
+    clauses, cur = [], []
+    for w in words:
+        cur.append(w)
+        t = w["text"].rstrip()
+        if t and t[-1] in ".,;:!?\u2014":
+            clauses.append(cur)
+            cur = []
+    if cur:
+        clauses.append(cur)
+
+    # 2) a clause that is too wide (or too long) is split into BALANCED parts \u2014 never an orphan
+    #    last word ("...sixth and / seventh") \u2014 by cutting at the word boundary nearest the middle
+    def fits(ws):
+        return len(ws) <= MIN_MAX_WORDS and line_w(ws) * 1.04 <= MIN_MAX_W
+
+    def split(ws):
+        if fits(ws) or len(ws) < 2:
+            return [ws]
+        total = line_w(ws)
+        best_i, best_gap = 1, 1e9
+        for i in range(1, len(ws)):
+            gap = abs(line_w(ws[:i]) - total / 2)
+            if gap < best_gap:
+                best_i, best_gap = i, gap
+        return split(ws[:best_i]) + split(ws[best_i:])
+
+    phrases = []
+    for c in clauses:
+        phrases.extend(split(c))
+    return phrases
+
+
+def legible_accent(rgb, mix=0.30):
+    """Brand magenta lightened toward white so the italic key word keeps contrast on dark footage
+    (pure #D50057 sinks into navy/black scenes). Same hue family, so the palette stays on-brand."""
+    return tuple(int(round(c + (255 - c) * mix)) for c in rgb)
+
+
+def render_minimal_phrase(phrase, key_idx, accent_rgb, out_path, alpha=1.0):
+    from PIL import ImageFilter
+    body = ImageFont.truetype(str(FONT_BENTON), MIN_SIZE)
+    acc = ImageFont.truetype(str(FONT_ACCENT), int(round(MIN_SIZE * MIN_ACCENT_SCALE)))
+    probe = ImageDraw.Draw(Image.new("RGBA", (8, 8)))
+    texts = [_clean(w["text"]) for w in phrase]
+    # Playfair's old-style numerals read as "9o" — numeric key words keep Benton (still magenta)
+    fonts = [(body if any(ch.isdigit() for ch in texts[i]) else acc) if i == key_idx else body
+             for i in range(len(texts))]
+    space = probe.textlength(" ", font=body)
+    widths = [probe.textlength(t, font=f) for t, f in zip(texts, fonts)]
+    total = sum(widths) + space * (len(texts) - 1)
+    x = (OUT_W - total) / 2
+    layer = Image.new("RGBA", (OUT_W, OUT_H), (0, 0, 0, 0))
+    shadow = Image.new("RGBA", (OUT_W, OUT_H), (0, 0, 0, 0))
+    d, sd = ImageDraw.Draw(layer), ImageDraw.Draw(shadow)
+    # very soft dark halo behind the line (no hard edge, no box): keeps the text readable on white
+    # tables / calendars / sunlit shots while the caption still looks like bare type
+    halo = Image.new("RGBA", (OUT_W, OUT_H), (0, 0, 0, 0))
+    ImageDraw.Draw(halo).rounded_rectangle(
+        (x - 70, MIN_BASELINE_Y - MIN_SIZE * 1.15, x + total + 70, MIN_BASELINE_Y + MIN_SIZE * 0.55),
+        radius=60, fill=(10, 6, 20, 150))
+    halo = halo.filter(ImageFilter.GaussianBlur(44))
+    accent_rgb = legible_accent(accent_rgb)
+    for i, (t, f, w) in enumerate(zip(texts, fonts, widths)):
+        col = accent_rgb if i == key_idx else MIN_TEXT_RGB
+        sd.text((x, MIN_BASELINE_Y + 4), t, font=f, fill=(0, 0, 0, 215), anchor="ls")
+        d.text((x, MIN_BASELINE_Y), t, font=f, fill=col + (255,), anchor="ls")
+        x += w + space
+    shadow = shadow.filter(ImageFilter.GaussianBlur(7))
+    img = Image.alpha_composite(Image.alpha_composite(halo, shadow), layer)
+    if alpha < 1.0:
+        a = img.getchannel("A").point(lambda v: int(v * alpha))
+        img.putalpha(a)
+    img.save(out_path)
+
+
+def build_caption_frames_minimal(words, accent_hex, out_dir):
+    accent_rgb = hx(accent_hex)
+    phrases = minimal_phrases(words)
+    FADE_IN = (0.35, 0.7)        # two 2-frame steps (~0.13 s total) before full opacity
+    frames = []
+    for pi, ph in enumerate(phrases):
+        key = pick_key_word(ph)
+        start, end = ph[0]["start"], ph[-1]["end"]
+        nxt_start = phrases[pi + 1][0]["start"] if pi + 1 < len(phrases) else None
+        full = out_dir / f"ph_{pi:03d}_full.png"
+        render_minimal_phrase(ph, key, accent_rgb, full)
+        t = start
+        for k, a in enumerate(FADE_IN):
+            f = out_dir / f"ph_{pi:03d}_in{k}.png"
+            render_minimal_phrase(ph, key, accent_rgb, f, alpha=a)
+            frames.append((f, t, t + 2 / 30.0, 2))
+            t += 2 / 30.0
+        hold_end = max(end, t + 0.2)
+        frames.append((full, t, hold_end, 4))
+        if nxt_start is None or nxt_start - hold_end > 0.25:
+            f = out_dir / f"ph_{pi:03d}_out.png"
+            render_minimal_phrase(ph, key, accent_rgb, f, alpha=0.4)
+            frames.append((f, hold_end, hold_end + 2 / 30.0, 2))
     return frames
 
 
@@ -281,22 +533,46 @@ def build_caption_track(caption_frames, total_duration, out_dir, fps=30):
     blank_path = out_dir / BLANK_CAPTION_NAME
     Image.new("RGBA", (OUT_W, OUT_H), (0, 0, 0, 0)).save(blank_path)
 
+    # Frame-quantize every caption window. With raw float durations, very short words ("the",
+    # "are", "you're", ~0.07-0.12s) came out at 0-2 frames and vanished from the track (found by
+    # the every-word QA gate, 2026-10). So: (1) snap to integer frames, (2) bridge tiny gaps
+    # between neighbouring words so the chunk doesn't flicker off, (3) give every word at least
+    # MIN_FRAMES by pushing the next word's start later (total timeline length is unchanged).
+    BRIDGE_FRAMES = 6  # gaps up to 0.2s between words are bridged (keeps the phrase on screen)
+    total_frames = int(round(total_duration * fps))
+    wins = []
+    for item in caption_frames:
+        png_path, start, end = item[0], item[1], item[2]
+        min_f = item[3] if len(item) > 3 else 4
+        sf = int(round(start * fps))
+        ef = max(int(round(end * fps)), sf + 1)
+        wins.append([png_path, sf, ef, min_f])
+    prev_end = 0
+    for i, w in enumerate(wins):
+        if w[1] < prev_end:
+            w[1] = prev_end
+        if i + 1 < len(wins):
+            gap = wins[i + 1][1] - w[2]
+            if 0 < gap <= BRIDGE_FRAMES:
+                w[2] = wins[i + 1][1]
+        w[2] = max(w[2], w[1] + w[3])
+        prev_end = w[2]
     entries = []  # (png_path, duration)
-    cursor = 0.0
-    for png_path, start, end in caption_frames:
-        if start > cursor + 0.001:
-            entries.append((blank_path, start - cursor))
-        entries.append((png_path, max(0.01, end - start)))
-        cursor = max(cursor, end)
-    if total_duration > cursor + 0.001:
-        entries.append((blank_path, total_duration - cursor))
+    cursor = 0
+    for png_path, sf, ef, _mf in wins:
+        if sf > cursor:
+            entries.append((blank_path, (sf - cursor) / fps))
+        entries.append((png_path, (ef - sf) / fps))
+        cursor = ef
+    if total_frames > cursor:
+        entries.append((blank_path, (total_frames - cursor) / fps))
     if not entries:
         entries.append((blank_path, total_duration))
 
     concat_list = out_dir / "caption_concat.txt"
     lines = []
     for png_path, dur in entries:
-        lines.append(f"file '{png_path}'\nduration {dur:.3f}\n")
+        lines.append(f"file '{png_path}'\nduration {dur:.5f}\n")
     lines.append(f"file '{entries[-1][0]}'\n")  # concat demuxer quirk: repeat last file, no duration
     concat_list.write_text("".join(lines))
 
@@ -306,13 +582,13 @@ def build_caption_track(caption_frames, total_duration, out_dir, fps=30):
     return track_path
 
 
-def final_pass(cut_video_path, caption_track_path, output_path):
+def final_pass(cut_video_path, caption_track_path, output_path, grade="eq=contrast=1.06:saturation=1.08:brightness=0.01"):
     """Scale/crop to 9:16, apply a light brand colour treatment, overlay the single
     pre-rendered caption track, then stamp the transparent Rarity symbol top-right —
     always exactly 3 inputs, regardless of script length (see build_caption_track)."""
     filt = (
         f"[0:v]scale={OUT_W}:{OUT_H}:force_original_aspect_ratio=increase,"
-        f"crop={OUT_W}:{OUT_H},eq=contrast=1.06:saturation=1.08:brightness=0.01[v0];"
+        f"crop={OUT_W}:{OUT_H}{',' + grade if grade else ''}[v0];"
         f"[v0][1:v]overlay=0:0[v1];"
         f"[2:v]scale=64:-1[sym];"
         f"[v1][sym]overlay=W-w-40:40[outv]"
@@ -333,7 +609,8 @@ def main():
                      help="ISO-ish hint; mapped to whisper 2-letter codes internally")
     ap.add_argument("--no-cut", action="store_true")
     ap.add_argument("--cut-threshold", type=float, default=0.6)
-    ap.add_argument("--chunk-size", type=int, default=4)
+    ap.add_argument("--chunk-size", type=int, default=3)
+    ap.add_argument("--caption-style", choices=["minimal", "bold"], default="minimal")
     ap.add_argument("--font", choices=["serif", "sans"], default="sans")
     ap.add_argument("--accent", default=DEFAULT_ACCENT)
     ap.add_argument("--model", default="small")
@@ -384,7 +661,7 @@ def main():
 
         caps_dir = tmp / "caps"
         caps_dir.mkdir(exist_ok=True)
-        caption_frames = build_caption_frames(words_remapped, font_path, args.accent, args.chunk_size, caps_dir)
+        caption_frames = build_caption_frames(words_remapped, font_path, args.accent, args.chunk_size, caps_dir, style=args.caption_style)
         print(f"[captions] {len(caption_frames)} word-highlight frames rendered (font: {font_family})")
         caption_track = build_caption_track(caption_frames, cut_duration, caps_dir)
 

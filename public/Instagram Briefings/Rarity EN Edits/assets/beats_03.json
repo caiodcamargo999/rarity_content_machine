@@ -1,0 +1,410 @@
+[
+ {
+  "type": "title",
+  "start": 0.15,
+  "end": 3.3,
+  "anchors": {},
+  "params": {
+   "kicker": "CASE STUDY",
+   "title": "One brand. Real profit.",
+   "size": 80
+  }
+ },
+ {
+  "type": "nametag",
+  "zone": "top",
+  "start": 3.5,
+  "end": 3.92,
+  "params": {}
+ },
+ {
+  "type": "icon",
+  "zone": "top",
+  "start": 3.9699999999999998,
+  "end": 6.369999999999999,
+  "params": {
+   "icon": "chart"
+  }
+ },
+ {
+  "type": "stat",
+  "start": 10.02,
+  "end": 18.94,
+  "anchors": {
+   "s0": 10.52,
+   "s1": 12.82,
+   "s2": 14.82,
+   "s3": 17.42
+  },
+  "params": {
+   "stats": [
+    [
+     "$2M",
+     "verified revenue"
+    ],
+    [
+     "8x",
+     "ROAS",
+     true
+    ],
+    [
+     "-35%",
+     "CAC"
+    ],
+    [
+     "4x",
+     "order volume"
+    ]
+   ]
+  }
+ },
+ {
+  "type": "icon",
+  "zone": "top",
+  "start": 27.87,
+  "end": 30.27,
+  "params": {
+   "icon": "arrow_up",
+   "side": "left"
+  }
+ },
+ {
+  "type": "cta",
+  "start": 34.44,
+  "end": 37.64,
+  "anchors": {},
+  "params": {
+   "line1": "Free growth audit",
+   "line2": "Click the link",
+   "line3": "book it below"
+  }
+ },
+ {
+  "type": "icon",
+  "zone": "top",
+  "start": 35.71,
+  "end": 38.11,
+  "params": {
+   "icon": "calendar"
+  }
+ },
+ {
+  "type": "icon",
+  "zone": "top",
+  "start": 38.31,
+  "end": 40.71,
+  "params": {
+   "icon": "target"
+  }
+ },
+ {
+  "type": "strike",
+  "start": 43.24,
+  "end": 53.459999999999994,
+  "anchors": {
+   "strike": 6.099999999999994
+  },
+  "params": {
+   "big": "%",
+   "label": "of your ad spend",
+   "sub": "the more they spend, the more they make"
+  }
+ },
+ {
+  "type": "checklist",
+  "start": 55.36,
+  "end": 65.04,
+  "anchors": {
+   "r0": 56.98,
+   "r1": 58.62,
+   "r2": 61.64
+  },
+  "params": {
+   "rows": [
+    [
+     "Media buyer",
+     "chasing ROAS"
+    ],
+    [
+     "Creative studio",
+     "chasing engagement"
+    ],
+    [
+     "UGC shop",
+     "sending raw clips"
+    ]
+   ],
+   "mark": "x"
+  }
+ },
+ {
+  "type": "stat",
+  "start": 66.36,
+  "end": 69.10000000000001,
+  "anchors": {
+   "s0": 66.46,
+   "s1": 38.36,
+   "s2": 67.92
+  },
+  "params": {
+   "stats": [
+    [
+     "1",
+     "team"
+    ],
+    [
+     "1",
+     "number"
+    ],
+    [
+     "3",
+     "levers",
+     true
+    ]
+   ]
+  }
+ },
+ {
+  "type": "vs",
+  "start": 70.16000000000001,
+  "end": 73.52000000000001,
+  "anchors": {
+   "right": 0.1,
+   "strike": 0.7999999999999886
+  },
+  "params": {
+   "left": "% of ad spend",
+   "right": "flat fee",
+   "lsub": "the more you spend, the more they make",
+   "rsub": "never a % of your spend"
+  }
+ },
+ {
+  "type": "level",
+  "start": 74.18,
+  "end": 81.95,
+  "anchors": {},
+  "params": {
+   "num": "1",
+   "title": "Performance media",
+   "sub": "Meta + Google \u00b7 one budget \u00b7 MER"
+  }
+ },
+ {
+  "type": "level",
+  "start": 82.0,
+  "end": 91.49000000000001,
+  "anchors": {},
+  "params": {
+   "num": "2",
+   "title": "AI-native creative",
+   "sub": "dozens of new ad variations a week"
+  }
+ },
+ {
+  "type": "level",
+  "start": 91.54,
+  "end": 95.8,
+  "anchors": {},
+  "params": {
+   "num": "3",
+   "title": "UGC",
+   "sub": "real creators \u00b7 briefed & edited to convert"
+  }
+ },
+ {
+  "type": "level",
+  "start": 96.16000000000001,
+  "end": 102.2,
+  "anchors": {},
+  "params": {
+   "num": "+",
+   "title": "Senior operators",
+   "sub": "inventory \u00b7 margin \u00b7 cash flow"
+  }
+ },
+ {
+  "type": "icon",
+  "zone": "top",
+  "start": 97.43,
+  "end": 100.03,
+  "params": {
+   "icon": "users"
+  }
+ },
+ {
+  "type": "icon",
+  "zone": "top",
+  "start": 102.01,
+  "end": 104.01,
+  "params": {
+   "icon": "cross"
+  }
+ },
+ {
+  "type": "stat",
+  "start": 103.98,
+  "end": 111.6,
+  "anchors": {
+   "s0": 105.14,
+   "s1": 108.04
+  },
+  "params": {
+   "stats": [
+    [
+     "1",
+     "team owns the growth"
+    ],
+    [
+     "1",
+     "number: your profit",
+     true
+    ]
+   ]
+  }
+ },
+ {
+  "type": "icon",
+  "zone": "top",
+  "start": 110.42,
+  "end": 112.62,
+  "params": {
+   "icon": "dollar",
+   "side": "left"
+  }
+ },
+ {
+  "type": "stat",
+  "start": 113.60000000000001,
+  "end": 122.7,
+  "anchors": {
+   "s0": 118.74,
+   "s1": 120.8
+  },
+  "params": {
+   "stats": [
+    [
+     "$10M",
+     "in sales"
+    ],
+    [
+     "10x",
+     "ROAS",
+     true
+    ]
+   ]
+  }
+ },
+ {
+  "type": "stat",
+  "start": 123.60000000000001,
+  "end": 130.41,
+  "anchors": {
+   "s0": 123.9,
+   "s1": 126.88,
+   "s2": 128.2
+  },
+  "params": {
+   "stats": [
+    [
+     "35",
+     "new hooks in 7 days"
+    ],
+    [
+     "3",
+     "winners"
+    ],
+    [
+     "17x",
+     "ROAS",
+     true
+    ]
+   ]
+  }
+ },
+ {
+  "type": "stat",
+  "start": 130.46,
+  "end": 139.02,
+  "anchors": {
+   "s0": 133.28,
+   "s1": 135.96
+  },
+  "params": {
+   "stats": [
+    [
+     "6x",
+     "ROAS on TikTok",
+     true
+    ],
+    [
+     "<$20",
+     "CAC \u00b7 cold traffic"
+    ]
+   ]
+  }
+ },
+ {
+  "type": "stat",
+  "start": 139.78,
+  "end": 142.0,
+  "anchors": {
+   "s0": 139.98
+  },
+  "params": {
+   "stats": [
+    [
+     "$1M\u2013$10M",
+     "a year \u00b7 growth partner",
+     true
+    ]
+   ]
+  }
+ },
+ {
+  "type": "cta",
+  "start": 147.0,
+  "end": 150.21,
+  "anchors": {},
+  "params": {
+   "line1": "Free growth audit",
+   "line2": "Click the link",
+   "line3": "media \u00b7 creative \u00b7 funnel vs your real P&L"
+  }
+ },
+ {
+  "type": "stat",
+  "start": 150.26000000000002,
+  "end": 156.96,
+  "anchors": {
+   "s0": 150.36
+  },
+  "params": {
+   "stats": [
+    [
+     "2\u20134",
+     "business days to audit",
+     true
+    ]
+   ]
+  }
+ },
+ {
+  "type": "icon",
+  "zone": "top",
+  "start": 164.63,
+  "end": 167.03,
+  "params": {
+   "icon": "users"
+  }
+ },
+ {
+  "type": "icon",
+  "zone": "top",
+  "start": 174.92000000000002,
+  "end": 177.32000000000002,
+  "params": {
+   "icon": "play"
+  }
+ }
+]

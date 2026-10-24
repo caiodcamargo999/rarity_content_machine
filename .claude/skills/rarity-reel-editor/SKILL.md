@@ -1,159 +1,387 @@
 ---
 name: rarity-reel-editor
-description: "Step 3 of Caio's personal video pipeline — takes either (a) a raw recorded video or (b) a narration track + a list of B-roll clips/images per sentence, and produces a finished, cut, color-treated, captioned, branded vertical Reel (1080x1920). Animated word-highlight captions in Rarity's brand font + magenta accent, Rarity logo overlay, and (for the voiceover format) dynamic crossfade transitions between scenes. ALWAYS use when Caio wants raw footage turned into a finished Reel, or wants a voiceover-style video built from B-roll clips synced to narration — 'corta e edita esse vídeo', 'bota legenda nesse Reels', 'monta um vídeo com essas imagens/clipes e essa narração'. When in doubt, USE this skill."
+description: "Step 3 of Caio's personal video pipeline — takes either (a) a raw recorded video or (b) a narration track + a list of B-roll clips/images per sentence, and produces a finished, cut, color-treated, captioned, branded vertical Reel (1080x1920). Minimal fixed-size captions in Rarity's brand typefaces (BentonSans + a magenta Playfair-italic key word), Rarity symbol overlay, and (for the voiceover format) dense brand-tinted lens-flare transitions by default (plus whip pan, zoom punch, flash, dip) with matching SFX, strong automatic colour matching so every clip shares one palette, a human-sounding local AI voice (Chatterbox), royalty-free music that ducks under the voice, and mastered loudness. Also edits a recorded talking-head clip (e.g. Diego for Rarity BR, in Portuguese): tight cuts, minimal captions, speech-synced motion-graphic cards, music. ALWAYS use when Caio wants raw footage turned into a finished Reel, or wants a voiceover-style video built from B-roll clips synced to narration — 'corta e edita esse vídeo', 'bota legenda nesse Reels', 'monta um vídeo com essas imagens/clipes e essa narração', 'faz o voiceover', 'put music on it'. When in doubt, USE this skill."
 ---
 
 # Rarity Reel Editor (Step 3 of the personal video pipeline)
 
 Takes video that already has a voice track (Caio's own recording, or a narration track paired with
-B-roll) and turns it into a finished, postable vertical Reel — cut, color-treated, captioned, and
-branded. This is the step after `rarity-reel-scripts` (the words) and, for formats with a face on
+B-roll) and turns it into a finished, postable vertical Reel — cut, color-treated, captioned, scored
+and branded. This is the step after `rarity-reel-scripts` (the words) and, for formats with a face on
 camera, `rarity-reel-dubbing` (translating Caio's own recorded voice into other languages); it never
 writes scripts or dubs voices itself.
 
-Two formats, two scripts, same caption/branding engine underneath:
+Two formats, same caption/branding engine underneath:
 
-1. **`scripts/edit_reel.py`** — raw footage format. Input: one video file with Caio talking
-   (direct-to-camera, podcast clip, street interview). Transcribes it, auto-cuts dead air, color
-   grades, captions, brands.
-2. **`scripts/build_voiceover_reel.py`** — voiceover + B-roll format. Input: a narration audio track
-   (Caio's own voice, or a synthetic placeholder for a demo) plus an ordered list of
-   `{video or image, text}` scenes. Each scene is shown for exactly as long as its sentence takes to
-   say (aligned via real transcription, not a guessed split), with a slow push-in zoom, joined to the
-   next scene with a dynamic crossfade. Prefer real video clips over static images — real motion
-   reads as dramatically more realistic and "viral" than a Ken-Burns pan on a photo (confirmed with
-   Caio, 2026-10: he explicitly called a photo-based version "not realistic" and asked for real clips).
+1. **`scripts/edit_reel.py`** — raw footage format (Caio talking on camera). Transcribes, auto-cuts
+   dead air, color grades, captions, brands.
+2. **`scripts/build_voiceover_reel.py`** — voiceover + B-roll format. Narration + ordered
+   `{video|image, text}` scenes → each scene shown exactly as long as its sentence is spoken, styled
+   transitions + SFX, mastered voice, ducked music bed, captions, logo. **Prefer real video clips
+   over photos** — Caio called a photo/Ken-Burns version "not realistic" (2026-10).
 
-Both scripts end by calling the same three shared functions in `edit_reel.py`:
-`build_caption_frames` → `build_caption_track` → `final_pass`. Fix a caption/branding bug once, in
-one place, and both formats inherit the fix.
+3. **`scripts/edit_talking_head.py`** — Workflow C: a recorded talking-head clip (a team member such
+   as Diego, or Caio) → CUTS + minimal captions + **speech-synced motion graphics** + music/SFX.
+   Built for Rarity BR in Portuguese; language-agnostic. See "Workflow C" below.
 
-## Non-negotiables (several of these are lessons from real failures — read before changing the code)
+All formats end with the same shared caption engine in `edit_reel.py`: `build_caption_frames` →
+`build_caption_track`. Fix a caption/branding bug once, every format inherits it.
+
+## Files in this skill
+
+| Path | What it is |
+|---|---|
+| `scripts/build_voiceover_reel.py` | Workflow B builder (transitions, SFX, music ducking, voice mastering, captions) |
+| `scripts/narrate_chatterbox.py` | Human-sounding local TTS (Chatterbox). Needs `~/.rarity-voice-venv` (setup in its docstring) |
+| `scripts/align_words.py` | Forced alignment: whisper TIMES + the SCRIPT's own words → `words.json` (zero caption typos) |
+| `scripts/edit_talking_head.py` | Workflow C: cut + grade + captions + motion graphics + music for a recorded talking head |
+| `scripts/motion_graphics.py` | Speech-synced motion-graphic beats (strike, bars, bank, credits, sum, channels, lupa, cac, call, checklist) |
+| `scripts/data_scenes.py` | Full-frame designed scenes for voiceover Reels (calendar, timeline, counter, bars, ladder, auction…) + plate overlays |
+| `scripts/lens_flare.py` | Procedural brand-coloured lens-flare transition track (numpy → qtrle .mov) |
+| `scripts/edit_reel.py` | Workflow A + the shared caption / branding engine |
+| `music/` | Curated royalty-free tracks (Mixkit Stock Music Free License) + `README.md` with what to use when |
+| `fonts/` | Brand fonts for captions: BentonSans Regular (body) + Playfair Display Bold Italic (accent word); fonts only — libass chokes on other files here |
+
+## The voiceover recipe (Workflow B), end to end
+
+```
+# 0. script text, one file, exactly what will be spoken                       narration.txt
+# 1. human voice (local, free)
+~/.rarity-voice-venv/bin/python scripts/narrate_chatterbox.py narration.txt narration.wav
+# 2. script-exact word timings
+python3 scripts/align_words.py narration.wav narration.txt words.json
+# 3. scenes.json = one entry per sentence-group with a REAL, watched B-roll clip (see rule 4/7)
+# 4. build
+python3 scripts/build_voiceover_reel.py --manifest scenes.json --narration narration.wav \
+    --words words.json --music music/brainiac-167.mp3 --music-start 4 --transitions flare \
+    --output reel.mp4 --language eng
+# 5. QA gate (rule 6) before showing it to Caio
+```
+Always pass `--words` for AI-generated narration (captions then equal the script exactly). Without
+`--words` the narration is transcribed by whisper — use that only for Caio's own recording, and
+proof-read the captions because whisper writes "$96" for "ninety-six" and drops apostrophes.
+
+`scenes.json`: `{"video": "x.mp4", "offset": 2.0, "text": "...", "transition": "whip"}` —
+`offset` skips a dull intro; `transition` (optional) overrides the preset for the cut INTO that
+scene: `flare`, `whip`, `whipr`, `punch`, `flash`, `dip`, `dissolve`, `cut`. Presets
+(`--transitions`): `mix` (**default**: varied sequence, lens flare only at key turns), `flare` (lens flare on every cut — avoid unless asked), `dynamic` (whip → punch → flash → whip back…), `kinetic` (faster/more
+whips), `clean` (dissolves + dips), `cinematic` (dips + punches). Every transition also gets a
+matching whoosh / shimmer / thump / tick (synthesized with ffmpeg, no licensing issue) unless
+`--no-sfx`. Colour handling: automatic per-clip colour matching + one shared look (`--no-grade`
+disables it; see rule 10).
+
+## Non-negotiables (most are lessons from real failures — read before changing the code)
 
 1. **Captions are ONE pre-baked video track, never a chain of per-word overlay filters.** The first
-   version of `build_voiceover_reel.py` composited each word's caption PNG directly onto the main
-   video with its own `overlay=...:enable='between(t,...)'` filter, chained one after another — for a
-   ~20s script that's 50+ simultaneous `-i` inputs in one `filter_complex`. It silently stopped
-   compositing partway through the video (captions just vanished for the second half, no ffmpeg
-   error, no warning) — almost certainly a resource/stream-count ceiling in a single filtergraph with
-   that many inputs. Confirmed and fixed 2026-10: `build_caption_track()` now bakes every caption PNG
-   plus fully-transparent filler (for the natural pauses between words/sentences) into ONE
-   alpha-channel `.mov` (via the concat demuxer's per-file `duration` directive, `qtrle` codec), so
-   the final composite in `final_pass()` only ever has 3 inputs (video, caption track, logo)
-   regardless of script length. **Never go back to per-word chained overlays** — if a caption bug
-   shows up again, suspect `build_caption_track`/`final_pass` first, not the chaining approach.
-2. **Scene transitions (voiceover format) use a rotating set of dynamic crossfades, not hard cuts.**
-   Caio explicitly asked for this (2026-10): "eu gostaria que as transições fossem um pouco mais
-   dinâmicas." `build_voiceover_reel.py` joins consecutive scene clips with ffmpeg's `xfade` filter,
-   cycling through `TRANSITION_STYLES` (zoomin, slideleft, wiperight, slideup, smoothleft) so a
-   multi-scene video doesn't repeat the same cut every time. To make room for the overlap without
-   drifting the total video out of sync with the narration audio, each scene's visible slot is
-   shrunk by a few hundred ms (split evenly across all scenes, see `plan_transitions()`) — this is
-   invisible in practice, and caption timing is completely unaffected since captions key off the
-   narration's own absolute word timestamps, never off scene boundaries.
-3. **Narration for a synthetic/demo voice: use the ElevenLabs voice via Higgsfield's `generate_audio`
-   (`model: text2speech_v2`, `variant: elevenlabs`), not macOS `say`.** Caio's exact words (2026-10):
-   "can you turn the voice more human and not too robotic" — `say` was tried first and rejected as
-   robotic. Use `list_voices` to pick a preset (`voice_type: "preset"`), pass the full script text in
-   one `prompt`, download the result, use it as `--narration`. Cost is trivial (~1 credit for a
-   20-30s script). **Check `balance` before generating** — if credits are insufficient (this has
-   happened), say so plainly to Caio rather than silently downgrading; only fall back to `say` as a
-   visibly-flagged, temporary stand-in, and tell him the pipeline supports swapping in a proper
-   ElevenLabs track later with zero other changes (just re-run with a different `--narration` file).
-   For Caio's own real content (not a demo), the actual narration is his own recorded voice — `say`
-   and ElevenLabs are demo/placeholder tools only.
-4. **B-roll clips must be thematically congruent with the sentence they're paired with, not just the
-   closest keyword match.** Caio caught this directly (2026-10): a scene narrating "every number on
-   this dashboard is a decision" was paired with a forex/crypto trading-screen stock video because
-   that's what surfaced for "dashboard" — he called it out immediately ("eu tenho negócio de trade,
-   nada a ver"). Watch the actual clip before using it, not just the search snippet/description.
-   When no honestly-matching real clip exists for a line, it's better to rewrite the line to fit real
-   available, congruent footage (e.g. "dashboard" → "checkout" when a real checkout/payment clip was
-   available and a real dashboard clip wasn't) than to force a mismatched visual.
-5. **B-roll sourcing discipline — same bar as the `rarity-ig-*` pipeline.** Real, specific,
-   rights-traceable, free for commercial use. Pexels is the default source — its license is
-   unambiguously free for commercial use (confirmed via
-   `help.pexels.com/.../Can-I-use-the-photos-and-videos-for-a-commercial-project`), with no
-   attribution required. To get a direct, no-API-key-needed mp4 URL for a given Pexels video page,
-   use the download redirect: `https://www.pexels.com/download/video/<id>/` (redirects straight to
-   the best-quality file — confirmed working via `curl -sIL`). **Avoid Mixkit items under the
-   "Mixkit Restricted License"** (shown on the item's own page) — that license is personal-use-only
-   and Rarity's work is commercial; only Mixkit's plain "Mixkit Stock Video Free License" items are
-   safe to use commercially, and even then Pexels is preferred since every item there is unambiguously
-   commercial-clear. Never use Shutterstock/Getty/Adobe Stock or other paid agencies.
-6. **Captions must have zero errors — this is a hard gate, not a nice-to-have.** Caio's exact words
-   (2026-10): "as legendas não pode ter nenhum erro." Before calling any render done:
-   - Sample frames at regular intervals across the **entire** duration (not just the first few
-     seconds — the caption-dropout bug in Non-negotiable 1 was invisible in early-frame spot checks
-     and only showed up once frames late in the video were checked). A reasonable sampling cadence is
-     one frame every 2-3 seconds of final output.
-   - At every sampled timestamp that falls inside a spoken word's window, confirm a caption is
-     actually on screen, legible (not cut off, not overlapping the logo), and shows the **correct**
-     word highlighted in magenta for that exact instant — not a neighboring word, not stale text from
-     the previous chunk.
-   - If any sampled frame fails this, do not ship — find the cause (see Non-negotiable 1 for the known
-     failure mode) and re-render before showing the result to Caio.
-7. **B-roll must be very congruent with what's being said, not just thematically adjacent.** Caio's
-   exact words (2026-10): "os takes de video devem ser muito congruentes com o que é falado." This
-   means watching the actual candidate clip (not just reading its title/description) and asking "if
-   Caio watched this exact clip while hearing this exact sentence, would it look intentional, or would
-   it look like stock footage that happened to share a keyword?" A forex/crypto trading screen for a
-   line about "numbers on a dashboard" fails this test even though "dashboard" and "financial chart"
-   are keyword-adjacent — see Non-negotiable 4 for the real incident. When no clip clears this bar,
-   either keep searching (try different phrasing, different source) or adjust the sentence to fit a
-   clip that genuinely does — never ship the mismatch.
+   version chained one `overlay` per word (50+ inputs) and silently stopped compositing mid-video.
+   `build_caption_track()` bakes every caption PNG + transparent filler into ONE alpha `.mov`
+   (concat demuxer, `qtrle`), so `final_pass()` only ever has 3 inputs. If a caption bug appears,
+   suspect `build_caption_track`/`final_pass` first. Inside it, windows are **frame-quantized**,
+   tiny gaps are bridged, and short words get a minimum frame count — before that fix, words under
+   ~0.12 s ("the", "are", "you're") vanished (found by the per-word QA gate, 2026-10).
+2. **Transitions must look professional — never use ffmpeg's `zoomin` xfade.** It pixelates into
+   visible blocks mid-transition (spotted on a render 2026-10, Caio: "very amateur"). The current
+   set is: whip pan (slide + horizontal `gblur` motion blur on the overlap), punch (short dissolve
+   while the INCOMING clip eases from 120% → 100% — implemented in the scene's zoom expression),
+   flash (`fadewhite` 0.16 s), dip, dissolve. Rotate styles so no two neighbours repeat, keep them
+   0.14–0.4 s, and always pair with SFX. Per-boundary durations differ, so `plan_transitions()`
+   shrinks each scene by the average overlap to keep total length == narration length.
+   **Lens flare is Caio's signature transition** (2026-10: "transição lens flare") but is NOT to be used on every cut — he later asked for variety (rule 21); default preset is now `mix`. It is rendered
+   procedurally by `scripts/lens_flare.py` as ONE full-length RGB track (black except at the
+   cuts) and screen-blended over the joined video in a single `blend=all_mode=screen` pass —
+   convert both streams to `gbrp` first or the studio-range black of yuv420p lifts the whole
+   frame. Each flare is a 0.66 s light source sweeping the frame (small hot core + magenta bloom
+   + anamorphic streak + mirrored ghost discs + a faint magenta wash at the peak) with the actual
+   cut (a 0.20 s dissolve) hidden under the brightest moment; the shimmer SFX leads the peak by
+   ~0.34 s. **Keep the light DENSE and tinted, never a white-out** (Caio, 2026-10, on the first
+   version: "make the light more opaque, it's too lighty"): the first version's wash was 0.74 of
+   white and bloomed the whole frame pale; it is now `FLARE_STRENGTH = 0.62`, no pure white
+   (`HOT` is warm off-white), wash 0.20 tinted brand magenta, and the screen blend runs at
+   `--flare-opacity 0.85`. Tune lighter/darker with those two knobs, never by adding white.
+   Flare colours are ONLY off-white + Rarity magenta so the palette stays consistent. Sweep
+   direction rotates through 4 paths so consecutive flares don't repeat. Preview the flare alone
+   with `python3 scripts/lens_flare.py out.png`.
+3. **The voice must sound human. Hierarchy:** (a) Caio's own recording (best, always), (b) Chatterbox
+   via `narrate_chatterbox.py` (open weights, preferred over ElevenLabs in Resemble's blind tests;
+   optional `--voice-ref` to clone Caio's OWN voice from a 10 s clip he records), (c) ElevenLabs via
+   Higgsfield `generate_audio` when that connector is available (check `balance` first), (d) Edge
+   neural voices (`edge-tts`) only as a flagged stand-in. **Never `say`** — Caio rejected it as
+   robotic; and Edge voices were still called "a little bit synthetic" (2026-10). Generate
+   sentence-by-sentence (pacing resets naturally), never one giant paragraph. Chatterbox embeds an
+   inaudible Perth AI watermark — fine to post, but don't pass it off as a human recording.
+   Master the voice (`VOICE_CHAIN`: -4 dB headroom → high-pass → de-box → presence → air →
+   compressor → -16 LUFS). The headroom matters: un-padded TTS peaks at 0 dBFS and clipped the EQs.
+4. **B-roll must be very congruent with the sentence** ("os takes de video devem ser muito
+   congruentes com o que é falado"). A "dashboard" line once got a forex-trading clip and Caio
+   rejected it. Process: search Pexels via `tavily_search` (`include_domains: ["pexels.com"]`; phrase
+   queries like video titles — "Free Stock Video Footage … <literal action>"), download with
+   `https://www.pexels.com/download/video/<id>/` (302 → mp4, no key needed), then **look at a
+   contact sheet** (`ffmpeg -vf fps=0.6,scale=-2:300,tile=6x1`) before accepting. Reject: foreign-
+   language UI, brand/logos you don't want, blank phone screens when the line says "app", stock
+   that merely shares a keyword. Prefer 9:16 sources; if none match, rewrite the line to fit real
+   footage rather than ship a mismatch. Pexels licence = free commercial use, no attribution.
+5. **Music: royalty-free only, picked by measurement, ducked under the voice.** Use the curated tracks
+   in `music/` (Mixkit "Stock Music Free License": commercial + social OK, no attribution, not for
+   re-sale as music). Selection rule for voiceover Reels: instrumental, 100–120 BPM, steady energy
+   (low RMS variance), warm-mid spectrum (centroid ~1.4–2.3 kHz), no vocals, no big drops — it must
+   *support* speech. The builder loudness-normalizes the bed to `--music-lufs` (-27), runs it through
+   `sidechaincompress` keyed by the voice (it dips ~8–10 dB while words are spoken and breathes back
+   up in pauses), fades in 0.8 s / out 1.8 s, then loudnorms the final mix to -14 LUFS / -1.2 dBTP
+   (Instagram target). The Instagram Graph API cannot attach IG's licensed library, so the music is
+   baked into the file; Caio can still layer an in-app trending sound at low volume if he wants.
+6. **Captions: zero errors (hard gate) AND minimal.** ("as legendas não pode ter nenhum erro";
+   "keep the subtitles the same size always"; and, on the bold word-by-word version: "the caption
+   is too animated — make it a little bit with the font of Rarity, but more minimalist".)
+   **Default style = `minimal`** (`--caption-style minimal`, in `edit_reel.build_caption_frames_minimal`):
+   - whole PHRASE shown at once — no word-by-word flipping, no scaling, no pop, no stroke. Only a
+     ~0.13 s opacity fade-in and a short fade-out; nothing moves.
+   - Rarity's typefaces: **BentonSans Regular** (brand body font, `fonts/BentonSans-Regular.otf`) in
+     brand off-white `#efeeea`, sentence case as written in the script, with ONE key word per
+     phrase in **Playfair Display Bold Italic** + magenta (the same "italic accent word" device as
+     the IG posts). The magenta is `legible_accent()` = `#D50057` lightened 30 % toward white,
+     because pure brand magenta sinks into dark footage; same hue family so the palette holds.
+   - ONE fixed size for the whole video (74 px) — never shrink-to-fit. Phrases end at sentence/clause
+     punctuation; a clause too wide for one line (≤ 90 % of frame width) is split into BALANCED parts
+     (`minimal_phrases`), never leaving an orphan last word ("…sixth and / seventh" was a bug).
+   - key word = `pick_key_word`: digits/%/$ > number words > capitalised non-initial word (names,
+     days, months) > longest content word; stop-words never win and a phrase of only filler gets no
+     accent. An explicit `{"key": true}` on a word in `words.json` overrides it.
+   - legibility without boxes: a very soft dark halo (blurred rounded rect, alpha ≈ 0.46) + a soft
+     drop shadow behind the line. Without it bare type vanished on the white calendar and sofa shots.
+   - position: baseline y = 1330 of 1920 (above IG's bottom UI, clear of the right rail and logo).
+   The old bold/ALL-CAPS/word-highlight look is still available as `--caption-style bold` (112 px,
+   max 3 words, stroke, active word recoloured) but is NOT the house style any more.
+   **Before showing a render** run the per-word gate against a caption-less render: keep the temp
+   dir (`--keep-temp`), and for every word grab a frame at its midpoint from BOTH `base_with_audio.mp4`
+   and the final mp4, crop the caption band (y 1180–1480), and require > ~900 pixels that differ by
+   more than 60 summed RGB. Then eyeball a contact sheet (every ~1.2 s) plus full-res crops of the
+   caption zone on a bright, a dark and a busy background. Sample at word MIDPOINTS — near a word's
+   end ffmpeg seek rounding gives false negatives.
+7. **Alignment robustness.** `align_scenes_to_words` consumes `len(text.split())` words per scene, so
+   the word list must have exactly the script's tokens. That is why `align_words.py` exists (it
+   re-labels whisper's timings with the script tokens via difflib, interpolating mangled ones).
+   Never hand whisper's raw transcript of AI narration to the builder.
+8. **Clip rendering gotchas (each cost a broken render once).** `fps=` must come BEFORE `zoompan`
+   (d=1 emits one frame per input frame; a 25 fps source ran ~17 % short and the xfade chain
+   truncated → frozen picture). Use `-stream_loop -1` so a source shorter than its slot loops
+   instead of ending early. Do not trust render success — check `concatenated.mp4` duration equals
+   the sum of the plan.
+9. **Hook scene gets the strongest B-roll and the first transition is a flare, flash or whip**, because
+   the first 3 seconds decide retention. Don't open on a slow dissolve.
+10. **One colour palette across the whole video** (Caio, 2026-10: "keep the consistency in the color
+    palette" and then "I need even more congruence in the color palette"). Stock clips arrive with
+    clashing grades (orange living room, teal studio, grey sofa, white desk; mean saturation
+    ranged 0.09–0.64 in one video). `build_voiceover_reel.py` therefore, per clip:
+    (a) measures mean RGB **and mean HSV saturation** over the segment actually used
+    (`measure_clip_rgb`, 5 frames); (b) pulls it toward neutral white balance, a common luma
+    (`TARGET_LUMA` 0.42) and a common saturation (`TARGET_SAT` 0.28) at **`MATCH_STRENGTH` 0.85**,
+    clamped (channel gains 0.75–1.30, exposure 0.65–1.40, saturation ×0.55–1.15) —
+    `color_match_filter`; then (c) applies the SAME `RARITY_LOOK` to every clip: saturation ×0.86,
+    contrast 1.05, and a per-channel **split-tone curve** from the brand palette — shadows lifted to
+    deep plum/navy (≈ `#0f0a1a`/`#1a0f2e`), highlights capped at warm off-white (≈ `#efeeea`) with a
+    soft shoulder so sunlit clips don't blow out — plus a light vignette. Net effect: every shot
+    shares the same black point, white point and muted tone, and the ONLY saturated colour on screen
+    is the brand magenta (key word in captions, lens flare). `final_pass(grade=None)` so the look
+    isn't applied twice; `--no-grade` turns the whole thing off. Still prefer B-roll whose native
+    look is close (low saturation, neutral) — grading rescues, it can't fix a neon or monochrome
+    clip. Brand palette reference: `rarity-ig-designer/assets/rarity-colors.json`.
 
 ## Workflow A — raw footage (`edit_reel.py`)
 
 ```
-python3 edit_reel.py <input_video> <output_video> [options]
+python3 scripts/edit_reel.py <input_video> <output_video> [options]
 ```
-Pipeline: transcribe (faster-whisper, local, word-level timestamps) → auto-cut dead air/long pauses
-→ scale/crop to 1080x1920 + light color treatment → `build_caption_frames` → `build_caption_track` →
-`final_pass` (composites caption track + Rarity symbol). See the script's own `--help` / docstring for
-the full option list (`--language`, `--no-cut`, `--font`, `--accent`, `--model`, etc.).
+transcribe (faster-whisper) → auto-cut dead air → 1080x1920 crop + light grade →
+`build_caption_frames` → `build_caption_track` → `final_pass`. Options: `--language`, `--no-cut`,
+`--font`, `--accent`, `--model`, `--chunk-size` (default 3). Music/SFX mixing for Workflow A is not
+wired yet — add a bed with `mix_audio()` from `build_voiceover_reel.py` if needed.
 
-## Workflow B — voiceover + B-roll (`build_voiceover_reel.py`)
+## Workflow B v2 — designed scenes, specific plates, varied transitions (rules 18-24)
+
+Caio's feedback on the first stock-footage voiceover (2026-10): "you have to vary the transitions, not
+only one"; "the clips are not very congruent and are very free stuff — I want something more
+specific, more engaging"; "research the best video edits for voiceover and clips."
+
+Research that shaped this (OpusClip, Captions, Zeely, Increditors, Async, Vidico; 2026): a visual
+change every **1.5–3 s** (B-roll every 1–2 s for educational content), re-hook every 8–12 s; the
+hook must land in **1.5 s and ALSO as on-screen text** (≈85 % watch muted); data should *move* —
+bars growing, lines trending, percentages counting up; match cuts and beat-synced cuts only when they
+clarify; keep transitions consistent *within a series* but purposeful *within a video*; end on a frame
+that echoes the first (loop); captions ≤ 2 lines, high contrast, not at the very bottom.
+
+18. **Specific beats generic.** If the sentence is about a number, a date or a comparison, draw THAT
+    (`scripts/data_scenes.py`) instead of stock: a calendar with Oct 6 circled, a week schedule
+    (Walmart Oct 5–11, Amazon/Target Oct 6–7) filling in, a count-up `$95.8B`, a `+8%` slam, Cyber
+    Monday vs Black Friday bars with their YoY growth, a discount ladder (14 % → 21 % → 30 %), an ad-
+    auction curve flooding with dots, a November calendar with a LATE stamp. Every figure on screen
+    must come from a cited source (Adobe Analytics forecast 2026-09-28; retailer sale pages) and a small
+    source chip is shown. Keep illustrations honest (relative bar heights real, nothing invented).
+19. **Real clips only as *specific plates* under callouts**, never as wallpaper: an Amazon-branded
+    courier under "AMAZON PRIME BIG DEAL DAYS · OCT 6–7"; a hand hanging a BLACK FRIDAY SALE placard
+    under the discount ladder; a phone scrolling a short-video feed under "TESTING CREATIVE". Plates
+    are push-in, colour-matched, dimmed/blurred as needed (`dim`, `blur` in the manifest).
+20. **Scene types in `scenes.json`:** `{"graphic": "<kind>", "text": "...", "anchors": {name: wordIndex|seconds},
+    "params": {...}, "video": "plate.mp4", "offset": 1.0, "dim": 0.3, "blur": 5, "transition": "whip"}`.
+    Kinds: calendar_hook, calendar_late, timeline, counter, bigstat, bars2, ladder, feed, auction, chip
+    (generic pills/lines over a plate). An int anchor is a WORD INDEX inside that scene's `text`
+    (so animation lands exactly when the word is spoken); a float is seconds. Aim for 8–12 scenes in a
+    28 s voiceover (one every 1.5–3.5 s) and alternate designed scene ↔ real plate.
+21. **Vary transitions on purpose** — never one effect for the whole video, and don't force the
+    signature lens flare on every cut. Palette: `cut` (hard, for fast beats or into a slam), `whip`/
+    `whipr` (horizontal motion-blur whip), `whipup`/`whipdown` (vertical), `punch` (dissolve + incoming
+    clip eases 120 → 100 %), `flash`, `iris` (circular reveal for a new data scene), `dip`, `dissolve`,
+    and `flare` (lens flare, **reserve for section changes / the reveal of the big number / the
+    closing**). Script 1 v2 uses: whip, iris, flare, cut, whipup, flash, whipr, punch, flare. Rule of
+    thumb: hard cut or flash INTO a slam/number, whip between a plate and a graphic, flare at the 2–3
+    emotional turns, never the same transition twice in a row.
+22. **Dither all designed backgrounds.** A dark plum gradient quantised to 8-bit then x264-compressed
+    shows concentric contour rings (seen on the first `+8%` frame). `designed_bg()` adds Gaussian
+    noise σ≈2.2 per pixel before quantising; keep it when editing the backgrounds.
+23. **Layout contract for designed scenes:** overlay band y 170–1300, captions below at y 1330 (halo top
+    ≈ 1245) — never place a pill/line below y ≈ 1230. Headline text must be width-checked (a 150 px
+    Playfair "BLACK FRIDAY" overflowed the frame; 112 px fits). Calendar `cell_h` 76 so a 6-row month
+    leaves room for the line beneath it.
+24. **Counters count from the start of the scene** (not from the word) over `params.dur` so the viewer
+    never sees a stalled "$0.0B"; set `dur` so the final value lands as the number is spoken.
+
+## Workflow C — talking head + motion graphics (`edit_talking_head.py`)
+
+First used on "Diego 01 Ecom DTC (rarity.br).mp4" (2026-10, Rarity BR, Portuguese). Recipe:
 
 ```
-python3 build_voiceover_reel.py --manifest scenes.json --narration narration.wav --output out.mp4
+# 1. word timings from the real audio — large-v3 + a glossary prompt (medium mishears jargon)
+#    (see the faster-whisper call in the session that built Diego 01: language='pt', beam_size=5,
+#     initial_prompt="… ROAS, CAC, MER, DRE, Meta Ads, Klaviyo, Shopify, call de 45 minutos …")
+# 2. READ the transcript critically, write the corrected text to script.txt, then
+#    align_words.align(script_tokens, heard_words) -> words.json   (captions = script text exactly)
+# 3. write beats.json (motion graphics, ORIGINAL-video times, anchored on word times)
+# 4. python3 scripts/edit_talking_head.py video.mp4 words.json beats.json out.mp4 \
+#        --music music/brainiac-167.mp3 --music-start 6
+# 5. QA gate (below), then save to public/Instagram Briefings/Rarity BR Edits/ with an assets folder
 ```
-`scenes.json`:
-```json
-[
-  {"video": "scene1.mp4", "offset": 2.0, "text": "The customer discovers your brand..."},
-  {"image": "scene2.jpg", "text": "Days later a package arrives..."}
-]
-```
-- `video` (preferred) or `image` (fallback, Ken Burns zoom) — paths relative to the manifest file or
-  absolute.
-- `offset` (video only, default 0) — seconds into the source clip to start reading from, to skip a
-  boring intro second. The actual read offset shifts slightly earlier automatically to cover
-  crossfade padding; you don't need to account for that yourself.
-- `text` — the exact sentence spoken during this scene. Word count drives the forced-alignment (see
-  Non-negotiable 1 in the module docstring) — the manifest's text must match what's actually said.
 
-Pipeline: transcribe narration → align scene boundaries to real word timestamps
-(`align_scenes_to_words`) → shrink each scene's slot slightly for transition padding
-(`plan_transitions`) → render each scene clip (push-in zoom, real motion preserved for video scenes)
-→ join with rotating crossfades (`xfade_concat`) → mux narration audio → `build_caption_frames` →
-`build_caption_track` → `final_pass`.
+Rules learned (2026-10):
+11. **Transcripts: never trust raw whisper on Rarity jargon, and flag every correction.** Whisper heard
+    "hoas" (ROAS), "clevel" (Klaviyo), "cá que máximo permitia" (CAC máximo permitido), "o Macau de 45
+    minutos" (a call de 45 minutos), "numeral vivo" (número ao vivo). Run **large-v3** with a glossary
+    `initial_prompt`, compare with a second model, correct by context, and write a
+    `CORRECOES-TRANSCRICAO.md` (heard → used → confidence) next to the video so a human can confirm
+    the doubtful ones against the audio. Captions must have zero errors, so a doubtful word is
+    reported, never silently guessed.
+12. **Cuts.** Keep `[word.start-0.06, word.end+0.10]` around every word; everything else goes
+    (pauses collapse to ≈0.16 s, head/tail silence trimmed, 6 ms audio fades at joints). A clip that
+    was already tightly edited loses little (Diego: 45.31 s → 44.10 s) — don't over-cut or the
+    speech turns robotic. Never cut mid-word.
+13. **Motion graphics = the speaker's words made visible, in lower-third strips only.** Zoomed-in shots
+    of a talking head reach down to y≈1110 (chin) on a 1920 frame — a mid-frame card covers the
+    mouth. So every beat is a ≈1000×270 strip at y 1120–1410 (`motion_graphics.ZONE_Y0/ZONE_H`) and
+    captions sit below it at y 1480 (`--caption-y`); IG's own bottom UI starts ≈ y 1580. Beats appear
+    when the idea is said (word-anchored: a platform chip pops on its own word, a bar chart rises
+    on "escala o investimento", a checklist row ticks as each deliverable is spoken), pop in with an
+    ease-out-back slide, fade out in 0.22 s, and use only brand colours (plum card, off-white text,
+    lightened magenta). Show only what he actually says — diagrams are illustrative (relative bar
+    heights, no invented numbers or claims). Build new beat types as `beat_<type>` functions.
+    Keep a gap of plain face-time between beats (the hook and the "Sabe por quê?" beats are left clean
+    on purpose); at most one beat on screen at a time.
+18a. **Never let card text overflow** (Diego bug, 2026-10: "o Shopify mostra menos" ran past the card's right
+    edge and was clipped). Any variable-length string in a beat must shrink-to-fit inside the card
+    (`sum` beat does this; copy the pattern) and be checked at full-res at its fullest moment. Text in
+    another language is longer — English labels need the same check. All card strings are `params`.
+18c. **Dubbed versions:** `edit_talking_head.py --precut --voice dub.wav` takes a video/words/beats that are
+    already on the final timeline (no cutting) and an external voice track — see `rarity-reel-dubbing`.
+18b. **Never colour-grade recorded talking-head footage unless asked** (Diego feedback, 2026-10: "não
+    precisava ter tratado cor, deixe como estava"). Rule 10 (colour matching + Rarity look) is for
+    *assembled stock* in voiceover reels, where clips clash. A person's own recorded video keeps its
+    original colours and skin tones: `edit_talking_head.py` is ungraded by default (`--grade` opts in);
+    verify by comparing mean RGB of the same face region before/after (Diego: 107/75/62 → 107/75/62).
+    Upscale, denoise, sharpen, grain and cuts are still fine.
+14. **Low-resolution sources** (a 480×848 phone export was the input): denoise at native size
+    (`hqdn3d`), lanczos upscale to 1080×1920, light `unsharp`, then film grain (`noise`) to hide the
+    softness. Tell Caio the source is low-res and ask for the original export when quality matters.
+15. **File size.** Grain makes x264 explode (382 MB for 44 s at crf 17). Final encode is
+    `-preset slow -crf 21 -maxrate 14M -bufsize 28M -movflags +faststart` (≈59 MB / 44 s). Keep
+    intermediates lossless-ish, the delivered file under ~100 MB.
+16. **Caption fonts for numbers.** Playfair Display has old-style numerals ("90" looks like "9o"), so a
+    numeric key word is drawn in BentonSans (still magenta). Portuguese/Spanish stop-words and
+    all-caps acronyms (ROAS, CAC, DRE) are handled by `pick_key_word`.
+17. **QA gate for talking heads** = the same per-word diff gate as rule 6, with the caption band at
+    y 1390–1590 (`crop=1080:200:0:1390`) comparing the final render with `base.mp4` (use
+    `--keep-temp`), plus full-res crops of the strip + caption zone at ≥5 beat moments.
 
-Key options: `--font serif|sans`, `--accent <hex>`, `--model <whisper size>`, `--chunk-size <words>`,
-`--zoom <amount>`, `--transition-duration <seconds>` (default 0.35), `--fps`, `--keep-temp`.
+## Workflow C2 — ad / content edit built from reference videos (`ad_graphics.py`)
+
+First used on Caio's three English ads (`Rarity EN Edits/Caio Raw Videos (to edit)/caio-01..03.mp4`,
+110 s / 81 s / 177 s, 2026-10) from two references in `Video Edition Ads and Content Refs/`.
+
+**What the references do (analysed, not guessed):**
+- *Ref 1* — direct-response ad, one continuous talking-head shot (6 scene changes in 81 s, -16.5 LUFS):
+  name tag lower-third; bold caps captions with the key words in an accent colour; **single-colour line
+  icons that pop beside the face exactly when the noun is said** (phone-with-X, pin, briefcase-check,
+  calendar, bar chart…); thin progress bar.
+- *Ref 2* — daily "Field Notes" series, vertical, essentially uncut (2 scene changes in 149 s, -15 LUFS):
+  series title card + progress bar at the start; **dark translucent data panels** (stat rows, framework
+  lists) and a small inset thumbnail; one-word captions.
+
+**What we kept / translated (Rarity rules win over the refs' yellow/orange and heavy caps):**
+| Reference device | Rarity version |
+|---|---|
+| Name tag | `nametag` beat, top-left: "Caio de Camargo / Founder, Rarity", plum card + magenta bar |
+| Line icons | `icon` beat, 24 icons in `ad_graphics.ICONS`, off-white stroke + one magenta accent, at the OUTER top corners |
+| Data panels | lower-strip beats: `stat` (1–4 big numbers), `level` (chapter chip), `vs` (struck % vs flat fee), `ceiling` (CAC ceiling demo), `cta`, `title` + the older `checklist`/`cac`/`channels`/`call`/`strike` |
+| Progress bar | thin magenta fill on an off-white track at y 104 (`--no-progress` hides it) |
+| Series title card | `title` beat (lower band) in the first 3 s: kicker + Playfair-italic topic line |
+| Captions | unchanged house style (minimal Benton + Playfair-italic magenta key word) — NOT ref 1's caps |
+| Colours / footage | brand palette only; footage ungraded (rule 18b); music bed + `pop` SFX |
+
+Rules (2026-10):
+25. **Top icons: outer corners only, ≤ 1.55× scale.** In Caio's close-ups the head spans x 200–900 down to
+    y 1000; an icon at x≈880 sat on the glasses. Icons live at cx 936 (right) / 144 (left), y ≈ 288, and
+    never more than one at a time. The Rarity symbol is at x 976–1040, y 40–104 — keep clear.
+26. **Title / name cards never go in the top band over the face.** In wide shots the head starts at y≈130,
+    so a top title cut across the eyes. Titles use the LOWER strip (`title` beat) in the first ~3 s; the
+    name tag sits top-left (x 40–400) where there is only background.
+27. **Phrase-anchored beats** (`scripts/beat_anchors.py`): `W.find("something called")` → seconds. Write the
+    beat list as code, run it, and let it raise when a phrase isn't in the transcript. Keep lower beats
+    sequential, ≤ 1 top icon at a time, one idea per card, a beat holds until the sentence it illustrates
+    ends (+0.3–0.6 s). Aim for a new visual every ~3–6 s on a 80–180 s ad (the refs are slower than a 28 s
+    voiceover reel because the speaker IS the visual).
+28. **Never re-grade or re-sharpen a clean 1080×1920 source** (`edit_talking_head.py` skips `hqdn3d`/
+    `unsharp`/grain when width ≥ 1080); those are for low-res phone exports only.
+29. **Accented English transcripts need a second opinion.** Caio's English made large-v3 and medium.en
+    disagree on proper nouns and jargon ("Herity" = Rarity, "17 Xbox" = 17x ROAS, "35 books/rooks" =
+    35 hooks, "MR/MLR/NAR" = MER, "meta horror poster" = Meta roller coaster, "Maximal" = Maximum). Run
+    BOTH models with a glossary prompt, compare line by line, correct by context and by the other
+    videos in the same batch (a phrase clear in video 03 fixes video 01), and **list every doubtful
+    correction for Caio** — captions must have zero errors.
+30. **Output location:** edited ads go to `public/Instagram Briefings/Rarity EN Edits/` next to
+    `Caio Raw Videos (to edit)/`, named `caio-0N - EDIT.mp4`, plus an `assets/` folder (words, beats,
+    corrected script, `CORRECOES-TRANSCRICAO.md`).
+
+### Dynamics pass for talking-head ads (Caio, 2026-10: "put a little deep house in the background, voice louder than the music… cut a little bit to make it dynamic")
+31. **Music: deep house bed, voice clearly on top.** `music/deep-house-196.mp3` (Mixkit "Deep House",
+    123 BPM, start ≈ 18 s) for ads ≤ 150 s; `deep-urban-623.mp3` for longer. Bed at `--music-lufs -21`
+    (first try at -26 measured 19 LU under the voice — too faint; at -21 the ducked bed sits ≈ 14 LU under
+    the voice: voice -17 LUFS vs bed -31 LUFS while speaking) and the sidechain compressor drops it ~8–10 dB
+    while words are spoken, so the music is felt in the gaps and never competes with the voice. Measure
+    voice and ducked-bed integrated loudness separately (see scripts/remix_music.py) instead of guessing.
+32. **Cut tighter, then hide the jump cuts.** `--pre 0.035 --post 0.06` trims 2–3 s more than the default
+    (0.06/0.10) without clipping consonants; `--punch 0.06 --punch-every 4.5` alternates a 6 % punch-in
+    (anchored near the chin, so the face doesn't drop into the graphics strip) on every other shot and adds
+    an extra punch-in at the next clause boundary every ~4.5 s. The extra cuts are VIDEO-only — the audio
+    is continuous across them, so speech never gets chopped.
+33. **Progress-bar bug (fixed):** `drawbox=w='…t…'` is not re-evaluated per frame, so only the grey track
+    showed (looked like a stray line). The bar is now `ad_graphics.build_progress_track()` — a real RGBA
+    track; verify by sampling the bar at 3 timestamps and checking the magenta fill grows.
 
 ## Relationship to the other skills
 
-Step 3 of Caio's personal video pipeline — downstream of `rarity-reel-scripts` (Step 1, the written
-script) and, for the talking-head/podcast/street-interview formats only, `rarity-reel-dubbing`
-(Step 2, translating a recorded take into other languages).
+Step 3 of Caio's personal video pipeline — downstream of `rarity-reel-scripts` (Step 1) and, for
+talking-head/podcast/street formats only, `rarity-reel-dubbing` (Step 2). The voiceover-B-roll format
+goes **straight from Step 1 to Step 3** (no face to dub): `rarity-reel-scripts` writes the numbered
+`visual note → sentence` scene list; here you source and *watch* the clip per scene (rule 4), record
+or synthesize the narration (rule 3), then build. Independent of the `rarity-ig-*` brand pipeline.
 
-`rarity-reel-scripts` now writes directly for the "voiceover B-roll" format (its Non-negotiable 10):
-it produces a scene-by-scene breakdown — a short visual description plus the exact sentence spoken
-in that scene — already shaped to drop into a Workflow B `scenes.json` manifest almost unchanged
-(find/confirm the actual B-roll clip per scene here, per Non-negotiable 7, before building). That
-format routes **straight from Step 1 to Step 3** — there's no face to dub, so Step 2 is skipped
-entirely for it.
-
-Independent of the `rarity-ig-*` brand pipeline — this is Caio's own voice/content, not
-@rarity.agency's.
+Delivered reels live in `public/Instagram Briefings/Reel Scripts <Month>/` next to their script
+(`Script N - <name>.mp4`) with a `Script N - assets/` folder (narration.wav, narration.txt,
+words.json, scenes.json) so any reel can be re-rendered with a new voice/music/transition in one
+command.

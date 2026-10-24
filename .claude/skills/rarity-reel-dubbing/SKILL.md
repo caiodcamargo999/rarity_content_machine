@@ -76,6 +76,63 @@ Always tell Caio to actually watch each dubbed version before posting it, specif
 - If either dub looks genuinely wrong (garbled audio, broken sync, clearly mistranslated meaning), say
   so plainly and offer to re-run that one language rather than shipping it anyway.
 
+## HARD RULE: never deliver Wav2Lip (or any local patch-based) lip-sync output
+
+Caio, 2026-10, on the Wav2Lip result for Diego: "a boca está completamente deformada, se for assim nem
+faz". Frame-by-frame comparison confirmed it: the untouched video was clean; Wav2Lip itself produced the
+purple/smeared lips and a reshaped chin/goatee (it regenerates a 96×96 mouth patch). Tuning the mask and
+colour only reduced it, never fixed it. So:
+- If the Higgsfield `dubbing` tool (or another proper video-to-video lip-sync such as LatentSync/MuseTalk on
+  a GPU) is not available, **do NOT ship a lip-synced file**. Stop after the voice step, deliver the dub
+  with the original mouth ("sem lip-sync") clearly labelled as such, and ask Caio to authorize Higgsfield
+  or an external service. Sending someone's face/voice to a third-party service needs Caio's OK first.
+- Any lip-sync result must be inspected at full-res on open vowels and "m/b/p" closures BEFORE showing it,
+  and must not change the chin, moustache, teeth or lip colour. If it does, discard it.
+
+## Local pieces that are still good (voice + timing) — use them with Higgsfield or on their own
+
+(The section below documents the local pipeline; **skip its Wav2Lip step 5 for deliverables**.)
+
+## Fallback — LOCAL dub when the Higgsfield `dubbing` connector is NOT reachable
+
+First used on "Diego 01 Ecom DTC (rarity.br)" (PT → EN, 2026-10). Check first: `ToolSearch` for
+`Higgsfield dubbing`; if it returns nothing the connector is not loaded in this session (non-interactive
+sessions can't authorize it) — say so plainly, then run this local pipeline, and **always tell Caio the
+lip-sync is a draft and that the Higgsfield tool gives the real quality**. Never present Wav2Lip output
+as "optimal".
+
+Pipeline (scripts in this skill's `scripts/` + `rarity-reel-editor/scripts/`):
+1. **Cut at native resolution first** (`native_cut.mp4`, from the same keep-segments as the PT edit) and
+   get sentence windows (`pt_sents.json`). Lip-sync must run on NATIVE pixels, before any upscale.
+2. **Translate by hand, sentence by sentence** (keep jargon: ROAS, CAC, Meta, Shopify; DRE → P&L;
+   "CAC máximo permitido" → "max allowable CAC"). Keep each EN sentence ≈ the PT sentence's length.
+3. **Clone the speaker's own voice** with Chatterbox: `rarity-reel-editor/scripts/narrate_chatterbox.py`-style
+   call with `audio_prompt_path` = ~12 s of the speaker's clean audio (denoised, `loudnorm`). One wav per
+   sentence (`cb_dub.py` pattern: exaggeration 0.5, cfg 0.35, temperature 0.7, seeded). Check the clone:
+   median f0 should match the original (Diego: 158 Hz vs 160 Hz). **Only clone a voice with the owner's
+   consent** (company video, speaker is a Rarity team member — still confirm with them) and mention the
+   Perth watermark.
+4. **Fit time without rushing: `scripts/dub_assemble.py`.** A cloned voice speaks ≈3 words/s (slower than
+   a fast native speaker), so English ran 10–30 % long. Squeezing audio to the old timing sounds robotic.
+   Instead per sentence: video time-warp ≤ ±15 % (`minterpolate`) + audio speed ≤ 1.12× (pitch-preserving
+   `atempo`); if a sentence needs more, SHORTEN ITS TEXT (the script prints "!! needs …x audio"). Pad the
+   video to the audio length afterwards (`tpad`), minterpolate returns slightly short.
+5. **Lip-sync: `scripts/lipsync_wav2lip.py`** (Wav2Lip-GAN, MPS, ≈3 min / 45 s). Needs its OWN venv
+   (`~/.rarity-lipsync/venv`; setup in the script docstring) — installing mediapipe into the Chatterbox
+   venv broke numpy/protobuf once. Patch `Wav2Lip/audio.py` `librosa.filters.mel(sr=…, n_fft=…, …)` keyword
+   form for new librosa. Blend ONLY the mouth region (feathered mask rows 0.56–0.86, cols 0.22–0.78 of the
+   face box); blending the whole lower face warped the moustache/goatee. Colour-match the patch in LAB
+   (chroma mean 65 %, lightness 35 %) — the raw GAN patch is purple/magenta when the mouth is open.
+6. **Word timings for captions:** `rarity-reel-editor/scripts/align_words.py dub_voice.wav en_script.txt`.
+7. **Finish with `edit_talking_head.py … --precut --voice dub_voice.wav`** (English captions, English
+   motion-graphic cards via `params` strings, music). Card text must be translatable: all labels live in
+   `params` (`title`, `nada_text`, `credit`, `metric`, `flat_label`, `ceiling`, `profit_text`, `unit`…).
+8. **QA before handing over:** per-word caption gate, loudness (-14 LUFS), and crops of the mouth at several
+   moments (open vowels, "m/b/p" closures). Report the honest limits: slightly soft/blurry mouth, occasional
+   purple tint inside an open mouth, flicker on very fast speech or hand-over-face moments.
+7. **Outputs:** `public/Instagram Briefings/Reel Dubs <Month>/<name>/dubbed-eng.mp4`, `original-por.mp4`,
+   and `assets/` (en_sents, words_en, beats_en, dub_timeline, NOTAS.md with the translation choices).
+
 ## Relationship to the other skills
 Step 2 of Caio's personal video pipeline, downstream of `rarity-reel-scripts` (Step 1, the written
 script) and the actual recording Caio does himself (outside this project). A planned but NOT YET

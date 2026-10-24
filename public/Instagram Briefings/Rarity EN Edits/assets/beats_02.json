@@ -1,0 +1,210 @@
+[
+ {
+  "type": "title",
+  "start": 0.15,
+  "end": 3.2,
+  "anchors": {},
+  "params": {
+   "kicker": "ECOMMERCE",
+   "title": "ROAS vs real profit",
+   "size": 84
+  }
+ },
+ {
+  "type": "nametag",
+  "zone": "top",
+  "start": 3.4,
+  "end": 6.8,
+  "params": {}
+ },
+ {
+  "type": "stat",
+  "start": 3.4,
+  "end": 5.18,
+  "anchors": {
+   "s0": 2.22,
+   "s1": 3.96
+  },
+  "params": {
+   "stats": [
+    [
+     "ROAS",
+     "looks good"
+    ],
+    [
+     "Profit",
+     "doesn't",
+     true
+    ]
+   ]
+  }
+ },
+ {
+  "type": "icon",
+  "zone": "top",
+  "start": 7.01,
+  "end": 9.01,
+  "params": {
+   "icon": "cross"
+  }
+ },
+ {
+  "type": "channels",
+  "start": 7.800000000000001,
+  "end": 17.5,
+  "anchors": {
+   "flat": 14.82
+  },
+  "params": {
+   "names": [
+    "Meta",
+    "Google"
+   ],
+   "metric": "Bank account",
+   "flat_label": "not the same"
+  }
+ },
+ {
+  "type": "icon",
+  "zone": "top",
+  "start": 14.77,
+  "end": 16.77,
+  "params": {
+   "icon": "dollar"
+  }
+ },
+ {
+  "type": "checklist",
+  "start": 18.2,
+  "end": 24.58,
+  "anchors": {
+   "r0": 19.24,
+   "r1": 21.6,
+   "r2": 23.22
+  },
+  "params": {
+   "rows": [
+    [
+     "Your real margins"
+    ],
+    [
+     "Your shipping costs"
+    ],
+    [
+     "Your refunds"
+    ]
+   ],
+   "mark": "x"
+  }
+ },
+ {
+  "type": "icon",
+  "zone": "top",
+  "start": 24.87,
+  "end": 27.27,
+  "params": {
+   "icon": "shield"
+  }
+ },
+ {
+  "type": "cac",
+  "start": 29.48,
+  "end": 36.01,
+  "anchors": {
+   "marker": 32.56,
+   "profit": 35.18
+  },
+  "params": {
+   "title": "Maximum Allowable CAC",
+   "sub": "the most you can pay for a new customer",
+   "ceiling": "ceiling",
+   "profit_text": "and still make money"
+  }
+ },
+ {
+  "type": "ceiling",
+  "start": 36.059999999999995,
+  "end": 51.7,
+  "anchors": {
+   "p42": 40.02,
+   "p62": 45.02
+  },
+  "params": {
+   "title": "Maximum Allowable CAC",
+   "ceiling": 55,
+   "lo": 20,
+   "hi": 75,
+   "points": [
+    [
+     42,
+     "p42",
+     true
+    ],
+    [
+     62,
+     "p62",
+     false
+    ]
+   ],
+   "labels": [
+    "room to scale",
+    "makes it worse"
+   ]
+  }
+ },
+ {
+  "type": "call",
+  "start": 55.44,
+  "end": 62.099999999999994,
+  "anchors": {},
+  "params": {
+   "big": "45",
+   "kicker": "free profit diagnostic",
+   "foot": "see where your profit leaks",
+   "unit": "min"
+  }
+ },
+ {
+  "type": "icon",
+  "zone": "top",
+  "start": 64.31,
+  "end": 66.31,
+  "params": {
+   "icon": "check"
+  }
+ },
+ {
+  "type": "cta",
+  "start": 64.80000000000001,
+  "end": 67.76,
+  "anchors": {},
+  "params": {
+   "line1": "Free profit diagnostic",
+   "line2": "Click below to apply",
+   "line3": "45 minutes \u00b7 based on your real numbers"
+  }
+ },
+ {
+  "type": "checklist",
+  "start": 67.86,
+  "end": 80.7,
+  "anchors": {
+   "r0": 36.88,
+   "r1": 71.84,
+   "r2": 73.76
+  },
+  "params": {
+   "rows": [
+    [
+     "Your Maximum Allowable CAC"
+    ],
+    [
+     "Your customer economics"
+    ],
+    [
+     "Your biggest profit leak"
+    ]
+   ]
+  }
+ }
+]

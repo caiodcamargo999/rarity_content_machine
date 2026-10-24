@@ -1,0 +1,141 @@
+[
+ {
+  "graphic": "calendar_hook",
+  "text": "Black Friday starts this Tuesday. Not November. Tuesday.",
+  "anchors": {
+   "h1": 0,
+   "h2": 2,
+   "cal": 3,
+   "tue": 4,
+   "circle": 4,
+   "nov": 5,
+   "strike": 6,
+   "tue2": 7
+  }
+ },
+ {
+  "video": "7362702.mp4",
+  "offset": 1.0,
+  "graphic": "chip",
+  "transition": "whip",
+  "text": "Amazon's sale runs October sixth and seventh.",
+  "params": {
+   "pills": [
+    {
+     "text": "AMAZON PRIME BIG DEAL DAYS",
+     "at": "p0",
+     "y": 150,
+     "size": 42
+    },
+    {
+     "text": "OCT 6\u20137",
+     "at": "p1",
+     "y": 290,
+     "size": 78,
+     "hot": true,
+     "h": 128
+    }
+   ]
+  },
+  "anchors": {
+   "p0": 0,
+   "p1": 4
+  }
+ },
+ {
+  "graphic": "timeline",
+  "transition": "iris",
+  "text": "Walmart and Target run theirs the same week.",
+  "anchors": {
+   "amazon": 0.1,
+   "walmart": 0,
+   "target": 2,
+   "same": 6
+  }
+ },
+ {
+  "graphic": "counter",
+  "video": "6633348.mp4",
+  "offset": 0.5,
+  "dim": 0.3,
+  "blur": 5,
+  "transition": "flare",
+  "text": "Adobe says shoppers will spend ninety-six billion dollars online in October.",
+  "params": {
+   "value": 95.8,
+   "label": "spent online in October",
+   "dur": 2.3
+  },
+  "anchors": {
+   "count": 0.35
+  }
+ },
+ {
+  "graphic": "bigstat",
+  "transition": "cut",
+  "text": "Up eight percent.",
+  "params": {
+   "big": "+8%",
+   "sub": "vs. last October"
+  },
+  "anchors": {
+   "slam": 1
+  }
+ },
+ {
+  "graphic": "bars2",
+  "transition": "whipup",
+  "text": "Black Friday itself grows nine percent,",
+  "anchors": {
+   "cm": 0.5,
+   "faster": 3,
+   "bf": 4
+  }
+ },
+ {
+  "video": "6114645.mp4",
+  "offset": 2.0,
+  "graphic": "ladder",
+  "transition": "flash",
+  "dim": 0.22,
+  "text": "because the deals land earlier.",
+  "anchors": {
+   "r0": 2,
+   "r1": 3,
+   "r2": 4
+  }
+ },
+ {
+  "video": "38410501.mp4",
+  "offset": 1.0,
+  "graphic": "feed",
+  "transition": "whipr",
+  "dim": 0.1,
+  "text": "The brands that win are testing creative right now,",
+  "anchors": {
+   "pill": 5,
+   "now": 7,
+   "win": 8
+  }
+ },
+ {
+  "graphic": "auction",
+  "transition": "punch",
+  "text": "before everyone floods the auction in November.",
+  "anchors": {
+   "flood": 2,
+   "nov": 6
+  }
+ },
+ {
+  "graphic": "calendar_late",
+  "transition": "flare",
+  "text": "If your Black Friday plan starts in November, you're already late.",
+  "anchors": {
+   "h": 0,
+   "cal": 2,
+   "nov1": 7,
+   "late": 10
+  }
+ }
+]

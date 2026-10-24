@@ -1,0 +1,687 @@
+[
+ {
+  "text": "If",
+  "start": 0.0,
+  "end": 0.26
+ },
+ {
+  "text": "you",
+  "start": 0.26,
+  "end": 0.42
+ },
+ {
+  "text": "own",
+  "start": 0.42,
+  "end": 0.72
+ },
+ {
+  "text": "an",
+  "start": 0.72,
+  "end": 0.98
+ },
+ {
+  "text": "ecommerce",
+  "start": 0.98,
+  "end": 1.32
+ },
+ {
+  "text": "store,",
+  "start": 1.32,
+  "end": 1.72
+ },
+ {
+  "text": "this",
+  "start": 2.26,
+  "end": 2.38
+ },
+ {
+  "text": "is",
+  "start": 2.38,
+  "end": 2.52
+ },
+ {
+  "text": "the",
+  "start": 2.52,
+  "end": 2.62
+ },
+ {
+  "text": "mistake",
+  "start": 2.62,
+  "end": 2.98
+ },
+ {
+  "text": "every",
+  "start": 2.98,
+  "end": 3.4
+ },
+ {
+  "text": "store",
+  "start": 3.4,
+  "end": 3.66
+ },
+ {
+  "text": "makes.",
+  "start": 3.66,
+  "end": 4.04
+ },
+ {
+  "text": "Treating",
+  "start": 4.36,
+  "end": 4.8
+ },
+ {
+  "text": "ROAS",
+  "start": 4.8,
+  "end": 5.26
+ },
+ {
+  "text": "as",
+  "start": 5.26,
+  "end": 5.52
+ },
+ {
+  "text": "your",
+  "start": 5.52,
+  "end": 5.68
+ },
+ {
+  "text": "main",
+  "start": 5.68,
+  "end": 5.88
+ },
+ {
+  "text": "metric.",
+  "start": 5.88,
+  "end": 6.24
+ },
+ {
+  "text": "You",
+  "start": 6.66,
+  "end": 6.7
+ },
+ {
+  "text": "scale",
+  "start": 6.7,
+  "end": 7.12
+ },
+ {
+  "text": "your",
+  "start": 7.12,
+  "end": 7.34
+ },
+ {
+  "text": "spend,",
+  "start": 7.34,
+  "end": 7.68
+ },
+ {
+  "text": "you",
+  "start": 8.18,
+  "end": 8.24
+ },
+ {
+  "text": "hit",
+  "start": 8.24,
+  "end": 8.44
+ },
+ {
+  "text": "your",
+  "start": 8.44,
+  "end": 8.62
+ },
+ {
+  "text": "ROAS,",
+  "start": 8.62,
+  "end": 9.1
+ },
+ {
+  "text": "the",
+  "start": 9.32,
+  "end": 9.42
+ },
+ {
+  "text": "platform",
+  "start": 9.42,
+  "end": 9.8
+ },
+ {
+  "text": "rewards",
+  "start": 9.8,
+  "end": 10.18
+ },
+ {
+  "text": "you,",
+  "start": 10.18,
+  "end": 10.5
+ },
+ {
+  "text": "and",
+  "start": 10.78,
+  "end": 10.84
+ },
+ {
+  "text": "in",
+  "start": 10.84,
+  "end": 10.94
+ },
+ {
+  "text": "your",
+  "start": 10.94,
+  "end": 11.04
+ },
+ {
+  "text": "bank",
+  "start": 11.04,
+  "end": 11.28
+ },
+ {
+  "text": "account,",
+  "start": 11.28,
+  "end": 11.62
+ },
+ {
+  "text": "nothing.",
+  "start": 11.94,
+  "end": 12.22
+ },
+ {
+  "text": "Know",
+  "start": 12.64,
+  "end": 12.86
+ },
+ {
+  "text": "why?",
+  "start": 12.86,
+  "end": 13.16
+ },
+ {
+  "text": "Your",
+  "start": 13.46,
+  "end": 13.62
+ },
+ {
+  "text": "Meta,",
+  "start": 13.62,
+  "end": 14.02
+ },
+ {
+  "text": "your",
+  "start": 14.32,
+  "end": 14.44
+ },
+ {
+  "text": "Google,",
+  "start": 14.44,
+  "end": 14.7
+ },
+ {
+  "text": "your",
+  "start": 15.08,
+  "end": 15.18
+ },
+ {
+  "text": "Klaviyo",
+  "start": 15.18,
+  "end": 15.68
+ },
+ {
+  "text": "all",
+  "start": 15.68,
+  "end": 16.26
+ },
+ {
+  "text": "take",
+  "start": 16.26,
+  "end": 16.48
+ },
+ {
+  "text": "credit",
+  "start": 16.48,
+  "end": 16.72
+ },
+ {
+  "text": "for",
+  "start": 16.72,
+  "end": 16.9
+ },
+ {
+  "text": "the",
+  "start": 16.9,
+  "end": 17.0
+ },
+ {
+  "text": "same",
+  "start": 17.0,
+  "end": 17.24
+ },
+ {
+  "text": "sale.",
+  "start": 17.24,
+  "end": 17.58
+ },
+ {
+  "text": "Add",
+  "start": 17.94,
+  "end": 18.12
+ },
+ {
+  "text": "them",
+  "start": 18.12,
+  "end": 18.32
+ },
+ {
+  "text": "up,",
+  "start": 18.32,
+  "end": 18.48
+ },
+ {
+  "text": "and",
+  "start": 18.84,
+  "end": 19.0
+ },
+ {
+  "text": "it's",
+  "start": 19.0,
+  "end": 19.18
+ },
+ {
+  "text": "more",
+  "start": 19.18,
+  "end": 19.4
+ },
+ {
+  "text": "than",
+  "start": 19.4,
+  "end": 19.62
+ },
+ {
+  "text": "Shopify",
+  "start": 19.62,
+  "end": 20.2
+ },
+ {
+  "text": "shows.",
+  "start": 20.2,
+  "end": 20.62
+ },
+ {
+  "text": "Every",
+  "start": 20.98,
+  "end": 21.2
+ },
+ {
+  "text": "channel",
+  "start": 21.2,
+  "end": 21.48
+ },
+ {
+  "text": "looks",
+  "start": 21.48,
+  "end": 22.02
+ },
+ {
+  "text": "like",
+  "start": 22.02,
+  "end": 22.28
+ },
+ {
+  "text": "a",
+  "start": 22.28,
+  "end": 22.38
+ },
+ {
+  "text": "winner",
+  "start": 22.38,
+  "end": 22.58
+ },
+ {
+  "text": "when",
+  "start": 22.58,
+  "end": 23.34
+ },
+ {
+  "text": "your",
+  "start": 23.34,
+  "end": 23.48
+ },
+ {
+  "text": "P&L",
+  "start": 23.48,
+  "end": 23.9
+ },
+ {
+  "text": "is",
+  "start": 23.9,
+  "end": 24.02
+ },
+ {
+  "text": "flat.",
+  "start": 24.02,
+  "end": 24.32
+ },
+ {
+  "text": "The",
+  "start": 24.66,
+  "end": 24.72
+ },
+ {
+  "text": "brands",
+  "start": 24.72,
+  "end": 24.96
+ },
+ {
+  "text": "that",
+  "start": 24.96,
+  "end": 25.18
+ },
+ {
+  "text": "scale",
+  "start": 25.18,
+  "end": 25.46
+ },
+ {
+  "text": "the",
+  "start": 25.46,
+  "end": 25.6
+ },
+ {
+  "text": "most",
+  "start": 25.6,
+  "end": 25.8
+ },
+ {
+  "text": "stopped",
+  "start": 25.8,
+  "end": 26.14
+ },
+ {
+  "text": "optimizing",
+  "start": 26.14,
+  "end": 26.62
+ },
+ {
+  "text": "for",
+  "start": 26.62,
+  "end": 26.94
+ },
+ {
+  "text": "ROAS",
+  "start": 26.94,
+  "end": 27.3
+ },
+ {
+  "text": "alone,",
+  "start": 27.3,
+  "end": 27.56
+ },
+ {
+  "text": "and",
+  "start": 27.56,
+  "end": 28.24
+ },
+ {
+  "text": "started",
+  "start": 28.24,
+  "end": 28.56
+ },
+ {
+  "text": "looking",
+  "start": 28.56,
+  "end": 28.82
+ },
+ {
+  "text": "at",
+  "start": 28.82,
+  "end": 29.1
+ },
+ {
+  "text": "max",
+  "start": 29.1,
+  "end": 29.44
+ },
+ {
+  "text": "allowable",
+  "start": 29.44,
+  "end": 29.96
+ },
+ {
+  "text": "CAC.",
+  "start": 29.96,
+  "end": 30.36
+ },
+ {
+  "text": "The",
+  "start": 30.92,
+  "end": 30.98
+ },
+ {
+  "text": "most",
+  "start": 30.98,
+  "end": 31.26
+ },
+ {
+  "text": "they",
+  "start": 31.26,
+  "end": 31.44
+ },
+ {
+  "text": "can",
+  "start": 31.44,
+  "end": 31.58
+ },
+ {
+  "text": "pay",
+  "start": 31.58,
+  "end": 31.78
+ },
+ {
+  "text": "for",
+  "start": 31.78,
+  "end": 31.98
+ },
+ {
+  "text": "a",
+  "start": 31.98,
+  "end": 32.08
+ },
+ {
+  "text": "sale",
+  "start": 32.08,
+  "end": 32.32
+ },
+ {
+  "text": "and",
+  "start": 32.32,
+  "end": 32.6
+ },
+ {
+  "text": "still",
+  "start": 32.6,
+  "end": 32.84
+ },
+ {
+  "text": "make",
+  "start": 32.84,
+  "end": 33.06
+ },
+ {
+  "text": "money.",
+  "start": 33.06,
+  "end": 33.34
+ },
+ {
+  "text": "Bring",
+  "start": 33.56,
+  "end": 33.82
+ },
+ {
+  "text": "your",
+  "start": 33.82,
+  "end": 34.04
+ },
+ {
+  "text": "numbers",
+  "start": 34.04,
+  "end": 34.32
+ },
+ {
+  "text": "to",
+  "start": 34.32,
+  "end": 34.56
+ },
+ {
+  "text": "the",
+  "start": 34.56,
+  "end": 34.66
+ },
+ {
+  "text": "45-minute",
+  "start": 34.66,
+  "end": 35.34
+ },
+ {
+  "text": "call.",
+  "start": 35.34,
+  "end": 35.64
+ },
+ {
+  "text": "We",
+  "start": 36.26,
+  "end": 36.38
+ },
+ {
+  "text": "calculate",
+  "start": 36.38,
+  "end": 36.64
+ },
+ {
+  "text": "that",
+  "start": 36.64,
+  "end": 37.08
+ },
+ {
+  "text": "number",
+  "start": 37.08,
+  "end": 37.38
+ },
+ {
+  "text": "live",
+  "start": 37.38,
+  "end": 37.72
+ },
+ {
+  "text": "with",
+  "start": 37.72,
+  "end": 37.98
+ },
+ {
+  "text": "you,",
+  "start": 37.98,
+  "end": 38.18
+ },
+ {
+  "text": "and",
+  "start": 38.52,
+  "end": 38.8
+ },
+ {
+  "text": "show",
+  "start": 38.8,
+  "end": 39.04
+ },
+ {
+  "text": "where",
+  "start": 39.04,
+  "end": 39.3
+ },
+ {
+  "text": "your",
+  "start": 39.3,
+  "end": 39.44
+ },
+ {
+  "text": "profit",
+  "start": 39.44,
+  "end": 39.74
+ },
+ {
+  "text": "is",
+  "start": 39.74,
+  "end": 39.98
+ },
+ {
+  "text": "leaking.",
+  "start": 39.98,
+  "end": 40.26
+ },
+ {
+  "text": "And",
+  "start": 40.7,
+  "end": 40.82
+ },
+ {
+  "text": "we",
+  "start": 40.82,
+  "end": 40.98
+ },
+ {
+  "text": "hand",
+  "start": 40.98,
+  "end": 41.18
+ },
+ {
+  "text": "you",
+  "start": 41.18,
+  "end": 41.34
+ },
+ {
+  "text": "a",
+  "start": 41.34,
+  "end": 41.44
+ },
+ {
+  "text": "90-day",
+  "start": 41.44,
+  "end": 41.84
+ },
+ {
+  "text": "plan,",
+  "start": 41.84,
+  "end": 42.24
+ },
+ {
+  "text": "whether",
+  "start": 42.52,
+  "end": 42.72
+ },
+ {
+  "text": "you",
+  "start": 42.72,
+  "end": 42.94
+ },
+ {
+  "text": "sign",
+  "start": 42.94,
+  "end": 43.16
+ },
+ {
+  "text": "with",
+  "start": 43.16,
+  "end": 43.34
+ },
+ {
+  "text": "us",
+  "start": 43.34,
+  "end": 43.5
+ },
+ {
+  "text": "or",
+  "start": 43.5,
+  "end": 43.64
+ },
+ {
+  "text": "not.",
+  "start": 43.64,
+  "end": 43.88
+ }
+]

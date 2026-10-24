@@ -1,0 +1,2327 @@
+[
+ {
+  "text": "One",
+  "start": 0.0,
+  "end": 0.0
+ },
+ {
+  "text": "DTC",
+  "start": 0.0,
+  "end": 0.28
+ },
+ {
+  "text": "brand",
+  "start": 0.28,
+  "end": 0.58
+ },
+ {
+  "text": "came",
+  "start": 0.58,
+  "end": 0.9
+ },
+ {
+  "text": "to",
+  "start": 0.9,
+  "end": 1.1
+ },
+ {
+  "text": "us",
+  "start": 1.1,
+  "end": 1.36
+ },
+ {
+  "text": "with",
+  "start": 1.36,
+  "end": 1.5
+ },
+ {
+  "text": "fragmented",
+  "start": 1.5,
+  "end": 2.06
+ },
+ {
+  "text": "ad",
+  "start": 2.06,
+  "end": 2.38
+ },
+ {
+  "text": "sets,",
+  "start": 2.38,
+  "end": 2.66
+ },
+ {
+  "text": "rising",
+  "start": 2.94,
+  "end": 3.3
+ },
+ {
+  "text": "CAC,",
+  "start": 3.3,
+  "end": 3.64
+ },
+ {
+  "text": "and",
+  "start": 3.64,
+  "end": 3.9
+ },
+ {
+  "text": "a",
+  "start": 3.9,
+  "end": 4.02
+ },
+ {
+  "text": "platform",
+  "start": 4.02,
+  "end": 4.3
+ },
+ {
+  "text": "ROAS",
+  "start": 4.3,
+  "end": 4.78
+ },
+ {
+  "text": "that",
+  "start": 4.78,
+  "end": 4.92
+ },
+ {
+  "text": "didn't",
+  "start": 4.92,
+  "end": 5.28
+ },
+ {
+  "text": "match",
+  "start": 5.28,
+  "end": 5.5
+ },
+ {
+  "text": "their",
+  "start": 5.5,
+  "end": 5.74
+ },
+ {
+  "text": "bank",
+  "start": 5.74,
+  "end": 5.94
+ },
+ {
+  "text": "account.",
+  "start": 5.94,
+  "end": 6.22
+ },
+ {
+  "text": "We",
+  "start": 6.46,
+  "end": 6.78
+ },
+ {
+  "text": "rebuilt",
+  "start": 6.78,
+  "end": 7.32
+ },
+ {
+  "text": "their",
+  "start": 7.32,
+  "end": 7.62
+ },
+ {
+  "text": "account",
+  "start": 7.62,
+  "end": 7.98
+ },
+ {
+  "text": "around",
+  "start": 7.98,
+  "end": 8.4
+ },
+ {
+  "text": "real",
+  "start": 8.4,
+  "end": 8.82
+ },
+ {
+  "text": "profit,",
+  "start": 8.82,
+  "end": 9.2
+ },
+ {
+  "text": "and",
+  "start": 9.2,
+  "end": 9.38
+ },
+ {
+  "text": "they",
+  "start": 9.38,
+  "end": 9.52
+ },
+ {
+  "text": "went",
+  "start": 9.52,
+  "end": 9.8
+ },
+ {
+  "text": "on",
+  "start": 9.8,
+  "end": 10.12
+ },
+ {
+  "text": "to",
+  "start": 10.12,
+  "end": 10.28
+ },
+ {
+  "text": "do",
+  "start": 10.28,
+  "end": 10.52
+ },
+ {
+  "text": "$2",
+  "start": 10.52,
+  "end": 10.86
+ },
+ {
+  "text": "million",
+  "start": 10.86,
+  "end": 11.06
+ },
+ {
+  "text": "in",
+  "start": 11.06,
+  "end": 11.34
+ },
+ {
+  "text": "verified",
+  "start": 11.34,
+  "end": 11.62
+ },
+ {
+  "text": "revenue",
+  "start": 11.62,
+  "end": 12.04
+ },
+ {
+  "text": "at",
+  "start": 12.04,
+  "end": 12.64
+ },
+ {
+  "text": "an",
+  "start": 12.64,
+  "end": 12.82
+ },
+ {
+  "text": "8x",
+  "start": 12.82,
+  "end": 13.44
+ },
+ {
+  "text": "ROAS,",
+  "start": 13.44,
+  "end": 13.98
+ },
+ {
+  "text": "with",
+  "start": 13.98,
+  "end": 14.44
+ },
+ {
+  "text": "a",
+  "start": 14.44,
+  "end": 14.56
+ },
+ {
+  "text": "CAC",
+  "start": 14.56,
+  "end": 14.82
+ },
+ {
+  "text": "down",
+  "start": 14.82,
+  "end": 15.02
+ },
+ {
+  "text": "35%",
+  "start": 15.02,
+  "end": 15.46
+ },
+ {
+  "text": "and",
+  "start": 16.1,
+  "end": 16.38
+ },
+ {
+  "text": "order",
+  "start": 16.38,
+  "end": 17.0
+ },
+ {
+  "text": "volume",
+  "start": 17.0,
+  "end": 17.42
+ },
+ {
+  "text": "up",
+  "start": 17.42,
+  "end": 17.8
+ },
+ {
+  "text": "4x.",
+  "start": 17.8,
+  "end": 18.44
+ },
+ {
+  "text": "If",
+  "start": 18.7,
+  "end": 19.14
+ },
+ {
+  "text": "you",
+  "start": 19.14,
+  "end": 19.28
+ },
+ {
+  "text": "want",
+  "start": 19.28,
+  "end": 19.52
+ },
+ {
+  "text": "the",
+  "start": 19.52,
+  "end": 19.68
+ },
+ {
+  "text": "same",
+  "start": 19.68,
+  "end": 20.0
+ },
+ {
+  "text": "system",
+  "start": 20.0,
+  "end": 20.54
+ },
+ {
+  "text": "running",
+  "start": 20.54,
+  "end": 21.3
+ },
+ {
+  "text": "in",
+  "start": 21.3,
+  "end": 21.66
+ },
+ {
+  "text": "your",
+  "start": 21.66,
+  "end": 21.82
+ },
+ {
+  "text": "business,",
+  "start": 21.82,
+  "end": 22.26
+ },
+ {
+  "text": "this",
+  "start": 22.48,
+  "end": 22.7
+ },
+ {
+  "text": "is",
+  "start": 22.7,
+  "end": 22.84
+ },
+ {
+  "text": "for",
+  "start": 22.84,
+  "end": 23.04
+ },
+ {
+  "text": "you.",
+  "start": 23.04,
+  "end": 23.2
+ },
+ {
+  "text": "We",
+  "start": 23.2,
+  "end": 23.66
+ },
+ {
+  "text": "have",
+  "start": 23.66,
+  "end": 23.88
+ },
+ {
+  "text": "built",
+  "start": 23.88,
+  "end": 24.2
+ },
+ {
+  "text": "a",
+  "start": 24.2,
+  "end": 24.46
+ },
+ {
+  "text": "system",
+  "start": 24.46,
+  "end": 25.18
+ },
+ {
+  "text": "that",
+  "start": 25.18,
+  "end": 25.4
+ },
+ {
+  "text": "helps",
+  "start": 25.4,
+  "end": 25.82
+ },
+ {
+  "text": "DTC",
+  "start": 25.82,
+  "end": 26.2
+ },
+ {
+  "text": "brands",
+  "start": 26.2,
+  "end": 26.5
+ },
+ {
+  "text": "get",
+  "start": 26.5,
+  "end": 27.38
+ },
+ {
+  "text": "off",
+  "start": 27.38,
+  "end": 27.7
+ },
+ {
+  "text": "the",
+  "start": 27.7,
+  "end": 27.92
+ },
+ {
+  "text": "Meta",
+  "start": 27.92,
+  "end": 28.22
+ },
+ {
+  "text": "roller",
+  "start": 28.22,
+  "end": 28.58
+ },
+ {
+  "text": "coaster",
+  "start": 28.58,
+  "end": 28.92
+ },
+ {
+  "text": "and",
+  "start": 28.92,
+  "end": 29.28
+ },
+ {
+  "text": "scale",
+  "start": 29.28,
+  "end": 29.56
+ },
+ {
+  "text": "on",
+  "start": 29.56,
+  "end": 29.88
+ },
+ {
+  "text": "real",
+  "start": 29.88,
+  "end": 30.14
+ },
+ {
+  "text": "profit,",
+  "start": 30.14,
+  "end": 30.58
+ },
+ {
+  "text": "not",
+  "start": 30.74,
+  "end": 31.08
+ },
+ {
+  "text": "platform",
+  "start": 31.08,
+  "end": 31.56
+ },
+ {
+  "text": "ROAS.",
+  "start": 31.56,
+  "end": 31.94
+ },
+ {
+  "text": "If",
+  "start": 32.16,
+  "end": 32.68
+ },
+ {
+  "text": "you",
+  "start": 32.68,
+  "end": 32.8
+ },
+ {
+  "text": "want",
+  "start": 32.8,
+  "end": 32.96
+ },
+ {
+  "text": "it",
+  "start": 32.96,
+  "end": 33.12
+ },
+ {
+  "text": "in",
+  "start": 33.12,
+  "end": 33.36
+ },
+ {
+  "text": "your",
+  "start": 33.36,
+  "end": 33.82
+ },
+ {
+  "text": "business,",
+  "start": 33.82,
+  "end": 34.26
+ },
+ {
+  "text": "click",
+  "start": 34.54,
+  "end": 34.92
+ },
+ {
+  "text": "the",
+  "start": 34.92,
+  "end": 35.18
+ },
+ {
+  "text": "link",
+  "start": 35.18,
+  "end": 35.6
+ },
+ {
+  "text": "and",
+  "start": 35.6,
+  "end": 35.76
+ },
+ {
+  "text": "book",
+  "start": 35.76,
+  "end": 36.04
+ },
+ {
+  "text": "your",
+  "start": 36.04,
+  "end": 36.18
+ },
+ {
+  "text": "free",
+  "start": 36.18,
+  "end": 36.48
+ },
+ {
+  "text": "growth",
+  "start": 36.48,
+  "end": 36.84
+ },
+ {
+  "text": "audit.",
+  "start": 36.84,
+  "end": 37.14
+ },
+ {
+  "text": "We",
+  "start": 37.38,
+  "end": 37.88
+ },
+ {
+  "text": "call",
+  "start": 37.88,
+  "end": 38.14
+ },
+ {
+  "text": "it",
+  "start": 38.14,
+  "end": 38.36
+ },
+ {
+  "text": "the",
+  "start": 38.36,
+  "end": 38.36
+ },
+ {
+  "text": "One",
+  "start": 38.36,
+  "end": 38.8
+ },
+ {
+  "text": "Number",
+  "start": 38.8,
+  "end": 39.16
+ },
+ {
+  "text": "Model,",
+  "start": 39.16,
+  "end": 39.46
+ },
+ {
+  "text": "and",
+  "start": 39.46,
+  "end": 40.08
+ },
+ {
+  "text": "it",
+  "start": 40.08,
+  "end": 40.24
+ },
+ {
+  "text": "works",
+  "start": 40.24,
+  "end": 40.66
+ },
+ {
+  "text": "completely",
+  "start": 40.66,
+  "end": 41.16
+ },
+ {
+  "text": "differently",
+  "start": 41.16,
+  "end": 41.64
+ },
+ {
+  "text": "from",
+  "start": 41.64,
+  "end": 42.02
+ },
+ {
+  "text": "any",
+  "start": 42.02,
+  "end": 42.34
+ },
+ {
+  "text": "other",
+  "start": 42.34,
+  "end": 42.66
+ },
+ {
+  "text": "agency.",
+  "start": 42.66,
+  "end": 43.04
+ },
+ {
+  "text": "Most",
+  "start": 43.34,
+  "end": 43.9
+ },
+ {
+  "text": "agencies",
+  "start": 43.9,
+  "end": 44.34
+ },
+ {
+  "text": "charge",
+  "start": 44.34,
+  "end": 44.78
+ },
+ {
+  "text": "you",
+  "start": 44.78,
+  "end": 45.1
+ },
+ {
+  "text": "a",
+  "start": 45.1,
+  "end": 45.26
+ },
+ {
+  "text": "percentage",
+  "start": 45.26,
+  "end": 45.74
+ },
+ {
+  "text": "of",
+  "start": 45.74,
+  "end": 46.26
+ },
+ {
+  "text": "your",
+  "start": 46.26,
+  "end": 46.46
+ },
+ {
+  "text": "ad",
+  "start": 46.46,
+  "end": 46.72
+ },
+ {
+  "text": "spend,",
+  "start": 46.72,
+  "end": 46.96
+ },
+ {
+  "text": "so",
+  "start": 47.14,
+  "end": 47.38
+ },
+ {
+  "text": "the",
+  "start": 47.38,
+  "end": 47.52
+ },
+ {
+  "text": "more",
+  "start": 47.52,
+  "end": 47.9
+ },
+ {
+  "text": "of",
+  "start": 47.9,
+  "end": 48.12
+ },
+ {
+  "text": "your",
+  "start": 48.12,
+  "end": 48.28
+ },
+ {
+  "text": "money",
+  "start": 48.28,
+  "end": 48.66
+ },
+ {
+  "text": "they",
+  "start": 48.66,
+  "end": 49.02
+ },
+ {
+  "text": "spend,",
+  "start": 49.02,
+  "end": 49.44
+ },
+ {
+  "text": "the",
+  "start": 49.44,
+  "end": 50.04
+ },
+ {
+  "text": "more",
+  "start": 50.04,
+  "end": 50.4
+ },
+ {
+  "text": "they",
+  "start": 50.4,
+  "end": 50.64
+ },
+ {
+  "text": "make,",
+  "start": 50.64,
+  "end": 50.98
+ },
+ {
+  "text": "whether",
+  "start": 51.16,
+  "end": 51.78
+ },
+ {
+  "text": "you're",
+  "start": 51.78,
+  "end": 52.14
+ },
+ {
+  "text": "profitable",
+  "start": 52.14,
+  "end": 52.62
+ },
+ {
+  "text": "or",
+  "start": 52.62,
+  "end": 52.94
+ },
+ {
+  "text": "not.",
+  "start": 52.94,
+  "end": 53.16
+ },
+ {
+  "text": "And",
+  "start": 53.28,
+  "end": 53.34
+ },
+ {
+  "text": "then",
+  "start": 53.34,
+  "end": 53.58
+ },
+ {
+  "text": "they",
+  "start": 53.58,
+  "end": 53.98
+ },
+ {
+  "text": "split",
+  "start": 53.98,
+  "end": 54.32
+ },
+ {
+  "text": "your",
+  "start": 54.32,
+  "end": 54.62
+ },
+ {
+  "text": "growth",
+  "start": 54.62,
+  "end": 55.16
+ },
+ {
+  "text": "across",
+  "start": 55.16,
+  "end": 55.56
+ },
+ {
+  "text": "three",
+  "start": 55.56,
+  "end": 56.3
+ },
+ {
+  "text": "vendors:",
+  "start": 56.3,
+  "end": 56.74
+ },
+ {
+  "text": "a",
+  "start": 56.98,
+  "end": 57.28
+ },
+ {
+  "text": "media",
+  "start": 57.28,
+  "end": 57.62
+ },
+ {
+  "text": "buyer",
+  "start": 57.62,
+  "end": 57.62
+ },
+ {
+  "text": "chasing",
+  "start": 57.62,
+  "end": 57.94
+ },
+ {
+  "text": "ROAS,",
+  "start": 57.94,
+  "end": 58.36
+ },
+ {
+  "text": "a",
+  "start": 58.62,
+  "end": 58.94
+ },
+ {
+  "text": "creative",
+  "start": 58.94,
+  "end": 59.34
+ },
+ {
+  "text": "studio",
+  "start": 59.34,
+  "end": 59.68
+ },
+ {
+  "text": "chasing",
+  "start": 59.68,
+  "end": 60.2
+ },
+ {
+  "text": "engagement,",
+  "start": 60.2,
+  "end": 60.96
+ },
+ {
+  "text": "and",
+  "start": 61.12,
+  "end": 61.64
+ },
+ {
+  "text": "a",
+  "start": 61.64,
+  "end": 61.64
+ },
+ {
+  "text": "UGC",
+  "start": 61.64,
+  "end": 62.26
+ },
+ {
+  "text": "shop",
+  "start": 62.26,
+  "end": 62.52
+ },
+ {
+  "text": "sending",
+  "start": 62.52,
+  "end": 63.24
+ },
+ {
+  "text": "you",
+  "start": 63.24,
+  "end": 63.78
+ },
+ {
+  "text": "raw",
+  "start": 63.78,
+  "end": 64.2
+ },
+ {
+  "text": "clips.",
+  "start": 64.2,
+  "end": 64.54
+ },
+ {
+  "text": "At",
+  "start": 64.9,
+  "end": 65.24
+ },
+ {
+  "text": "Rarity,",
+  "start": 65.24,
+  "end": 65.7
+ },
+ {
+  "text": "it's",
+  "start": 65.9,
+  "end": 66.46
+ },
+ {
+  "text": "one",
+  "start": 66.46,
+  "end": 66.64
+ },
+ {
+  "text": "team,",
+  "start": 66.64,
+  "end": 66.96
+ },
+ {
+  "text": "one",
+  "start": 67.12,
+  "end": 67.44
+ },
+ {
+  "text": "number,",
+  "start": 67.44,
+  "end": 67.8
+ },
+ {
+  "text": "three",
+  "start": 67.92,
+  "end": 68.36
+ },
+ {
+  "text": "levers,",
+  "start": 68.36,
+  "end": 68.7
+ },
+ {
+  "text": "and",
+  "start": 68.94,
+  "end": 69.42
+ },
+ {
+  "text": "we",
+  "start": 69.42,
+  "end": 69.64
+ },
+ {
+  "text": "charge",
+  "start": 69.64,
+  "end": 69.88
+ },
+ {
+  "text": "a",
+  "start": 69.88,
+  "end": 70.26
+ },
+ {
+  "text": "flat",
+  "start": 70.26,
+  "end": 70.52
+ },
+ {
+  "text": "fee,",
+  "start": 70.52,
+  "end": 70.84
+ },
+ {
+  "text": "never",
+  "start": 70.96,
+  "end": 71.46
+ },
+ {
+  "text": "a",
+  "start": 71.46,
+  "end": 71.68
+ },
+ {
+  "text": "percentage",
+  "start": 71.68,
+  "end": 72.2
+ },
+ {
+  "text": "of",
+  "start": 72.2,
+  "end": 72.62
+ },
+ {
+  "text": "your",
+  "start": 72.62,
+  "end": 72.78
+ },
+ {
+  "text": "spend.",
+  "start": 72.78,
+  "end": 73.12
+ },
+ {
+  "text": "That",
+  "start": 73.4,
+  "end": 73.96
+ },
+ {
+  "text": "includes",
+  "start": 73.96,
+  "end": 74.28
+ },
+ {
+  "text": "performance",
+  "start": 74.28,
+  "end": 75.08
+ },
+ {
+  "text": "media,",
+  "start": 75.08,
+  "end": 75.62
+ },
+ {
+  "text": "Meta",
+  "start": 75.84,
+  "end": 76.46
+ },
+ {
+  "text": "and",
+  "start": 76.46,
+  "end": 76.72
+ },
+ {
+  "text": "Google",
+  "start": 76.72,
+  "end": 76.94
+ },
+ {
+  "text": "run",
+  "start": 76.94,
+  "end": 77.36
+ },
+ {
+  "text": "as",
+  "start": 77.36,
+  "end": 77.36
+ },
+ {
+  "text": "one",
+  "start": 77.36,
+  "end": 78.04
+ },
+ {
+  "text": "budget,",
+  "start": 78.04,
+  "end": 78.56
+ },
+ {
+  "text": "managed",
+  "start": 78.56,
+  "end": 79.08
+ },
+ {
+  "text": "against",
+  "start": 79.08,
+  "end": 79.4
+ },
+ {
+  "text": "MER",
+  "start": 79.4,
+  "end": 80.08
+ },
+ {
+  "text": "and",
+  "start": 80.08,
+  "end": 80.46
+ },
+ {
+  "text": "real",
+  "start": 80.46,
+  "end": 80.9
+ },
+ {
+  "text": "contribution",
+  "start": 80.9,
+  "end": 81.32
+ },
+ {
+  "text": "margin.",
+  "start": 81.32,
+  "end": 81.82
+ },
+ {
+  "text": "AI-native",
+  "start": 82.1,
+  "end": 82.7
+ },
+ {
+  "text": "creative:",
+  "start": 82.7,
+  "end": 83.3
+ },
+ {
+  "text": "our",
+  "start": 83.3,
+  "end": 83.96
+ },
+ {
+  "text": "own",
+  "start": 83.96,
+  "end": 84.3
+ },
+ {
+  "text": "production",
+  "start": 84.3,
+  "end": 84.78
+ },
+ {
+  "text": "pipeline",
+  "start": 84.78,
+  "end": 85.14
+ },
+ {
+  "text": "launches",
+  "start": 85.14,
+  "end": 86.02
+ },
+ {
+  "text": "dozens",
+  "start": 86.02,
+  "end": 86.58
+ },
+ {
+  "text": "of",
+  "start": 86.58,
+  "end": 86.9
+ },
+ {
+  "text": "new",
+  "start": 86.9,
+  "end": 87.16
+ },
+ {
+  "text": "ad",
+  "start": 87.16,
+  "end": 87.56
+ },
+ {
+  "text": "variations",
+  "start": 87.56,
+  "end": 87.94
+ },
+ {
+  "text": "a",
+  "start": 87.94,
+  "end": 88.28
+ },
+ {
+  "text": "week,",
+  "start": 88.28,
+  "end": 88.48
+ },
+ {
+  "text": "at",
+  "start": 88.48,
+  "end": 89.18
+ },
+ {
+  "text": "a",
+  "start": 89.18,
+  "end": 89.22
+ },
+ {
+  "text": "fraction",
+  "start": 89.22,
+  "end": 89.68
+ },
+ {
+  "text": "of",
+  "start": 89.68,
+  "end": 89.9
+ },
+ {
+  "text": "a",
+  "start": 89.9,
+  "end": 90.04
+ },
+ {
+  "text": "traditional",
+  "start": 90.04,
+  "end": 90.42
+ },
+ {
+  "text": "production",
+  "start": 90.42,
+  "end": 90.94
+ },
+ {
+  "text": "cost.",
+  "start": 90.94,
+  "end": 91.32
+ },
+ {
+  "text": "UGC:",
+  "start": 91.64,
+  "end": 92.32
+ },
+ {
+  "text": "real",
+  "start": 92.32,
+  "end": 92.9
+ },
+ {
+  "text": "creators,",
+  "start": 92.9,
+  "end": 93.4
+ },
+ {
+  "text": "briefed",
+  "start": 93.4,
+  "end": 94.3
+ },
+ {
+  "text": "and",
+  "start": 94.3,
+  "end": 94.46
+ },
+ {
+  "text": "edited",
+  "start": 94.46,
+  "end": 94.88
+ },
+ {
+  "text": "to",
+  "start": 94.88,
+  "end": 95.2
+ },
+ {
+  "text": "convert.",
+  "start": 95.2,
+  "end": 95.5
+ },
+ {
+  "text": "And",
+  "start": 95.5,
+  "end": 96.26
+ },
+ {
+  "text": "direct",
+  "start": 96.26,
+  "end": 96.58
+ },
+ {
+  "text": "access",
+  "start": 96.58,
+  "end": 97.06
+ },
+ {
+  "text": "to",
+  "start": 97.06,
+  "end": 97.48
+ },
+ {
+  "text": "senior",
+  "start": 97.48,
+  "end": 98.3
+ },
+ {
+  "text": "operators",
+  "start": 98.3,
+  "end": 98.82
+ },
+ {
+  "text": "who",
+  "start": 98.82,
+  "end": 99.3
+ },
+ {
+  "text": "understand",
+  "start": 99.3,
+  "end": 99.8
+ },
+ {
+  "text": "inventory,",
+  "start": 99.8,
+  "end": 100.24
+ },
+ {
+  "text": "margin",
+  "start": 100.24,
+  "end": 101.02
+ },
+ {
+  "text": "and",
+  "start": 101.02,
+  "end": 101.42
+ },
+ {
+  "text": "cash",
+  "start": 101.42,
+  "end": 101.66
+ },
+ {
+  "text": "flow.",
+  "start": 101.66,
+  "end": 101.9
+ },
+ {
+  "text": "No",
+  "start": 102.06,
+  "end": 102.56
+ },
+ {
+  "text": "junior",
+  "start": 102.56,
+  "end": 103.04
+ },
+ {
+  "text": "account",
+  "start": 103.04,
+  "end": 103.3
+ },
+ {
+  "text": "managers.",
+  "start": 103.3,
+  "end": 103.7
+ },
+ {
+  "text": "So",
+  "start": 104.08,
+  "end": 104.64
+ },
+ {
+  "text": "you",
+  "start": 104.64,
+  "end": 104.9
+ },
+ {
+  "text": "get",
+  "start": 104.9,
+  "end": 105.14
+ },
+ {
+  "text": "one",
+  "start": 105.14,
+  "end": 105.38
+ },
+ {
+  "text": "team",
+  "start": 105.38,
+  "end": 105.68
+ },
+ {
+  "text": "that",
+  "start": 105.68,
+  "end": 105.96
+ },
+ {
+  "text": "owns",
+  "start": 105.96,
+  "end": 106.22
+ },
+ {
+  "text": "the",
+  "start": 106.22,
+  "end": 106.44
+ },
+ {
+  "text": "whole",
+  "start": 106.44,
+  "end": 106.74
+ },
+ {
+  "text": "growth",
+  "start": 106.74,
+  "end": 107.1
+ },
+ {
+  "text": "engine,",
+  "start": 107.1,
+  "end": 107.6
+ },
+ {
+  "text": "and",
+  "start": 107.6,
+  "end": 108.04
+ },
+ {
+  "text": "one",
+  "start": 108.04,
+  "end": 108.36
+ },
+ {
+  "text": "number",
+  "start": 108.36,
+  "end": 108.74
+ },
+ {
+  "text": "everyone",
+  "start": 108.74,
+  "end": 109.26
+ },
+ {
+  "text": "is",
+  "start": 109.26,
+  "end": 109.56
+ },
+ {
+  "text": "accountable",
+  "start": 109.56,
+  "end": 109.92
+ },
+ {
+  "text": "to:",
+  "start": 109.92,
+  "end": 110.38
+ },
+ {
+  "text": "your",
+  "start": 110.52,
+  "end": 110.72
+ },
+ {
+  "text": "profit.",
+  "start": 110.72,
+  "end": 111.1
+ },
+ {
+  "text": "Here's",
+  "start": 111.54,
+  "end": 112.18
+ },
+ {
+  "text": "what",
+  "start": 112.18,
+  "end": 112.38
+ },
+ {
+  "text": "that",
+  "start": 112.38,
+  "end": 112.64
+ },
+ {
+  "text": "looks",
+  "start": 112.64,
+  "end": 113.16
+ },
+ {
+  "text": "like.",
+  "start": 113.16,
+  "end": 113.46
+ },
+ {
+  "text": "One",
+  "start": 113.7,
+  "end": 114.1
+ },
+ {
+  "text": "brand",
+  "start": 114.1,
+  "end": 114.52
+ },
+ {
+  "text": "ran",
+  "start": 114.52,
+  "end": 114.8
+ },
+ {
+  "text": "Meta",
+  "start": 114.8,
+  "end": 115.32
+ },
+ {
+  "text": "and",
+  "start": 115.32,
+  "end": 115.42
+ },
+ {
+  "text": "Google",
+  "start": 115.42,
+  "end": 115.7
+ },
+ {
+  "text": "as",
+  "start": 115.7,
+  "end": 116.14
+ },
+ {
+  "text": "a",
+  "start": 116.14,
+  "end": 116.28
+ },
+ {
+  "text": "single",
+  "start": 116.28,
+  "end": 116.6
+ },
+ {
+  "text": "budget",
+  "start": 116.6,
+  "end": 116.98
+ },
+ {
+  "text": "with",
+  "start": 116.98,
+  "end": 117.58
+ },
+ {
+  "text": "us",
+  "start": 117.58,
+  "end": 117.98
+ },
+ {
+  "text": "and",
+  "start": 117.98,
+  "end": 118.5
+ },
+ {
+  "text": "did",
+  "start": 118.5,
+  "end": 118.74
+ },
+ {
+  "text": "$10",
+  "start": 118.74,
+  "end": 119.32
+ },
+ {
+  "text": "million",
+  "start": 119.32,
+  "end": 119.62
+ },
+ {
+  "text": "in",
+  "start": 119.62,
+  "end": 120.2
+ },
+ {
+  "text": "sales",
+  "start": 120.2,
+  "end": 120.5
+ },
+ {
+  "text": "at",
+  "start": 120.5,
+  "end": 120.8
+ },
+ {
+  "text": "10x",
+  "start": 120.8,
+  "end": 121.76
+ },
+ {
+  "text": "ROAS.",
+  "start": 121.76,
+  "end": 122.2
+ },
+ {
+  "text": "For",
+  "start": 122.38,
+  "end": 122.8
+ },
+ {
+  "text": "another,",
+  "start": 122.8,
+  "end": 123.08
+ },
+ {
+  "text": "we",
+  "start": 123.34,
+  "end": 123.56
+ },
+ {
+  "text": "launched",
+  "start": 123.56,
+  "end": 123.9
+ },
+ {
+  "text": "35",
+  "start": 123.9,
+  "end": 124.16
+ },
+ {
+  "text": "new",
+  "start": 124.16,
+  "end": 124.76
+ },
+ {
+  "text": "hooks",
+  "start": 124.76,
+  "end": 125.4
+ },
+ {
+  "text": "in",
+  "start": 125.4,
+  "end": 125.5
+ },
+ {
+  "text": "7",
+  "start": 125.5,
+  "end": 125.94
+ },
+ {
+  "text": "days",
+  "start": 125.94,
+  "end": 126.24
+ },
+ {
+  "text": "and",
+  "start": 126.24,
+  "end": 126.56
+ },
+ {
+  "text": "found",
+  "start": 126.56,
+  "end": 126.88
+ },
+ {
+  "text": "3",
+  "start": 126.88,
+  "end": 127.22
+ },
+ {
+  "text": "winners",
+  "start": 127.22,
+  "end": 127.68
+ },
+ {
+  "text": "that",
+  "start": 127.68,
+  "end": 127.92
+ },
+ {
+  "text": "hit",
+  "start": 127.92,
+  "end": 128.2
+ },
+ {
+  "text": "17x",
+  "start": 128.2,
+  "end": 129.46
+ },
+ {
+  "text": "ROAS.",
+  "start": 129.46,
+  "end": 129.94
+ },
+ {
+  "text": "And",
+  "start": 130.14,
+  "end": 130.56
+ },
+ {
+  "text": "a",
+  "start": 130.56,
+  "end": 130.72
+ },
+ {
+  "text": "third",
+  "start": 130.72,
+  "end": 130.92
+ },
+ {
+  "text": "brand",
+  "start": 131.0,
+  "end": 131.26
+ },
+ {
+  "text": "scaled",
+  "start": 131.26,
+  "end": 131.7
+ },
+ {
+  "text": "on",
+  "start": 131.7,
+  "end": 132.04
+ },
+ {
+  "text": "TikTok",
+  "start": 132.04,
+  "end": 132.32
+ },
+ {
+  "text": "at",
+  "start": 132.32,
+  "end": 133.16
+ },
+ {
+  "text": "a",
+  "start": 133.16,
+  "end": 133.28
+ },
+ {
+  "text": "6x",
+  "start": 133.28,
+  "end": 133.82
+ },
+ {
+  "text": "ROAS,",
+  "start": 133.82,
+  "end": 134.2
+ },
+ {
+  "text": "with",
+  "start": 134.2,
+  "end": 134.54
+ },
+ {
+  "text": "a",
+  "start": 134.54,
+  "end": 134.7
+ },
+ {
+  "text": "customer",
+  "start": 134.7,
+  "end": 135.04
+ },
+ {
+  "text": "acquisition",
+  "start": 135.04,
+  "end": 135.36
+ },
+ {
+  "text": "cost",
+  "start": 135.36,
+  "end": 135.96
+ },
+ {
+  "text": "under",
+  "start": 135.96,
+  "end": 136.4
+ },
+ {
+  "text": "$20",
+  "start": 136.4,
+  "end": 137.14
+ },
+ {
+  "text": "from",
+  "start": 137.14,
+  "end": 137.82
+ },
+ {
+  "text": "cold",
+  "start": 137.82,
+  "end": 138.2
+ },
+ {
+  "text": "traffic.",
+  "start": 138.2,
+  "end": 138.52
+ },
+ {
+  "text": "So",
+  "start": 138.88,
+  "end": 139.18
+ },
+ {
+  "text": "if",
+  "start": 139.18,
+  "end": 139.48
+ },
+ {
+  "text": "you",
+  "start": 139.48,
+  "end": 139.62
+ },
+ {
+  "text": "are",
+  "start": 139.62,
+  "end": 139.7
+ },
+ {
+  "text": "doing",
+  "start": 139.7,
+  "end": 139.98
+ },
+ {
+  "text": "1",
+  "start": 139.98,
+  "end": 140.28
+ },
+ {
+  "text": "million",
+  "start": 140.28,
+  "end": 140.54
+ },
+ {
+  "text": "to",
+  "start": 140.54,
+  "end": 140.78
+ },
+ {
+  "text": "10",
+  "start": 140.78,
+  "end": 141.04
+ },
+ {
+  "text": "million",
+  "start": 141.04,
+  "end": 141.26
+ },
+ {
+  "text": "a",
+  "start": 141.26,
+  "end": 141.5
+ },
+ {
+  "text": "year,",
+  "start": 141.5,
+  "end": 141.7
+ },
+ {
+  "text": "and",
+  "start": 141.7,
+  "end": 142.22
+ },
+ {
+  "text": "you",
+  "start": 142.22,
+  "end": 142.36
+ },
+ {
+  "text": "want",
+  "start": 142.36,
+  "end": 142.62
+ },
+ {
+  "text": "a",
+  "start": 142.62,
+  "end": 142.78
+ },
+ {
+  "text": "growth",
+  "start": 142.78,
+  "end": 142.92
+ },
+ {
+  "text": "partner",
+  "start": 142.92,
+  "end": 143.32
+ },
+ {
+  "text": "that's",
+  "start": 143.32,
+  "end": 143.62
+ },
+ {
+  "text": "paid",
+  "start": 143.62,
+  "end": 144.02
+ },
+ {
+  "text": "to",
+  "start": 144.02,
+  "end": 144.3
+ },
+ {
+  "text": "make",
+  "start": 144.3,
+  "end": 144.66
+ },
+ {
+  "text": "you",
+  "start": 144.66,
+  "end": 145.44
+ },
+ {
+  "text": "money,",
+  "start": 145.44,
+  "end": 145.84
+ },
+ {
+  "text": "not",
+  "start": 145.96,
+  "end": 146.34
+ },
+ {
+  "text": "to",
+  "start": 146.34,
+  "end": 146.44
+ },
+ {
+  "text": "spend",
+  "start": 146.44,
+  "end": 146.82
+ },
+ {
+  "text": "it,",
+  "start": 146.82,
+  "end": 146.98
+ },
+ {
+  "text": "click",
+  "start": 147.1,
+  "end": 147.66
+ },
+ {
+  "text": "the",
+  "start": 147.66,
+  "end": 147.84
+ },
+ {
+  "text": "link",
+  "start": 147.84,
+  "end": 148.1
+ },
+ {
+  "text": "and",
+  "start": 148.1,
+  "end": 148.34
+ },
+ {
+  "text": "apply",
+  "start": 148.34,
+  "end": 148.58
+ },
+ {
+  "text": "for",
+  "start": 148.58,
+  "end": 148.88
+ },
+ {
+  "text": "your",
+  "start": 148.88,
+  "end": 149.2
+ },
+ {
+  "text": "free",
+  "start": 149.2,
+  "end": 149.56
+ },
+ {
+  "text": "growth",
+  "start": 149.56,
+  "end": 149.86
+ },
+ {
+  "text": "audit.",
+  "start": 149.86,
+  "end": 150.1
+ },
+ {
+  "text": "In",
+  "start": 150.1,
+  "end": 150.36
+ },
+ {
+  "text": "two",
+  "start": 150.36,
+  "end": 150.64
+ },
+ {
+  "text": "to",
+  "start": 150.64,
+  "end": 150.86
+ },
+ {
+  "text": "four",
+  "start": 150.86,
+  "end": 151.12
+ },
+ {
+  "text": "business",
+  "start": 151.12,
+  "end": 151.66
+ },
+ {
+  "text": "days,",
+  "start": 151.66,
+  "end": 152.08
+ },
+ {
+  "text": "we",
+  "start": 152.08,
+  "end": 152.84
+ },
+ {
+  "text": "will",
+  "start": 152.84,
+  "end": 153.04
+ },
+ {
+  "text": "audit",
+  "start": 153.04,
+  "end": 153.4
+ },
+ {
+  "text": "your",
+  "start": 153.4,
+  "end": 153.64
+ },
+ {
+  "text": "media,",
+  "start": 153.64,
+  "end": 153.98
+ },
+ {
+  "text": "creative",
+  "start": 154.1,
+  "end": 154.46
+ },
+ {
+  "text": "and",
+  "start": 154.46,
+  "end": 154.78
+ },
+ {
+  "text": "funnel",
+  "start": 154.78,
+  "end": 155.1
+ },
+ {
+  "text": "against",
+  "start": 155.1,
+  "end": 155.42
+ },
+ {
+  "text": "your",
+  "start": 155.42,
+  "end": 155.76
+ },
+ {
+  "text": "real",
+  "start": 155.76,
+  "end": 156.08
+ },
+ {
+  "text": "P&L.",
+  "start": 156.08,
+  "end": 156.56
+ },
+ {
+  "text": "Then,",
+  "start": 156.56,
+  "end": 157.14
+ },
+ {
+  "text": "on",
+  "start": 157.4,
+  "end": 157.62
+ },
+ {
+  "text": "the",
+  "start": 157.62,
+  "end": 157.74
+ },
+ {
+  "text": "call,",
+  "start": 157.74,
+  "end": 158.02
+ },
+ {
+  "text": "we",
+  "start": 158.12,
+  "end": 158.32
+ },
+ {
+  "text": "will",
+  "start": 158.32,
+  "end": 158.46
+ },
+ {
+  "text": "walk",
+  "start": 158.46,
+  "end": 158.88
+ },
+ {
+  "text": "you",
+  "start": 158.88,
+  "end": 159.18
+ },
+ {
+  "text": "through",
+  "start": 159.18,
+  "end": 159.54
+ },
+ {
+  "text": "exactly",
+  "start": 159.54,
+  "end": 160.0
+ },
+ {
+  "text": "what",
+  "start": 160.0,
+  "end": 160.54
+ },
+ {
+  "text": "we",
+  "start": 160.54,
+  "end": 160.72
+ },
+ {
+  "text": "found",
+  "start": 160.72,
+  "end": 161.12
+ },
+ {
+  "text": "and",
+  "start": 161.12,
+  "end": 161.54
+ },
+ {
+  "text": "what",
+  "start": 161.54,
+  "end": 161.78
+ },
+ {
+  "text": "we'd",
+  "start": 161.78,
+  "end": 162.284
+ },
+ {
+  "text": "change",
+  "start": 162.284,
+  "end": 163.04
+ },
+ {
+  "text": "first.",
+  "start": 163.04,
+  "end": 163.46
+ },
+ {
+  "text": "If",
+  "start": 163.82,
+  "end": 164.3
+ },
+ {
+  "text": "you",
+  "start": 164.3,
+  "end": 164.4
+ },
+ {
+  "text": "have",
+  "start": 164.4,
+  "end": 164.58
+ },
+ {
+  "text": "a",
+  "start": 164.58,
+  "end": 164.68
+ },
+ {
+  "text": "business",
+  "start": 164.68,
+  "end": 164.92
+ },
+ {
+  "text": "partner,",
+  "start": 164.92,
+  "end": 165.26
+ },
+ {
+  "text": "no",
+  "start": 165.5,
+  "end": 165.64
+ },
+ {
+  "text": "problem,",
+  "start": 165.64,
+  "end": 165.98
+ },
+ {
+  "text": "bring",
+  "start": 166.18,
+  "end": 166.4
+ },
+ {
+  "text": "them",
+  "start": 166.4,
+  "end": 166.68
+ },
+ {
+  "text": "to",
+  "start": 166.68,
+  "end": 166.94
+ },
+ {
+  "text": "the",
+  "start": 166.94,
+  "end": 167.08
+ },
+ {
+  "text": "call",
+  "start": 167.08,
+  "end": 167.36
+ },
+ {
+  "text": "and",
+  "start": 167.36,
+  "end": 167.54
+ },
+ {
+  "text": "we",
+  "start": 167.54,
+  "end": 167.74
+ },
+ {
+  "text": "will",
+  "start": 167.74,
+  "end": 167.92
+ },
+ {
+  "text": "walk",
+  "start": 167.92,
+  "end": 168.22
+ },
+ {
+  "text": "you",
+  "start": 168.22,
+  "end": 168.4
+ },
+ {
+  "text": "both",
+  "start": 168.4,
+  "end": 168.7
+ },
+ {
+  "text": "through",
+  "start": 168.7,
+  "end": 169.32
+ },
+ {
+  "text": "everything",
+  "start": 169.32,
+  "end": 169.88
+ },
+ {
+  "text": "together.",
+  "start": 169.88,
+  "end": 170.3
+ },
+ {
+  "text": "Click",
+  "start": 170.74,
+  "end": 171.26
+ },
+ {
+  "text": "the",
+  "start": 171.26,
+  "end": 171.4
+ },
+ {
+  "text": "link,",
+  "start": 171.4,
+  "end": 171.62
+ },
+ {
+  "text": "watch",
+  "start": 171.78,
+  "end": 172.06
+ },
+ {
+  "text": "the",
+  "start": 172.06,
+  "end": 172.24
+ },
+ {
+  "text": "video",
+  "start": 172.24,
+  "end": 172.52
+ },
+ {
+  "text": "and",
+  "start": 172.52,
+  "end": 172.72
+ },
+ {
+  "text": "book",
+  "start": 172.72,
+  "end": 172.98
+ },
+ {
+  "text": "your",
+  "start": 172.98,
+  "end": 173.14
+ },
+ {
+  "text": "audit",
+  "start": 173.14,
+  "end": 173.44
+ },
+ {
+  "text": "with",
+  "start": 173.44,
+  "end": 173.84
+ },
+ {
+  "text": "me",
+  "start": 173.84,
+  "end": 174.18
+ },
+ {
+  "text": "and",
+  "start": 174.18,
+  "end": 174.44
+ },
+ {
+  "text": "my",
+  "start": 174.44,
+  "end": 174.62
+ },
+ {
+  "text": "team.",
+  "start": 174.62,
+  "end": 174.92
+ },
+ {
+  "text": "See",
+  "start": 175.12,
+  "end": 175.6
+ },
+ {
+  "text": "you",
+  "start": 175.6,
+  "end": 175.8
+ },
+ {
+  "text": "on",
+  "start": 175.8,
+  "end": 176.02
+ },
+ {
+  "text": "the",
+  "start": 176.02,
+  "end": 176.14
+ },
+ {
+  "text": "other",
+  "start": 176.14,
+  "end": 176.34
+ },
+ {
+  "text": "side.",
+  "start": 176.34,
+  "end": 176.62
+ }
+]

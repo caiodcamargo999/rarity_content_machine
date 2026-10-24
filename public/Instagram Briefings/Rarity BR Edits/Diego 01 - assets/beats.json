@@ -1,0 +1,13 @@
+[
+ {"type":"strike","start":4.40,"end":6.40,"anchors":{"strike":5.40},"params":{"big":"ROAS","label":"métrica principal","sub":"o erro da loja virtual"}},
+ {"type":"bars","start":6.50,"end":10.05,"anchors":{"pill":8.38},"params":{"title":"investimento"}},
+ {"type":"bank","start":10.52,"end":12.20,"anchors":{"nada":11.68},"params":{"title":"conta bancária"}},
+ {"type":"credits","start":13.10,"end":17.40,"anchors":{"c0":13.58,"c1":14.16,"c2":14.68,"sale":16.56},"params":{"sale":"1 venda"}},
+ {"type":"sum","start":17.40,"end":19.95,"anchors":{"shopify":18.90},"params":{"note":"o Shopify mostra menos"}},
+ {"type":"channels","start":20.12,"end":23.25,"anchors":{"flat":22.22}},
+ {"type":"lupa","start":25.46,"end":27.00,"anchors":{"dim":26.55},"params":{"word":"ROAS","sub":"olhando somente pro"}},
+ {"type":"cac","start":28.10,"end":33.00,"anchors":{"marker":30.05,"profit":32.02},"params":{"sub":"o máximo que elas podem pagar por uma venda"}},
+ {"type":"call","start":34.10,"end":36.10,"params":{"big":"45","kicker":"call de 45 minutos","foot":"traga seus números"}},
+ {"type":"checklist","start":36.40,"end":45.05,"anchors":{"r0":36.58,"r1":38.60,"r2":40.54},
+  "params":{"rows":[["Calculamos seu CAC máximo","ao vivo"],["Mostramos onde o lucro vaza"],["Plano de 90 dias","fechando ou não"]]}}
+]
