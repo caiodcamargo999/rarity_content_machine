@@ -1,392 +1,373 @@
 #!/usr/bin/env python3
 """
-render_post.py — Rarity IG art, rendered 100% by Claude (NO design connectors).
-v6 — replaces v5's dark-patch-behind-text approach with ADAPTIVE LETTER COLOR: every text
-element (headline, subhead, eyebrow, kicker, handle, page counter, CTA logo) samples its own
-local background luminance and switches between white/teal (on a dark zone) and navy (on a
-light zone) — whichever actually contrasts. No patches, no chips: the photo shows through
-clean everywhere and the letter color does the legibility work, per Caio's 2026-07-11 direction
-("if background is darker, letter lighter" — and the converse: light background, dark letter).
-The old fixed-white + blurred-dark-patch approach either read as a hard-edged sticker (tight
-blur) or still under-shot 4.5:1 (loose blur) — this replaces both call sites entirely.
+render_post.py v7 — Rarity IG carousel, rendered 100% in Python/Pillow (no design connectors).
 
-Look: every slide is its OWN full-bleed photo in REAL colors (no brand-navy wash). A bottom
-scrim + subtle vignette + grain still apply for mood, but at a much lighter touch than v5,
-since letter-color adaptation now carries contrast instead of image-darkening.
-Headline = one of TWO brand fonts, matching ecom.rarityagency.io's own type system: editorial
-SERIF (Playfair Display, assets/headline.ttf — the default) or brand SANS (Plus Jakarta Sans
-ExtraBold, assets/headline-sans.ttf). Set spec["headline_font"] to "serif" (default) or "sans".
-VARY this across a content batch/calendar — don't render every post in the same one. Both carry
-*italic* accent words in the accent colour. Rarity symbol sits transparent top-right on EVERY
-slide. No date anywhere.
+THE HOUSE STANDARD (matches the posts made in the Brands Decoded "Maquina" software, e.g.
+"Idea 01 - Liquid Death"): a mixed-card carousel, 1080x1350, one distinct photo per slide.
 
-Usage:  python3 render_post.py <spec.json>   ->  slide-1.png .. slide-N.png in spec["out_dir"]
-Every render prints a "[contrast]" line per text zone: which colour was picked (light/dark) and
-the resulting ratio against the 4.5:1 bar. Anything still flagged LOW CONTRAST after adaptive
-colour needs a focus_x/focus_y change or a different photo — the letter color can't rescue a
-zone that's exactly mid-gray (contrast ~1:1 against both white AND navy).
+  hook    full-bleed photo + bottom scrim, small handle top-left, profile chip (avatar +
+          @rarity.agency + blue verified badge), white headline with ONE magenta italic accent
+          word, light-blue subhead near the bottom.
+  light   off-white card (#EFEEEA): navy headline top, black body text, framed photo at the bottom.
+  photo   full-bleed photo + dark gradient: white arrow circle, SHORT white headline with magenta
+          italic accent word mid-slide, white body text at the bottom.
+  dark    near-black card (#0F0A1A): white headline, white body text, framed photo at the bottom.
+  lesson  off-white card, short navy headline top, photo bleeding edge to edge across the bottom.
+  action  off-white card, framed photo on top, MAGENTA headline below (the "try it this week" step).
+  cta     off-white card, framed photo on top, NAVY headline with a magenta italic accent word
+          ("Save this post. Share it with the people who *think* like you.").
+
+The ONLY thing that varies between posts is the headline typeface (spec["headline_font"]):
+  "sans"  -> Plus Jakarta Sans ExtraBold (the look of the reference posts)
+  "serif" -> Playfair Display Bold
+Body text, handle, colours and layout are identical in both.
+
+Usage:  python3 render_post.py <spec.json>   ->  slide-01.png .. slide-NN.png in spec["out_dir"]
 
 Spec:
 {
- "out_dir": "<.../EN>", "handle": "@rarity.agency",
- "accent": "#D50057",                      # default accent; magenta | #FFE400 yellow | #FF3B3B red
- "headline_font": "serif",                 # "serif" (Playfair, default) or "sans" (Plus Jakarta Sans) — vary across a batch
+ "out_dir": ".../Idea 12 - Title/EN",
+ "handle": "@rarity.agency",
+ "headline_font": "sans",              # or "serif" — alternate across posts
  "slides": [
-   {"type":"hook","bg":"<.../hero.jpg>","focus_x":0.5,"focus_y":0.4,
-    "eyebrow":"Eugene Schwartz, 1966","headline":"You can't *create* desire.","size":126,
-    "subhead":"What the most stolen book in advertising knew about your ads ->"},
-   {"type":"body","bg":"<.../bg2.jpg>","kicker":"The mistake",
-    "headline":"Most brands burn millions *shouting* at people who never buy.","size":94},
-   {"type":"stat","bg":"<.../bg3.jpg>","stat":"85%","label":"of ads are ignored",
-    "sub":"They sell the product, not the desire already in the room."},
-   {"type":"cta","bg":"<.../bg4.jpg>","headline":"Save this. *Send it* to someone who runs ads.","size":98}
+   {"type":"hook","bg":"hero.jpg","headline":"Liquid Death made water look *dangerous*",
+    "subhead":"Canned water. A $1.4B valuation. Same product as your tap.","focus_x":0.5,"focus_y":0.4},
+   {"type":"light","bg":"bg2.jpg","headline":"The product was *never* the problem","body":"..."},
+   {"type":"photo","bg":"bg3.jpg","headline":"He picked a *fight* with the category","body":"..."},
+   {"type":"dark","bg":"bg4.jpg","headline":"The *hate* became the content","body":"..."},
+   ... "lesson", "action", "cta"
  ]
 }
-
-Per-slide options: "accent" (override colour, always used as-is for italic words + stat number —
-NOT adapted, it's the deliberate brand accent), "head_color" (force the whole headline to one
-colour, skips adaptation), "accent_last", "focus_x"/"focus_y", "dark" (0-1 extra full-frame
-darken — now a MOOD knob, not the primary contrast mechanism), "bot_a"/"bot_start" (scrim).
-Wrap emphasis word(s) in *asterisks* -> italic + accent colour.
+"type" may be omitted: slide 1 = hook, last = cta, then action, lesson, and the middle cycles
+light, photo, dark, photo, light, photo, photo (the 11 slide standard). *word* = magenta italic.
+Per slide: focus_x / focus_y (0-1 crop focus), "verified": false to hide the blue badge.
 """
-import sys, os, json
-from PIL import Image, ImageDraw, ImageFont, ImageFilter
+import sys, os, json, re
+from PIL import Image, ImageDraw, ImageFont, ImageChops
 
 SKILL = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 A = os.path.join(SKILL, "assets")
 W, H = 1080, 1350
-M = 80
-TXW = int((W - 2*M) * 0.78)   # approx text-width for zone sampling (avoid far-right photo edge)
+MX = 51                         # left text margin
+MAGENTA = (213, 0, 87)
+NAVY = (0, 26, 112)
+LIGHT_BG = (239, 238, 234)
+DARK_BG = (15, 10, 26)
+INK = (11, 11, 12)
+SUB_BLUE = (173, 213, 240)
+VERIFIED = (29, 155, 240)
 
-def first(paths):
-    for p in paths:
-        if p and os.path.exists(p): return p
-    return None
+MIDDLE_CYCLE = ["light", "photo", "dark", "photo", "light", "photo", "photo"]
 
-HEAD_SERIF   = first([os.path.join(A, "headline.ttf"), "/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf"])
-HEADIT_SERIF = first([os.path.join(A, "headline-italic.ttf"), os.path.join(A, "headline.ttf"),
-                       "/usr/share/fonts/truetype/dejavu/DejaVuSerif-Italic.ttf"])
-HEAD_SANS    = first([os.path.join(A, "headline-sans.ttf"), HEAD_SERIF])
-HEADIT_SANS  = first([os.path.join(A, "headline-sans-italic.ttf"), HEAD_SANS])
-# Two brand headline fonts, matching ecom.rarityagency.io's own type system (--font-serif is
-# Playfair Display, --font-sans is Plus Jakarta Sans). Default is serif; a spec (or per-slide
-# override) can request "sans" — see set_headline_font() / spec["headline_font"]. VARY this
-# across a content batch/calendar rather than always using the same one for every post.
-HEAD, HEADIT = HEAD_SERIF, HEADIT_SERIF
 
-def set_headline_font(choice):
-    """choice: 'serif' (Playfair Display, default) or 'sans' (Plus Jakarta Sans)."""
-    global HEAD, HEADIT
-    if choice == "sans":
-        HEAD, HEADIT = HEAD_SANS, HEADIT_SANS
-    else:
-        HEAD, HEADIT = HEAD_SERIF, HEADIT_SERIF
-BEN_R  = first([os.path.join(A, "BentonSans-Regular.otf"), "/usr/share/fonts/truetype/lato/Lato-Regular.ttf"])
-BEN_T  = first([os.path.join(A, "BentonSans-Thin.otf"),    "/usr/share/fonts/truetype/lato/Lato-Light.ttf"])
-ARROW  = first(["/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
-                 "/System/Library/Fonts/Supplemental/Arial Unicode.ttf",
-                 "/System/Library/Fonts/Supplemental/Arial.ttf",
-                 "/System/Library/Fonts/Helvetica.ttc", BEN_R])
-SYMW   = first([os.path.join(A, "rarity-symbol-white.png"), os.path.join(A, "rarity-symbol.png")])
-LOGO_W = first([os.path.join(A, "rarity-logo-white.png")])
-LOGO_D = first([os.path.join(A, "rarity-logo-blue.png"), LOGO_W])
+# ---------------------------------------------------------------- fonts
+def _path(name):
+    p = os.path.join(A, name)
+    return p if os.path.exists(p) else None
 
-def hx(c): return tuple(int(c.lstrip('#')[i:i+2], 16) for i in (0, 2, 4))
-WHITE=(255,255,255); TEAL=hx('#0fc1af'); NAVY=hx('#001A70'); MUT=(210,216,230); OFF=(240,240,236)
-MUT_DARK=(46,54,78); TEAL_DARK=NAVY; HANDLE_LIGHT=(238,238,238); HANDLE_DARK=(52,58,74)
+HEAD_FILES = {
+    "sans": (_path("headline-sans.ttf"), _path("headline-sans-italic.ttf"), 1.0, -0.045),
+    "serif": (_path("headline.ttf"), _path("headline-italic.ttf"), 1.0, -0.012),
+}
+BODY_FILE = _path("body-inter.ttf")
 
-def Fh(s): return ImageFont.truetype(HEAD, s)
-def Fi(s): return ImageFont.truetype(HEADIT, s)
-def Fb(s): return ImageFont.truetype(BEN_R, s)
-def Ft(s): return ImageFont.truetype(BEN_T, s)
-def Fa(s): return ImageFont.truetype(ARROW, s)
-_md = ImageDraw.Draw(Image.new("RGB", (8, 8)))
 
-# ---------------------------------------------------------------- image treatment (REAL COLOR)
-def cover(img, fx=0.5, fy=0.5):
-    scl = max(W/img.width, H/img.height)
-    im = img.resize((max(W, int(img.width*scl)), max(H, int(img.height*scl))), Image.LANCZOS)
-    left = int((im.width-W)*fx); top = int((im.height-H)*fy)
-    left = max(0, min(im.width-W, left)); top = max(0, min(im.height-H, top))
-    return im.crop((left, top, left+W, top+H)).convert("RGB")
+def body_font(size, weight=500):
+    f = ImageFont.truetype(BODY_FILE, size)
+    try:
+        axes = f.get_variation_axes()
+        vals = []
+        for ax in axes:
+            n = ax["name"] if isinstance(ax["name"], str) else ax["name"].decode()
+            vals.append(weight if "eight" in n else min(max(size, ax["minimum"]), ax["maximum"]))
+        f.set_variation_by_axes(vals)
+    except Exception:
+        pass
+    return f
 
-def vignette(im):
-    mask = Image.new("L", (W, H), 0); d = ImageDraw.Draw(mask)
-    d.ellipse([-int(W*0.32), -int(H*0.18), int(W*1.32), int(H*1.18)], fill=255)
-    mask = mask.filter(ImageFilter.GaussianBlur(230))
-    return Image.composite(im, Image.new("RGB", (W, H), (10, 11, 16)), mask)
 
-def scrim(bot_a=252, bot_start=0.34, top_a=150, top_h=230, col=(5, 6, 12)):
-    g = Image.new("RGBA", (W, H), (0, 0, 0, 0)); d = ImageDraw.Draw(g)
-    s = int(H*bot_start)
-    for y in range(s, H):
-        a = int(bot_a*((y-s)/(H-s))**1.12); d.line([(0, y), (W, y)], fill=col+(a,))
-    for y in range(top_h):
-        a = int(top_a*(1-y/top_h)); d.line([(0, y), (W, y)], fill=col+(a,))
-    return g
+class Head:
+    def __init__(self, choice):
+        reg, ita, self.scale, self.track = HEAD_FILES[choice]
+        self.reg, self.ita = reg, ita or reg
 
-def grain(im, a=0.03):
-    n = Image.effect_noise((W, H), 24).convert("L")
-    return Image.blend(im, Image.merge("RGB", (n, n, n)), a)
+    def fonts(self, size):
+        s = int(round(size * self.scale))
+        return ImageFont.truetype(self.reg, s), ImageFont.truetype(self.ita, s), s
 
-def treat(img, fx=0.5, fy=0.5, bot_a=252, bot_start=0.34, dark=0.0, blur_zone=None, blur_r=25,
-          top_a=150, top_h=230):
-    base = cover(img, fx, fy)
-    if blur_zone:
-        blurred = base.filter(ImageFilter.GaussianBlur(blur_r))
-        mask = Image.new("L", (W, H), 0)
-        d = ImageDraw.Draw(mask)
-        if len(blur_zone) == 4:
-            d.rectangle(blur_zone, fill=255)
-        elif len(blur_zone) == 2:
-            d.rectangle([0, blur_zone[0], W, blur_zone[1]], fill=255)
-        mask = mask.filter(ImageFilter.GaussianBlur(70))
-        base = Image.composite(blurred, base, mask)
-    if dark: base = Image.blend(base, Image.new("RGB", (W, H), (6, 8, 14)), dark)
-    base = vignette(base)
-    base = Image.alpha_composite(base.convert("RGBA"), scrim(bot_a, bot_start, top_a, top_h)).convert("RGB")
-    return grain(base)
 
-# ---------------------------------------------------------------- contrast: measure AND adapt the LETTER
-def zone_luminance(im, box):
-    x0, y0, x1, y1 = box
-    x0, y0 = max(0, int(x0)), max(0, int(y0)); x1, y1 = min(W, int(x1)), min(H, int(y1))
-    if x1 <= x0 or y1 <= y0: return 0.3, (90, 90, 90)
-    px = im.convert("RGB").resize((1, 1), Image.LANCZOS, box=(x0, y0, x1, y1)).getpixel((0, 0))
-    return (0.2126*px[0] + 0.7152*px[1] + 0.0722*px[2]) / 255, px
+# ---------------------------------------------------------------- text helpers
+def adv(font, text, track):
+    """Width of text with kerning kept and tracking (px per glyph) applied."""
+    if not text:
+        return 0
+    return font.getlength(text) + track * len(text)
 
-def ratio_for(Lbg, color):
-    Lc = (0.2126*color[0] + 0.7152*color[1] + 0.0722*color[2]) / 255
-    lighter, darker = max(Lbg, Lc), min(Lbg, Lc)
-    return (lighter + 0.05) / (darker + 0.05)
 
-def adapt(im, box, light, dark, label=""):
-    """THE core v6 mechanism. Samples the background under `box` and returns whichever of
-    light/dark contrasts better against it — dark background -> light letter, light
-    background -> dark (navy) letter. Always prints the decision so the render log shows
-    exactly why a colour was picked, and still flags anything that can't clear 4.5:1 either
-    way (a genuinely mid-gray zone needs a crop change, not a colour trick)."""
-    Lbg, px = zone_luminance(im, box)
-    r_light, r_dark = ratio_for(Lbg, light), ratio_for(Lbg, dark)
-    choice, ratio = (light, r_light) if r_light >= r_dark else (dark, r_dark)
-    tag = "light" if choice is light else "dark"
-    flag = "ok" if ratio >= 4.5 else "*** LOW CONTRAST even after adapting, fix the crop/photo ***"
-    print(f"  [contrast] {label}: bg~rgb{px} -> {tag} letter, {ratio:.1f}:1  {flag}")
-    return choice
-
-# ---------------------------------------------------------------- marks / chrome
-def sym(h):
-    s = Image.open(SYMW).convert("RGBA"); r = h/s.height
-    return s.resize((max(1, int(s.width*r)), h), Image.LANCZOS)
-
-def tracked(d, xy, s, font, fill, tr=3):
-    x, y = xy
-    for ch in s:
-        d.text((x, y), ch, font=font, fill=fill); x += d.textlength(ch, font=font)+tr
+def draw_run(d, x, y, text, font, fill, track):
+    for i, ch in enumerate(text):
+        d.text((x, y), ch, font=font, fill=fill)
+        nxt = text[i:i + 2]
+        step = font.getlength(nxt) - font.getlength(text[i + 1:i + 2]) if len(nxt) == 2 else font.getlength(ch)
+        x += step + track
     return x
 
-def text_w(s, font, tr=3):
-    return sum(_md.textlength(ch, font=font) for ch in s) + tr*len(s)
 
-def topbar(im, page=None):
-    d = ImageDraw.Draw(im, "RGBA")
-    lab_col = adapt(im, (M, 40, M+230, 74), HANDLE_LIGHT, HANDLE_DARK, "top label zone")
-    tracked(d, (M, 52), "RARITY AGENCY", Ft(23), lab_col+(235,), 4)
-    s = sym(54); im.paste(s, (W-M-s.width, 42), s)
-    if page:
-        pf = Ft(23)
-        pg_col = adapt(im, (W-M-140, 1200, W-M, 1230), (226,230,240), HANDLE_DARK, "page counter zone")
-        d.text((W-M-d.textlength(page, font=pf), 1214), page, font=pf, fill=pg_col+(230,))
-
-# ---------------------------------------------------------------- headline (serif + italic accents)
-def toks(text):
-    raw = []
-    for i, seg in enumerate(text.split("*")):
-        it = (i % 2 == 1)
-        for w in seg.split(): raw.append([w, it])
+def tokens(text):
+    """'a *b* c' -> [('a',False),('b',True),('c',False)] split per word."""
     out = []
-    for w, it in raw:
-        if out and all(c in ".,!?:;…" for c in w): out[-1][0] += w
-        else: out.append([w, it])
-    return [(w, it) for w, it in out]
+    for i, part in enumerate(re.split(r"\*", text)):
+        for w in part.split():
+            out.append((w, i % 2 == 1))
+    return out
 
-def wrap_tok(tokens, size, maxw):
-    F = Fh(size); I = Fi(size); sp = _md.textlength(" ", font=F)
-    lines = []; cur = []; cw = 0
-    for w, it in tokens:
-        f = I if it else F; ww = _md.textlength(w, font=f)
-        add = ww if not cur else sp+ww
-        if cur and cw+add > maxw:
-            lines.append(cur); cur = [(w, it, ww)]; cw = ww
+
+def wrap(toks, fr, fi, track, space, max_w):
+    lines, cur, cw = [], [], 0
+    for w, it in toks:
+        f = fi if it else fr
+        ww = adv(f, w, track)
+        add = ww if not cur else space + ww
+        if cur and cw + add > max_w:
+            lines.append(cur)
+            cur, cw = [(w, it, ww)], ww
         else:
-            cur.append((w, it, ww)); cw += add
-    if cur: lines.append(cur)
-    return lines, sp
+            cur.append((w, it, ww))
+            cw += add
+    if cur:
+        lines.append(cur)
+    return lines
 
-def line_w(line, sp): return sum(w for _, _, w in line) + sp*(len(line)-1)
 
-def fit_size(text, size, maxw, max_h, lead):
-    while size > 54:
-        lines, sp = wrap_tok(toks(text), size, maxw)
-        if int(size*lead)*len(lines) <= max_h and all(line_w(l, sp) <= maxw for l in lines):
-            return size
-        size -= 3
-    return size
-
-def draw_head(im, text, size, accent, bottom_y, align="left", lead=1.12,
-              accent_last=True, max_h=680, roman=WHITE):
-    size = fit_size(text, size, W-2*M, max_h, lead)
-    d = ImageDraw.Draw(im, "RGBA")
-    lines, sp = wrap_tok(toks(text), size, W-2*M)
-    F = Fh(size); I = Fi(size); lh = int(size*lead)
-    has_it = any(it for _, it in toks(text))
-    y = bottom_y - lh*len(lines); top = y
+def draw_headline(img, head, text, x, y, size, max_w, max_lines, color, accent=MAGENTA, pitch=1.03,
+                  anchor="top", min_size=30):
+    """Fits (shrinks) to max_lines, draws, returns (bottom_y, size_used, nlines)."""
+    toks = tokens(text)
+    d = ImageDraw.Draw(img)
+    s = size
+    while True:
+        fr, fi, real = head.fonts(s)
+        track = head.track * real
+        space = 0.20 * real
+        lines = wrap(toks, fr, fi, track, space, max_w)
+        if (len(lines) <= max_lines and all(sum(w for *_, w in ln) <= max_w for ln in lines)) or s <= min_size:
+            break
+        s -= 2
+    step = int(real * pitch)
+    top = y - (len(lines) - 1) * step if anchor == "bottom" else y
     for li, ln in enumerate(lines):
-        x = (W-line_w(ln, sp))//2 if align == "center" else M
-        last = (li == len(lines)-1)
+        cx = x
+        ly = top + li * step
         for w, it, ww in ln:
-            if it: fill = accent
-            elif (not has_it and accent_last and last): fill = accent
-            else: fill = roman
-            d.text((x, y), w, font=(I if it else F), fill=fill); x += ww+sp
-        y += lh
-    return top
+            f = fi if it else fr
+            draw_run(d, cx, ly, w, f, accent if it else color, track)
+            cx += ww + space
+    return top + len(lines) * step, s, len(lines)
 
-def draw_sub(im, text, bottom_y, size=30, fill=MUT, maxw=None):
-    maxw = maxw or (W-2*M); F = Fb(size); d = ImageDraw.Draw(im, "RGBA")
-    text = text.replace("*", "").replace("->", "→")
-    words = text.split(); lines = []; cur = ""
-    for wd in words:
-        t = (cur+" "+wd).strip()
-        if _md.textlength(t.replace("→", ""), font=F) <= maxw: cur = t
-        else: lines.append(cur); cur = wd
-    if cur: lines.append(cur)
-    lh = int(size*1.3); y = bottom_y - lh*len(lines); top = y
-    for ln in lines:
-        if "→" in ln:
-            pre = ln.split("→")[0]
-            d.text((M, y), pre, font=F, fill=fill)
-            d.text((M+d.textlength(pre, font=F)+4, y-1), "→", font=Fa(size), fill=fill)
-        else:
-            d.text((M, y), ln, font=F, fill=fill)
-        y += lh
-    return top
 
-def kicker(im, text, y, accent, col):
-    """Body/stat kicker: small accent dash + label. v6: no backing patch, colour adapts instead."""
-    txt = text.upper()
-    d = ImageDraw.Draw(im, "RGBA")
-    d.rounded_rectangle([M, y+7, M+52, y+18], 5, fill=accent)
-    tracked(d, (M+70, y), txt, Fb(26), col+(255,), 3)
+def draw_body(img, text, x, y, size, max_w, color, pitch, weight=500, max_lines=6):
+    d = ImageDraw.Draw(img)
+    s = size
+    while True:
+        f = body_font(s, weight)
+        track = -0.012 * s
+        words = text.split()
+        lines, cur = [], ""
+        for w in words:
+            t = (cur + " " + w).strip()
+            if cur and adv(f, t, track) > max_w:
+                lines.append(cur)
+                cur = w
+            else:
+                cur = t
+        lines.append(cur)
+        if len(lines) <= max_lines or s <= 22:
+            break
+        s -= 2
+    step = int(s * pitch)
+    for i, ln in enumerate(lines):
+        draw_run(d, x, y + i * step, ln, f, color, track)
+    return y + len(lines) * step
 
-# ---------------------------------------------------------------- slides
-def render(spec):
-    set_headline_font(spec.get("headline_font", "serif"))
-    out = spec["out_dir"]; os.makedirs(out, exist_ok=True)
-    dflt = hx(spec.get("accent", "#D50057"))
+
+def draw_handle(img, handle, color):
+    f = body_font(15, 700)
+    draw_run(ImageDraw.Draw(img), MX, 44, handle, f, color, -0.45)
+
+
+# ---------------------------------------------------------------- image helpers
+def cover(path, w, h, fx=0.5, fy=0.5):
+    im = Image.open(path).convert("RGB")
+    sc = max(w / im.width, h / im.height)
+    im = im.resize((max(w, round(im.width * sc)), max(h, round(im.height * sc))), Image.LANCZOS)
+    x = round((im.width - w) * fx)
+    y = round((im.height - h) * fy)
+    return im.crop((x, y, x + w, y + h))
+
+
+def scrim(img, start=0.40, end_a=0.90, base=0.10, top_a=0.30):
+    """Dark vertical gradient for legibility on full-bleed photos."""
+    g = Image.new("L", (1, H))
+    px = g.load()
+    for y in range(H):
+        t = y / H
+        a = base
+        if t > start:
+            a += (end_a - base) * min(1, ((t - start) / (1 - start))) ** 1.25
+        if t < 0.16:
+            a = max(a, top_a * (1 - t / 0.16))
+        px[0, y] = int(255 * min(a, 0.96))
+    mask = g.resize((W, H))
+    return Image.composite(Image.new("RGB", (W, H), (0, 0, 0)), img, mask)
+
+
+def ss_icon(size, painter, scale=4):
+    big = Image.new("RGBA", (size * scale, size * scale), (0, 0, 0, 0))
+    painter(ImageDraw.Draw(big), size * scale)
+    return big.resize((size, size), Image.LANCZOS)
+
+
+def arrow_circle(img, x, y, d=52):
+    def paint(g, s):
+        g.ellipse((0, 0, s - 1, s - 1), fill=(255, 255, 255, 255))
+        c = s / 2
+        lw = int(s * 0.055)
+        g.line((c - s * .20, c, c + s * .20, c), fill=(10, 10, 10, 255), width=lw)
+        g.line((c + s * .05, c - s * .15, c + s * .21, c, ), fill=(10, 10, 10, 255), width=lw)
+        g.line((c + s * .05, c + s * .15, c + s * .21, c), fill=(10, 10, 10, 255), width=lw)
+    img.paste(ss_icon(d, paint), (x, y), ss_icon(d, paint))
+
+
+def verified_badge(img, x, y, d=27):
+    def paint(g, s):
+        g.ellipse((0, 0, s - 1, s - 1), fill=VERIFIED + (255,))
+        lw = int(s * 0.1)
+        g.line((s * .27, s * .52, s * .44, s * .68), fill=(255, 255, 255, 255), width=lw)
+        g.line((s * .44, s * .68, s * .74, s * .34), fill=(255, 255, 255, 255), width=lw)
+    ic = ss_icon(d, paint)
+    img.paste(ic, (x, y), ic)
+
+
+def avatar(img, x, y, d=38):
+    def paint(g, s):
+        g.ellipse((0, 0, s - 1, s - 1), fill=(255, 255, 255, 255))
+    ic = ss_icon(d, paint)
+    img.paste(ic, (x, y), ic)
+    sym = _path("rarity-symbol-color.png")
+    if sym:
+        s = Image.open(sym).convert("RGBA")
+        s.thumbnail((int(d * 0.66), int(d * 0.66)), Image.LANCZOS)
+        img.paste(s, (x + (d - s.width) // 2, y + (d - s.height) // 2), s)
+
+
+def luminance_ratio_white(img, box):
+    reg = img.crop(box).convert("L")
+    px = list(reg.get_flattened_data())
+    lum = sum(px) / len(px) / 255.0
+    lin = ((lum + 0.055) / 1.055) ** 2.4
+    return 1.05 / (lin + 0.05)
+
+
+# ---------------------------------------------------------------- slide builders
+def build(slide, kind, head, handle, base_dir):
+    bg = slide.get("bg")
+    if bg and not os.path.isabs(bg):
+        bg = os.path.join(base_dir, bg)
+    if not bg or not os.path.exists(bg):
+        sys.exit(f"ERROR: slide type '{kind}' needs its own photo ('bg'): {bg}")
+    fx, fy = slide.get("focus_x", 0.5), slide.get("focus_y", 0.4)
+    hl = slide.get("headline", "")
+    body = slide.get("body", "")
+
+    if kind == "hook":
+        img = scrim(cover(bg, W, H, fx, fy), start=0.50, end_a=0.88, base=0.06)
+        draw_handle(img, handle, (255, 255, 255))
+        hy = slide.get("headline_bottom", 951)
+        # measure first to anchor the block above the subhead, chip above the block
+        probe = Image.new("RGB", (W, H))
+        _, s_used, n = draw_headline(probe, head, hl, 48, 0, 72, 975, 3, (255, 255, 255), pitch=0.98, min_size=44)
+        step = int(head.fonts(s_used)[2] * 0.98)
+        top = hy - (n - 1) * step - step
+        draw_headline(img, head, hl, 48, top, s_used, 975, 3, (255, 255, 255), pitch=0.98, min_size=44)
+        cy = top - 88
+        avatar(img, 47, cy)
+        f = body_font(30, 600)
+        draw_run(ImageDraw.Draw(img), 93, cy + 1, handle, f, (255, 255, 255), -0.6)
+        if slide.get("verified", True):
+            verified_badge(img, int(93 + adv(f, handle, -0.6)) + 5, cy + 5)
+        if slide.get("subhead"):
+            draw_body(img, slide["subhead"], 47, 1168, 34, 985, SUB_BLUE, 1.25, weight=500, max_lines=2)
+        return img
+
+    if kind == "photo":
+        img = scrim(cover(bg, W, H, fx, fy), start=0.38, end_a=0.92, base=0.14)
+        draw_handle(img, handle, (255, 255, 255))
+        arrow_circle(img, 57, 543)
+        draw_headline(img, head, hl, MX + 1, 660, 48, 975, 2, (255, 255, 255), pitch=1.05, min_size=34)
+        if body:
+            draw_body(img, body, MX, 1024, 46, 935, (255, 255, 255), 1.22, weight=500, max_lines=4)
+        r = luminance_ratio_white(img, (MX, 1020, W - MX, 1180))
+        if r < 4.5:
+            print(f"  [contrast] body zone white-on-photo {r:.1f}:1 LOW — move focus or pick a darker photo")
+        return img
+
+    if kind in ("light", "dark"):
+        dark = kind == "dark"
+        img = Image.new("RGB", (W, H), DARK_BG if dark else LIGHT_BG)
+        draw_handle(img, handle, (255, 255, 255) if dark else (10, 10, 10))
+        draw_headline(img, head, hl, MX, 108, 76, 960, 3, (255, 255, 255) if dark else NAVY, pitch=1.03)
+        if body:
+            draw_body(img, body, MX, 478, 36, 990, (255, 255, 255) if dark else INK, 1.2 if dark else 1.4,
+                      weight=500, max_lines=5)
+        img.paste(cover(bg, 980, 520, fx, fy), (50, 790))
+        return img
+
+    if kind == "lesson":
+        img = Image.new("RGB", (W, H), LIGHT_BG)
+        draw_handle(img, handle, (10, 10, 10))
+        draw_headline(img, head, hl, MX, 142, 54, 960, 2, NAVY, pitch=1.03)
+        img.paste(cover(bg, W, 735, fx, fy), (0, H - 735))
+        return img
+
+    if kind in ("action", "cta"):
+        img = Image.new("RGB", (W, H), LIGHT_BG)
+        draw_handle(img, handle, (10, 10, 10))
+        img.paste(cover(bg, 986, 612, fx, fy), (51, 128))
+        col = MAGENTA if kind == "action" else NAVY
+        draw_headline(img, head, hl, MX, 818, 70, 975, 4, col, pitch=1.04)
+        return img
+
+    sys.exit(f"ERROR: unknown slide type '{kind}'")
+
+
+def assign_types(slides):
+    n = len(slides)
+    mid = [MIDDLE_CYCLE[i % len(MIDDLE_CYCLE)] for i in range(max(0, n - 4))]
+    default = ["hook"] + mid + ["lesson", "action", "cta"][-min(3, n - 1):] if n > 1 else ["hook"]
+    default = default[:n]
+    return [s.get("type") or default[i] for i, s in enumerate(slides)]
+
+
+def main():
+    if len(sys.argv) < 2:
+        sys.exit(__doc__)
+    spec_path = os.path.abspath(sys.argv[1])
+    spec = json.load(open(spec_path))
+    base_dir = os.path.dirname(spec_path)
+    choice = spec.get("headline_font", "sans")
+    if choice not in HEAD_FILES or not HEAD_FILES[choice][0]:
+        sys.exit(f"headline_font must be 'sans' or 'serif' with its font files in {A}")
+    head = Head(choice)
+    out = spec["out_dir"]
+    os.makedirs(out, exist_ok=True)
     handle = spec.get("handle", "@rarity.agency")
-    total = len(spec["slides"]); n = 0
-    for sl in spec["slides"]:
-        n += 1; t = sl.get("type", "body"); fn = os.path.join(out, f"slide-{n}.png")
-        p = sl.get("bg") or spec.get("hero_image")
-        if not p or not os.path.exists(p):
-            raise SystemExit(f"[render] slide {n} ({t}) has no real photo in 'bg'. Every slide needs its "
-                             f"own image; flat / solid / gradient cards are not allowed.")
-        img = Image.open(p).convert("RGB")
-        fx = sl.get("focus_x", 0.5); fy = sl.get("focus_y", 0.42)
-        accent = hx(sl["accent"]) if sl.get("accent") else dflt
-        forced_roman = hx(sl["head_color"]) if sl.get("head_color") else None
-        page = f"{n:02d} / {total:02d}"
-        print(f"slide {n} ({t}):")
+    types = assign_types(spec["slides"])
+    for i, (s, t) in enumerate(zip(spec["slides"], types), 1):
+        img = build(s, t, head, handle, base_dir)
+        fn = os.path.join(out, f"slide-{i:02d}.png")
+        img.save(fn)
+        print(f"slide {i:02d} [{t}] -> {fn}")
 
-        if t == "hook":
-            im = treat(img, fx, fy, bot_a=sl.get("bot_a",236), bot_start=sl.get("bot_start",0.32),
-                       dark=sl.get("dark",0.0), blur_zone=sl.get("blur_zone"), blur_r=sl.get("blur_r", 25),
-                       top_a=sl.get("top_a",150), top_h=sl.get("top_h",230))
-            topbar(im)
-            d = ImageDraw.Draw(im, "RGBA")
-            handle_col = adapt(im, (M,1195,M+260,1228), HANDLE_LIGHT, HANDLE_DARK, "handle zone")
-            tracked(d, (M, 1206), handle, Fb(27), handle_col+(238,), 1)
-            sub_top = 1188
-            if sl.get("subhead"):
-                sub_col = adapt(im, (M,1140,M+TXW,1225), MUT, MUT_DARK, "subhead zone")
-                sub_top = draw_sub(im, sl["subhead"], 1176, 31, sub_col)
-            head_zone = (M, sub_top-220, M+TXW, sub_top-60)
-            roman = forced_roman or adapt(im, head_zone, WHITE, NAVY, "headline/subhead zone (general)")
-            head_top = draw_head(im, sl["headline"], sl.get("size", 124), accent, sub_top-60,
-                                 "left", 1.12, sl.get("accent_last", True), 560, roman)
-            if sl.get("eyebrow"):
-                etxt = sl["eyebrow"].upper(); ew = text_w(etxt, Fb(25)); ey = head_top-60
-                eye_col = TEAL if (roman == WHITE or forced_roman == WHITE) else adapt(im, (M, ey-4, M+ew+10, ey+30), TEAL, TEAL_DARK, "eyebrow zone")
-                d = ImageDraw.Draw(im, "RGBA")
-                tracked(d, (M, ey), etxt, Fb(25), eye_col+(255,), 3)
-            im.convert("RGB").save(fn); continue
-
-        if t == "cta":
-            im = treat(img, fx, fy, bot_a=sl.get("bot_a",250), bot_start=sl.get("bot_start",0.16),
-                       dark=sl.get("dark",0.42), blur_zone=sl.get("blur_zone"), blur_r=sl.get("blur_r", 25),
-                       top_a=sl.get("top_a",150), top_h=sl.get("top_h",230))
-            topbar(im)
-            Llogo, _ = zone_luminance(im, (W*0.5-140, 470, W*0.5+140, 610))
-            use_dark_logo = ratio_for(Llogo, NAVY) > ratio_for(Llogo, WHITE)
-            lg = Image.open(LOGO_D if use_dark_logo else LOGO_W).convert("RGBA")
-            r = 250/lg.width; lg = lg.resize((250, int(lg.height*r)), Image.LANCZOS)
-            im.paste(lg, ((W-250)//2, 470), lg)
-            d = ImageDraw.Draw(im, "RGBA")
-            head_zone = (W*0.5-TXW/2, 780, W*0.5+TXW/2, 950)
-            roman = forced_roman or adapt(im, head_zone, WHITE, NAVY, "CTA headline zone")
-            draw_head(im, sl["headline"], sl.get("size", 104), accent, 900, "center", 1.12,
-                      sl.get("accent_last", True), 430, roman)
-            handle_col = adapt(im, (W*0.5-140,1195,W*0.5+140,1228), (234,234,234), HANDLE_DARK, "CTA handle zone")
-            d.text(((W-d.textlength(handle, font=Fb(28)))//2, 1206), handle, font=Fb(28), fill=handle_col+(236,))
-            im.convert("RGB").save(fn); continue
-
-        if t == "stat":
-            im = treat(img, fx, fy, bot_a=sl.get("bot_a",250), bot_start=sl.get("bot_start",0.30),
-                       dark=sl.get("dark",0.0), blur_zone=sl.get("blur_zone"), blur_r=sl.get("blur_r", 25),
-                       top_a=sl.get("top_a",150), top_h=sl.get("top_h",230))
-            topbar(im, page)
-            d = ImageDraw.Draw(im, "RGBA")
-            handle_col = adapt(im, (M,1195,M+260,1228), HANDLE_LIGHT, HANDLE_DARK, "handle zone")
-            tracked(d, (M, 1206), handle, Fb(27), handle_col+(238,), 1)
-            sub_top = 1150
-            if sl.get("sub"):
-                sub_col = adapt(im, (M,1095,M+TXW,1168), OFF, MUT_DARK, "sub zone")
-                sub_top = draw_sub(im, sl["sub"], 1150, 33, sub_col)
-            S = 236
-            while S > 120 and _md.textlength(sl["stat"], font=Fh(S)) > W-2*M-8: S -= 6
-            bb = Fh(S).getbbox(sl["stat"]); nh = bb[3]-bb[1]; num_top = sub_top-30-nh
-            d.text((M-6, num_top-bb[1]), sl["stat"], font=Fh(S), fill=accent)
-            if sl.get("label"):
-                ltxt = sl["label"].upper(); lw = text_w(ltxt, Fb(28)); ly = num_top-60
-                lab_col = adapt(im, (M, ly-4, M+lw+10, ly+30), TEAL, TEAL_DARK, "label zone")
-                d = ImageDraw.Draw(im, "RGBA")
-                tracked(d, (M, ly), ltxt, Fb(28), lab_col+(255,), 3)
-            im.convert("RGB").save(fn); continue
-
-        # body
-        im = treat(img, fx, fy, bot_a=sl.get("bot_a",248), bot_start=sl.get("bot_start",0.34),
-                   dark=sl.get("dark",0.0), blur_zone=sl.get("blur_zone"), blur_r=sl.get("blur_r", 25),
-                   top_a=sl.get("top_a",150), top_h=sl.get("top_h",230))
-        topbar(im, page)
-        d = ImageDraw.Draw(im, "RGBA")
-        handle_col = adapt(im, (M,1195,M+260,1228), HANDLE_LIGHT, HANDLE_DARK, "handle zone")
-        tracked(d, (M, 1206), handle, Fb(27), handle_col+(238,), 1)
-        head_zone = (M, 1150-190, M+TXW, 1150)
-        roman = forced_roman or adapt(im, head_zone, WHITE, NAVY, "headline zone (general)")
-        head_top = draw_head(im, sl["headline"], sl.get("size", 96), accent, 1150,
-                             "left", 1.12, sl.get("accent_last", True), 720, roman)
-        if sl.get("kicker"):
-            kt = sl["kicker"]; ky = head_top-62
-            kw = text_w(kt.upper(), Fb(26))
-            k_col = TEAL if (roman == WHITE or forced_roman == WHITE) else adapt(im, (M+70, ky-4, M+70+kw+10, ky+30), TEAL, TEAL_DARK, "kicker zone")
-            kicker(im, kt, ky, accent, k_col)
-        im.convert("RGB").save(fn)
-    print("done", total, "slides ->", out)
-    print("Adaptive letter colour handled contrast above. Anything still flagged LOW CONTRAST")
-    print("needs a focus_x/focus_y change or a different photo (a truly mid-gray zone can't be")
-    print("rescued by switching letter colour) — not a re-run of the same spec.")
 
 if __name__ == "__main__":
-    render(json.load(open(sys.argv[1])))
-    print("HEAD:", os.path.basename(HEAD), "| SYMBOL:", os.path.basename(SYMW), "| adaptive-color v6")
+    main()

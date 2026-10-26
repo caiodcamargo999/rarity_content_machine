@@ -1,102 +1,66 @@
 ---
 name: rarity-ig-designer
-description: "Turns a Rarity IG Content Idea Brief into the actual Instagram ART, rendered 100% by Claude in Python/Pillow with NO design connectors (never Canva, never Figma). Every slide is its OWN distinct, current, high-res, high-impact photo full-bleed (no flat, solid, or gradient cards), with a high-contrast editorial headline in one of Rarity's two brand fonts (Playfair Display serif or Plus Jakarta Sans, alternated across a batch — both pulled from ecom.rarityagency.io's own type system) and italic accent words in magenta, the Rarity symbol transparent in the corner (no white box), NO date, a trigger HOOK with an open loop subhead, and a SAVE + SHARE close (no button). English + Spanish + Portuguese. STEP 2, consuming the brief from rarity-ig-idea-engine. ALWAYS use when Caio wants to design or create the post art: make the design, build the carousel, turn this idea into a post, cria a arte, monta o post, design this, haz el diseno. When in doubt, USE this skill."
+description: "Turns a Rarity IG Content Idea Brief into the actual Instagram carousel ART, rendered 100% by Claude in Python/Pillow with NO design connectors (never Canva, never Figma), in the EXACT house design of the Brands Decoded Maquina posts (e.g. Idea 01 Liquid Death): full-bleed photo hook with profile chip and magenta italic accent word, then alternating off-white cards (navy headline, body text, framed photo), full-bleed photo slides with arrow circle, a near-black card, a lesson slide, a magenta action slide and a Save + Share close. The only thing that varies between posts is the headline font: Plus Jakarta Sans ExtraBold or Playfair Display. 1080x1350, English plus Spanish plus Portuguese. STEP 2, consuming the brief from rarity-ig-idea-engine. ALWAYS use when Caio wants to design or create the post art: make the design, build the carousel, turn this idea into a post, cria a arte, monta o post, design this, haz el diseno. When in doubt, USE this skill."
 ---
 
-# Rarity IG — Designer (Step 2 of 2) · Claude-rendered, no connectors
+# Rarity IG Designer (Step 2) · Claude-rendered, house standard
 
-Claude builds the art **itself** by rendering 1080x1350 PNGs with the bundled Python/Pillow engine
-(`scripts/render_post.py`). The output IS the deliverable — real image files, in Rarity's identity, in
-the editorial style of the reference feeds (@vinci.society, @brandsdecoded__, @blankschoolbr,
-@matthgray): every slide a full-bleed, high-impact photo + a big editorial serif headline. EN + ES + PT.
+Claude builds the art itself with `scripts/render_post.py`. The output must be indistinguishable in layout,
+colours and spacing from the posts Caio makes in the Brands Decoded Maquina software. Reference to compare
+against every time: `public/Instagram Briefings/Designs October 2026/Idea 01 - Liquid Death Made Water Look Dangerous/EN/`.
 
-## Non-negotiables (hard rules from Caio — do not break)
-1. **Render it 100% in Claude. NEVER use a design connector — not Canva, not Figma, not any other.**
-   Everything is done with `scripts/render_post.py`.
-2. **The headline uses one of Rarity's TWO brand fonts — alternate between them across a batch, never
-   render every post in the same one.** Both come straight from `ecom.rarityagency.io`'s own type
-   system: editorial SERIF (Playfair Display, the @vinci.society look, `assets/headline.ttf` +
-   `-italic`) and brand SANS (Plus Jakarta Sans ExtraBold, the site's own heading font,
-   `assets/headline-sans.ttf` + `-italic`). Set `spec["headline_font"]` to `"serif"` (default) or
-   `"sans"`. Headlines are sentence case, white, with **one or two emphasis words in *italic* +
-   magenta** in either font — wrap them in `*asterisks*` in the spec and the engine renders them. To
-   match a different brand/paid font exactly, drop it at `assets/headline.ttf` (+ `-italic`) to
-   replace the serif slot, or `assets/headline-sans.ttf` (+ `-italic`) to replace the sans slot. Small
-   labels stay BentonSans regardless of which headline font is active.
-3. **EVERY slide carries its OWN distinct, current, high-resolution, high-impact photo — hook, every
-   body slide, the CTA. No flat, solid, or gradient cards. Ever.** Each photo creates CONTEXT for that
-   slide's line and is different from the others (never the same hero re-tinted on every slide). Every
-   photo must pass the SHOCK BAR: current where possible, high-res, emotional / dramatic / strange /
-   controversial — a face mid-emotion, charged action, a cinematic or provocative frame. If it would sit
-   in a corporate deck or a generic stock search, find the charged version. The engine ERRORS on any
-   slide with no photo — that is intentional.
-4. **The Rarity symbol sits transparent in the corner of EVERY slide (default top-right), no white
-   box.** Use `assets/rarity-symbol-white.png` (clean transparent mark). Never the legacy
-   `rarity-symbol.png` (it carries a white background box). Keep the same size/position across the set.
-5. **No date on the card.** Never render a month, year, or date label on a slide.
-6. **The hook follows the HOOK DOCTRINE.** Slide 1's headline carries exactly ONE named trigger from the
-   brief (CONTRARIAN, AUTHORITY/ANTI-HERO, INNOVATIVE IDEA, APPARENT NONSENSE, EXTREME CURIOSITY) with
-   ONE open loop subhead under it (a short question / subversion ending with an arrow). If the brief
-   lacks the trigger or subhead, derive them before rendering; never ship a merely descriptive hook.
-7. **The final slide is a SAVE + SHARE close, not a follow pitch. NO button.** One strong sentence in the
-   serif (italic accent on the turn), the white logo above, small handle under. Adapt the "who" to the
-   audience. ES and PT both mirror it.
-8. **Top-tier design bar.** Render → open every PNG → critique like a creative director → fix →
-   re-render. Judge the set against `references/design-principles.md` and `references/viral-layouts.md`.
-   "It rendered without errors" is not the bar. Specifically check every text zone (headline AND
-   kicker/label) against the photo behind it for competing detail — signage text, a logo, a pattern —
-   not just the printed contrast ratio, which only measures brightness and won't catch "text sitting
-   on top of other text." Fix with the per-slide `blur_zone` spec field (see rarity-brand-system.md).
-9. **Always produce EN, ES, and PT.**
+## Non-negotiables
+1. **Render it 100% in Claude. Never a design connector** (no Canva, no Figma).
+2. **The design is the house standard, not a free interpretation.** Use the 11 slide template and slide types in
+   `references/claude-render.md` (hook, light, photo, dark, lesson, action, cta) and the exact palette
+   (`#EFEEEA` light, `#0F0A1A` dark, `#001A70` navy, `#D50057` magenta). Do not invent new layouts, colours,
+   gradients, symbols in the corner, page counters, dates or buttons.
+3. **The only variable is the headline font.** `headline_font` is `"sans"` (Plus Jakarta Sans ExtraBold) or
+   `"serif"` (Playfair Display Bold). Alternate it across posts: check the last post's font in the calendar and
+   use the other one. Body text (Inter), handle, colours and layout never change.
+4. **Every slide has its own distinct photo** (framed or full-bleed, per type). Current, high resolution, emotional or
+   strange, showing the actual subject of that slide's line. The engine errors on a missing photo.
+5. **One magenta italic accent word per headline** (`*word*`). The `action` headline is entirely magenta.
+6. **Hook** carries the brief's trigger in the headline plus a short factual subhead. **Final slide** is always
+   "Save this post. Share it with the people who *think* like you." on the `cta` card.
+7. **Copy style:** short sentence case headlines, one or two plain factual sentences of body (year, number, name),
+   no hyphens or dashes, no emoji. Handle `@rarity.agency` only.
+8. **Verify like a creative director.** Render, open every PNG next to the Idea 01 reference, fix, re-render.
+   "It rendered" is not the bar. Read the engine's `[contrast]` lines for `photo` slides.
+9. **Always produce EN, ES and PT** as visual twins (same photos, same font, same layout).
 
-## Step 1 — intake the brief
-Read the brief (`public/Instagram Briefings/Ideas <Month>/Idea N - Name.docx`, or pasted). Pull: the Hook
-trigger, the headline (EN+ES+PT) with its *italic* accent word(s), the open loop subhead (EN+ES+PT),
-format + slide copy, the per-slide image URLs (one DISTINCT background per slide), the accent color, and
-the slug. See `references/claude-render.md` for the slide spec.
+## Step 1. Intake the brief
+Read the brief (`public/Instagram Briefings/Ideas <Month>/Idea N - Name.docx`, or pasted). Map it onto the 11
+slides: hook (headline + subhead), slides 2 to 8 (headline + one or two sentence body each), lesson ("The
+*lesson* for your brand"), action (the one thing to try this week), cta (fixed). Trim to the short house headline
+lengths. If the brief has fewer slides, the engine drops from the middle cycle.
 
-## Step 2 — get a distinct photo for EVERY slide (automatic, do it yourself)
-- Target folder: `public/Instagram Briefings/Designs <Month>/<Idea N - Name>/` — `hero.jpg` for slide 1 and
-  `bg/bg2.jpg ... bgN.jpg` for the rest. Create folders if missing.
-- **If images are already in the folder, use them.** Otherwise AUTOMATICALLY download each DISTINCT
-  direct image URL from the brief's IMAGES table (Wikimedia direct file:
-  `https://commons.wikimedia.org/wiki/Special:FilePath/<File_Name>`).
-- Prefer **current, high-resolution, high-impact** imagery. A background may serve at most 2 slides, and
-  only as visibly different crops — otherwise every slide is its own picture.
-- If a slide's image is missing, source one yourself (web search → direct URL → download) that creates
-  context for that line and clears the shock bar.
-- Rights: for real people, prefer a licensed image; carry the brief's credit/license into the summary.
+## Step 2. Photos
+Folder: `public/Instagram Briefings/Designs <Month>/Idea NN - <Title>/` with `hero.jpg` and `bg/bg2.jpg ... bgN.jpg`.
+Use images already there; otherwise download each distinct direct URL from the brief (Wikimedia
+`Special:FilePath/<File_Name>`) or source one yourself. A photo serves at most 2 slides, as different crops.
+Carry the credit/license into the summary. Do NOT commit these folders (public repo; only rarity-ig-publish pushes).
 
-## Step 3 — build the spec + render
-- Write a JSON spec per `references/claude-render.md` (out_dir, handle, accent, and the `slides` array —
-  every slide with its OWN `bg` path). Hook carries `eyebrow`, the trigger `headline` (with `*italic*`
-  accent word) and the open loop `subhead` (ending with an arrow).
-- Run: `python3 <skill>/scripts/render_post.py <spec_en.json>` → writes `slide-1.png ... slide-N.png`.
-  The engine applies the house treatment (navy duotone tint, vignette, bottom scrim, grain), the serif
-  headline with italic/magenta accents, and the transparent symbol top-right.
-- **Verify like a creative director**: open each PNG. Check overflow/clipping, weak contrast, the photo
-  reading through (it should — it is the focus), awkward crops, monotony between consecutive slides
-  (each photo must be visibly different). Tune sizes, focus_x/focus_y, and re-render.
+## Step 3. Spec and render
+Write the JSON spec per `references/claude-render.md` (`out_dir`, `headline_font`, slides). Run
+`python3 <skill>/scripts/render_post.py spec_en.json`. Output: `EN/slide-01.png ... slide-11.png`, the exact
+naming rarity-ig-daily-post and rarity-ig-publish expect.
 
-## Step 4 — EN, then ES, then PT
-Render EN first and get it right. Copy the spec, swap to the brief's Spanish lines (keep the `*italic*`
-accent words; ES runs longer so drop sizes a step where needed), same backgrounds, `out_dir` → `ES/`,
-render. Then copy the spec again, swap to the brief's Brazilian Portuguese lines (same `*italic*` accent
-word rule; PT, like ES, often runs longer than EN so drop sizes a step where needed), same backgrounds,
-`out_dir` → `PT/`, render. EN, ES, and PT must all be visual twins — same fonts, same brand colors, same
-layout, only the copy language changes.
+## Step 4. ES then PT
+Copy the spec, swap the copy (keep the accent word, ES and PT run longer: the engine auto-shrinks to the line
+limits), `out_dir` to `ES/` then `PT/`. Same photos, same `headline_font`.
 
-## Step 5 — deliver
-Present the PNGs in chat (`.../EN`, `/ES`, and `/PT`). Close with a short summary + the image
-credit/license note, and flag if the headline used the bundled Playfair fallback (drop a licensed serif
-into `assets/headline.ttf` + `assets/headline-italic.ttf` for an exact brand match).
+## Step 5. Deliver
+Show the PNGs, state which `headline_font` was used (so the next post uses the other), and note photo credits.
+To queue it for the daily publisher, follow rarity-ig-captions then `touch READY_TO_POST` (see rarity-ig-daily-post).
 
 ## References
-- `references/claude-render.md` — the render engine: spec schema, how to run, how to tune, the layout.
-- `references/rarity-brand-system.md` — exact colors, the serif type system, the symbol/logo, accent rules.
-- `references/viral-layouts.md` — editorial layout patterns and IG safe zones.
-- `references/design-principles.md` — hierarchy, rhythm across the set, the legibility bar.
+- `references/claude-render.md`: slide types, palette, spec schema, verification checklist (the source of truth).
+- `references/design-principles.md`, `references/viral-layouts.md`, `references/rarity-brand-system.md`: older
+  background reading. Where they conflict with `claude-render.md` (full-bleed only, symbol corner, serif only,
+  no flat cards), `claude-render.md` wins.
 
-## Relationship to the other skill
-This is **Step 2**, consuming the brief from **`rarity-ig-idea-engine`** (Step 1). That brief maps one
-DISTINCT contextual photo per slide and marks the headline's italic accent word(s); hold it to that.
+## Relationship to the other skills
+Step 2, consuming the brief from `rarity-ig-idea-engine` (Step 1); feeds `rarity-ig-captions` and then
+`rarity-ig-daily-post` / `rarity-ig-publish`. Posts built inside the Maquina software via
+brand-decoded-saas-carousel-maker already follow this same design.

@@ -1,108 +1,76 @@
-# Claude Render Engine — how the design gets made (NO connectors)
+# Claude Render Engine v7: the house standard (NO connectors)
 
-The whole design is produced by `scripts/render_post.py` (Python/Pillow). No Canva, no Figma — ever.
-It outputs 1080x1350 PNGs in the reference editorial style (@vinci.society): **every slide is its own
-full-bleed photo** run through the house treatment (a light navy duotone so the photo stays the focus,
-vignette, bottom scrim, film grain), with a big **editorial serif** headline.
+`scripts/render_post.py` (Python/Pillow) reproduces the carousel design of the posts made in the Brands
+Decoded "Maquina" software (reference: `Designs October 2026/Idea 01 - Liquid Death`). 1080x1350 PNGs,
+`slide-01.png ... slide-NN.png`. Same look, same layout, same colours every time. The ONLY thing that
+varies between posts is the headline typeface.
 
-## Fonts — TWO brand headline fonts, alternate between them (NOT condensed sans)
-Set `spec["headline_font"]` to `"serif"` (default) or `"sans"`. Both are pulled straight from
-`ecom.rarityagency.io`'s own CSS (`--font-serif` / `--font-sans`) — this isn't an arbitrary second
-choice, it's the site's real second brand face. **Vary which one a batch uses; don't default to
-serif on every post out of habit** (direction from Caio, 2026-09-24).
-- `"serif"` (default): **Playfair Display**, a high-contrast Didone serif — `assets/headline.ttf`
-  (roman) and `assets/headline-italic.ttf` (italic). Sentence case, white.
-- `"sans"`: **Plus Jakarta Sans ExtraBold**, the site's own bold grotesque — `assets/headline-sans.ttf`
-  (roman) and `assets/headline-sans-italic.ttf` (italic). Same sentence case, same white default.
-- **Italic accent:** wrap emphasis word(s) in `*asterisks*` in any headline / cta line → the engine sets
-  them in the active headline font's italic + the accent color (magenta), in either font. This is the
-  vinci.society signature, carried into both faces.
-- Body / eyebrow / kicker / subhead / handle: **BentonSans** (bundled) — unaffected by `headline_font`.
-- Swap in a different licensed font by replacing `assets/headline.ttf` (+ `-italic`) for the serif slot
-  or `assets/headline-sans.ttf` (+ `-italic`) for the sans slot; the engine auto-detects either.
+## Headline font: alternate between the two, nothing else changes
+`spec["headline_font"]`:
+- `"sans"`: Plus Jakarta Sans ExtraBold (`assets/headline-sans.ttf` + `-italic`). The look of the reference posts.
+- `"serif"`: Playfair Display Bold (`assets/headline.ttf` + `-italic`).
+Body text (Inter 500, `assets/body-inter.ttf`), handle, colours, spacing and card layout are identical in both.
+Alternate across the content calendar: if the last post used sans, this one uses serif.
 
-## Step A — a DISTINCT photo for EVERY slide (automatic)
-Every slide REQUIRES its own `"bg"` (a real image path). Save to
-`public/Instagram Briefings/Designs <Month>/<Idea N - Name>/`: `hero.jpg` (slide 1) and `bg/bg2.jpg ... bgN.jpg`.
-Download each DISTINCT direct URL from the brief's IMAGES table yourself. The engine ERRORS on any slide
-without a photo — that is intentional (no flat / solid / gradient cards, and no reusing one image for the
-whole set).
+## Palette (exact)
+| Token | Hex |
+|---|---|
+| Light card | `#EFEEEA` |
+| Dark card | `#0F0A1A` |
+| Navy headline | `#001A70` |
+| Magenta accent / action headline | `#D50057` |
+| Body ink on light | `#0B0B0C` |
+| Hook subhead blue | `#ADD5F0` |
+| Verified badge | `#1D9BF0` |
 
-## Step B — write the spec JSON
+## Slide types (the 11 slide standard)
+Omit `type` and the engine assigns it: 1 hook, 2 light, 3 photo, 4 dark, 5 photo, 6 light, 7 photo,
+8 photo, 9 lesson, 10 action, 11 cta. For other lengths: hook first, then the middle cycle
+(light, photo, dark, photo, light, photo, photo), then lesson, action, cta.
+
+| type | Look | Fields |
+|---|---|---|
+| `hook` | Full-bleed photo, bottom scrim, handle top-left, profile chip (avatar + @rarity.agency + blue verified), big white headline with ONE magenta italic word, light-blue subhead near the bottom | `bg`, `headline`, `subhead` |
+| `light` | Off-white card, navy headline top, black body, framed photo bottom | `bg`, `headline`, `body` |
+| `photo` | Full-bleed photo + dark gradient, white arrow circle, SHORT white headline (magenta italic word) mid-slide, white body at the bottom | `bg`, `headline`, `body` |
+| `dark` | Near-black card, white headline, white body, framed photo bottom | `bg`, `headline`, `body` |
+| `lesson` | Off-white card, short navy headline ("The *lesson* for your brand"), photo bleeding edge to edge across the bottom | `bg`, `headline` |
+| `action` | Off-white card, framed photo on top, MAGENTA headline (the "do this week" step) | `bg`, `headline` |
+| `cta` | Off-white card, framed photo on top, NAVY headline, magenta italic word. Always "Save this post. Share it with the people who *think* like you." | `bg`, `headline` |
+
+`*word*` = magenta italic (one word per headline; action headline is fully magenta). Optional per slide:
+`focus_x`/`focus_y` (0 to 1 crop focus), `"verified": false`.
+
+## Copy rules baked into the standard
+- Headlines short, sentence case. Hook headline names the brand and the twist; `photo` headlines are even
+  shorter (about 6 words).
+- Body: one or two plain sentences with a real fact (year, number, name). No hyphens or dashes, no emoji.
+- Handle is always `@rarity.agency` (small, top-left). No symbol in the corner, no date, no page counter, no button.
+- Final slide is the fixed Save + Share line; the caption carries the rest.
+
+## Spec
 ```json
 {
-  "out_dir": "<.../Idea N - Name/EN>",
+  "out_dir": ".../Idea 12 - Title/EN",
   "handle": "@rarity.agency",
-  "accent": "#D50057",
+  "headline_font": "serif",
   "slides": [
-    {"type":"hook","bg":"<.../hero.jpg>","focus_x":0.5,"focus_y":0.42,
-     "eyebrow":"Eugene Schwartz, 1966",
-     "headline":"You can't *create* desire.","size":126,
-     "subhead":"What the most stolen book in advertising knew about your ads ->"},
-    {"type":"body","bg":"<.../bg/bg2.jpg>","kicker":"The mistake",
-     "headline":"Most brands burn millions *shouting* at people who will never buy.","size":94},
-    {"type":"stat","bg":"<.../bg/bg3.jpg>","stat":"85%","label":"of ads are ignored",
-     "sub":"Because they sell the product, not the desire already in the room."},
-    {"type":"cta","bg":"<.../bg/bg4.jpg>",
-     "headline":"Save this. *Send it* to someone who runs ads.","size":98}
+    {"type":"hook","bg":"hero.jpg","headline":"Brand made X look *dangerous*","subhead":"Hook fact. Second fact.","focus_x":0.5,"focus_y":0.4},
+    {"type":"light","bg":"bg/bg2.jpg","headline":"The product was *never* the problem","body":"One or two sentences."}
   ]
 }
 ```
-Notes:
-- Photos render in their REAL colours (no brand-navy wash) — only a bottom scrim + vignette for legibility.
-- `accent` may be set per post OR per slide: magenta `#D50057` (default), shock yellow `#FFE400`, or red
-  `#FF3B3B`. It colours the italic word, the stat number, and the kicker dash. Optional `head_color` sets
-  the whole headline in a shock colour.
-- No `date_label` — there is no date anywhere on the card.
-- Each slide has its OWN `bg`. An image may serve 2 slides max, as different crops.
-- `*asterisks*` = italic + accent word(s). With no asterisks, the last wrapped line auto-accents in
-  magenta (set `"accent_last": false` to keep it white). Use the arrow character in the subhead.
-- `focus_x` / `focus_y` (0–1) choose the cover-crop focal point.
+`bg` paths are relative to the spec file (or absolute). Every slide needs its own distinct photo; the
+engine errors if one is missing. Run: `python3 <skill>/scripts/render_post.py spec_en.json`.
 
-Slide types (all photo-backed):
-- `hook` — brightest photo, bottom scrim, top strip (RARITY AGENCY left, symbol top-right), teal
-  eyebrow, big serif headline bottom-left (italic accent word in magenta), open loop `subhead` under it.
-- `body` — photo at context level, page counter bottom-right, symbol top-right, optional teal `kicker`
-  (dash + word), serif headline bottom-left, handle bottom-left.
-- `stat` — like body with a giant magenta serif number + teal `label` + `sub`.
-- `cta` — darker photo, white logo centered, the SAVE + SHARE sentence in the serif (italic accent),
-  centered, small handle under. **NO button.**
+## Verify like a creative director (mandatory)
+Open every PNG next to the reference (Idea 01). Check: headline fits in the line limit, accent word is
+readable, framed photos are distinct and sharp, white text on `photo` slides clears the `[contrast]` line the
+engine prints (4.5:1), hook subhead not cut off, nothing in the bottom ~120px. Magenta on a busy dark photo
+can be weak: pick a photo whose headline zone is calm or move `focus_y`.
 
-## Step C — render + verify like a creative director
-```
-python3 <skill>/scripts/render_post.py <spec_en.json>
-```
-The script prints a `[contrast]` line per text zone per slide — which letter colour it picked (light or
-navy-dark, adaptive per `rarity-brand-system.md`'s Text table) and the resulting ratio against the 4.5:1
-bar from `design-principles.md`, measured off the actual rendered pixels. **Read this output before
-opening a single PNG.** Anything still flagged `LOW CONTRAST` after adapting means the zone is genuinely
-mid-gray (neither light nor navy wins) — move `focus_x`/`focus_y` onto cleaner negative space, or raise
-that slide's `dark=` a bit so the zone commits to one pole — not a re-run of the same spec hoping it
-reads differently the second time.
+## Languages
+EN first. For ES and PT copy the spec, swap the text (keep the `*accent*` word, drop nothing else), point
+`out_dir` to `ES/` or `PT/`, same photos, same `headline_font`. The three sets are visual twins.
 
-Then open each `slide-N.png`. Fix overflow (lower `size`), bad crops (move `focus_x` / `focus_y`), a
-photo buried too dark or washed too bright, monotony (each slide's photo must look different), any
-headline/eyebrow/kicker sitting on top of a face or busy detail (adaptive colour keeps it readable but
-it should still not be there — recrop), and any text block sitting closer than ~56-60px above the line
-below it (serif descenders need that clearance — see `rarity-brand-system.md`). Expect at least one
-polish pass.
-
-## Step D — Spanish
-Copy the spec, swap each line to the ES copy (keep the `*italic*` accent words; ES runs longer — drop
-`size` a step where needed), same `bg`s, `out_dir` → `ES/`. EN and ES must look identical except language.
-
-## Step E — Portuguese
-Copy the spec again, swap each line to the brief's Brazilian Portuguese copy (keep the `*italic*` accent
-words; PT, like ES, often runs longer than EN — drop `size` a step where needed), same `bg`s, `out_dir`
-→ `PT/`. EN, ES, and PT must all look identical except language — same fonts, same brand colors, same
-layout, only the copy changes.
-
-## Layout (reference standard)
-Every slide: full-bleed photo → light navy duotone + vignette + bottom scrim → top strip (RARITY AGENCY
-left, transparent symbol top-right) → bottom-anchored serif headline (adaptive white/navy, italic accent
-word always magenta). Hook adds an adaptive teal/navy eyebrow + open loop subhead + handle. Body / stat
-add an adaptive kicker / label + page counter + handle. CTA centers the adaptive-colour logo asset +
-save/share sentence + handle. No date, ever. Keep key text out of the bottom ~210px (IG UI). High
-contrast always — measured by the render's own `[contrast]` output, not just eyeballed (see
-`design-principles.md` section 5), and never sitting on top of a face or busy detail even when adaptive
-colour keeps it technically legible.
+`scripts/render_post_legacy.py` is the retired full-bleed photo engine (v6). Do not use it for new posts.

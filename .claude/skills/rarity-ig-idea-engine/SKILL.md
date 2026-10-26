@@ -1,6 +1,6 @@
 ---
 name: rarity-ig-idea-engine
-description: "Generates non-generalist Instagram content IDEAS for Rarity Agency (@rarity.agency) in the editorial style of @vinci.society, @brandsdecoded__, @blankschoolbr and @matthgray. Every idea is anchored to a REAL trigger (current event, anniversary, news, or an iconic figure/brand like Ayrton Senna, Nike, Ferrari) found via live web research, then DECODED into ONE sharp lesson. Every slide ships its OWN distinct full-bleed photo that shows the actual named subject of that slide, scored through a mandatory image QA gate for subject match, impact, currency and resolution; the image is the focus, never a solid or gradient card, never generic stock. Rotates 3 pillars (Growth Marketing & Branding, Business & Strategy, Mindset & High Performance), decides static vs carousel, and outputs a Content Idea Brief in English + Spanish + Portuguese that rarity-ig-designer turns into art. ALWAYS use when Caio asks for Instagram ideas, posts, carousels, ideia de post, o que postar, ideas de contenido, decode a brand or person, or a content batch or calendar. When in doubt, USE this skill."
+description: "Generates non-generalist Instagram content IDEAS for Rarity Agency (@rarity.agency) in the editorial style of @vinci.society, @brandsdecoded__, @blankschoolbr and @matthgray. Every idea is anchored to a REAL trigger (current event, anniversary, news, or an iconic figure/brand like Ayrton Senna, Nike, Ferrari) found via live web research, then DECODED into ONE sharp lesson. Every slide ships its OWN distinct full-bleed photo that shows the actual named subject of that slide, scored through a mandatory image QA gate for subject match, impact, currency and resolution; the image is the focus (full-bleed or framed on the house card layout of rarity-ig-designer), never generic stock. Rotates 3 pillars (Growth Marketing & Branding, Business & Strategy, Mindset & High Performance), decides static vs carousel, and outputs a Content Idea Brief in English + Spanish + Portuguese that rarity-ig-designer turns into art. ALWAYS use when Caio asks for Instagram ideas, posts, carousels, ideia de post, o que postar, ideas de contenido, decode a brand or person, or a content batch or calendar. When in doubt, USE this skill."
 ---
 
 # Rarity IG — Idea Engine (Step 1 of 2)
@@ -35,7 +35,7 @@ Four non-negotiables separate a Rarity idea from generic content:
    headline's *italic accent word*. See the Hook doctrine in `references/editorial-playbook.md`.
 4. **The images are the focus, in REAL colour, and they shock.** Photos render in their real colours (no
    brand wash). EVERY slide gets its OWN distinct photo — subject-matched, current, high-resolution, and
-   high-impact (emotional, dramatic, strange, or controversial). No solid or gradient cards, and never
+   high-impact (emotional, dramatic, strange, or controversial). Never
    the same photo reused on every slide. Imagery is held to a scored gate exactly like the copy is: find
    it with `references/image-sourcing.md`, then score it with `references/image-qa.md`. **An image with
    no scorecard in the brief is not approved**, however good it looked in the search results.
@@ -101,7 +101,7 @@ Recommend one, and say why in a line.
 ### 6. Source, SCORE and attach a DISTINCT, subject-matched, high-impact image — one per slide
 A brief is not finished until it carries the actual pictures it should use — sourced from the web,
 viewed, scored, embedded, and ready for Step 2. **EVERY slide gets its OWN distinct background image**:
-the hook, each body slide, and the CTA. Step 2 renders no flat or gradient cards, so a brief that only
+the hook, each body slide, and the CTA. Step 2 puts a photo on every slide (framed on the light and dark cards), so a brief that only
 ships a hero is incomplete, and reusing one photo across the set is not allowed.
 
 Run `references/image-sourcing.md` to FIND the images and `references/image-qa.md` to APPROVE them.
