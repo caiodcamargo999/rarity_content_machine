@@ -300,7 +300,7 @@ def build(slide, kind, head, handle, base_dir):
         return img
 
     if kind == "photo":
-        img = scrim(cover(bg, W, H, fx, fy), start=0.38, end_a=0.92, base=0.14)
+        img = scrim(cover(bg, W, H, fx, fy), start=0.38, end_a=0.92, base=0.30)
         draw_handle(img, handle, (255, 255, 255))
         arrow_circle(img, 57, 543)
         draw_headline(img, head, hl, MX + 1, 660, 48, 975, 2, (255, 255, 255), pitch=1.05, min_size=34)

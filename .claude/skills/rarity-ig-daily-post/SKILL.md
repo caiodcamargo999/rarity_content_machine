@@ -37,6 +37,15 @@ The agent cannot install it. Ask the user to run in Terminal:
 `bash "<repo>/.claude/skills/rarity-ig-daily-post/scripts/install_daily_post.sh"` (default 10:30 local time, optional args HH MM; `--uninstall` removes it).
 It installs the LaunchAgent com.rarity.instagram.daily. The Mac must be on (a missed run fires on wake). Logs: `.publish_state/logs/daily-*.log`. macOS notifications report posted, blocked or failed. The user's earlier rule "confirm before every publish" is replaced by this explicit standing instruction to post one carousel a day from the queue.
 
+## Lanes (three accounts, one post per account per day)
+`daily_post.py` runs three lanes in one job: EN `@rarity.agency` (marker `READY_TO_POST`, folder `EN/`), ES `@rarity.es`
+(marker `READY_TO_POST_ES`, folder `ES/`, credentials `IG_*_ES`) and PT `@rarity.br` (marker `READY_TO_POST_PT`, folder
+`PT/`, credentials `IG_*_BR`). Each lane has its own queue, ledger entry (`lane`), state file and posted marker
+(`POSTED.txt`, `POSTED_ES.txt`, `POSTED_PT.txt`). The caption md needs a `## ES` / `## PT` section. A lane can have a
+`start` date in the `LANES` list at the top of the script. Options: `--lane ES`, `--dry-run --as-of YYYY-MM-DD` to
+preview a future day. ES and PT art is made with `rarity-ig-designer/scripts/localize_post.py` from
+`Ideas <Month>/Carousel Copy/localized_copy.py`.
+
 ## Failure handling
 - prepare fails (expired token, unreachable image URL, Graph error): nothing is published, the marker stays, a notification is shown, the next run retries. Expired IG_ACCESS_TOKEN: the user generates a new one in the Meta app dashboard (API setup with Instagram login) and updates .env. Never ask for or read the token in chat.
 - publish fails: do not retry blindly, check the Instagram profile first to avoid a duplicate.
